@@ -3,6 +3,14 @@
 // session_start();
 
 include("identifiants.php");
+// include("constants.php");
+
+//definition des niveaux d'utilisateurs
+define('VISITEUR',0);
+define('INSCRIT',1);
+define('MEMBRE',2);
+define('MODERATEUR',3);
+define('ADMIN',4);
 
 class User
 {
@@ -16,6 +24,83 @@ class User
 	private $_birthdate;
 	private $_cptwarnings;
 
+
+	//fonction test de connexion
+	public function is_connected($rank)
+	{
+		//on initialise la variable
+		$autorisation=false;
+
+		if (isset($_COOKIE['id']) && !empty($_COOKIE['id']) && isset($_COOKIE['name']) && !empty($_COOKIE['name']) && isset($_COOKIE['pwd']) && !empty($_COOKIE['pwd'])  && isset($_COOKIE['rank']) && !empty($_COOKIE['rank']))
+		{
+			global $db;
+			$query= $db->prepare('SELECT id, name, pwd, rank FROM thechallenger.user WHERE name = :name');
+			$query->bindParam(':name', $_COOKIE['name'], PDO::PARAM_STR);
+			$query->execute();
+			$datas=$query->fetch();
+			$query->CloseCursor();
+
+			if ($_COOKIE['id']==$datas['id'] && $_COOKIE['pwd']==$datas['pwd'] && $_COOKIE['rank']==$datas['rank'] )
+			{
+				if ($_COOKIE['rank']>=$rang)
+				{
+					$autorisation=true;
+				}
+			}
+		}
+
+		//on retourne la valeur de l'autorisation
+		return $autorisation;
+
+	}
+
+	//fonction connexion
+	public function connexion($name,$password){
+		//si utilisateur déjà connecté on renvoi une erreur
+		if($user->is_connected(MEMBRE)){
+			return 8;
+		}
+		else{
+			$name=strtolower($_POST['name']);
+			$query=$db->prepare('SELECT id,rank, name, pwd, email FROM thechallenger.user WHERE name = :name');		
+			$query->bindParam(':name', htmlspecialchars($name),PDO::PARAM_STR);
+			$query->execute();
+			$datas=$query->fetch();
+			$query->CloseCursor();
+			if ($datas['pwd']==sha1(htmlspecialchars($password))
+			{
+				if ($datas['rank']>=MEMBRE) //on vérifie que l'utilisateur est actif
+				{
+					//création des cookies
+					$expire = time() + 365*24*3600;
+					setcookie('name', $datas['name'], $expire, null, null, false, true); 
+					setcookie('pwd', $datas['pwd'], $expire, null, null, false, true); 
+					setcookie('rank', $datas['rank'], $expire, null, null, false, true); 
+					setcookie('id', $datas['id'], $expire, null, null, false, true); 			
+				}	
+				else //on écrit qu'il faut qu'il aille activer son compte
+				{
+					return 10;
+				}
+				
+			}
+			else
+			{
+				return 11;
+			}
+		}
+	}
+
+	//fonction ajouter un avertissement
+	public function addwarning($name){
+		global $db; 
+		$query = $db->prepare("UPDATE thechallenger.user SET cptwarnings=cptwarnings+1 WHERE name=:name");
+		$query->bindParam(':name',$name,PDO::PARAM_STR);
+		$query->execute();
+		$query->CloseCursor();
+	}
+
+	//fonction enregistrement nouvel utilisateur
 	public function checkregister($name, $password, $passwordconfirm, $email){
 		global $db;
 		if (!preg_match("#^[a-zA-Z0-9éèàêâùïüë_. +-]{3,15}$#",$name) || empty($name))
@@ -73,6 +158,7 @@ class User
        }
 	}
 
+	//on envoi le mail de confirmation
 	private function registermail($name,$password,$email){
 		global $db;
 		$key=sha1(microtime(TRUE)*100000); //création de la clé unique
@@ -113,7 +199,7 @@ class User
 	}
 
 
-	//quand on clique sur le mail de confirmation
+	//quand on clique sur le mail de confirmation, on confirme l'inscription
 	public function register($name,$key){
 		global $db;
 		$query = $db->prepare("SELECT key,isActive FROM thechallenger.user WHERE name=:name ");
@@ -183,6 +269,9 @@ if($_GET['register']==1){
 }
 elseif($_GET['register']==2 && $_GET['name'] && $_GET['key']){
 	$code=$user->register(htmlspecialchars($_GET['name']),htmlspecialchars($_GET['key']));
+}
+elseif(isset($_POST['name']) && isset($_POST['pwd'])){
+	$code=$user->connexion($_POST['name'],$_POST['pwd']);
 }
 
 // echo $code;
