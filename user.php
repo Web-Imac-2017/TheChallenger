@@ -1,8 +1,8 @@
 <?php 
 
-session_start();
+// session_start();
 
-include("includes/identifiants.php");
+include("identifiants.php");
 
 class User
 {
@@ -17,6 +17,7 @@ class User
 	private $_cptwarnings;
 
 	public function checkregister($name, $password, $passwordconfirm, $email){
+		global $db;
 		if (!preg_match("#^[a-zA-Z0-9éèàêâùïüë_. +-]{3,15}$#",$name) || empty($name))
         {
            return 1;
@@ -27,6 +28,8 @@ class User
         }
         else
         {
+        	$password=sha1($password);
+        	$passwordconfirm=sha1($passwordconfirm);
             $name=htmlspecialchars($name);
             $password=sha1($password);
             $passwordconfirm=sha1($passwordconfirm);
@@ -64,25 +67,25 @@ class User
                     $query->CloseCursor();
                     
                     if(!$mail_dispo){return 5;}
-                    else{registermail($name,$password,$email);}
+                    else{$this->registermail($name,$password,$email);}
                 }
             } 
        }
 	}
 
 	private function registermail($name,$password,$email){
-
+		global $db;
 		$key=sha1(microtime(TRUE)*100000); //création de la clé unique
 		$registerdate=date("d m Y");
 		//on ajoute les infos à la bdd
 		//on insère les infos dans la bdd
-		$query=$db->prepare('INSERT INTO thechallenger.user (rank,name,pwd,email,key,isActive,registerdate)
-		VALUES (1,:name, :pwd, :email, :key, 0,:registerdate)');
+
+		$query=$db->prepare('INSERT INTO thechallenger.user (rank,name,pwd,email,keyactive,isActive,registerdate,cptwarnings) VALUES (1,:name, :pwd, :email, :keyactive, 0,:registerdate,0)');
 		$query->bindParam(':name', $name, PDO::PARAM_STR);
 		$query->bindParam(':pwd', $password, PDO::PARAM_STR);
 		$query->bindParam(':email', $email, PDO::PARAM_STR);
-		$query->bindParam(':key',$key,PDO::PARAM_STR);
-		$query->bindParam(':register', $registerdate, PDO::PARAM_INT);
+		$query->bindParam(':keyactive',$key,PDO::PARAM_STR);
+		$query->bindParam(':registerdate', $registerdate, PDO::PARAM_STR);
 		$query->execute();
 		$query->CloseCursor();
 
@@ -99,8 +102,8 @@ class User
 		$message.="<img src=''><h1 style='font-family:sans-serif;font-size:20px;color:#161616;'>Confirme ton inscription The Challenger</h1>"."\r\n";
 		$message.="<p style='font-size:13px;font-family:sans-serif'>Bienvenue <span style='font-size:15px;font-weight:bold;'>".$name."</span></p>"."\r\n";
 		$message.="<p style='font-size:13px;font-family:sans-serif'> Pour activer ton compte, clique sur le bouton ci dessous</p>"."\r\n";
-		$message.="<p style='font-size:14px;font-family:sans-serif;padding:20px 0;'><a style='color:#fff; font-weight:bold;padding:10px; background-color:#437B1A;border:1px solid #366B11;text-decoration:none;'href='http://www.thechallenger.com/validation.php?name=".urlencode($name)."&cle=".urlencode($key)."'>ACTIVER MON COMPTE THE CHALLENGER</a></p>"."\r\n";
-		$message.="<p style='font-size:13px;font-family:sans-serif'>Ou copie/colle ce lien dans ton navigateur internet:</p><p style='font-size:13px;font-family:sans-serif'>http://www.thechallenger.com/validation.php?name=".urlencode($name)."&cle=".urlencode($key)."</p>"."\r\n";
+		$message.="<p style='font-size:14px;font-family:sans-serif;padding:20px 0;'><a style='color:#fff; font-weight:bold;padding:10px; background-color:#437B1A;border:1px solid #366B11;text-decoration:none;'href='http://www.thechallenger.com/user.php?register=2&name=".urlencode($name)."&key=".urlencode($key)."'>ACTIVER MON COMPTE THE CHALLENGER</a></p>"."\r\n";
+		$message.="<p style='font-size:13px;font-family:sans-serif'>Ou copie/colle ce lien dans ton navigateur internet:</p><p style='font-size:13px;font-family:sans-serif'>http://www.thechallenger.com/user.php?register=2&name=".urlencode($name)."&key=".urlencode($key)."</p>"."\r\n";
 		$message.="<p style='font-size:13px;font-family:sans-serif'>Merci et à bientôt sur TheChallenger.com !</p>"."\r\n";
 		$message.="<p style='font-size:11px;font-family:sans-serif;padding-top:10px;border-top:1px solid #161616;'>Ceci est un mail automatique, merci de ne pas y répondre.</p>"."\r\n";
 		$message.="</html></body>";
@@ -112,13 +115,14 @@ class User
 
 	//quand on clique sur le mail de confirmation
 	public function register($name,$key){
+		global $db;
 		$query = $db->prepare("SELECT key,isActive FROM thechallenger.user WHERE name=:name ");
 		$query->bindParam(':name',$name,PDO::PARAM_STR);
-		$query->execute;
-		if($query->execute(array(':name' => $name)) && $data = $query->fetch())
+		// $query->execute();
+		if($query->execute(array(':name' => $name)) && $datas = $query->fetch())
 		{
-			$keydb = $data['key'];	// Récupération de la clé
-			$active = $data['isActive']; // $actif contiendra alors 0 ou 1
+			$keydb = $datas['key'];	// Récupération de la clé
+			$active = $datas['isActive']; // $actif contiendra alors 0 ou 1
 		}
 
 		$query->CloseCursor();
@@ -142,37 +146,46 @@ class User
 }
 
 $code=0; //compteur d'erreur
+$user=new User;
 
-//création des variables de session pour conserver les champs
-$_SESSION['name']=isset($_POST['name'])? htmlspecialchars($_POST['name']):'';
-$_SESSION['email']=isset($_POST['email'])? htmlspecialchars($_POST['email']):'';
-$pwd=sha1($_POST['pwd']);
-$pwdconfirm=sha1($_POST['pwdconfirm']);
+if($_GET['register']==1){
 
-$recaptcha=$_POST['g-recaptcha-response'];
+	//création des variables de session pour conserver les champs
+	$_SESSION['name']=isset($_POST['name'])? htmlspecialchars($_POST['name']):'';
+	$_SESSION['email']=isset($_POST['email'])? htmlspecialchars($_POST['email']):'';
+	$pwd=$_POST['pwd'];
+	$pwdconfirm=$_POST['pwdconfirm'];
 
-if(!empty($recaptcha))
-{
-    include("includes/getCurlData.php");
-    $google_url="https://www.google.com/recaptcha/api/siteverify";
-    $secret='6Lcg7_8SAAAAANE6c6aURXzLPXgZYQE_jXiVrxez';
-    $ip=$_SERVER['REMOTE_ADDR'];
-    $url=$google_url."?secret=".$secret."&response=".$recaptcha."&remoteip=".$ip;
-    $res=getCurlData($url);
-    $res= json_decode($res, true);
+	$recaptcha=$_POST['g-recaptcha-response'];
 
-    if($res['success']) //si le captcha est bon
-    {
-    	//on récupère un code d'erreur
-    	$code=register($_SESSION['name'],$pwd,$pwdconfirm,$_SESSION['email']);
-    }
-    else{
-    	$code=16; //erreur captcha
-    }
+	if(!empty($recaptcha))
+	{
+	    include("includes/getCurlData.php");
+	    $google_url="https://www.google.com/recaptcha/api/siteverify";
+	    $secret='6Lcg7_8SAAAAANE6c6aURXzLPXgZYQE_jXiVrxez';
+	    $ip=$_SERVER['REMOTE_ADDR'];
+	    $url=$google_url."?secret=".$secret."&response=".$recaptcha."&remoteip=".$ip;
+	    $res=getCurlData($url);
+	    $res= json_decode($res, true);
+
+	    if($res['success']) //si le captcha est bon
+	    {
+	    	//on récupère un code d'erreur
+	    	$code=$user->checkregister($_SESSION['name'],$pwd,$pwdconfirm,$_SESSION['email']);
+	    }
+	    else{
+	    	$code=16; //erreur captcha
+	    }
+	}
+	else{
+		$code=16; //erreur captcha
+	}
 }
-else{
-	$code=16; //erreur captcha
+elseif($_GET['register']==2 && $_GET['name'] && $_GET['key']){
+	$code=$user->register(htmlspecialchars($_GET['name']),htmlspecialchars($_GET['key']));
 }
+
+// echo $code;
 
 header('Location: index.php?code='.$code);
 ?>
