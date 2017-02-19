@@ -1,0 +1,31 @@
+@import '_form';
+@import '_utility';
+
+#login_box{
+	position: absolute;
+	top: 5%;
+	left: 3%;
+	background-color: rgba(255, 255, 255, 0.6);
+	border-radius: 5px;
+	text-align: center;
+
+	h2{
+		font-family: sans-serif;
+	}
+}
+
+#home {
+	height: 100%;
+
+	img{
+		/* position: absolute;
+		top: 50%; 
+		left: 50%;
+		-webkit-transform: translateX(-50%) translateY(-50%);
+		transform: translateX(-50%) translateY(-50%);
+		min-width: 100%; 
+		min-height: 100%; 
+		width: auto; 
+		height: auto; */
+	}
+}

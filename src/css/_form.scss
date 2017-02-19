@@ -1,0 +1,23 @@
+.form {
+  text-align: center; 
+  position: relative;
+
+  .field-in{
+    color: black;
+  }
+}
+
+.field-in {
+  display: block;
+  padding: 10px 0;
+  margin: 10px 0;
+  width: 100%;
+  :focus{
+    outline: none;
+    padding: 15px;
+  }
+}
+
+.submit{
+  padding: 0px 20px; 
+}
