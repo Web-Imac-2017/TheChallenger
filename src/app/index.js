@@ -7,7 +7,7 @@ import Home from "./vues/Home.js"
 class Layout extends React.Component{
 	render(){
 		return(
-			<Home/>
+			<Home url="img/background.jpg"/>
 		);
 	}
 }
