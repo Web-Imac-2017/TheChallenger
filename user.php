@@ -14,8 +14,9 @@ define('ADMIN',4);
 
 class User
 {
-
+	private $_id;
 	private $_name;
+	private $_rank;
 	private $_password;
 	private $_email;
 	private $_desc;
@@ -24,6 +25,24 @@ class User
 	private $_birthdate;
 	private $_cptwarnings;
 
+
+	// public function __construct($name,$pwd,$rank,$id){
+	// 	$this->$_name=$name;
+	// 	$this->$_pwd=$pwd;
+	// 	$this->$_rank=$rank;
+	// 	$this->$_id=$id;
+	// }
+
+
+	//test si l'utilisateur existe
+	public function id_exists($id){
+		$query=$db->prepare('SELECT COUNT(*) FROM thechallenger.user WHERE id =:id');
+        $query->bindParam(':id',$id,PDO::PARAM_);
+        $query->execute();
+        $exist=($query->fetchColumn()==0)?true:false;
+        $query->CloseCursor();
+        return $exist;
+	}
 
 	//fonction test de connexion
 	public function is_connected($rank)
@@ -54,6 +73,24 @@ class User
 
 	}
 
+	//fonction tester si on est l'utilisateur
+	public function is_connected_as($id){
+		$autorisation=false;
+		if(is_connected(MEMBRE)){
+			global $db;
+			$query= $db->prepare('SELECT name, pwd, rank FROM thechallenger.user WHERE id = :id');
+			$query->bindParam(':id', $_COOKIE['id'], PDO::PARAM_STR);
+			$query->execute();
+			$datas=$query->fetch();
+			$query->CloseCursor();
+
+			if ($_COOKIE['name']==$datas['name'] && $_COOKIE['pwd']==$datas['pwd'] && $_COOKIE['rank']==$datas['rank'] )
+			{
+				$autorisation=true;
+			}
+		}
+	}
+
 	//fonction connexion
 	public function connexion($name,$password){
 		//si utilisateur déjà connecté on renvoi une erreur
@@ -67,7 +104,7 @@ class User
 			$query->execute();
 			$datas=$query->fetch();
 			$query->CloseCursor();
-			if ($datas['pwd']==sha1(htmlspecialchars($password))
+			if ($datas['pwd']==$password)
 			{
 				if ($datas['rank']>=MEMBRE) //on vérifie que l'utilisateur est actif
 				{
@@ -82,7 +119,6 @@ class User
 				{
 					return 10;
 				}
-				
 			}
 			else
 			{
@@ -92,13 +128,19 @@ class User
 	}
 
 	//fonction ajouter un avertissement
-	public function addwarning($name){
-		global $db; 
-		$query = $db->prepare("UPDATE thechallenger.user SET cptwarnings=cptwarnings+1 WHERE name=:name");
-		$query->bindParam(':name',$name,PDO::PARAM_STR);
-		$query->execute();
-		$query->CloseCursor();
-	}
+
+	// PAS BESOIN VOIR FONCTION CHANGEUSER
+
+	// public function addwarning($name){
+	// 	if($this->is_connected(MODERATEUR)){
+	// 		global $db; 
+	// 		$query = $db->prepare("UPDATE thechallenger.user SET cptwarnings=cptwarnings+1 WHERE name=:name");
+	// 		$query->bindParam(':name',$name,PDO::PARAM_STR);
+	// 		$query->execute();
+	// 		$query->CloseCursor();
+	// 	}
+	// }
+
 
 	//fonction enregistrement nouvel utilisateur
 	public function checkregister($name, $password, $passwordconfirm, $email){
@@ -113,7 +155,6 @@ class User
         }
         else
         {
-        	$password=sha1($password);
         	$passwordconfirm=sha1($passwordconfirm);
             $name=htmlspecialchars($name);
             $password=sha1($password);
@@ -229,17 +270,109 @@ class User
 		}
 	}
 
+	//fonction ajout follower
+	public function addfollower($idfollower, $idfollowed){
+		global $db;
+		if($this->id_exists($idfollowed)){
+			$query=$db->prepare('INSERT INTO thechallenger.follow (idfollower,idfollowed) VALUES (:idfollower,:idfollowed)');
+			$query->bindParam(':idfollower', $idfollower, PDO::PARAM_INT);
+			$query->bindParam(':idfollowed', $idfollowed, PDO::PARAM_INT);
+			$query->execute();
+			$query->CloseCursor();
+		}
+		else{
+			return 404;
+		}
+	}
+
+	//fonction suppression follower
+	public function deletefollower($idfollower,$idfollowed){
+		global $db;
+		if($this->id_exists($idfollowed)){
+			$query=$db->prepare('DELETE FROM thechallenger.follow idfollower=:idfollower AND idfollowed=:idfollowed)');
+			$query->bindParam(':idfollower', $idfollower, PDO::PARAM_INT);
+			$query->bindParam(':idfollowed', $idfollowed, PDO::PARAM_INT);
+			$query->execute();
+			$query->CloseCursor();
+		}
+		else{
+			return 404;
+		}
+	}
+
+	//fonction modification utilisateur, ajout avertissement et modif de rang
+	public function changeuser($id,$description,$birthdate,$photo,$cptwarnings,$rank){
+		global $db;
+		//si c'est un moderateur ou l'utilisateur en question, il peut modifier le profil
+		if($this->is_connected(MODERATEUR)|| $this->is_connected_as($id)){
+			$query = $db->prepare("UPDATE thechallenger.user SET photo=:photo,description=:description,birthdate=:birthdate WHERE id=:id");
+			$query->bindParam(':photo',$photo,PDO::PARAM_STR);
+			$query->bindParam(':description',$desciption,PDO::PARAM_STR);
+			$query->bindParam(':birthdate',$birthdate,PDO::PARAM_STR);
+			$query->bindParam(':id',$id,PDO::PARAM_INT);
+			$query->execute();
+			$query->CloseCursor();
+		}
+		//si moderateur il peut modifier le nombre d'avertissements
+		if($this->is_connected(MODERATEUR)){
+			$query = $db->prepare("UPDATE thechallenger.user SET cptwarnings=:cptwarnings WHERE id=:id");
+			$query->bindParam(':cptwarnings',$cptwarnings,PDO::PARAM_INT);
+			$query->bindParam(':id',$id,PDO::PARAM_INT);
+			$query->execute();
+			$query->CloseCursor();
+		}
+		//si administrateur il peut modifier le rang
+		if($this->is_connected(ADMIN)){
+			$query = $db->prepare("UPDATE thechallenger.user SET rank=:rank WHERE id=:id");
+			$query->bindParam(':rank',$rank,PDO::PARAM_INT);
+			$query->bindParam(':id',$id,PDO::PARAM_INT);
+			$query->execute();
+			$query->CloseCursor();
+		}
+		return 105;
+	}
+
+	//deconnexion
+	public function deconnexion(){
+		//s'il est connecté
+		if($this->is_connected(MEMBRE)){
+			//on détruit les cookie
+			if (isset ($_COOKIE['name']))
+			{
+				setcookie('pseudo', '', -1);
+			}
+			if (isset ($_COOKIE['mdp']))
+			{
+				setcookie('mdp', '', -1);
+			}
+			if (isset ($_COOKIE['rang']))
+			{
+				setcookie('rang', '', -1);
+			}
+			if (isset ($_COOKIE['id']))
+			{
+				setcookie('id', '', -1);
+			}
+
+			session_destroy();
+			return 111;
+		}
+		else{
+			return 17; //tu n'es pas connecté
+		}
+	}
+
 }
 
 $code=0; //compteur d'erreur
 $user=new User;
 
-if($_GET['register']==1){
+if($_GET['action']=='register'){
 
 	//création des variables de session pour conserver les champs
 	$_SESSION['name']=isset($_POST['name'])? htmlspecialchars($_POST['name']):'';
 	$_SESSION['email']=isset($_POST['email'])? htmlspecialchars($_POST['email']):'';
-	$pwd=$_POST['pwd'];
+	$pwd=sha1($_POST['pwd']);
 	$pwdconfirm=$_POST['pwdconfirm'];
 
 	$recaptcha=$_POST['g-recaptcha-response'];
@@ -267,11 +400,27 @@ if($_GET['register']==1){
 		$code=16; //erreur captcha
 	}
 }
-elseif($_GET['register']==2 && $_GET['name'] && $_GET['key']){
+elseif($_GET['action']=='registerconfirm' && $_GET['name'] && $_GET['key']){
 	$code=$user->register(htmlspecialchars($_GET['name']),htmlspecialchars($_GET['key']));
 }
-elseif(isset($_POST['name']) && isset($_POST['pwd'])){
-	$code=$user->connexion($_POST['name'],$_POST['pwd']);
+elseif($_GET['action']=='connexion' && isset($_POST['name']) && isset($_POST['pwd'])){
+	$code=$user->connexion($_POST['name'],sha1(htmlspecialchars($_POST['pwd'])));
+}
+elseif($_GET['action']=='changeprofile' && isset($_GET['id']) && isset($_POST['description']) && isset($_POST['birthdate']) && isset($_POST['photo'])){
+	$cptwarnings=(isset($_POST['cptwarnings']))? htmlspecialchars($_POST['cptwarnings']):0;
+	$rank=(isset($_POST['rank']))? htmlspecialchars($_POST['rank']):0;
+	$code=$user->changeuser($_GET['id'],$_POST['description'],$_POST['birthdate'],$_POST['photo'],$cptwarnings,$rank);
+}
+elseif($_GET['action']=='deconnexion'){
+	$code=$user->deconnexion();
+}
+elseif($_GET['action']=='addfollower' && isset($_GET['idfollower']) && isset($_GET['idfollowed'])){
+	if($user->is_connected_as(htmlspecialchars($_GET['idfollower']))){
+		$user->addfollower(htmlspecialchars($_GET['idfollower']),htmlspecialchars($_GET['idfollowed']));
+	}
+	else{
+		$code=404;
+	}
 }
 
 // echo $code;

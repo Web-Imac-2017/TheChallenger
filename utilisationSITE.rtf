@@ -7,7 +7,7 @@
 
 \f0\fs24 \cf0 rangs : \
 \
-1 - user pas actif\
+1 - user pas actif (doit valider son mail)\
 2 - user actif\
 3 - moderateur \
 4 - administrateur\
@@ -17,5 +17,13 @@ messages d\'92erreurs \'97> code erreur de 0 a 100\
 message de confirmation \'97> code erreur > 100\
 erreur 404 standard\
 \
-si \'e0 user on envoi register=1 en GET \'97> premiere inscription\
-si on envoi register=2 en GET \'97> validation d\'92inscription depuis le lien de mail}
+si \'e0 user on envoi action=register en GET \'97> premiere inscription\
+si on envoi action=registerconfirm \'97> validation d\'92inscription depuis le lien de mail\
+si on envoi action=changeprofil \'97> modification profil utilisateur \
+si on envoi action=connexion \'97> connexion user\
+\
+pour tester si un membre est connect\'e9 = $user->is_connected(MEMBRE)\
+pour tester si utilisateur est au moins mod\'e9rateur = $user->is_connected(MODERATEUR)\
+\'97\'97 si au moins ADMIN = $user->is_connected(ADMIN)\
+\
+}
