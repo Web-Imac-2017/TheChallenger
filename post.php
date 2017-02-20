@@ -16,11 +16,6 @@ private $idchallenge
 private $countLikes
 
 
-public Post($state, $type, $winner, $score, $date, $iduser, $idchallenge) {
-
-// constructeur
-}
-
 public function getsLike() {
 	
 	$this->countLikes ++;
