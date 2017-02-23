@@ -2,16 +2,22 @@ require ('../css/style.scss');
 
 import React from "react";
 import ReactDOM from "react-dom";
+import { Router, Route, hashHistory } from 'react-router'
+import Login from "./vues/Login.js"
 import Home from "./vues/Home.js"
+
+
+const app = document.getElementById('app');
 
 class Layout extends React.Component{
 	render(){
 		return(
-			<Home url="img/background.jpg"/>
+			<Router history={hashHistory}>
+				<Route path="/" component={Login}/>
+				<Route path="/home" component={Home}/>
+			</Router>	
 		);
 	}
 }
-
-const app = document.getElementById('app');
 
 ReactDOM.render(<Layout/>, app);
