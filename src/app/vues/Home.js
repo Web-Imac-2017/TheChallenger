@@ -17,12 +17,13 @@ export default class Home extends React.Component{
 	render(){
 		//var imgUrl = this.state.nextImg ? this.state.nextImgSrc : this.state.song.imgSrc;
         var divStyle = {
-            backgroundImage: 'url(' + this.props.url + ')',
-            height: window.innerHeight
+            backgroundImage: 'url(' + this.props.url + ')'
         }
 
 		return(
-			<div id="home" className="background_img span_12" style={divStyle}>
+			<div id="home">
+				<div className="background_img blur" style={divStyle}></div>
+				<div className="overlay"></div>
 				<LoginBox/>
 			</div>
 		);

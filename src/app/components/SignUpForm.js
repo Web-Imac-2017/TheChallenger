@@ -1,11 +1,11 @@
 import React from "react";
 
-
 export default class SignUpForm extends React.Component{
 	constructor(props) {
 	  super(props);
 	  this.state = {
-	    formVisible:false
+	    formVisible:false,
+	    pwdIsWrong : false
 	  };
 	}  
 
@@ -14,11 +14,32 @@ export default class SignUpForm extends React.Component{
 		this.setState({ formVisible: tmp });
 	}
 
-	render(){
-		var value = this.state.formVisible?'block':'none';
-		var formStyle = {
-			display : value
+	handleLostFocus(){
+		this.checkSamePassword();
+	}
+
+	checkSamePassword(){
+		if(this.refs.pwd1.value === this.refs.pwd2.value){
+			this.setState({pwdIsWrong: false});
+			return true;
 		}
+		this.setState({pwdIsWrong: true});
+		return false;	
+	}
+
+	handleSubmitClick(e){
+		//("same"+this.checkSamePassword())
+		if(!this.checkSamePassword()) 
+			e.preventDefault();
+		else{
+			console.log("lds");
+			console.log(this.refs.sign_up_form);//.submit();
+		}
+	}
+
+	render(){
+		var formStyle = {display : this.state.formVisible?'block':'none'}
+		var pwdError = this.state.pwdIsWrong?"error":""
 
 		return(
 			<div>
@@ -26,12 +47,31 @@ export default class SignUpForm extends React.Component{
 					<button className="submit button" href="#" onClick={this.handleClick.bind(this)}>Create an account</button>
 				</div>
 				<div style={formStyle}>
-					<form className="form" method="POST" action="singUp">
+					<form className="form" ref="sign_up_form" method="POST" action="signUp">
 				     	<input type="text" name="pseudo" className="field-in" placeholder="Pseudo"/>
-				     	<input type="text" name="email" className="field-in" placeholder="Email"/>
-				      	<input type="password" name="password" className="field-in" placeholder="Password"/>
-				      	<input type="password" name="password" className="field-in" placeholder="Confirm your password"/>
-				      	<button className="submit button" href="#">Login</button>
+				     	<input 
+				     		type="email" 
+				     		name="email" 
+				     		className="field-in" 
+				     		placeholder="Email"
+				     	/>
+				      	<input 
+				      		type="password" 
+				      		name="password" 
+				      		ref="pwd1" 
+				      		className="field-in" 
+				      		placeholder="Password"
+				      	/>
+				      	<input 
+				      		type="password" 
+				      		name="re-password"
+				      		ref="pwd2" 
+				      		className={"field-in "+ pwdError} 
+				      		placeholder="Confirm your password" 
+				      		onBlur={this.handleLostFocus.bind(this)}
+				      	/>
+				      	<input type="date" className="form-control date" name="birthday"/>
+				      	<button className="submit button" onClick={this.handleSubmitClick.bind(this)}>Sign Up</button>
 				    </form>
 			    </div>
 			</div>
