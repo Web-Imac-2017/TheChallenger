@@ -28,13 +28,8 @@ export default class SignUpForm extends React.Component{
 	}
 
 	handleSubmitClick(e){
-		//("same"+this.checkSamePassword())
 		if(!this.checkSamePassword()) 
 			e.preventDefault();
-		else{
-			console.log("lds");
-			console.log(this.refs.sign_up_form);//.submit();
-		}
 	}
 
 	render(){
