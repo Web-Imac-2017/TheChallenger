@@ -16,6 +16,7 @@ private $idchallenge
 private $countLikes
 
 
+public function 
 public function getsLike() {
 	
 	$this->countLikes ++;
@@ -35,5 +36,9 @@ public function getUser() {
 	// SELECT user.pseudo FROM user WHERE user.id = $n
 }
 
+/* 
+
+
+*/
 
 ?>

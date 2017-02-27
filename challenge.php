@@ -1,16 +1,6 @@
 <?php 
 
 // session_start();
-
-CREATE TABLE `challenge` (
-`id` int(11) NOT NULL,
-  `title` text NOT NULL,
-  `desc` text NOT NULL,
-  `datestart` date NOT NULL,
-  `datestop` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
 class Challenge
 {
 
