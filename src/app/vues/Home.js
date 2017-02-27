@@ -6,9 +6,9 @@ export default class Home extends React.Component{
 	render(){
 		return(
 			<div id="home">
-            <Header/>
-				    <h1>HOME</h1>
-            <Footer/>
+	            <Header/>
+				<h1>HOME</h1>
+	            <Footer/>
 			</div>
 		);
 	}

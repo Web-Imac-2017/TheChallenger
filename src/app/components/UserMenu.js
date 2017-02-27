@@ -3,7 +3,7 @@ import React from "react";
 export default class UserMenu extends React.Component {
     render() {
         return(
-                <div class="UserMenu">
+                <div className="UserMenu">
                 USER-MENU
             </div>
         );

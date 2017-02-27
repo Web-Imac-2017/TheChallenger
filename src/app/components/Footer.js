@@ -8,13 +8,13 @@ export default class Footer extends React.Component {
     render() {
         /* TODO ne marche pas (le lien) */
         return(
-                <footer>
+            <footer>
                 <CopyrightSection/>
                 <SocialLinks/>
                 <Router>
-                <Link to="#/about">About Us</Link>
+                    <Link to="#/about">About Us</Link>
                 </Router>
-                </footer>
+            </footer>
         );
     }
 }

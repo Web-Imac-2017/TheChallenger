@@ -65,7 +65,6 @@ export default class SignUpForm extends React.Component{
 				      		placeholder="Confirm your password" 
 				      		onBlur={this.handleLostFocus.bind(this)}
 				      	/>
-				      	<input type="date" className="form-control date" name="birthday"/>
 				      	<button className="submit button" onClick={this.handleSubmitClick.bind(this)}>Sign Up</button>
 				    </form>
 			    </div>

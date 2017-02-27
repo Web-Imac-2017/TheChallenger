@@ -7,7 +7,7 @@ export default class Header extends React.Component{
 	render(){
 		return(
 			<header>
-				    <SearchBar/>
+				<SearchBar/>
             <LogoArea/>
             <UserMenu/>
 			</header>
