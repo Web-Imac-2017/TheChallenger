@@ -10,6 +10,7 @@ class Post
 
 	//recupère toutes les infos d'un post
 	public function display_post($id){
+		global $db;
 		$query=$db->prepare('SELECT * FROM thechallenger.post WHERE id =:id');
         $query->bindParam(':id',$id,PDO::PARAM_INT);
         $query->execute();
@@ -20,6 +21,7 @@ class Post
 
 	//on vérifie si la personne a deja like
 	public function check_like($iduser,$idpost){
+		global $db;
 		$query=$db->prepare('SELECT id FROM thechallenger.score WHERE iduser=:iduser AND idpost=:idpost');
         $query->bindParam(':iduser',$iduser,PDO::PARAM_INT);
         $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
@@ -30,6 +32,7 @@ class Post
 
 	//gestion des like de post
 	public function add_like($iduser,$idpost){
+		global $db;
 		//si l'utilisateur n'a pas encore like le post
 		if(!$this->check_like($iduser,$idpost)){
 			$query=$db->prepare('INSERT INTO thechallenger.score (iduser,idpost,idchallenge) VALUES (:iduser,:idpost,:idchallenge)');
@@ -46,6 +49,7 @@ class Post
 	}
 
 	public function delete_like($iduser,$idpost){
+		global $db;
 		//si l'utilisateur a like
 		if($this->check_like($iduser,$idpost)){
 			$query=$db->prepare('DELETE FROM thechallenger.score WHERE iduser=:iduser AND idpost=:idpost AND idchallenge=:idchallenge');
@@ -65,8 +69,8 @@ class Post
 		if(!empty($image['size'])){
 			//On définit les variables :
 			$maxsize = 5000000; //Poid de l'image 5 mo max
-			$maxwidth = 3000; //Largeur de l'image
-			$maxheight = 3000; //Longueur de l'image
+			$maxwidth = 5000; //Largeur de l'image
+			$maxheight = 5000; //Longueur de l'image
 			$extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png', 'bmp' ); //Liste des extensions valides
 			
 			if ($image['error'] > 0)
@@ -82,7 +86,10 @@ class Post
 			{
 			    return 25;
 			}
-			
+			if ($image_sizes[0] >= 1920 && $image_sizes[1] >= 1080)
+			{
+			    return 2;
+			}
 			$extension_upload = strtolower(substr(  strrchr($image['name'], '.')  ,1));
 			if (!in_array($extension_upload,$extensions_valides) )
 			{
@@ -111,6 +118,8 @@ class Post
 
 	//insérer nouveau post
 	public function add_post($title,$image,$type,$desc,$iduser,$idchallenge){
+		global $db;
+
 		$_SESSION['title']=$title;
 		$_SESSION['image']=$image;
 		$_SESSION['type']=$type;
@@ -118,12 +127,17 @@ class Post
 		$date=date("d m Y");
 		
 		$testimage=$this->test_image($image);
-		if($testimage)==1){ //pas d'erreur sur l'image
+		if($testimage==1 || $testimage==2){ //pas d'erreur sur l'image
 			//on déplace l'image dans le bon dossier
 			$linkcontent=$this->move_image($image,'images/images_posts');
 
 			//on ajoute les donnees dans la bdd
-			$query=$db->prepare('INSERT INTO thechallenger.post (title,state,linkcontent,type,description,datepost,iduser,idchallenge) VALUES (:title,0,:linkcontent,:type,:description,:datepost,:iduser,:idchallenge)');
+			if($testimage==1){ //si image pas hd
+				$query=$db->prepare('INSERT INTO thechallenger.post (title,state,linkcontent,type,hd,description,datepost,iduser,idchallenge) VALUES (:title,0,:linkcontent,:type,0,:description,:datepost,:iduser,:idchallenge)');
+			}
+			elseif($testimage==2){ //si image hd
+				$query=$db->prepare('INSERT INTO thechallenger.post (title,state,linkcontent,type,hd,description,datepost,iduser,idchallenge) VALUES (:title,0,:linkcontent,:type,1,:description,:datepost,:iduser,:idchallenge)');
+			}
 	        $query->bindParam(':title',$title,PDO::PARAM_STR);
 	        $query->bindParam(':linkcontent',$linkcontent,PDO::PARAM_STR);
 	        $query->bindParam(':type',$type,PDO::PARAM_STR);
@@ -141,6 +155,7 @@ class Post
 
 	//modifier post
 	public function update_post($idpost,$title,$type,$desc){
+		global $db;
 		$query=$db->prepare('UPDATE thechallenger.post SET title=:title,type=:type,description=:description WHERE id=:idpost');
         $query->bindParam(':title',$title,PDO::PARAM_STR);
         $query->bindParam(':type',$type,PDO::PARAM_STR);
@@ -152,6 +167,7 @@ class Post
 
 	//supprimer post
 	public function delete_post($idpost){
+		global $db;
 		$query=$db->prepare('DELETE FROM thechallenger.post WHERE id=:idpost');
         $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
         $query->execute();
