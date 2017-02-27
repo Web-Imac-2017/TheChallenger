@@ -13,5 +13,17 @@ SELECT score
 FROM post
 WHERE iduser=:u;
 
+SELECT count (*)
+FROM thechallenger.follow
+WHERE idfollowed=:u;
+
+SELECT count (*)
+FROM thechallenger.follow
+WHERE idfollower=:u;
+
+
+
 /* requetes challenge */
+
+
 
