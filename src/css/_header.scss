@@ -1,0 +1,23 @@
+.header {
+    width: 100%;
+    display: flex;
+}
+.search-form {
+    width: 33%;
+    background-color: rgb(200,200,200);
+}
+.search-field {
+    display: flex;
+    max-width: 150px;
+}
+.search-button {
+    display: block;
+    width: 30px;
+    padding-left: 0px;
+}
+
+
+.logo-area {
+    width: 33%;
+    display: flex;
+}
