@@ -80,6 +80,15 @@ if (isset($_GET['err']) && $_GET['err']!=0)
 		case 23: echo"désolé une erreur est survenue, merci d'essayer à nouveau";
 		break;
 
+		case 24: echo"erreur d'image";
+		break;
+
+		case 25: echo"image trop grande";
+		break;
+
+		case 26: echo"l'extension de l'image n'est pas valide (jpg, gif, png, bmp)";
+		break;
+
 		case 404: echo"désolé le contenu n'a pas pu être trouvé";
 		break;
 	}

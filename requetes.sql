@@ -3,6 +3,8 @@
 - git commit -m "message"
 - git push*/
 
+/* requetes post */
+
 SELECT * 
 FROM post
 WHERE iduser=:u;
@@ -11,6 +13,5 @@ SELECT score
 FROM post
 WHERE iduser=:u;
 
-
-
+/* requetes challenge */
 
