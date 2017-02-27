@@ -6,12 +6,12 @@ import SocialLinks from "./SocialLinks.js";
 
 export default class Footer extends React.Component {
     render() {
+        /* TODO ne marche pas (le lien) */
         return(
                 <footer>
                 <CopyrightSection/>
                 <SocialLinks/>
                 <Router>
-                /* TODO ne marche pas (le lien) */
                 <Link to="#/about">About Us</Link>
                 </Router>
                 </footer>
