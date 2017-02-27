@@ -3,3 +3,4 @@ package.json
 *.log
 dist/*
 npm-debug.log
+dist/app/bundle.js
