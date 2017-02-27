@@ -28,6 +28,7 @@ class Post
         $query->CloseCursor();
 	}
 
+<<<<<<< HEAD
 	public function delete_like($iduser,$idpost,$idchallenge){
 		$query=$db->prepare('DELETE FROM thechallenger.score WHERE iduser=:iduser AND idpost=:idpost AND idchallenge=:idchallenge');
         $query->bindParam(':iduser',$iduser,PDO::PARAM_INT);
@@ -36,6 +37,13 @@ class Post
         $query->execute();
         $query->CloseCursor();
 	}
+=======
+public function 
+public function getsLike() {
+	
+	$this->countLikes ++;
+}
+>>>>>>> 0ce8de83eadcfb740fe228a36070b7b5854b6562
 
 	public function test_image($image){
 		if(!empty($image['size'])){
@@ -85,6 +93,7 @@ class Post
 	}
 
 
+<<<<<<< HEAD
 	//insérer nouveau post
 	public function add_post($title,$image,$type,$desc,$iduser,$idchallenge){
 		$_SESSION['title']=$title;
@@ -134,5 +143,11 @@ class Post
         $query->CloseCursor();
 	}
 }
+=======
+/* 
+>>>>>>> 0ce8de83eadcfb740fe228a36070b7b5854b6562
+
+
+*/
 
 ?>
