@@ -4,6 +4,7 @@ import LoginBox from "./../components/LoginBox.js"
 export default class Login extends React.Component{
 	constructor(props) {
 	  super(props);
+	  
 	  this.state = {
 	  	url :"img/background.jpg"
 	  };

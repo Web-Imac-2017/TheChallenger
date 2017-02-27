@@ -11,7 +11,7 @@ export default class Footer extends React.Component {
             <footer>
                 <CopyrightSection/>
                 <SocialLinks/>
-                    <Link to="about">About Us</Link>
+                <Link to="about">About Us</Link>
             </footer>
         );
     }
