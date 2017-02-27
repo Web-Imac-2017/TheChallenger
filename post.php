@@ -18,23 +18,47 @@ class Post
         return $datas;
 	}
 
-	//gestion des like de post
-	public function add_like($iduser,$idpost,$idchallenge){
-		$query=$db->prepare('INSERT INTO thechallenger.score (iduser,idpost,idchallenge) VALUES (:iduser,:idpost,:idchallenge)');
+	//on vérifie si la personne a deja like
+	public function check_like($iduser,$idpost){
+		$query=$db->prepare('SELECT id FROM thechallenger.score WHERE iduser=:iduser AND idpost=:idpost');
         $query->bindParam(':iduser',$iduser,PDO::PARAM_INT);
         $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
-        $query->bindParam(':idchallenge',$idchallenge,PDO::PARAM_INT);
         $query->execute();
+        $exist=($query->fetchColumn()==0)?true:false;
         $query->CloseCursor();
 	}
 
-	public function delete_like($iduser,$idpost,$idchallenge){
-		$query=$db->prepare('DELETE FROM thechallenger.score WHERE iduser=:iduser AND idpost=:idpost AND idchallenge=:idchallenge');
-        $query->bindParam(':iduser',$iduser,PDO::PARAM_INT);
-        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
-        $query->bindParam(':idchallenge',$idchallenge,PDO::PARAM_INT);
-        $query->execute();
-        $query->CloseCursor();
+	//gestion des like de post
+	public function add_like($iduser,$idpost){
+		//si l'utilisateur n'a pas encore like le post
+		if(!$this->check_like($iduser,$idpost)){
+			$query=$db->prepare('INSERT INTO thechallenger.score (iduser,idpost,idchallenge) VALUES (:iduser,:idpost,:idchallenge)');
+	        $query->bindParam(':iduser',$iduser,PDO::PARAM_INT);
+	        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
+	        $query->execute();
+	        $query->CloseCursor();
+
+	        $query=$db->prepare('UPDATE thechallenger.post SET score=score+1 WHERE id=:idpost AND idchallenge=:idchallenge');
+	        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
+	        $query->execute();
+	        $query->CloseCursor();
+		}
+	}
+
+	public function delete_like($iduser,$idpost){
+		//si l'utilisateur a like
+		if($this->check_like($iduser,$idpost)){
+			$query=$db->prepare('DELETE FROM thechallenger.score WHERE iduser=:iduser AND idpost=:idpost AND idchallenge=:idchallenge');
+	        $query->bindParam(':iduser',$iduser,PDO::PARAM_INT);
+	        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
+	        $query->execute();
+	        $query->CloseCursor();
+
+	        $query=$db->prepare('UPDATE thechallenger.post SET score=score-1 WHERE id=:idpost AND idchallenge=:idchallenge');
+	        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
+	        $query->execute();
+	        $query->CloseCursor();
+	    }
 	}
 
 	public function test_image($image){
