@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router,
-         Link } from "react-router-dom";
+         Link } from "react-router";
 import CopyrightSection from "./CopyrightSection.js";
 import SocialLinks from "./SocialLinks.js";
 
@@ -11,9 +11,7 @@ export default class Footer extends React.Component {
             <footer>
                 <CopyrightSection/>
                 <SocialLinks/>
-                <Router>
-                    <Link to="#/about">About Us</Link>
-                </Router>
+                    <Link to="about">About Us</Link>
             </footer>
         );
     }
