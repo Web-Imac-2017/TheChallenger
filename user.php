@@ -14,17 +14,16 @@ define('ADMIN',4);
 
 class User
 {
-	private $_id;
-	private $_name;
-	private $_rank;
-	private $_password;
-	private $_email;
-	private $_desc;
-	private $_key;
-	private $_isActive;
-	private $_birthdate;
-	private $_cptwarnings;
-
+	// private $_id;
+	// private $_name;
+	// private $_rank;
+	// private $_password;
+	// private $_email;
+	// private $_desc;
+	// private $_key;
+	// private $_isActive;
+	// private $_birthdate;
+	// private $_cptwarnings;
 
 	// public function __construct($name,$pwd,$rank,$id){
 	// 	$this->$_name=$name;
@@ -79,7 +78,7 @@ class User
 		if(is_connected(MEMBRE)){
 			global $db;
 			$query= $db->prepare('SELECT name, pwd, rank FROM thechallenger.user WHERE id = :id');
-			$query->bindParam(':id', $_COOKIE['id'], PDO::PARAM_STR);
+			$query->bindParam(':id', $id, PDO::PARAM_INT);
 			$query->execute();
 			$datas=$query->fetch();
 			$query->CloseCursor();
@@ -332,6 +331,16 @@ class User
 		return 105;
 	}
 
+	//fonction qui vérifie si l'utilisateur à plus de 3 avertissments
+	public function checkWarnings($id){
+		$query=$db->prepare('SELECT cptwarnings FROM thechallenger.user WHERE id = :id');		
+		$query->bindParam(':id', $id,PDO::PARAM_INT);
+		$query->execute();
+		$datas=$query->fetch();
+		$query->CloseCursor();
+		return ($datas['cptwarnings']>=3) ? false : true; //si > 3 l'utilisateur est bloqué
+	}
+
 	//deconnexion
 	public function deconnexion(){
 		//s'il est connecté
@@ -364,66 +373,4 @@ class User
 
 }
 
-$code=0; //compteur d'erreur
-$user=new User;
-
-if($_GET['action']=='register'){
-
-	//création des variables de session pour conserver les champs
-	$_SESSION['name']=isset($_POST['name'])? htmlspecialchars($_POST['name']):'';
-	$_SESSION['email']=isset($_POST['email'])? htmlspecialchars($_POST['email']):'';
-	$pwd=sha1($_POST['pwd']);
-	$pwdconfirm=$_POST['pwdconfirm'];
-
-	$recaptcha=$_POST['g-recaptcha-response'];
-
-	if(!empty($recaptcha))
-	{
-	    include("includes/getCurlData.php");
-	    $google_url="https://www.google.com/recaptcha/api/siteverify";
-	    $secret='6Lcg7_8SAAAAANE6c6aURXzLPXgZYQE_jXiVrxez';
-	    $ip=$_SERVER['REMOTE_ADDR'];
-	    $url=$google_url."?secret=".$secret."&response=".$recaptcha."&remoteip=".$ip;
-	    $res=getCurlData($url);
-	    $res= json_decode($res, true);
-
-	    if($res['success']) //si le captcha est bon
-	    {
-	    	//on récupère un code d'erreur
-	    	$code=$user->checkregister($_SESSION['name'],$pwd,$pwdconfirm,$_SESSION['email']);
-	    }
-	    else{
-	    	$code=16; //erreur captcha
-	    }
-	}
-	else{
-		$code=16; //erreur captcha
-	}
-}
-elseif($_GET['action']=='registerconfirm' && $_GET['name'] && $_GET['key']){
-	$code=$user->register(htmlspecialchars($_GET['name']),htmlspecialchars($_GET['key']));
-}
-elseif($_GET['action']=='connexion' && isset($_POST['name']) && isset($_POST['pwd'])){
-	$code=$user->connexion($_POST['name'],sha1(htmlspecialchars($_POST['pwd'])));
-}
-elseif($_GET['action']=='changeprofile' && isset($_GET['id']) && isset($_POST['description']) && isset($_POST['birthdate']) && isset($_POST['photo'])){
-	$cptwarnings=(isset($_POST['cptwarnings']))? htmlspecialchars($_POST['cptwarnings']):0;
-	$rank=(isset($_POST['rank']))? htmlspecialchars($_POST['rank']):0;
-	$code=$user->changeuser($_GET['id'],$_POST['description'],$_POST['birthdate'],$_POST['photo'],$cptwarnings,$rank);
-}
-elseif($_GET['action']=='deconnexion'){
-	$code=$user->deconnexion();
-}
-elseif($_GET['action']=='addfollower' && isset($_GET['idfollower']) && isset($_GET['idfollowed'])){
-	if($user->is_connected_as(htmlspecialchars($_GET['idfollower']))){
-		$user->addfollower(htmlspecialchars($_GET['idfollower']),htmlspecialchars($_GET['idfollowed']));
-	}
-	else{
-		$code=404;
-	}
-}
-
-// echo $code;
-
-header('Location: index.php?code='.$code);
 ?>
