@@ -30,3 +30,13 @@
 	-ms-filter: blur(1px);
 	filter: blur(1px);
 }
+
+.artist {
+	position: absolute;
+	bottom: 0px;
+	right: 20px;
+	p{
+		color: #fff;
+		font-size: 1.75em;
+	}
+}
