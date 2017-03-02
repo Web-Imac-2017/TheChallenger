@@ -7,7 +7,7 @@ export default class Twitter extends React.Component {
         return(
                 <div className="twitter col-xs-1"> 
 					<a href="http://www.firefox.com/" >
-					<img src="https://martinliebermandotcom.files.wordpress.com/2013/03/twitter_logo.jpg" height="20px" width="20px"/>
+					<img src="http://icons.iconarchive.com/icons/limav/flat-gradient-social/512/Twitter-icon.png" height="20px" width="20px"/>
 					</a>
 				
                 </div>
