@@ -43,28 +43,28 @@ export default class SignUpForm extends React.Component{
 				</div>
 				<div style={formStyle}>
 					<form className="form" ref="sign_up_form" method="POST" action="user.php">
-				     	<input type="text" name="pseudo" className="field-in" placeholder="Pseudo"/>
+				     	<input type="text" name="name" className="field-in" placeholder="Pseudo" required/>
 				     	<input 
 				     		type="email" 
 				     		name="email" 
 				     		className="field-in" 
 				     		placeholder="Email"
-				     	/>
+				     	required/>
 				      	<input 
 				      		type="password" 
-				      		name="password" 
+				      		name="pwd" 
 				      		ref="pwd1" 
 				      		className="field-in" 
 				      		placeholder="Password"
-				      	/>
+				      	required/>
 				      	<input 
 				      		type="password" 
-				      		name="re-password"
+				      		name="pwdconfirm"
 				      		ref="pwd2" 
 				      		className={"field-in "+ pwdError} 
 				      		placeholder="Confirm your password" 
 				      		onBlur={this.handleLostFocus.bind(this)}
-				      	/>
+				      	required/>
 				      	<button className="submit button" onClick={this.handleSubmitClick.bind(this)}>Sign Up</button>
 				    </form>
 			    </div>
