@@ -146,10 +146,12 @@ class User
 		global $db;
 		if (!preg_match("#^[a-zA-Z0-9éèàêâùïüë_. +-]{3,15}$#",$name) || empty($name))
         {
-           return 1;
+        	var_dump("erreur name incorrect");
+           	return 1;
         }
         elseif (!preg_match("#^[a-zA-Z0-9éèàêâùïüë_. +-]{3,15}$#",$password) || !preg_match("#[a-zA-Z0-9éèàêâùïüë_. +-]{3,15}#",$passwordconfirm) || empty($password) || empty($passwordconfirm))
         {
+        	var_dump("erreur password incorrect");
             return 2;
         }
         else
@@ -166,13 +168,22 @@ class User
             $name_dispo=($query->fetchColumn()==0)?1:0;
             $query->CloseCursor();
 
-            if(!$name_dispo){return 3;}
+            if(!$name_dispo){
+            	var_dump("erreur nom deja existant");
+            	return 3;
+            }
 
             //on teste la longueur du name entre 3 et 20 caracteres 
-            elseif (strlen($name) < 3 || strlen($name) > 20){return 4;}
+            elseif (strlen($name) < 3 || strlen($name) > 20){
+            	var_dump("erreur nom trop long ou trop court");
+            	return 4;
+            }
 
             //Vérification du mdp
-            elseif ($password != $passwordconfirm){return 7;}
+            elseif ($password != $passwordconfirm){
+            	var_dump("erreur password confirm incorrect");
+            	return 7;
+            }
 
             //Vérification de l'adresse email
             else
@@ -180,6 +191,7 @@ class User
                 //On vérifie la forme de l'adresse email
                 if (!preg_match("#^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$#", $email) || empty($email))
                 {
+                	var_dump("erreur password incorrect");
                     return 6;
                 }
                 else

@@ -8,6 +8,7 @@ $user=new User;
 $post=new Post;
 
 if(isset($_GET['type']) and $_GET['type']!=''){
+	echo("LALA");
 	if($_GET['type']=='post'){
 		if($_GET['action']=='add'){
 			if(isset($_POST['iduser']) && isset($_POST['title']) && isset($_FILES['image']) && isset($_POST['type']) && isset($_POST['desc']) && isset($_POST['idchallenge'])){
@@ -28,9 +29,7 @@ if(isset($_GET['type']) and $_GET['type']!=''){
 		}
 	}
 	elseif($_GET['type']=='user'){
-
 		if($_GET['action']=='register'){
-
 			//création des variables de session pour conserver les champs
 			$_SESSION['name']=isset($_POST['name'])? htmlspecialchars($_POST['name']):'';
 			$_SESSION['email']=isset($_POST['email'])? htmlspecialchars($_POST['email']):'';
@@ -53,6 +52,7 @@ if(isset($_GET['type']) and $_GET['type']!=''){
 			    {
 			    	//on récupère un code d'erreur
 			    	$code=$user->checkregister($_SESSION['name'],$pwd,$pwdconfirm,$_SESSION['email']);
+			    	var_dump("code : "+$code);
 			    }
 			    else{
 			    	$code=16; //erreur captcha
