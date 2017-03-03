@@ -42,7 +42,7 @@ export default class SignUpForm extends React.Component{
 					<button className="submit button" href="#" onClick={this.handleClick.bind(this)}>Create an account</button>
 				</div>
 				<div style={formStyle}>
-					<form className="form" ref="sign_up_form" method="POST" action="signUp">
+					<form className="form" ref="sign_up_form" method="POST" action="user.php">
 				     	<input type="text" name="pseudo" className="field-in" placeholder="Pseudo"/>
 				     	<input 
 				     		type="email" 

@@ -1,6 +1,8 @@
 import React from "react";
-import LoginBox from "./../components/LoginBox.js"
+import LoginBox from "./../components/LoginBox.js";
+
 require('isomorphic-fetch');
+const imgBG = require ('./../../img/background.jpg');
 
 export default class Login extends React.Component{
 	constructor(props) {
@@ -9,17 +11,17 @@ export default class Login extends React.Component{
 	  this.getRandomImg();
 
 	  this.state = {
-	  	url :"img/background.jpg",
+	  	url : '.'+imgBG,
 	  	artist: "jeanMi"
 	  };
 	}
 	/*
 	componentDidMount(){
 		setInterval(changeImgBG(), 10000);
-	}*/
+	}*/	
 
 	getRandomImg(){
-		fetch('')
+		//fetch('')
 	}
 
 	render(){
