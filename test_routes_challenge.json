@@ -1,0 +1,6 @@
+{
+    "challenge/{idChallenge}" : {
+        "request" : "challengeController@infos"
+    },
+	
+}
