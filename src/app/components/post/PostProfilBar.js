@@ -1,15 +1,15 @@
 import React from 'react';
-import Link from 'react-router';
+import { BrowserRouter as Router,
+         Link } from "react-router";
 import Utility from './../../utilities/utility.js';
-
 
 export default class PostProfilBar extends React.Component{
 
 	constructor(props){
 		super(props);
-		console.log("bite")
 		this.state ={
-			user : null
+			user : null, 
+			LoadedImg : null
 		}
 		this.loadData();
 	}
@@ -23,22 +23,15 @@ export default class PostProfilBar extends React.Component{
 
 	callback(data){
 		console.log(data);
-		console.log(data.name);
-		this.setState({ 
-			user : data 
-		});
-		console.log("LALAL");
-		this.loadImg();
+		this.setState({ user : data });
+		//this.loadImg(data.photo);
 		this.checkFollowing();
 	}
 
-	loadImg(){
-		if(typeof this.state.user.photo !== 'undefined'){
-			console.log('erreur photo user n'+this.props.userId);
-			return;
-		}
-		img = require(this.state.user.photo);
-		this.state = { LoadedImg : img };
+	loadImg(photo){
+		console.log(photo)
+		const img = require(String(photo));
+		this.setState ({ LoadedImg : img });
 	}
 
 	checkFollowing(){
@@ -51,11 +44,11 @@ export default class PostProfilBar extends React.Component{
 			return null;
 		return(
 			<div className="post__profil_bar">
-				/*<Link to="userProfil" params={{ userId: this.state.user.id }}>
-					<img src={this.state.LoadedImg} alt="" className="profil_pic"/>
+				<Link to={"/profil/"+this.state.user.id}>
+					<img src={this.state.user.photo} alt="" className="profil_pic"/>
 					<h3>{this.state.user.name}</h3>
 				</Link>
-				<button className="follow_btn button" href="#">FOLLOW</button>*/
+				<button className="follow_btn button" href="#">FOLLOW</button>
 			</div>
 		);
 	}
