@@ -2,7 +2,7 @@ import React from "react";
 import Facebook from "./Facebook.js";
 import Instagram from "./Instagram.js";
 import Twitter from "./Twitter.js";
-require("../../css/_footer.scss");
+
 export default class SocialLinks extends React.Component {
     render() {
         return(

@@ -1,6 +1,5 @@
 import React from "react";
 
-require("../../css/_footer.scss");
 export default class AboutUs extends React.Component {
     render() {
         return(
