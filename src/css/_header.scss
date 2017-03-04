@@ -1,25 +1,33 @@
 .header {
+    display: flex;
     width: 100%;
-    display: flex;
+    flex-direction: row;
 }
-.search-form {
-    width: 33%;
-}
-.search-field {
-    display: flex;
-    max-width: 150px;
-}
-.search-button {
+
+.search-bar {
     display: block;
-    width: 30px;
-    padding-left: 0px;
+    flex: auto;
+    flex-grow: 1;
+    flex-basis: 33%;
+}
+
+.search-field {
+    max-width: 150px;
 }
 
 .logo-area {
-    width: 33%;
-    display: flex;
+    display: block;
+    flex: auto;
+    flex-grow: 1;
+    flex-basis: 33%;
 }
 
+.user-menu {
+    display: block;
+    flex: auto;
+    flex-grow: 1;
+    flex-basis: 33%;
+}
 
 input {
     outline: none;
