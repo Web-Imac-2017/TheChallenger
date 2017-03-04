@@ -27,15 +27,13 @@ var config = {
                 loader: "style-loader!css-loader!sass-loader"
             },
             {
-                test: /.*\.(gif|png|jpe?g|svg)$/i,
+                test: /.*\.(gif|png|jpe?g|svg|json)$/i,
                 loaders: [
                     'file-loader',
                     {
                         loader: 'image-webpack-loader',
                         query: {
                           progressive: true,
-                          optimizationLevel: 7,
-                          interlaced: false,
                           pngquant: {
                             quality: '65-90',
                             speed: 4
