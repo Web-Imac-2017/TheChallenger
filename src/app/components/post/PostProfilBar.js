@@ -7,6 +7,7 @@ export default class PostProfilBar extends React.Component{
 
 	constructor(props){
 		super(props);
+		console.log("bite")
 		this.state ={
 			user : null
 		}
@@ -22,8 +23,11 @@ export default class PostProfilBar extends React.Component{
 
 	callback(data){
 		console.log(data);
-		this.setState({ user : data });
-		console.log("LALAL")
+		console.log(data.name);
+		this.setState({ 
+			user : data 
+		});
+		console.log("LALAL");
 		this.loadImg();
 		this.checkFollowing();
 	}
@@ -43,15 +47,15 @@ export default class PostProfilBar extends React.Component{
 	}
 
 	render(){
-		if(this.state.user == null)
+		if(this.state.user === null)
 			return null;
 		return(
 			<div className="post__profil_bar">
-				<Link to="userProfil" params={{ userId: this.state.user.id }}>
+				/*<Link to="userProfil" params={{ userId: this.state.user.id }}>
 					<img src={this.state.LoadedImg} alt="" className="profil_pic"/>
 					<h3>{this.state.user.name}</h3>
 				</Link>
-				<button className="follow_btn button" href="#">FOLLOW</button>
+				<button className="follow_btn button" href="#">FOLLOW</button>*/
 			</div>
 		);
 	}

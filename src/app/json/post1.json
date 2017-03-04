@@ -1,3 +1,6 @@
 {
-	"user" : 1
+	"user" : 1, 
+	"test" :"lol",
+	"photo" : "./../../img/pp.jpg",
+	"name" : "michel"
 }
