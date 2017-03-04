@@ -1,7 +1,6 @@
-import React from 'react';
-import Utility from './../utilities/utility.js';
-
-import PostProfilBar from './post/PostProfilBar.js'
+import React 			from 'react';
+import Utility 			from './../utilities/utility.js';
+import PostProfilBar 	from './post/PostProfilBar.js'
 
 export default class PostMin extends React.Component{
 	constructor(props){
@@ -20,9 +19,9 @@ export default class PostMin extends React.Component{
 	}
 
 	callback(data){
-		this.state = {
+		this.setState ({
 			post : data
-		};
+		});
 		this.getContent();
 	}
 	

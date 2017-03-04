@@ -14,20 +14,18 @@ export default class PostProfilBar extends React.Component{
 	}
 
 	loadData(){
-		console.log("bite")
 		var userId = this.props.userId;
 		//var data = Object.values(getJSON('/getUser/{'+userId+'}');
 		var jsonPath = require('./../../json/user'+userId+'.json');
-		alert("PATH = " + jsonPath);
-		Utility.getJSON(jsonPath, function(res){
-			//var data = Object.values(res);
-			console.log(res);
-			this.setState({ user : data });
-			this.loadImg();
-			this.checkFollowing();
-		});
+		Utility.getJSON(jsonPath, this);	
+	}
 
-		
+	callback(data){
+		console.log(data);
+		this.setState({ user : data });
+		console.log("LALAL")
+		this.loadImg();
+		this.checkFollowing();
 	}
 
 	loadImg(){
@@ -45,6 +43,8 @@ export default class PostProfilBar extends React.Component{
 	}
 
 	render(){
+		if(this.state.user == null)
+			return null;
 		return(
 			<div className="post__profil_bar">
 				<Link to="userProfil" params={{ userId: this.state.user.id }}>
