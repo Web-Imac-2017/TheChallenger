@@ -8,7 +8,7 @@
 		
         public static function infos($id){
             $challenge = Challenge::challenge_exists($id);
-            echo(json_encode($publication->toArray()));
+            echo(json_encode($challenge->toArray()));
         }
 		
     }
