@@ -1,5 +1,4 @@
 import React from "react";
-require("../../css/_footer.scss");
 
 export default class Twitter extends React.Component {
     render() {
