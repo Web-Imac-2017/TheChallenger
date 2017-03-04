@@ -6,7 +6,7 @@ import UserMenu from "./UserMenu.js";
 export default class Header extends React.Component{
 	render(){
 		return(
-			<div className="header">
+			<div className="header row">
 				<SearchBar/>
             <LogoArea/>
             <UserMenu/>

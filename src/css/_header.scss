@@ -1,14 +1,18 @@
 .header {
-    display: flex;
+    /* display: flex; */
     width: 100%;
-    flex-direction: row;
+    /* flex-direction: row; */
+    /* flex-wrap: wrap; */
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    background-color: $banniereColor;
 }
 
 .search-bar {
     display: block;
-    flex: auto;
-    flex-grow: 1;
-    flex-basis: 33%;
+    /* flex: auto; */
+    /* flex-grow: 1; */
+    /* flex-basis: 33%; */
 }
 
 .search-field {
@@ -17,16 +21,27 @@
 
 .logo-area {
     display: block;
-    flex: auto;
-    flex-grow: 1;
-    flex-basis: 33%;
+    /* flex: auto; */
+    /* flex-grow: 1; */
+    /* position: absolute; */
+    /* left: 50%; */
+    /* transform: translateX(-50%); */
+    /* flex-basis: 33%; */
+
+    h1 {
+        /* margin: auto; */
+        text-align: center;
+        font-size: 2em;
+        color: white;
+        white-space:nowrap;
+    }
 }
 
 .user-menu {
     display: block;
-    flex: auto;
-    flex-grow: 1;
-    flex-basis: 33%;
+    /* flex: auto; */
+    /* flex-grow: 1; */
+    /* flex-basis: 33%; */
 }
 
 input {

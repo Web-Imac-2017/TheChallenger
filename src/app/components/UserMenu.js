@@ -1,11 +1,12 @@
 import React from "react";
+import Vignette from "./vignette.js";
 
 export default class UserMenu extends React.Component {
     render() {
         return(
-                <div className="user-menu">
-                USER-MENU
-            </div>
+                <div className="user-menu col-sm-2">
+                <Vignette image={"img/no-image.png"}/>
+                </div>
         );
     }
 }
