@@ -3,37 +3,32 @@
 }
 .social-links{
 	
- 
 }
 
+
+
 footer{
-color:white;}
-
-
+	color:white;
+}
+	
 img {
     display: inline-block;
 }
-a{
-	color:hotpink;
-}
+
 .row {
   margin-right: -15px;
   margin-left: -15px;
 }
 
 
- .the_footer{
- background-color : #CA4D49;
- text-color : white;
-  position:absolute;
-
-bottom:0;
-
-width:100%;
-
-padding-top:10px;
-
-height:40px;
- }
+.the_footer{
+	background-color : $banniereColor;
+	text-color : white;
+	position:absolute;
+	bottom:0;
+	width:100%;
+	padding-top:10px;
+	height:40px;
+}
  
 

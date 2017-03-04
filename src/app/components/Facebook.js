@@ -1,5 +1,4 @@
 import React from "react";
-require("../../css/_footer.scss");
 
 export default class Facebook extends React.Component {
     render() {

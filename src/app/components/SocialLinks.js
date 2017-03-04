@@ -1,5 +1,4 @@
 import React from "react";
-require("../../css/_footer.scss");
 import Facebook from "./Facebook.js";
 import Instagram from "./Instagram.js";
 import Twitter from "./Twitter.js";
