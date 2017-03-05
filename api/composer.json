@@ -1,9 +1,0 @@
-{
-  "name": "semaine-web-imac2016",
-  "require": {
-    "php": ">=5.5.0",
-    "monolog/monolog": "^1.19",
-    "kriswallsmith/assetic": "1.3.2",
-    "nesbot/carbon": "^1.21"
-  }
-}
