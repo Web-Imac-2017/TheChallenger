@@ -5,35 +5,46 @@
 
 /* requetes post */
 
+SELECT * 
+FROM post
+WHERE iduser=:u;
+
+
+SELECT score 
+FROM post
+WHERE iduser=:u;
+
 		/* le challenge correspondant, l'image, le nom du user, les tags du post en fonction de l'id du post */
 
-		SELECT * 
+		/*SELECT * 
 		FROM thechallenger.post
 		WHERE iduser=:u;
 
-		/* Nombre de like */
+		 Nombre de like 
 
 		SELECT score
 		FROM thechallenger.post
-		WHERE iduser=:u;
+		WHERE iduser=:u;*/
+
+		/* requetes challenge 
 
 		/* Compte les followed */
 
-		SELECT count (*)
+		/*SELECT count (*)
 		FROM thechallenger.follow
-		WHERE idfollowed=:u;
+		WHERE idfollowed=:u;*/
 
 		/* Compte les follower */
 
-		SELECT count (*)
+		/*SELECT count (*)
 		FROM thechallenger.follow
-		WHERE idfollower=:u;
+		WHERE idfollower=:u;*/
 
 		/* Compte les post */
 
-		SELECT count (*)
+		/*SELECT count (*)
 		FROM thechallenger.post
-		WHERE iduser=:u;
+		WHERE iduser=:u;*/
 
 
 /* requetes challenge */

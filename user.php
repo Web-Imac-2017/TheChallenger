@@ -281,33 +281,37 @@ class User
 		}
 	}
 
+	//fonction verifier follow
+	public function checkfollow($idfollower, $idfollowed){
+		$query=$db->prepare('SELECT id FROM thechallenger.follow WHERE idfollower=:idfollower AND idfollowed=:idfollowed');
+        $query->bindParam(':idfollower',$idfollower,PDO::PARAM_INT);
+        $query->bindParam(':idfollowed',$idfollowed,PDO::PARAM_INT);
+        $query->execute();
+        $exist=($query->fetchColumn()==0)?true:false;
+        $query->CloseCursor();
+	}
+
 	//fonction ajout follower
 	public function addfollower($idfollower, $idfollowed){
 		global $db;
-		if($this->id_exists($idfollowed)){
+		if($this->id_exists($idfollowed) && !$this->checkfollow($idfollower,$idfollowed)){
 			$query=$db->prepare('INSERT INTO thechallenger.follow (idfollower,idfollowed) VALUES (:idfollower,:idfollowed)');
 			$query->bindParam(':idfollower', $idfollower, PDO::PARAM_INT);
 			$query->bindParam(':idfollowed', $idfollowed, PDO::PARAM_INT);
 			$query->execute();
 			$query->CloseCursor();
 		}
-		else{
-			return 404;
-		}
 	}
 
 	//fonction suppression follower
 	public function deletefollower($idfollower,$idfollowed){
 		global $db;
-		if($this->id_exists($idfollowed)){
+		if($this->id_exists($idfollowed) && $this->checkfollow($idfollower,$idfollowed)){
 			$query=$db->prepare('DELETE FROM thechallenger.follow idfollower=:idfollower AND idfollowed=:idfollowed)');
 			$query->bindParam(':idfollower', $idfollower, PDO::PARAM_INT);
 			$query->bindParam(':idfollowed', $idfollowed, PDO::PARAM_INT);
 			$query->execute();
 			$query->CloseCursor();
-		}
-		else{
-			return 404;
 		}
 	}
 
