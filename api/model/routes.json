@@ -33,5 +33,9 @@
 
     "user/change/{id}" : {
         "request" : "userController@changeuser"
+    },
+
+    "post/getRandomBackground/": {
+        "request" : "postController@getRandomBackground"
     }
 }

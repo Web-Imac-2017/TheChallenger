@@ -11,7 +11,6 @@ define('ADMIN',4);
 class userController{
 
 	public static function register(){
-		var_dump("SALO");
 		global $db;
 		$name=(!empty($_POST['name']))? $_POST['name']:"";
 		$email=(!empty($_POST['email']))? $_POST['email']:"";
