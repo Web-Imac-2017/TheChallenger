@@ -1,0 +1,41 @@
+{
+    "" : {
+        "request" : "controller/viewHome.php"
+    },
+
+    "404/" : {
+        "request" : "controller/view404.php"
+    },
+
+    "user/register/" : {
+        "request" : "userController@register"
+    },
+
+    "user/login/" : {
+        "request" : "userController@login"
+    },
+
+    "user/show/{id}" : {
+       "request" : "userController@show"
+    },
+
+    "user/logout/" : {
+        "request" : "userController@logout"
+    },
+
+    "user/confirm/{name}/{key}" : {
+        "request" : "userController@confirm"
+    },
+
+    "user/follow/add/{id}" : {
+        "request" : "userController@addfollower"
+    },
+
+    "user/follow/delete/{id}" : {
+        "request" : "userController@deletefollower"
+    },
+
+    "user/change/{id}" : {
+        "request" : "userController@changeuser"
+    }
+}
