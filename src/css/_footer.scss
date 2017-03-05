@@ -34,13 +34,18 @@ a:link {
 	position : relative;
 	margin-top:-50px;
 	left:50%
+	
 }
 
+#btn:focus{
+	ouline:0 !important;
+}
 
 #btn:hover:after{
  visibility: visible;
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
+  outline:none;
 }
 
 
@@ -57,6 +62,7 @@ a:link {
   transform: scaleX(0);
   -webkit-transition: all 0.3s ease-in-out 0s;
   transition: all 0.3s ease-in-out 0s;
+  outline:none;
 }
 
 
@@ -66,3 +72,7 @@ a:link {
 	position : absolute;
 	margin-top:-200px;
 }
+
+
+
+

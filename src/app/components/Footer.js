@@ -67,8 +67,10 @@ export default class Footer extends React.Component {
 					</div>
 										
 					{this.state.contactActive&&(
-						<div className ='modalDialog'>
-							<button onClick={this.closeContact}><img src= "../img/icons/cross.png"/></button>
+						<div className ='page_contact'>
+							<button onClick={this.closeContact} className="close-contact" >
+							
+								<img src = "../../img/icons/cross_quit.png"width="30" height="30"/></button>
 							<Contact/>
 													
 						</div>
