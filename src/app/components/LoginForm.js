@@ -4,7 +4,7 @@ export default class LoginForm extends React.Component{
 	render(){
 		return(
 			<div>
-				<form className="form" method="POST" action="user.php">
+				<form className="form" method="POST" action="api/user/login/">
 			     	<input type="email" name="email" className="field-in" placeholder="Email" required/>
 			      	<input type="password" name="password" className="field-in" placeholder="Password" required/>
 			      	<button className="submit button" href="#">Login</button>

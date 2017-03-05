@@ -11,6 +11,7 @@ define('ADMIN',4);
 class userController{
 
 	public static function register(){
+		var_dump("SALO");
 		global $db;
 		$name=(!empty($_POST['name']))? $_POST['name']:"";
 		$email=(!empty($_POST['email']))? $_POST['email']:"";
@@ -128,6 +129,8 @@ class userController{
 	}
 
 	public static function login(){
+		var_dump('BITE');
+
 		$email = (isset($_POST["email"])) ? $_POST["email"] : "";
 		$password = (isset($_POST["password"])) ? sha1(htmlspecialchars($_POST["password"])): "";
 
@@ -137,12 +140,12 @@ class userController{
 		}
 
 		global $user;
-		if($user->is_connected(MEMBRE)){
+		if(isset($user) && $user->is_connected(MEMBRE)){
 	    	echo(json_encode(["code" => 0,"message" => "Already connected"]));
 			exit();
 		}
 		
-		$query=$db->prepare('SELECT id,rank, name, pwd, email FROM thechallenger.user WHERE email = :email');		
+		$query=$db->prepare('SELECT id, rank, name, pwd, email FROM thechallenger.user WHERE email = :email');		
 		$query->bindParam(':email', $email,PDO::PARAM_STR);
 		$query->execute();
 		$datas=$query->fetch();
