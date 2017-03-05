@@ -1,18 +1,13 @@
 <?php
-	require_once('vendor/autoload.php');
+	require_once("identifiants.php");
 	require_once('model/routing.php');
-	require_once('model/session.php');
-
-	//CARE
-	require_once("controller/publicationController.php");
 	require_once("controller/userController.php");
-	require_once("controller/conversationController.php");
-	require_once("controller/testController.php");
+
 
 	//Permet d'include les classes depuis le controller directement sans avoir à cité le controller
-	function __autoload($class_name){
-		require_once 'controller/'.$class_name . '.php';
-	}
+	// function __autoload($class_name){
+	// 	require_once 'controller/'.$class_name . '.php';
+	// }
 
     $routing = new ROUTING();
     $route = $routing->getRoute();
@@ -20,7 +15,7 @@
     $root = $routing->getRoot();
     $parameter = $routing->getParameter();
 
-	var_dump(Session::getSession());
+	// var_dump(Session::getSession());
 
 	//Class Manager or route
 

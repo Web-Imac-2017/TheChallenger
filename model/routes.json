@@ -1,10 +1,7 @@
 {
-    "" : {
-        "request" : "controller/viewHome.php"
-    },
 
     "404/" : {
-        "request" : "controller/view404.php"
+        "request" : "controller/404.php"
     },
 
     "user/register/" : {
