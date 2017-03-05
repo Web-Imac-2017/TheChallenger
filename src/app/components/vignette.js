@@ -3,7 +3,9 @@ import React from "react";
 export default class Vignette extends React.Component {
     render() {
         return(
-                <img src={this.props.image} alt="vignette" />
+                <div className="vignette">
+                <img src={this.props.image} alt="vignette image" />
+                </div>
         );
     }
 }

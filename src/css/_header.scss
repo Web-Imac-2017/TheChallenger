@@ -39,6 +39,16 @@
 
 .user-menu {
     display: block;
+    height: 50px;
+
+    .vignette {
+        display: inline-block;
+        height: 100%;
+    }
+
+    .user-menu-drop-down {
+        background-color: white;
+    }
     /* flex: auto; */
     /* flex-grow: 1; */
     /* flex-basis: 33%; */

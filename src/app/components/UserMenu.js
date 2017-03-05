@@ -6,6 +6,11 @@ export default class UserMenu extends React.Component {
         return(
                 <div className="user-menu col-sm-2">
                 <Vignette image={"img/no-image.png"}/>
+                <div className="user-menu-drop-down">
+                <h2>{this.props.user}</h2>
+                <p>Profile</p>
+                <p>Log out</p>
+                </div>
                 </div>
         );
     }
