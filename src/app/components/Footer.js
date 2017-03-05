@@ -68,7 +68,7 @@ export default class Footer extends React.Component {
 										
 					{this.state.contactActive&&(
 						<div className ='modalDialog'>
-							<button onClick={this.closeContact}>close contact</button>
+							<button onClick={this.closeContact}><img src= "../img/icons/cross.png"/></button>
 							<Contact/>
 													
 						</div>
@@ -77,7 +77,7 @@ export default class Footer extends React.Component {
 										
 					{this.state.aboutActive&&(
 						<div className ='page_about'>
-							<button onClick={this.closeAbout}>close about</button>
+							<button onClick={this.closeAbout}><img src= "../img/icons/cross.png"/></button>
 							<AboutUs/>
 						</div>
 					)}					
