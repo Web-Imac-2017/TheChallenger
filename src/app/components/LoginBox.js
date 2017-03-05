@@ -9,7 +9,7 @@ export default class LoginBox extends React.Component{
 			<div id="login_box" className="col-lg-2">
 				<h2 className="title">The Challenger</h2>
 				<LoginForm/>
-				<p>OR</p> 
+				<p className>OR</p> 
 				<SignUpForm/>
 			</div>
 		);
