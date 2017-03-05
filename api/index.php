@@ -1,7 +1,6 @@
 <?php
 	require_once("identifiants.php");
 	require_once('model/routing.php');
-	require_once('model/session.php');
 
 	require_once("controller/userController.php");
 
@@ -15,9 +14,7 @@
 
     $root = $routing->getRoot();
     $parameter = $routing->getParameter();
-
-	//var_dump(Session::getSession());
-
+    
 	//Class Manager or route
 	if(strpos($route,".php") !== false){
 		include(__DIR__.'/'.$route);

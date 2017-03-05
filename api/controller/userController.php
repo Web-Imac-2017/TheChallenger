@@ -129,7 +129,7 @@ class userController{
 	}
 
 	public static function login(){
-		var_dump('BITE');
+		var_dump('LOGIN');
 
 		$email = (isset($_POST["email"])) ? $_POST["email"] : "";
 		$password = (isset($_POST["password"])) ? sha1(htmlspecialchars($_POST["password"])): "";
