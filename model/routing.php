@@ -4,7 +4,7 @@
      * ROUTING CLASS
      */
 
-    class Routing {
+    class ROUTING {
 
         private $root;
         private $request;
@@ -15,7 +15,7 @@
         function __construct(){
             $_this = $this;
             
-            $this->root = __DIR__.'\..\\';
+            $this->root = __DIR__."/../";
             $this->request = $_SERVER['REQUEST_URI'];
             $this->route = $this->root;
             $this->parameter = array();

@@ -2,7 +2,7 @@
 
 // session_start();
 
-include("identifiants.php");
+// include("identifiants.php");
 // include("constants.php");
 
 

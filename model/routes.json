@@ -1,4 +1,8 @@
 {
+    "404/" : {
+        "request" : "controller/404.php"
+    },
+
     "user/register/" : {
         "request" : "userController@register"
     },

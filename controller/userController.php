@@ -1,5 +1,5 @@
 <?php
-include_once('model/User.php');
+include_once('/../model/User.php');
 
 //definition des niveaux d'utilisateurs
 define('VISITEUR',0);
