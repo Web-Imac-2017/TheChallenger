@@ -12,9 +12,8 @@ export default class AboutUs extends React.Component {
     				<Member image="../img/members/marc.jpg" name="Marc Blactot" desc="Back-end Developper"/>,
     				<Member image="../img/members/albert.jpg" name="Albert-Henry Moyrand" desc="Back-end Developper"/>];
         return(
-            <div className="aboutus ">
-               
-                <p>The Team</p>
+            <div className="aboutus">
+                <h1>The Team</h1>
                 <p>The best of the best</p>
                 <div className="membersList">
                 	{list}	

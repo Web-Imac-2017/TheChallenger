@@ -11,7 +11,7 @@ footer{
 .the_footer{
 	background-color : $banniereColor;
 	text-color : white;
-	position:absolute;
+	position: absolute;
 	bottom:0;
 	width:100%;
 	padding-top:10px;
@@ -28,7 +28,7 @@ a:link {
     background-repeat:no-repeat;
     border: none;
 	border-radius: px;
-	font-family: Arial;
+	font-family: Montserrat;
 	font-size: 12px;
 	padding: 5px 10px 5px 10px;
 	position : relative;
@@ -67,10 +67,35 @@ a:link {
 
 
 .page_about{
-	background-color:blue;
+	background-color: grey;
 	z-index:1;
-	position : absolute;
-	margin-top:-200px;
+	position: relative;
+	margin-top: -40%;
+	display: block;
+	align: center;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.member{
+ position: relative;
+	display: inline-block;
+	 img {
+	    width: 150px;
+	    height: 150px;
+	    border-radius: 50%;
+	}
+	h1 {
+		position: relative;
+		right: -7%;
+    	display: inline-block;
+
+	}
+	p{
+		right: -7%;
+    	display: align-block;
+	}
 }
 
 
