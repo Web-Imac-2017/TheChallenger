@@ -34,6 +34,7 @@ export default class SignUpForm extends React.Component{
 
 	render(){
 		var formStyle = {display : this.state.formVisible?'block':'none'}
+		var pwdError = this.state.pwdIsWrong ? " error" : ""
 
 		return(
 			<div>
