@@ -59,6 +59,14 @@
         "request" : "postController@getRandomBackground"
     },
 
+    "post/show/{id}": {
+        "request" : "postController@toArray"
+    },
+
+    "search/": {
+        "request" : "searchController@search"
+    },
+
     "message/send/": {
         "request" : "contactController@sendMessage"
     }

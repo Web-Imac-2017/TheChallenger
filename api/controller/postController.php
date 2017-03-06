@@ -123,6 +123,7 @@ class Post
 	}
 
 	public function checkpost($idpost){
+		global $db;
 		//on vérifie si le name est déjà utilisé 
 		$query=$db->prepare('SELECT iduser FROM thechallenger.post WHERE id=:idpost');
 		$query->bindParam(':ispost',$idpost,PDO::PARAM_INT);
@@ -132,13 +133,9 @@ class Post
 		$iduser=$datas['iduser'];
 		if(empty($iduser)){
 	    	return false;
+	    	exit();
 		}
-		global $user; 
-		if($user->is_connected(MODERATEUR) || ($user->is_connected(MEMBRE) && $iduser==$_COOKIE['id'])){
-			return true;
-		}
-		return false;
-
+		return true;
 	}
 
 	//modifier post
@@ -147,18 +144,21 @@ class Post
 	    	echo(json_encode(["code" => 0,"message" => "error"]));
 			exit();
 		}
-		$title=(!empty($_POST['title']))? $_POST['title']:"";
-		$type=(!empty($_FILES['type']))? $_FILES['type']:"";
-		$desc=(!empty($_FILES['desc']))? $_FILES['desc']:"";
+		global $user; 
+		if($user->is_connected(MODERATEUR) || ($user->is_connected(MEMBRE) && $iduser==$_COOKIE['id'])){
+			$title=(!empty($_POST['title']))? $_POST['title']:"";
+			$type=(!empty($_FILES['type']))? $_FILES['type']:"";
+			$desc=(!empty($_FILES['desc']))? $_FILES['desc']:"";
 
-		global $db;
-		$query=$db->prepare('UPDATE thechallenger.post SET title=:title,type=:type,description=:description WHERE id=:idpost');
-        $query->bindParam(':title',$title,PDO::PARAM_STR);
-        $query->bindParam(':type',$type,PDO::PARAM_STR);
-        $query->bindParam(':description',$desc,PDO::PARAM_STR);
-        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
-        $query->execute();
-        $query->CloseCursor();
+			global $db;
+			$query=$db->prepare('UPDATE thechallenger.post SET title=:title,type=:type,description=:description WHERE id=:idpost');
+	        $query->bindParam(':title',$title,PDO::PARAM_STR);
+	        $query->bindParam(':type',$type,PDO::PARAM_STR);
+	        $query->bindParam(':description',$desc,PDO::PARAM_STR);
+	        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
+	        $query->execute();
+	        $query->CloseCursor();
+		}
 	}
 
 	//supprimer post
@@ -167,11 +167,41 @@ class Post
 	    	echo(json_encode(["code" => 0,"message" => "error"]));
 			exit();
 		}
-		global $db;
-		$query=$db->prepare('DELETE FROM thechallenger.post WHERE id=:idpost');
-        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
-        $query->execute();
-        $query->CloseCursor();
+		global $user; 
+		if($user->is_connected(MODERATEUR) || ($user->is_connected(MEMBRE) && $iduser==$_COOKIE['id'])){
+			global $db;
+			$query=$db->prepare('DELETE FROM thechallenger.post WHERE id=:idpost');
+	        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
+	        $query->execute();
+	        $query->CloseCursor();
+	    }
+	}
+
+	public function toArray($id){
+		if(!$this->checkpost($idpost)){
+	    	echo(json_encode(["code" => 0,"message" => "error"]));
+			exit();
+		}
+		$query=$db->prepare('SELECT * FROM thechallenger.post WHERE id=:idpost');
+		$query->bindParam(':ispost',$id,PDO::PARAM_INT);
+		$query->execute();
+		$datas=$query->fetch();
+		$query->CloseCursor();
+		$item = [
+			"id" => $id,
+			"title" => $datas['title'],
+			"state" => $datas['state'],
+			"type" => $datas['type'],
+			"hd" => $datas['hd'],
+			"linkcontent" => $datas['linkcontent'],
+			"description" => $datas['description'],
+			"winner" => $datas['winner'],
+			"score" => $datas['score'],
+			"datepost" => $datas['datepost'],
+			"iduser" => $datas['iduser'],
+			"idchallenge" => $datas['idchallenge']
+		];
+		echo(json_encode($item));
 	}
 }
 
