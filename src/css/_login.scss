@@ -8,10 +8,28 @@
 	background-color: rgba(255, 255, 255, 0.6);
 	border-radius: 5px;
 	text-align: center;
-
-	h2{
-		font-family: sans-serif;
+	padding : 2%;
+	.title{
+		padding-bottom: 10%;
 	}
+	.submit {
+		background-color: rgb(95, 2, 31); // $banniereColor;
+		color: rgb(255,255,255);
+		width: 100%;
+		padding: 2%;
+		margin-top: 8%;
+		border-style: none;	
+	}
+	.button{
+		border-style: none;
+		width: 100%;
+		margin-bottom: 20px;
+		color: rgb(95, 2, 31); //$banniereColor;	
+	}
+	p{
+		margin: 4%;
+		margin-top: -2%;
+	}	
 }
 
 .overlay{
@@ -20,7 +38,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-	background-color: rgba(0, 0, 0, 0.3);
+	
 }
 
 .blur{
@@ -37,6 +55,8 @@
 	right: 20px;
 	p{
 		color: #fff;
-		font-size: 1.75em;
-	}
+		font-size: 1em;
+}
+	
+
 }
