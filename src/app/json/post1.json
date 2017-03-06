@@ -1,6 +1,7 @@
 {
-	"user" : 1, 
-	"test" :"lol",
-	"photo" : "./../../img/pp.jpg",
-	"name" : "michel"
+    "id" : 1,
+	  "user" : 1,
+    "type" : "image",
+	  "content" : "./../../img/pp.jpg",
+	  "description" : "Je suis une courte description"
 }
