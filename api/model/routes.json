@@ -35,6 +35,26 @@
         "request" : "userController@changeuser"
     },
 
+    "post/add/{id}" : {
+        "request" : "postController@addpost"
+    },
+
+    "post/update/{id}" : {
+        "request" : "postController@updatepost"
+    },
+
+    "post/delete/{id}" : {
+        "request" : "postController@deletepost"
+    },
+
+     "post/like/add/{id}" : {
+        "request" : "postController@addlike"
+    },
+
+    "post/like/delete/{id}" : {
+        "request" : "postController@deletelike"
+    },
+
     "post/getRandomBackground/": {
         "request" : "postController@getRandomBackground"
     }

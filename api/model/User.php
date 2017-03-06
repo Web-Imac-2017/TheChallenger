@@ -1,11 +1,5 @@
 <?php 
 
-// session_start();
-
-// include("identifiants.php");
-// include("constants.php");
-
-
 class User
 {
 	private $_id;
@@ -70,7 +64,7 @@ class User
 	}
 
 	//on envoi le mail de confirmation
-	public static function registermail(){
+	public function registeremail(){
 		global $db;
 		$key=sha1(microtime(TRUE)*100000); //création de la clé unique
 		$registerdate=date("d m Y");
@@ -128,7 +122,7 @@ class User
 	//fonction qui vérifie si l'utilisateur à plus de 3 avertissments
 	public function checkWarnings(){
 		$query=$db->prepare('SELECT cptwarnings FROM thechallenger.user WHERE id = :id');		
-		$query->bindParam(':id', $this->_id,PDO::PARAM_INT);
+		$query->bindParam(':id', $_COOKIE['id'],PDO::PARAM_INT);
 		$query->execute();
 		$datas=$query->fetch();
 		$query->CloseCursor();

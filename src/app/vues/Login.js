@@ -21,7 +21,7 @@ export default class Login extends React.Component{
 	}*/	
 
 	getRandomImg(){
-		fetch('./getRandBackground')
+		fetch('api/post/getRandomBackground')
 			.then(function(response){
 				this.setState({url : response.text})
 			})

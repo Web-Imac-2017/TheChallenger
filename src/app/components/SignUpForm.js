@@ -39,7 +39,7 @@ export default class SignUpForm extends React.Component{
 		return(
 			<div>
 				<div>
-					<button className="submit button" href="#" onClick={this.handleClick.bind(this)}>Create an account</button>
+					<button className="button btn btn-default" href="#" onClick={this.handleClick.bind(this)}>Create an account</button>
 				</div>
 				<div style={formStyle}>
 					<form className="form" ref="sign_up_form" method="POST" action="api/user/register/">
@@ -47,25 +47,25 @@ export default class SignUpForm extends React.Component{
 				     	<input 
 				     		type="email" 
 				     		name="email" 
-				     		className="field-in" 
+				     		className="field-in form-control" 
 				     		placeholder="Email"
 				     	required/>
 				      	<input 
 				      		type="password" 
 				      		name="pwd" 
 				      		ref="pwd1" 
-				      		className="field-in" 
+				      		className="field-in form-control" 
 				      		placeholder="Password"
 				      	required/>
 				      	<input 
 				      		type="password" 
 				      		name="pwdconfirm"
 				      		ref="pwd2" 
-				      		className={"field-in "+ pwdError} 
+				      		className={"field-in form-control"+ pwdError} 
 				      		placeholder="Confirm your password" 
 				      		onBlur={this.handleLostFocus.bind(this)}
 				      	required/>
-				      	<button className="submit button" onClick={this.handleSubmitClick.bind(this)}>Sign Up</button>
+				      	<button className="submit btn btn-default" onClick={this.handleSubmitClick.bind(this)}>Sign Up</button>
 				    </form>
 			    </div>
 			</div>
