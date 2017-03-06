@@ -1,5 +1,6 @@
 <?php
 	require_once("identifiants.php");
+	require_once("constants.php");
 	require_once('model/routing.php');
 
 	require_once("controller/userController.php");

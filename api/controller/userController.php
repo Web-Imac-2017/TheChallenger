@@ -1,13 +1,6 @@
 <?php
 include_once("model/User.php");
 
-//definition des niveaux d'utilisateurs
-define('VISITEUR',0);
-define('INSCRIT',1);
-define('MEMBRE',2);
-define('MODERATEUR',3);
-define('ADMIN',4);
-
 class userController{
 
 	public static function register(){
@@ -40,26 +33,26 @@ class userController{
 	    $query->CloseCursor();
 
 	    if(!$name_dispo){
-    	    echo(json_encode(["code" => 0,"message" => "34Login field empty"]));
+    	    echo(json_encode(["code" => 0,"message" => "name already taken"]));
             exit();
         }
 
 	    //on teste la longueur du name entre 3 et 20 caracteres 
 	    if (strlen($name) < 3 || strlen($name) > 20){
-	    	echo(json_encode(["code" => 0,"message" => "4Login field empty"]));
+	    	echo(json_encode(["code" => 0,"message" => "name too short or too long (3 minimum 20 maximum)"]));
         	exit();
         }
 
 	    //Vérification du mdp
 	    if ($password != $passwordconfirm){
-	    	echo(json_encode(["code" => 0,"message" => "3Login field empty"]));
+	    	echo(json_encode(["code" => 0,"message" => "password confirmation different from password"]));
 	    	exit();
 	    }
 
     	//On vérifie la forme de l'adresse email
     	if (!preg_match("#^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$#", $email) || empty($email))
     	{
-        	echo(json_encode(["code" => 0,"message" => "4Login field empty"]));
+        	echo(json_encode(["code" => 0,"message" => "wrong email"]));
     		exit();
     	}
 
@@ -71,7 +64,7 @@ class userController{
 	    $query->CloseCursor();
 	    
 	    if(!$mail_dispo){
-	    	echo(json_encode(["code" => 0,"message" => "5Login field empty"]));
+	    	echo(json_encode(["code" => 0,"message" => "email already taken"]));
 			exit();
 	    }
 	    	    
@@ -107,7 +100,7 @@ class userController{
 		$query->CloseCursor();
 
 		if ($active==1){
-	    	echo(json_encode(["code" => 0,"message" => "Login field empty"]));
+	    	echo(json_encode(["code" => 0,"message" => "account already activated"]));
 			exit();
 		} //membre deja actif
 	
@@ -121,7 +114,7 @@ class userController{
 			exit();
 		}
 		else{
-	    	echo(json_encode(["code" => 0,"message" => "6Login field empty"]));
+	    	echo(json_encode(["code" => 0,"message" => "wrong key"]));
 			exit();
 		}
 	}
@@ -131,7 +124,7 @@ class userController{
 		$password = (isset($_POST["password"])) ? sha1($_POST["password"]): "";
 
 		if(empty($email) || empty($password)){
-	    	echo(json_encode(["code" => 0,"message" => "8Login field empty"]));
+	    	echo(json_encode(["code" => 0,"message" => "empty field"]));
 			exit();
 		}
 
@@ -153,7 +146,7 @@ class userController{
 		}
 		if ($datas['rank']<MEMBRE) //on vérifie que l'utilisateur est actif
 		{
-	    	echo(json_encode(["code" => 0,"message" => "9Login field empty"]));
+	    	echo(json_encode(["code" => 0,"message" => "please click on the link on the email you received"]));
 			exit();
 		}
 
