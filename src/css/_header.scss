@@ -17,6 +17,7 @@
 
 .search-field {
     max-width: 150px;
+	
 }
 
 .logo-area {
@@ -48,9 +49,32 @@ input {
     outline: none;
 }
 
+.img-profil{
+	border-radius: 50%;
+	margin-top:2px;
+	transition: transform 0.5s ease;
+
+}
+
+.img-profil:hover{
+
+     transform:scale(1.1);
+}
+
+.circle-back {
+    display: block;
+    width:58px;
+    height: 58px;
+	border-radius:50%;
+    background-color:transparent;  
+    text-align:center;
+	border:2px solid white;
+	
+}
+
 .search-form input[type=search]{
 
-    background: #ededed url(http://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+    background: #fff  url(http://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
     width: 15px;
     padding: 9px 10px 9px 32px;
     padding-left: 10px;
