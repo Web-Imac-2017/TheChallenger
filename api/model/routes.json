@@ -57,5 +57,9 @@
 
     "post/getRandomBackground/": {
         "request" : "postController@getRandomBackground"
+    },
+
+    "message/send/": {
+        "request" : "contactController@sendMessage"
     }
 }

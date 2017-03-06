@@ -48,7 +48,7 @@ class Post
 	}
 
 	//fonction déplacer le fichier image
-	function move_image($image,$destination)
+	public function move_image($image,$destination)
 	{
 	    $extension_upload = strtolower(substr(strrchr($image['name'], '.')  ,1));
 	    $name = time();
