@@ -1,4 +1,4 @@
-require ('../css/style.scss');
+require ('../css/main.scss');
 
 
 import React from "react";
@@ -7,6 +7,7 @@ import { Router, Route, hashHistory } from 'react-router';
 import Login from "./vues/Login.js";
 import Home from "./vues/Home.js";
 import AboutUs from "./vues/AboutUs.js";
+import Contact from "./vues/Contact.js";
 
 const app = document.getElementById('app');
 
@@ -15,8 +16,9 @@ class Layout extends React.Component{
 		return(
 			<Router history={hashHistory}>
 			    <Route path="/" component={Login}/>
-			    <Route path="/about" component={AboutUs}/>
 			    <Route path="/home" component={Home}/>
+				<Route path="/contact" component={Contact}/>
+				<Route path="/about" component={AboutUs}/>
 			</Router>	
 		);
 	}

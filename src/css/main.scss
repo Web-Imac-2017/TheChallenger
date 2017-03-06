@@ -1,6 +1,6 @@
-//bootstrap-grid
+@import 'constantes';
 @import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
-@import 'login';
+@import 'pages';
 
 html, body{
 	width: 100%;
@@ -9,3 +9,8 @@ html, body{
 	background-color : #fff;
 	font-family: montserrat;
 }
+
+a{
+	color: #fff;
+}
+
