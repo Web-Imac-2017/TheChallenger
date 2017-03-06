@@ -1,5 +1,5 @@
 <?php
-include_once('/../model/User.php');
+include_once("model/User.php");
 
 //definition des niveaux d'utilisateurs
 define('VISITEUR',0);
@@ -14,21 +14,20 @@ class userController{
 		global $db;
 		$name=(!empty($_POST['name']))? $_POST['name']:"";
 		$email=(!empty($_POST['email']))? $_POST['email']:"";
-		$password=(!empty($_POST['password']))? $_POST['password']:"";
-		$passwordconfirm=(!empty($_POST['passwordconfirm']))? $_POST['passwordconfirm']:"";
+		$password=(!empty($_POST['pwd']))? $_POST['pwd']:"";
+		$passwordconfirm=(!empty($_POST['pwdconfirm']))? $_POST['pwdconfirm']:"";
 	
 		if (!preg_match("#^[a-zA-Z0-9éèàêâùïüë_. +-]{3,15}$#",$name) || empty($name))
         {
-           echo(json_encode(["code" => 0,"message" => "Login field empty"]));
+           echo(json_encode(["code" => 0,"message" => "1Login field empty"]));
             exit();
         }
         if (!preg_match("#^[a-zA-Z0-9éèàêâùïüë_. +-]{3,15}$#",$password) || !preg_match("#[a-zA-Z0-9éèàêâùïüë_. +-]{3,15}#",$passwordconfirm) || empty($password) || empty($passwordconfirm))
         {
-            echo(json_encode(["code" => 0,"message" => "Login field empty"]));
+            echo(json_encode(["code" => 0,"message" => "2Login field empty"]));
             exit();
         }
       
-		$passwordconfirm=sha1($passwordconfirm);
 	    $name=htmlspecialchars($name);
 	    $password=sha1($password);
 	    $passwordconfirm=sha1($passwordconfirm);
@@ -41,26 +40,26 @@ class userController{
 	    $query->CloseCursor();
 
 	    if(!$name_dispo){
-    	    echo(json_encode(["code" => 0,"message" => "Login field empty"]));
+    	    echo(json_encode(["code" => 0,"message" => "34Login field empty"]));
             exit();
         }
 
 	    //on teste la longueur du name entre 3 et 20 caracteres 
 	    if (strlen($name) < 3 || strlen($name) > 20){
-	    	echo(json_encode(["code" => 0,"message" => "Login field empty"]));
+	    	echo(json_encode(["code" => 0,"message" => "4Login field empty"]));
         	exit();
         }
 
 	    //Vérification du mdp
 	    if ($password != $passwordconfirm){
-	    	echo(json_encode(["code" => 0,"message" => "Login field empty"]));
+	    	echo(json_encode(["code" => 0,"message" => "3Login field empty"]));
 	    	exit();
 	    }
 
     	//On vérifie la forme de l'adresse email
     	if (!preg_match("#^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$#", $email) || empty($email))
     	{
-        	echo(json_encode(["code" => 0,"message" => "Login field empty"]));
+        	echo(json_encode(["code" => 0,"message" => "4Login field empty"]));
     		exit();
     	}
 
@@ -72,7 +71,7 @@ class userController{
 	    $query->CloseCursor();
 	    
 	    if(!$mail_dispo){
-	    	echo(json_encode(["code" => 0,"message" => "Login field empty"]));
+	    	echo(json_encode(["code" => 0,"message" => "5Login field empty"]));
 			exit();
 	    }
 	    	    
@@ -122,19 +121,17 @@ class userController{
 			exit();
 		}
 		else{
-	    	echo(json_encode(["code" => 0,"message" => "Login field empty"]));
+	    	echo(json_encode(["code" => 0,"message" => "6Login field empty"]));
 			exit();
 		}
 	}
 
 	public static function login(){
-		var_dump('LOGIN');
-
 		$email = (isset($_POST["email"])) ? $_POST["email"] : "";
-		$password = (isset($_POST["password"])) ? sha1(htmlspecialchars($_POST["password"])): "";
+		$password = (isset($_POST["password"])) ? sha1($_POST["password"]): "";
 
 		if(empty($email) || empty($password)){
-	    	echo(json_encode(["code" => 0,"message" => "Login field empty"]));
+	    	echo(json_encode(["code" => 0,"message" => "8Login field empty"]));
 			exit();
 		}
 
@@ -144,6 +141,7 @@ class userController{
 			exit();
 		}
 		
+		global $db;
 		$query=$db->prepare('SELECT id, rank, name, pwd, email FROM thechallenger.user WHERE email = :email');		
 		$query->bindParam(':email', $email,PDO::PARAM_STR);
 		$query->execute();
@@ -155,7 +153,7 @@ class userController{
 		}
 		if ($datas['rank']<MEMBRE) //on vérifie que l'utilisateur est actif
 		{
-	    	echo(json_encode(["code" => 0,"message" => "Login field empty"]));
+	    	echo(json_encode(["code" => 0,"message" => "9Login field empty"]));
 			exit();
 		}
 
