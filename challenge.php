@@ -88,11 +88,12 @@ class Challenge
         $query->bindParam(':id',$id,PDO::PARAM_INT);
         $query->execute();
         $datas=$query->fetch();
-		if($data->rowcount() != 0) return $datas;
+		if($datas->rowcount() != 0) return $datas;
 		else return false;
 	}
 	
 	// Afficher à partir de la BDD
+	
 	public function display_challenge($id){
 		
 		$query=$db->prepare('SELECT * FROM thechallenger.challenge WHERE id =:id');
@@ -104,6 +105,7 @@ class Challenge
 	}
 	
 	// Ajouter un challenge à la BDD
+	
 	public function add_challenge($title, $desc, $date_start, $date_stop) {
 		$_SESSION['title']=$title;
 		$_SESSION['desc']=$desc;
@@ -120,6 +122,7 @@ class Challenge
 	}
 	
 	// Modifier un challenge dans la BDD
+	
 	public function update_challenge($idchallenge, $title, $desc, $date_start, $date_stop) {
 		
 		$query=$db->prepare('UPDATE thechallenger.challenge SET title=:title,desc=:desc,datestart=:date_start,datestop=:date_stop WHERE id=:idchallenge');
@@ -132,6 +135,7 @@ class Challenge
 	}
 	
 	// Suppression d'un challenge
+	
 	public function delete_challenge($idchallenge){
 		
 		$query=$db->prepare('DELETE FROM thechallenger.challenge WHERE id=:idchallenge');
@@ -142,6 +146,7 @@ class Challenge
 
 
 	// Récupérer le gagnant du post
+	
 	public function getWinner() {
 		
 		$ch = $this->id;
@@ -152,6 +157,17 @@ class Challenge
 		$query->CloseCursor();
 	}
 	
+	// Gestion du temps des challenges
+	
+	public function deadLine() {
+		
+		$ch = $this->id;
+		$query = $db->prepare('SELECT datestop FROM challenge WHERE id = :ch');
+		$query->binParam(':ch',$ch,PDO::PARAM_INT);
+		$query->execute();
+		$result = $query->fetch();
+		if (date() > $result) delete_challenge($ch);
+	}
 }
 
 ?>
