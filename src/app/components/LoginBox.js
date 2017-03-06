@@ -6,10 +6,10 @@ import SignUpForm from "./SignUpForm.js"
 export default class LoginBox extends React.Component{
 	render(){
 		return(
-			<div id="login_box" className="col-lg-2">
+			<div id="login_box" >
 				<h2 className="title">The Challenger</h2>
 				<LoginForm/>
-				<p className>OR</p> 
+				<p>OR</p> 
 				<SignUpForm/>
 			</div>
 		);

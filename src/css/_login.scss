@@ -8,7 +8,28 @@
 	background-color: rgba(255, 255, 255, 0.6);
 	border-radius: 5px;
 	text-align: center;
-	padding : 1%;
+	padding : 2%;
+	.title{
+		padding-bottom: 10%;
+	}
+	.submit {
+		background-color: rgb(95, 2, 31); // $banniereColor;
+		color: rgb(255,255,255);
+		width: 100%;
+		padding: 2%;
+		margin-top: 8%;
+		border-style: none;	
+	}
+	.button{
+		border-style: none;
+		width: 100%;
+		margin-bottom: 20px;
+		color: rgb(95, 2, 31); //$banniereColor;	
+	}
+	p{
+		margin: 4%;
+		margin-top: -2%;
+	}	
 }
 
 .overlay{
@@ -36,9 +57,6 @@
 		color: #fff;
 		font-size: 1em;
 }
-.button {
-	background-color: rgba(255, 0, 0, 0.6);
-	padding: 10%;
-}	
+	
 
 }

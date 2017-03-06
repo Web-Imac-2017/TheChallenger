@@ -39,33 +39,33 @@ export default class SignUpForm extends React.Component{
 		return(
 			<div>
 				<div>
-					<button className="submit button" href="#" onClick={this.handleClick.bind(this)}>Create an account</button>
+					<button className="button btn btn-default" href="#" onClick={this.handleClick.bind(this)}>Create an account</button>
 				</div>
 				<div style={formStyle}>
 					<form className="form" ref="sign_up_form" method="POST" action="signUp">
-				     	<input type="text" name="pseudo" className="field-in" placeholder="Pseudo"/>
+				     	<input type="text" name="pseudo" className="field-in form-control" placeholder="Pseudo"/>
 				     	<input 
 				     		type="email" 
 				     		name="email" 
-				     		className="field-in" 
+				     		className="field-in form-control" 
 				     		placeholder="Email"
 				     	/>
 				      	<input 
 				      		type="password" 
 				      		name="password" 
 				      		ref="pwd1" 
-				      		className="field-in" 
+				      		className="field-in form-control" 
 				      		placeholder="Password"
 				      	/>
 				      	<input 
 				      		type="password" 
 				      		name="re-password"
 				      		ref="pwd2" 
-				      		className={"field-in "+ pwdError} 
+				      		className={"field-in form-control"+ pwdError} 
 				      		placeholder="Confirm your password" 
 				      		onBlur={this.handleLostFocus.bind(this)}
 				      	/>
-				      	<button className="submit button" onClick={this.handleSubmitClick.bind(this)}>Sign Up</button>
+				      	<button className="submit btn btn-default" onClick={this.handleSubmitClick.bind(this)}>Sign Up</button>
 				    </form>
 			    </div>
 			</div>
