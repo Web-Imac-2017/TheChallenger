@@ -64,7 +64,7 @@ class User
 	}
 
 	//on envoi le mail de confirmation
-	public static function registeremail(){
+	public function registeremail(){
 		global $db;
 		$key=sha1(microtime(TRUE)*100000); //création de la clé unique
 		$registerdate=date("d m Y");
