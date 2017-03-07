@@ -50,7 +50,7 @@
 	    $query->bindParam(':date_stop',$date,PDO::PARAM_STR);
 	    $query->execute();
 	    $query->CloseCursor();
-		}
+		echo(json_encode(["code" => 1,"message" => "Success : challenge added"]));
 	}
 	
 	// Modifier un challenge dans la BDD
@@ -75,16 +75,23 @@
 			$query->bindParam(':date_stop',$date,PDO::PARAM_STR);
 			$query->execute();
 			$query->CloseCursor();
+			echo(json_encode(["code" => 1,"message" => "Success : challenge updated"]));
 		}
 	}
 	
 	// Suppression d'un challenge
 	public function delete_challenge($idchallenge){
 		
+		if (!$this->challenge_exists($idchallenge) {
+		
+			echo(json_encode(["code" => 0,"message" => "Error : challenge does not exists"]));
+			exit();
+		}
 		$query=$db->prepare('DELETE FROM thechallenger.challenge WHERE id=:idchallenge');
         $query->bindParam(':idchallenge',$idchallenge,PDO::PARAM_INT);
         $query->execute();
         $query->CloseCursor();
+		echo(json_encode(["code" => 1,"message" => "Success : challenge deleted"]));
 	}
 
 		
