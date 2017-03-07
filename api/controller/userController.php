@@ -224,7 +224,28 @@ class userController{
 		$query->bindParam(':idfollowed', $id, PDO::PARAM_INT);
 		$query->execute();
 		$query->CloseCursor();
-		
+	}
+
+	//nombre de personne que le user suit
+	public static function ndfollow($id){
+		global $db;
+		$query=$db->prepare('SELECT COUNT(*) AS nbfollow FROM thechallenger.follow WHERE idfollower=:id');
+		$query->bindParam(':id', $id, PDO::PARAM_INT);
+		$query->execute();
+		$datas=$query->fetch();
+		$query->CloseCursor();
+		echo(json_encode(["code" => 1,"nb" => $datas['nbfollow']]));
+	}
+
+	//nombre de personne qui suivent le user
+	public static function ndfollower($id){
+		global $db;
+		$query=$db->prepare('SELECT COUNT(*) AS nbfollower FROM thechallenger.follow WHERE idfollowed=:id');
+		$query->bindParam(':id', $id, PDO::PARAM_INT);
+		$query->execute();
+		$datas=$query->fetch();
+		$query->CloseCursor();
+		echo(json_encode(["code" => 1,"nb" => $datas['nbfollower']]));
 	}
 
 	//fonction modification utilisateur, ajout avertissement et modif de rang
@@ -270,6 +291,31 @@ class userController{
 		}
 
 		echo(json_encode(["code" => 1,"message" => "Success"]));
+	}
+
+	public function toArray($id){
+
+		$query=$db->prepare('SELECT * FROM thechallenger.post WHERE id=:id');
+		$query->bindParam(':id',$id,PDO::PARAM_INT);
+		$query->execute();
+		$datas=$query->fetch();
+		$query->CloseCursor();
+		if(empty($datas['id'])){
+	    	echo(json_encode(["code" => 0,"message" => "user doesn't exist"]));
+			exit();
+		}
+		$item = [
+			"id" => $id,
+			"rank" => $datas['rank'],
+			"name" => $datas['name'],
+			"email" => $datas['email'],
+			"photo" => $datas['photo'],
+			"description" => $datas['description'],
+			"registerdate" => $datas['registerdate'],
+			"birthdate" => $datas['birthdate'],
+			"cptwarnings" => $datas['cptwarnings']
+		];
+		echo(json_encode($item));
 	}
 
 }

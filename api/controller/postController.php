@@ -195,7 +195,7 @@ class postController
 			exit();
 		}
 		$query=$db->prepare('SELECT * FROM thechallenger.post WHERE id=:idpost');
-		$query->bindParam(':ispost',$id,PDO::PARAM_INT);
+		$query->bindParam(':idpost',$id,PDO::PARAM_INT);
 		$query->execute();
 		$datas=$query->fetch();
 		$query->CloseCursor();
