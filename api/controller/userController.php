@@ -295,7 +295,7 @@ class userController{
 
 	public function toArray($id){
 
-		$query=$db->prepare('SELECT * FROM thechallenger.post WHERE id=:id');
+		$query=$db->prepare('SELECT * FROM thechallenger.user WHERE id=:id');
 		$query->bindParam(':id',$id,PDO::PARAM_INT);
 		$query->execute();
 		$datas=$query->fetch();
