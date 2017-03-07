@@ -76,7 +76,7 @@ class Challenge
 		$query->CloseCursor();
 		if($datas != 0) {
 		
-			$challenge = new Challenge($datas[id], $datas[title], $datas[desc], $datas[dateStart], $datas[dateStop]);
+			$challenge = new Challenge($datas['id'], $datas['title'], $datas['description'], $datas['dateStart'], $datas['dateStop']);
 			return $challenge;
 		}
 		else return false;
