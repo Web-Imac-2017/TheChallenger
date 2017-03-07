@@ -4,13 +4,15 @@
 
     class challengeController {
 
-		// Informations/affichage d'un challenge
-		
-        public static function infos($id){
-            $challenge = Challenge::challenge_exists($id);
-            echo(json_encode($challenge->toArray()));
-        }
-		// Vérifier si un challenge existe
+	// Informations/affichage d'un challenge
+	
+    public static function infos($id){
+            
+		$challenge = Challenge::challenge_exists($id);
+        echo(json_encode($challenge->toArray()));
+    }
+	
+	// Vérifier si un challenge existe
 	
 	public function challenge_exists($id){
 		
@@ -22,6 +24,7 @@
 		else return false;
 	}
 	
+	/*
 	// Afficher à partir de la BDD
 	public function display_challenge($id){
 		
@@ -32,6 +35,7 @@
         $query->CloseCursor();
         return $datas;
 	}
+	*/
 	
 	// Ajouter un challenge à la BDD
 	public function add_challenge($title, $desc, $date_start, $date_stop) {
@@ -50,15 +54,28 @@
 	}
 	
 	// Modifier un challenge dans la BDD
-	public function update_challenge($idchallenge, $title, $desc, $date_start, $date_stop) {
+	public function update_challenge($idchallenge) {
 		
-		$query=$db->prepare('UPDATE thechallenger.challenge SET title=:title,desc=:desc,datestart=:date_start,datestop=:date_stop WHERE id=:idchallenge');
-	    $query->bindParam(':title',$title,PDO::PARAM_STR);
-	    $query->bindParam(':desc',$desc,PDO::PARAM_STR);
-	    $query->bindParam(':date_start',$date,PDO::PARAM_STR);
-	    $query->bindParam(':date_stop',$date,PDO::PARAM_STR);
-        $query->execute();
-        $query->CloseCursor();
+		if(!$this->challenge_exists($idchallenge)){
+	    	echo(json_encode(["code" => 0,"message" => "Error challenge does not exists"]));
+			exit();
+		}
+		global $user;
+		if ($user->is_connected(MODERATEUR)) {
+			
+			$title=(!empty($_POST['title']))? $_POST['title']:"";
+			$desc=(!empty($_FILES['desc']))? $_FILES['desc']:"";
+			$date_start=(!empty($_POST['date_start']))? $_POST['date_start']:"";
+			$date_stop=(!empty($_POST['date_stop']))? $_POST['date_stop']:"";
+			global $db;
+			$query=$db->prepare('UPDATE thechallenger.challenge SET title=:title,desc=:desc,datestart=:date_start,datestop=:date_stop WHERE id=:idchallenge');
+			$query->bindParam(':title',$title,PDO::PARAM_STR);
+			$query->bindParam(':desc',$desc,PDO::PARAM_STR);
+			$query->bindParam(':date_start',$date,PDO::PARAM_STR);
+			$query->bindParam(':date_stop',$date,PDO::PARAM_STR);
+			$query->execute();
+			$query->CloseCursor();
+		}
 	}
 	
 	// Suppression d'un challenge
