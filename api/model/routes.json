@@ -87,4 +87,7 @@
 		"request" : "challengeController@delete_challenge";
 	}
 	
+	"challenge/posts/{id}" :{
+		"request" : "challengeController@show_posts";
+	}
 }
