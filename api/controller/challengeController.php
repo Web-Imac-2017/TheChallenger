@@ -1,6 +1,6 @@
 <?php
 
-    require_once("challenge.php");
+    require_once("../model/challenge.php");
 
     class challengeController {
 
