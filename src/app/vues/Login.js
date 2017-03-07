@@ -29,7 +29,7 @@ export default class Login extends React.Component{
 				console.log('Request successful', text);  
 			})  
 			.catch(function(error) {  
-				log('Request failed', error)  
+				console.log('Request failed', error)  
 			});
 	}
 

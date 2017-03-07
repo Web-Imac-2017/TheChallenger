@@ -9,6 +9,6 @@
 </head>
 <body>
 	<div id="app"></div>
-	<script src="./dist/app/bundle.js"></script>
-</body>
+	<script src="./app/bundle.js"></script>
+</body>	
 </html>

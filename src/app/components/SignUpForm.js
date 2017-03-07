@@ -34,7 +34,7 @@ export default class SignUpForm extends React.Component{
 
 	render(){
 		var formStyle = {display : this.state.formVisible?'block':'none'}
-
+		var pwdError = (this.state.pwdIsWrong)?" error":""
 		return(
 			<div>
 				<div>
@@ -60,7 +60,7 @@ export default class SignUpForm extends React.Component{
 				      		type="password" 
 				      		name="pwdconfirm"
 				      		ref="pwd2" 
-				      		className={"field-in form-control"+ pwdError} 
+				      		className={"field-in form-control "+ pwdError} 
 				      		placeholder="Confirm your password" 
 				      		onBlur={this.handleLostFocus.bind(this)}
 				      	required/>
