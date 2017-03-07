@@ -64,7 +64,20 @@ class Challenge
 		return $this->datestop; 
 	}
 	
+	// retourne les posts correspondant au challenge
+	
+		
+	public static function getPosts($idchallenge) {
 
+		global $db;
+		$query = $db->prepare('SELECT * FROM thechallenger.post WHERE id=:idchallenge');
+		$query->bindParam(':idchallenge',$idchallenge,PDO::PARAM_INT);
+		$query->execute();
+		$posts = $quert->fetch();
+		$query->CloseCursor();
+		return posts;
+	}
+	
 	// Retourne les données en JSON
 
 	public function toArray() {
@@ -75,7 +88,8 @@ class Challenge
 			"title"=> $this->get_title(),
 			"description" => utf8_encode($this->get_desc()),
 			"date_start" => $this->get_dateStart(),
-			"date_stop" => $this->get_dateStop()
+			"date_stop" => $this->get_dateStop(),
+			"posts" => $this->get_posts($this->getId())
 		];
 		return $item;
 	}	
