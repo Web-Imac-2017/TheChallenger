@@ -75,7 +75,7 @@
 		"request" : "challengeController@toArray";
 	}
 	
-	"challenge/add/{id}": {
+	"challenge/add/": {
 		"request" : "challengeController@add_challenge";
 	}
 	
