@@ -33,6 +33,7 @@ export default class PostMin extends React.Component{
             <div className="post-min">
             <PostProfilBar userId = {this.state.post.user} />
             <PostContent postId = {this.state.post.id} />
+            <PostLikesbar postId = {this.state.post.id} />
             </div>
     );
   }

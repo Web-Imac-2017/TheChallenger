@@ -3,5 +3,6 @@
 	  "user" : 1,
     "type" : "file",
 	  "content" : "google.fr",
-	  "description" : "Je suis une courte description"
+	  "description" : "Je suis une courte description",
+    "likes": 5
 }
