@@ -1,15 +1,20 @@
 .page_about{
-	background-color: rgba(150, 150, 150, 0.95);
+	color: black;
+	border-radius: 1%;
+	background-color: rgba(200, 200, 200, 1);
 	z-index:1;
 	position: absolute;
 	margin-top: -40%;
-	padding: 0% 11%;
-	width:100%;
+	padding: 0%;
+	padding-left: 3%;
+	margin-left: 25%;
+	position: absolute;
 }
 .aboutus{
 	h1{
 		position: relative;
 		text-align: center;
+		margin: 0;
 	}
 	p{
 		text-align: center;
@@ -18,23 +23,35 @@
 	}
 
 	.member{
+	   width: 45%;
+    	margin-right: 3%;
+    	background-color: white;
+		border-radius: 2%;		
 		display: inline-block;
-		padding: 0;
 		margin-bottom: 2%;	
+		padding: 0;
 		img {
-			width: 150px;
-			height: 150px;
+			width: 75px;
+			height: 75px;
 			border-radius: 50%;
+			margin-bottom: 4%;
+			margin-top: 4%;
+			margin-left: 4%;
 			padding: 0;
 		}
-		h2 {
+		h4 {
 			text-align: center;
 	    	display: inline-block;
+	    	margin: 0;
+	    	margin-top: 10%;
+	    	padding: 0;
 		}
 		p{
 	    	text-align: center;
 	    	display: inline-block;
 	    	margin-bottom : 0;
+	    	font-size: 90%;
+	    	padding: 0;
 		}
 	}	
 }

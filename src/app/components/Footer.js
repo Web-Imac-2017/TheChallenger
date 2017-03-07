@@ -78,7 +78,7 @@ export default class Footer extends React.Component {
 										
 										
 					{this.state.aboutActive&&(
-						<div className ="page_about col-lg-10">
+						<div className ="page_about col-lg-6">
 							<button onClick={this.closeAbout} className="close-contact" >
 								<img src= "../img/icons/cross_quit.png"width="30" height="30"/>
 							</button>
