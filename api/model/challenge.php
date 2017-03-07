@@ -65,7 +65,6 @@ class Challenge
 	}
 	
 	// retourne les posts correspondant au challenge
-	
 		
 	public static function getPosts($idchallenge) {
 
@@ -88,8 +87,7 @@ class Challenge
 			"title"=> $this->get_title(),
 			"description" => utf8_encode($this->get_desc()),
 			"date_start" => $this->get_dateStart(),
-			"date_stop" => $this->get_dateStop(),
-			"posts" => $this->get_posts($this->getId())
+			"date_stop" => $this->get_dateStop()
 		];
 		return $item;
 	}	
@@ -103,6 +101,7 @@ class Challenge
 		$query->execute();
 		$datas=$query->fetch();
 		$query->CloseCursor();
+		return $datas;
 	}
 	
 }
