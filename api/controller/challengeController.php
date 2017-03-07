@@ -1,8 +1,8 @@
 <?php
 
-    require_once("../model/challenge.php");
+require_once("../model/challenge.php");
 
-    class challengeController {
+class challengeController {
 
 	// Informations/affichage d'un challenge
 	
@@ -39,7 +39,7 @@
 	
 	// Ajouter un challenge à la BDD
 	public function add_challenge() {
-
+		
 		global $user;
 		if ($user->is_connected(MODERATEUR)) {
 			
@@ -100,6 +100,25 @@
 		echo(json_encode(["code" => 1,"message" => "Success : challenge deleted"]));
 	}
 
+	public function add_post() {
 		
+		//Post::addpost($id);
+	}
+
+	// Envoyer tous les posts d'un challenge
+	public function show_posts($idchallenge) {
+		
+		$challenge = challenge_exists($idchallenge);
+		if (!$challenge) {
+		
+			echo(json_encode(["code" => 0,"message" => "Error : challenge does not exist"]));
+			exit();
+		}
+		$post = $challenge->getPosts();
+		$result_tab = array();
+		foreach ($post as $p) array_push($result_tab, $p->toArray());
+		echo(json_encode($result_tab));
+	}
+	
 }
 ?>
