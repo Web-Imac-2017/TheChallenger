@@ -4,6 +4,7 @@
 	require_once('model/routing.php');
 
 	require_once("controller/userController.php");
+	require_once("controller/postController.php");
 
 	//Permet d'include les classes depuis le controller directement sans avoir à cité le controller
 	function __autoload($class_name){
