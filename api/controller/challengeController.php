@@ -63,7 +63,7 @@
 	public function update_challenge($idchallenge) {
 		
 		if(!$this->challenge_exists($idchallenge)){
-	    	echo(json_encode(["code" => 0,"message" => "Error challenge does not exists"]));
+	    	echo(json_encode(["code" => 0,"message" => "Error challenge does not exist"]));
 			exit();
 		}
 		global $user;
@@ -90,7 +90,7 @@
 		
 		if (!$this->challenge_exists($idchallenge) {
 		
-			echo(json_encode(["code" => 0,"message" => "Error : challenge does not exists"]));
+			echo(json_encode(["code" => 0,"message" => "Error : challenge does not exist"]));
 			exit();
 		}
 		$query=$db->prepare('DELETE FROM thechallenger.challenge WHERE id=:idchallenge');
@@ -101,5 +101,5 @@
 	}
 
 		
-    }
+}
 ?>
