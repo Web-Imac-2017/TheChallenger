@@ -38,6 +38,10 @@ export default class PostProfilBar extends React.Component{
 		//var res = 
 	}
 
+	handleFollowClick(){
+
+	}
+
 	render(){
 		if(this.state.user === null)
 			return null;
