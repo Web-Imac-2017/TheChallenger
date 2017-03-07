@@ -1,8 +1,6 @@
 
 var utility = {
 	getJSON(url, obj){
-		//var url = document.domain+url;
-		console.log("URL = "+url);
 		fetch(url)
 			.then(function(response){
 				if (response.status !== 200) {  

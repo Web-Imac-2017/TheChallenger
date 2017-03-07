@@ -1,6 +1,8 @@
 import React from 'react';
+//import BackgroundImage from 'react-background-image-loader';
 import { BrowserRouter as Router,
          Link } from "react-router";
+         
 import Utility from './../../utilities/utility.js';
 
 export default class PostProfilBar extends React.Component{
@@ -22,17 +24,14 @@ export default class PostProfilBar extends React.Component{
 	}
 
 	callback(data){
-		console.log(data);
 		this.setState({ user : data });
 		//this.loadImg(data.photo);
 		this.checkFollowing();
 	}
 
-	loadImg(photo){
-		console.log(photo)
-		const img = require(String(photo));
+	/*loadImg(photo){
 		this.setState ({ LoadedImg : img });
-	}
+	}*/
 
 	checkFollowing(){
 		//TODO checker quoi afficher Follow ou following
@@ -42,13 +41,19 @@ export default class PostProfilBar extends React.Component{
 	render(){
 		if(this.state.user === null)
 			return null;
+		var divStyle = {
+            backgroundImage: 'url(' + this.state.user.photo + ')'
+        }
+        //TODO Trouver une solution pour les chemins !!
 		return(
 			<div className="post__profil_bar">
 				<Link to={"/profil/"+this.state.user.id}>
-					<img src={this.state.user.photo} alt="" className="profil_pic"/>
-					<h3>{this.state.user.name}</h3>
+					<div 
+							style={divStyle} 
+							className="profil_pic"/>
+					<h4 className="post__profil__pseudo">{this.state.user.name}</h4>
 				</Link>
-				<button className="follow_btn button" href="#">FOLLOW</button>
+				<button className="follow_btn button" href="#">Follow</button>
 			</div>
 		);
 	}

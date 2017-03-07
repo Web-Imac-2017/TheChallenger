@@ -1,8 +1,9 @@
-require ('../css/main.scss');
+require ('../sass/main.scss');
 
 import React from "react";
 import ReactDOM from "react-dom";
 import { Router, Route, hashHistory } from 'react-router';
+//import BackgroundImage from 'react-background-image-loader';
 
 import utility 	from './utilities/utility.js';
 import Login 	from "./vues/Login.js";

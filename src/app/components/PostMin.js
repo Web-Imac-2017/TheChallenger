@@ -21,15 +21,9 @@ export default class PostMin extends React.Component{
   }
 
   callback(data){
-    console.log(data);
     this.setState ({
       post : data
     });
-    this.getContent();
-  }
-
-  getContent(){
-
   }
 
   render(){
