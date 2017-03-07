@@ -47,7 +47,7 @@
         "request" : "postController@deletepost"
     },
 
-     "post/like/add/{id}" : {
+    "post/like/add/{id}" : {
         "request" : "postController@addlike"
     },
 
@@ -70,4 +70,21 @@
     "message/send/": {
         "request" : "contactController@sendMessage"
     }
+	
+	"challenge/show/{id}": {
+		"request" : "challengeController@toArray";
+	}
+	
+	"challenge/add/{id}": {
+		"request" : "challengeController@add_challenge";
+	}
+	
+	"challenge/update/{id}": {
+		"request" : "challengeController@update_challenge";
+	}
+
+	"challenge/delete/{id}": {
+		"request" : "challengeController@delete_challenge";
+	}
+	
 }
