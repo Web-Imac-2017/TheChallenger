@@ -35,7 +35,13 @@ export default class PostContent extends React.Component{
             media = (<img src={this.state.post.content} alt={this.state.post.content} />);
             break;
         case "audio":
+            media = ({this.state.post.content});
+            break;
         case "video":
+            media = (<iframe width="420" height="315"
+                     src={this.state.post.content}>
+                     </iframe> );
+            break;
         case "file":
             media = (<p>FILE: {this.state.post.content}</p>);
             break;
@@ -67,9 +73,9 @@ export default class PostContent extends React.Component{
 
     render(){
         return (
-                <div className="post-content"><Link to={"/post/"+this.state.post.id}>
+                <div className="post-content">
                 {this.state.renderContent}
-            </Link></div>
+            </div>
         );
     }
 }
