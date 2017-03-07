@@ -1,26 +1,11 @@
 <?php 
 
-class Challenge
+class Winner extends User
 {
-
-	private $id;
-	private $title;
-	private $desc;
-	private $datestart;
-	private $datestop;
-
 	// CONSTRUCTEUR
 	
-	function __construct($val_id, $val_title, $val_desc, $val_start, $val_stop) {
-		
-		$this->id = $val_id;
-		$this->title = $val_title;
-		$this->desc = $val_desc;
-		$this->datestart = $val_start;
-		$this->datestop = $val_stop;
+	function __construct() {
 	}
-		
-	// SETTERS
 	
 	public function set_id($value) { 
 		$this->id = $value; 
@@ -64,24 +49,6 @@ class Challenge
 		return $this->datestop; 
 	}
 	
-	// Vérifier si un challenge existe à partir de son id, retourner le challenge correspondant dans ce cas
-	// false s'il n'existe pas
-	public static function challenge_exists($id){
-		
-		global $db;
-		$query=$db->prepare('SELECT * FROM thechallenger.challenge WHERE id =:id');
-        $query->bindParam(':id',$id,PDO::PARAM_INT);
-        $query->execute();
-		$datas=($query->fetchColumn()==0)?$query->fetch():false;
-		$query->CloseCursor();
-		if($datas != 0) {
-		
-			$challenge = new Challenge($datas[id], $datas[title], $datas[desc], $datas[dateStart], $datas[dateStop]);
-			return $challenge;
-		}
-		else return false;
-	}
-	
 	// retourne les posts correspondant au challenge
 		
 	public static function getPosts($idchallenge) {
@@ -123,7 +90,6 @@ class Challenge
 		];
 		return $item;
 	}	
-	
 }
 
 ?>

@@ -4,7 +4,7 @@ require_once("model/challenge.php");
 
 class challengeController {
 	
-	// $user=new User();
+	$user=new User();
 
 	// Informations/affichage d'un challenge
 	
@@ -24,7 +24,7 @@ class challengeController {
 			$date_start=(!empty($_POST['date_start']))? $_POST['date_start']:"";
 			$date_stop=(!empty($_POST['date_stop']))? $_POST['date_stop']:"";
 			global $db;
-			$query=$db->prepare('INSERT INTO thechallenger.challenge (title, desc, datestart, datestop) VALUES (:title,:desc,:date_start,:date_stop)');
+			$query=$db->prepare('INSERT INTO thechallenger.challenge (title, description, datestart, datestop) VALUES (:title,:desc,:date_start,:date_stop)');
 			$query->bindParam(':title',$title,PDO::PARAM_STR);
 			$query->bindParam(':desc',$desc,PDO::PARAM_STR);
 			$query->bindParam(':date_start',$date,PDO::PARAM_STR);
