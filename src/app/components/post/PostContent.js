@@ -26,7 +26,7 @@ export default class PostContent extends React.Component{
         Utility.getJSON(jsonPath, this);
     }
 
-    callback() {
+    callback(data) {
         console.log(data);
         this.setState({
             post : {
