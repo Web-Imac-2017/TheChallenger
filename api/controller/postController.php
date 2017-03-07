@@ -1,9 +1,10 @@
 <?php 
 include_once("model/Post.php");
 
+$user=new User();
+
 class Post
 {
-	$user=new User();
 
 	//recupère toutes les infos d'un post
 	public function displaypost($id){
@@ -20,7 +21,7 @@ class Post
 	public function checklike($idpost){
 		global $db;
 		global $user;
-		if(!$user->is_connected(MEMBRE){
+		if(!$user->is_connected(MEMBRE)){
 			exit();
 		}
 		else{
@@ -89,16 +90,11 @@ class Post
 			exit();
 		}
 
-		$_SESSION['title']=$title;
-		$_SESSION['image']=$image;
-		$_SESSION['type']=$type;
-		$_SESSION['desc']=$desc;
 		$date=date("d m Y");
-		
-
+	
 		global $db;
 		$post=new Post();
-		$testimage=$this->test_image($image);
+		$testimage=$post->test_image($image);
 		if($testimage==1 || $testimage==2){ //pas d'erreur sur l'image
 			//on déplace l'image dans le bon dossier
 			$linkcontent=$post->move_image($image,'images/images_posts');
@@ -175,6 +171,22 @@ class Post
 	        $query->execute();
 	        $query->CloseCursor();
 	    }
+	}
+
+	public function getRandomBackground(){
+		$query=$db->prepare('SELECT COUNT(*) AS nbhd FROM thechallenger.post WHERE hd=1');
+		$query->execute();
+		$datas=$query->fetch();
+		$nbhd=$datas['nbhd'];
+		$query->CloseCursor();
+		$random=rand(1,$nbhd);
+		$query=$db->prepare('SELECT linkcontent FROM thechallenger.post WHERE hd=1');
+		$query->execute();
+		$i=1;
+		while($datas=$query->fetch() && $i!=$random){
+			$i++;
+		}
+		echo(json_encode(["code" => 1,"lien" => $datas['linkcontent']]));
 	}
 
 	public function toArray($id){
