@@ -11,7 +11,8 @@ export default class PostProfilBar extends React.Component{
 		super(props);
 		this.state ={
 			user : null, 
-			LoadedImg : null
+			LoadedImg : null, 
+			follow : false
 		}
 		this.loadData();
 	}
@@ -19,6 +20,7 @@ export default class PostProfilBar extends React.Component{
 	loadData(){
 		var userId = this.props.userId;
 		//var data = Object.values(getJSON('/getUser/{'+userId+'}');
+
 		var jsonPath = require('./../../json/user'+userId+'.json');
 		Utility.getJSON(jsonPath, this);	
 	}
@@ -39,6 +41,11 @@ export default class PostProfilBar extends React.Component{
 	}
 
 	handleFollowClick(){
+		//TODO envoyé la requete pour follow ou unfollow
+		if(this.state.follow){
+			this.setState({follow : false});
+		}else
+			this.setState({follow : true});
 
 	}
 
@@ -48,16 +55,19 @@ export default class PostProfilBar extends React.Component{
 		var divStyle = {
             backgroundImage: 'url(' + this.state.user.photo + ')'
         }
+        var strFollow;
+        (this.state.follow)? strFollow="Following" : strFollow="Follow"
         //TODO Trouver une solution pour les chemins !!
 		return(
 			<div className="post__profil_bar">
 				<Link to={"/profil/"+this.state.user.id}>
-					<div 
-							style={divStyle} 
+					<div	style={divStyle} 
 							className="profil_pic"/>
 					<h4 className="post__profil__pseudo">{this.state.user.name}</h4>
 				</Link>
-				<button className="follow_btn button" href="#">Follow</button>
+				<button className="follow_btn button" 
+						onClick={this.handleFollowClick.bind(this)}
+						>{strFollow}</button>
 			</div>
 		);
 	}
