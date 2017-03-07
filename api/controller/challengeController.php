@@ -1,8 +1,10 @@
 <?php
 
-require_once("../model/challenge.php");
+require_once("model/challenge.php");
 
 class challengeController {
+	
+	// $user=new User();
 
 	// Informations/affichage d'un challenge
 	
@@ -12,37 +14,11 @@ class challengeController {
         echo(json_encode($challenge->toArray()));
     }
 	
-	// Vérifier si un challenge existe
-	
-	public function challenge_exists($id){
-		
-		$query=$db->prepare('SELECT * FROM thechallenger.challenge WHERE id =:id');
-        $query->bindParam(':id',$id,PDO::PARAM_INT);
-        $query->execute();
-        $datas=$query->fetch();
-		if($data->rowcount() != 0) return $data;
-		else return false;
-	}
-	
-	/*
-	// Afficher à partir de la BDD
-	public function display_challenge($id){
-		
-		$query=$db->prepare('SELECT * FROM thechallenger.challenge WHERE id =:id');
-        $query->bindParam(':id',$id,PDO::PARAM_INT);
-        $query->execute();
-        $datas=$query->fetch();
-        $query->CloseCursor();
-        return $datas;
-	}
-	*/
-	
 	// Ajouter un challenge à la BDD
-	public function add_challenge() {
+	public static function add_challenge() {
 		
 		global $user;
-		if ($user->is_connected(MODERATEUR)) {
-			
+		// if ($user->is_connected(MODERATEUR)) {
 			$title=(!empty($_POST['title']))? $_POST['title']:"";
 			$desc=(!empty($_FILES['desc']))? $_FILES['desc']:"";
 			$date_start=(!empty($_POST['date_start']))? $_POST['date_start']:"";
@@ -55,15 +31,18 @@ class challengeController {
 			$query->bindParam(':date_stop',$date,PDO::PARAM_STR);
 			$query->execute();
 			$query->CloseCursor();
-			echo(json_encode(["code" => 1,"message" => "Success : challenge updated"]));
-		}
+			echo(json_encode(["code" => 1,"message" => "Success : challenge added"]));
+		// }
 	}
 	
+	
 	// Modifier un challenge dans la BDD
-	public function update_challenge($idchallenge) {
+	public static function update_challenge($idchallenge) {
 		
-		if(!$this->challenge_exists($idchallenge)){
-	    	echo(json_encode(["code" => 0,"message" => "Error challenge does not exist"]));
+		$challenge = Challenge::challenge_exists($idchallenge);
+		if (!$challenge) {
+		
+			echo(json_encode(["code" => 0,"message" => "Error : challenge does not exist"]));
 			exit();
 		}
 		global $user;
@@ -86,9 +65,10 @@ class challengeController {
 	}
 	
 	// Suppression d'un challenge
-	public function delete_challenge($idchallenge){
+	public static function delete_challenge($idchallenge){
 		
-		if (!$this->challenge_exists($idchallenge) {
+		$challenge = Challenge::challenge_exists($idchallenge);
+		if (!$challenge) {
 		
 			echo(json_encode(["code" => 0,"message" => "Error : challenge does not exist"]));
 			exit();
@@ -100,15 +80,15 @@ class challengeController {
 		echo(json_encode(["code" => 1,"message" => "Success : challenge deleted"]));
 	}
 
-	public function add_post() {
+	public static function add_post() {
 		
 		//Post::addpost($id);
 	}
 
 	// Envoyer tous les posts d'un challenge
-	public function show_posts($idchallenge) {
+	public static function show_posts($idchallenge) {
 		
-		$challenge = challenge_exists($idchallenge);
+		$challenge = Challenge::challenge_exists($idchallenge);
 		if (!$challenge) {
 		
 			echo(json_encode(["code" => 0,"message" => "Error : challenge does not exist"]));
