@@ -3,11 +3,11 @@ import React from "react";
 export default class LoginForm extends React.Component{
 	render(){
 		return(
-			<div>
+			<div className="form-group">
 				<form className="form" method="POST" action="login">
-			     	<input type="email" name="email" className="field-in" placeholder="Email"/>
-			      	<input type="password" name="password" className="field-in" placeholder="Password"/>
-			      	<button className="submit button" href="#">Login</button>
+			     	<input type="email" name="email" className="field-in form-control" placeholder="Email"/>
+			      	<input type="password" name="password" className="field-in form-control" placeholder="Password"/>
+			      	<button className="submit btn btn-default" href="#">Login</button>
 			    </form>
 			</div>
 		);
