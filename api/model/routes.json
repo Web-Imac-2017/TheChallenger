@@ -69,25 +69,25 @@
 
     "message/send/": {
         "request" : "contactController@sendMessage"
-    }
+    },
 	
 	"challenge/show/{id}": {
-		"request" : "challengeController@toArray";
-	}
+		"request" : "challengeController@toArray"
+	},
 	
 	"challenge/add/": {
-		"request" : "challengeController@add_challenge";
-	}
+		"request" : "challengeController@add_challenge"
+	},
 	
 	"challenge/update/{id}": {
-		"request" : "challengeController@update_challenge";
-	}
+		"request" : "challengeController@update_challenge"
+	},
 
 	"challenge/delete/{id}": {
-		"request" : "challengeController@delete_challenge";
-	}
+		"request" : "challengeController@delete_challenge"
+	},
 	
 	"challenge/posts/{id}" :{
-		"request" : "challengeController@show_posts";
+		"request" : "challengeController@show_posts"
 	}
 }
