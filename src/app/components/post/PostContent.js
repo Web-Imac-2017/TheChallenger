@@ -16,8 +16,32 @@ export default class PostContent extends React.Component{
                 // NOTE: pour ce component la description n'est pas utile normalement, mais c'est pour y penser dans le formet JSON d'un post.
                 // description : null,
                 content : null
-            }
+            },
+            renderContent: null
         };
+        this.loadData();
+    }
+
+    preRender() {
+        if(this.state.post == null)
+            return null;
+        // media sera inséré dans return(), comme ça ça dépend du type du post.
+        let media = null;
+        switch(this.state.post.type) {
+        case "text":
+            media = (<p>{this.state.post.content}</p>);
+            break;
+        case "image":
+            media = (<img src={this.state.post.content} alt={this.state.post.content} />);
+            break;
+        case "audio":
+        case "video":
+        case "file":
+            media = (<p>FILE: {this.state.post.content}</p>);
+            break;
+        default: break;
+        }
+        return media;
     }
 
     loadData() {
@@ -26,7 +50,7 @@ export default class PostContent extends React.Component{
         Utility.getJSON(jsonPath, this);
     }
 
-    callback() {
+    callback(data) {
         console.log(data);
         this.setState({
             post : {
@@ -35,33 +59,17 @@ export default class PostContent extends React.Component{
                 content : data.content
             }
         });
+        this.setState({
+            post: this.state.post,
+            renderContent: this.preRender()
+        });
     }
 
     render(){
-        if(this.state.user == null)
-            return null;
-        // media sera inséré dans return(), comme ça ça dépend du type du post.
-        let media = null;
-        switch(this.state.user.type) {
-        case "text":
-            media = (<p>{this.state.user.content}</p>);
-            break;
-        case "image":
-            media = (<img src={this.state.user.content} alt={this.state.user.content} />);
-            break;
-        case "audio":
-        case "video":
-        case "file":
-            media = (<a href={this.state.user.content}>{this.state.user.content}</a>);
-            break;
-        default: break;
-        }
-        return(
-                <div className="post-content">
-                <Link to={"/post/"+this.state.post.id}>
-                {media}
-                </Link>
-                </div>
+        return (
+                <div className="post-content"><Link to={"/post/"+this.state.post.id}>
+                {this.state.renderContent}
+            </Link></div>
         );
     }
 }
