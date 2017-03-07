@@ -3,7 +3,7 @@ include_once("model/Post.php");
 
 $user=new User();
 
-class Post
+class postController
 {
 
 	//recupère toutes les infos d'un post
