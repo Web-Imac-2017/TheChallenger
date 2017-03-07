@@ -49,47 +49,6 @@ class Winner extends User
 		return $this->datestop; 
 	}
 	
-	// retourne les posts correspondant au challenge
-		
-	public static function getPosts($idchallenge) {
-
-		global $db;
-		$query = $db->prepare('SELECT * FROM thechallenger.post WHERE id=:idchallenge');
-		$query->bindParam(':idchallenge',$idchallenge,PDO::PARAM_INT);
-		$query->execute();
-		$posts = $quert->fetch();
-		$query->CloseCursor();
-		return posts;
-	}
-	
-	// Récupérer le gagnant du post
-	
-	public function getWinner() {
-		
-		$ch = $this->id;
-		$query=$db->prepare(''); //requete retournant l'id du post gagnant
-		$query->bindParam(':ch', htmlspecialchars($ch),PDO::PARAM_STR);
-		$query->execute();
-		$datas=$query->fetch();
-		$query->CloseCursor();
-		return $datas;
-	}
-	
-	// Retourne les données en JSON
-
-	
-	public function toArray() {
-			
-		$item = [
-
-			"id" => $this->getId(),
-			"title"=> $this->get_title(),
-			"description" => utf8_encode($this->get_desc()),
-			"date_start" => $this->get_dateStart(),
-			"date_stop" => $this->get_dateStop()
-		];
-		return $item;
-	}	
 }
 
 ?>
