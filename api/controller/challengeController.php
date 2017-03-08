@@ -23,16 +23,20 @@ class challengeController {
 		$query->execute();
 		$datas=$query->fetch();
 		$query->CloseCursor();
+		$time = Challenge::timeLeft($idchallenge);
 		$item = [
 			"id" => $idchallenge,
 			"title" => $datas['title'],
 			"description" => $datas['description'],
 			"datestart" => $datas['datestart'],
-			"datestop" => $datas['datestop']
-			
+			"datestop" => $datas['datestop'],
+			"time" => $time
 		];
+		
+		
 		echo(json_encode($item));
 	}
+
 	
 	// Ajouter un challenge à la BDD
 	public static function add_challenge() {
@@ -104,11 +108,6 @@ class challengeController {
 			$query->CloseCursor();
 			echo(json_encode(["code" => 1,"message" => "Success : challenge deleted"]));
 		}
-	}
-
-	public static function add_post() {
-		
-		//Post::addpost($id);
 	}
 
 	// retourner tous les posts d'un challenge
