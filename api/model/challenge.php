@@ -1,5 +1,7 @@
 <?php 
 
+require_once("model/database.php");
+
 class Challenge
 {
 
@@ -68,62 +70,77 @@ class Challenge
 	// false s'il n'existe pas
 	public static function challenge_exists($id){
 		
-		global $db;
+		$db = database::getPDO();
 		$query=$db->prepare('SELECT * FROM thechallenger.challenge WHERE id =:id');
         $query->bindParam(':id',$id,PDO::PARAM_INT);
         $query->execute();
-		$datas=($query->fetchColumn()==0)?$query->fetch():false;
+		$datas=($query->fetchColumn()==0)?0:1;
 		$query->CloseCursor();
-		if($datas != 0) {
-		
-			$challenge = new Challenge($datas[id], $datas[title], $datas[desc], $datas[dateStart], $datas[dateStop]);
-			return $challenge;
-		}
-		else return false;
+		return $datas;
 	}
 	
 	// retourne les posts correspondant au challenge
-		
 	public static function getPosts($idchallenge) {
 
 		global $db;
 		$query = $db->prepare('SELECT * FROM thechallenger.post WHERE id=:idchallenge');
 		$query->bindParam(':idchallenge',$idchallenge,PDO::PARAM_INT);
 		$query->execute();
-		$posts = $quert->fetch();
+		$tab = array();
+		while ($datas = $query->fetch()) { 
+			array_push($datas['id']);
+		};
 		$query->CloseCursor();
-		return posts;
+		return $tab;
 	}
 	
-	// Récupérer le gagnant du post
-	
-	public function getWinner() {
+	// Récupérer le gagnant du challenge
+	public function getWinner($idchallenge) {
 		
-		$ch = $this->id;
-		$query=$db->prepare(''); //requete retournant l'id du post gagnant
-		$query->bindParam(':ch', htmlspecialchars($ch),PDO::PARAM_STR);
+		global $db;
+		$query=$db->prepare('SELECT * FROM post WHERE idchallenge=:idchallenge AND winner = 1'); 
+		$query->bindParam(':idchallenge', htmlspecialchars($idchallenge),PDO::PARAM_STR);
 		$query->execute();
 		$datas=$query->fetch();
 		$query->CloseCursor();
-		return $datas;
+	}
+
+	/* Gestion du temps */
+	
+	// Retourne le temps restant
+	public static function timeLeft($idchallenge) {
+		
+		global $db;
+		$query=$db->prepare('SELECT datestop FROM challenge WHERE id=:idchallenge');
+		$query->bindParam(':idchallenge',$idchallenge,PDO::PARAM_INT);
+		$query->execute();
+		$stop=$query->fetch();
+		$query->closeCursor();
+		$date=strtotime($stop['datestop']);
+		$diff=$date-time();
+		$days=floor($diff/(60*60*24));
+		$hours=round(($diff-$days*60*60*24)/(60*60));
+		$time = [
+		
+			"days" => $days,
+			"hours" => $hours
+		];
+		return $time;
 	}
 	
-	// Retourne les données en JSON
-
-	
-	public function toArray() {
-			
-		$item = [
-
-			"id" => $this->getId(),
-			"title"=> $this->get_title(),
-			"description" => utf8_encode($this->get_desc()),
-			"date_start" => $this->get_dateStart(),
-			"date_stop" => $this->get_dateStop()
-		];
-		return $item;
-	}	
-	
+	// Date limite passée ou non
+	public static function deadLine($idchallenge) {
+		
+		global $db;
+		$query = $db->prepare('SELECT datestop FROM challenge WHERE id=:idchallenge');
+		$query->bindParam(':idchallenge',$idchallenge,PDO::PARAM_INT);
+		$query->execute();
+		$stop=$query->fetch();
+		$query->closeCursor();
+		$date=strtotime($stop['datestop']);
+		$today = date("Y-m-d");
+		return ($date > $today);
+	}
 }
 
 ?>

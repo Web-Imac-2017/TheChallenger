@@ -19,7 +19,11 @@
         "request" : "userController@logout"
     },
 
-    "user/confirm/{name}/{key}" : {
+    "user/testconnect/{rank}" : {
+        "request" : "userController@testConnect"
+    },
+
+    "user/confirm/{key}" : {
         "request" : "userController@confirm"
     },
 
@@ -32,11 +36,11 @@
     },
 
     "user/follow/nbfollow/{id}": {
-        "request" : "userController@ndfollow"
+        "request" : "userController@nbfollow"
     },
 
     "user/follow/nbfollower/{id}": {
-        "request" : "userController@ndfollower"
+        "request" : "userController@nbfollower"
     },
 
     "user/change/{id}" : {
