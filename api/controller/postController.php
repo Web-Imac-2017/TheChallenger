@@ -179,7 +179,6 @@ class postController
 		$query->execute();
 		$datas=$query->fetch();
 		$nbhd=$datas['nbhd'];
-		echo $nbhd;
 		$query->CloseCursor();
 		$random=rand(1,$nbhd);
 		$query=$db->prepare('SELECT * FROM thechallenger.post WHERE hd=1');
