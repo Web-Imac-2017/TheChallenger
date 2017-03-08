@@ -1,5 +1,7 @@
 <?php 
 
+require_once("model/database.php");
+
 class Challenge
 {
 
@@ -68,18 +70,24 @@ class Challenge
 	// false s'il n'existe pas
 	public static function challenge_exists($id){
 		
-		global $db;
+		$db = database::getPDO();
 		$query=$db->prepare('SELECT * FROM thechallenger.challenge WHERE id =:id');
         $query->bindParam(':id',$id,PDO::PARAM_INT);
         $query->execute();
-		$datas=($query->fetchColumn()==0)?$query->fetch():false;
+		$datas=($query->fetchColumn()==0)?1:0;
 		$query->CloseCursor();
-		if($datas != 0) {
+		return $datas;
+		// if($datas != 0) {
 		
-			$challenge = new Challenge($datas['id'], $datas['title'], $datas['description'], $datas['dateStart'], $datas['dateStop']);
-			return $challenge;
-		}
-		else return false;
+			// $challenge = new Challenge($datas['id'], $datas['title'], $datas['description'], $datas['dateStart'], $datas['dateStop']);
+			// echo"yeah";
+			// return $challenge;
+		// }
+		// else {
+			// $challenge = new Challenge("1","Titre","Description","2015/01/01","2016/01/01");
+			// echo "done";
+			// return false;
+		// }
 	}
 	
 	// retourne les posts correspondant au challenge
