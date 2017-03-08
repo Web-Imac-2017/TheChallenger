@@ -1,5 +1,6 @@
 import React from "react";
 import LoginBox from "./../components/LoginBox.js";
+import Utility from "./../utilities/Utility"
 
 require('isomorphic-fetch');
 //const imgBG = require ('./../../img/background.jpg');
@@ -21,17 +22,20 @@ export default class Login extends React.Component{
 	}*/	
 
 	getRandomImg(){
-		fetch('api/post/getRandomBackground')
-			.then(function(response){
-				this.setState({url : response.text})
-			})
-			.then(function(text) {  
-				console.log('Request successful', text);  
-			})  
-			.catch(function(error) {  
-				console.log('Request failed', error)  
-			});
+		
+		Utility.getJSON("api/post/getRandomBackground/", this);
 	}
+
+	callback(data){
+		console.log("MAMA")
+		if(typeof data === 'undefined')
+			return;
+		console.log(data);
+		this.setState ({
+	      url : data.url
+	    });
+	}
+
 
 	render(){
 		//var imgUrl = this.state.nextImg ? this.state.nextImgSrc : this.state.song.imgSrc;
