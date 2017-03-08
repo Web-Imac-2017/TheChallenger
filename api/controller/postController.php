@@ -185,14 +185,14 @@ class postController
 		while($datas=$query->fetch() && $i!=$random){
 			$i++;
 		}
-		echo(json_encode(["code" => 1,"lien" => $datas['linkcontent']]));
+		echo(json_encode(["code" => 1,"lien" => $datas['linkcontent'], "user" => $datas['iduser']]));
 	}
 
 	public static function toArray($idpost){
-		// if(!postController::checkpost($idpost)){
-	    	// echo(json_encode(["code" => 0,"message" => "error"]));
-			// exit();
-		// }
+		if(postController::checkpost($idpost)){
+	    	echo(json_encode(["code" => 0,"message" => "error"]));
+			exit();
+		}
 		global $db;
 		$query=$db->prepare('SELECT * FROM thechallenger.post WHERE id=:idpost');
 		$query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
