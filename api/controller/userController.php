@@ -82,41 +82,38 @@ class userController{
 	}
 
 	//si l'utilisateur clique sur le lien envoyé par email on confirme l'inscription
-	public static function confirm($name,$key){
-		if(empty($name) || empty($key)){
+	public static function confirm($key){
+		if(empty($key)){
 	    	echo(json_encode(["code" => 0,"message" => "Error param"]));
 			exit();
 		}
 
 		global $db;
-		$query = $db->prepare("SELECT key,rank FROM thechallenger.user WHERE name=:name ");
-		$query->bindParam(':name',$name,PDO::PARAM_STR);
-		if($query->execute(array(':name' => $name)) && $datas = $query->fetch())
+		$query = $db->prepare("SELECT name,rank FROM thechallenger.user WHERE keyactive=:key ");
+		$query->bindParam(':key',$key,PDO::PARAM_STR);
+		if($query->execute(array(':key' => $key)) && $datas = $query->fetch())
 		{
-			$keydb = $datas['key'];	// Récupération de la clé
+			$name = $datas['name'];	// Récupération de la clé
 			$rank = $datas['rank']; // $actif contiendra alors 0 ou 1
 		}
 
 		$query->CloseCursor();
-
+		if(empty($name)){
+	    	echo(json_encode(["code" => 0,"message" => "error, doesn't exis"]));
+			exit();
+		}
 		if ($rank>1){
 	    	echo(json_encode(["code" => 0,"message" => "account already activated"]));
 			exit();
 		} //membre deja actif
-	
-		if($key==$keydb){ //tout est bon on met à jour les infos
-			$query = $db->prepare("UPDATE thechallenger.user SET rank=2 WHERE name=:name");
-			$query->bindParam(':name',$name,PDO::PARAM_STR);
-			$query->execute();
-			$query->CloseCursor();
-			//on affiche le message de confirmation
-	    	echo(json_encode(["code" => 1,"message" => "Success"]));
-			exit();
-		}
-		else{
-	    	echo(json_encode(["code" => 0,"message" => "wrong key"]));
-			exit();
-		}
+		
+		$query = $db->prepare("UPDATE thechallenger.user SET rank=2 WHERE name=:name");
+		$query->bindParam(':name',$name,PDO::PARAM_STR);
+		$query->execute();
+		$query->CloseCursor();
+		//on affiche le message de confirmation
+    	echo(json_encode(["code" => 1,"message" => "Success"]));
+		
 	}
 
 	public static function login(){

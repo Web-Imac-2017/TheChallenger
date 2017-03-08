@@ -19,7 +19,7 @@
         "request" : "userController@logout"
     },
 
-    "user/confirm/{name}/{key}" : {
+    "user/confirm/{key}" : {
         "request" : "userController@confirm"
     },
 
