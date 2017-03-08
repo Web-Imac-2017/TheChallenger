@@ -53,10 +53,10 @@ export default class Footer extends React.Component {
 										
 			<footer >
 			
-				<div className="the_footer"  >
+				<div className="the_footer row"  >
 											
 										
-					<div className="col-xs-4  ">
+					<div className="col-xs-4">
 						<button id="btn"  onClick={this.openContact}> Contact </button>
 					</div>
 										
@@ -78,10 +78,8 @@ export default class Footer extends React.Component {
 										
 										
 					{this.state.aboutActive&&(
-						<div className ="page_about col-lg-6">
-							<button onClick={this.closeAbout} className="close-contact" >
-								<img src= "../img/icons/cross_quit.png"width="30" height="30"/>
-							</button>
+						<div className ="page_about">
+							<div className= "overlay"></div>
 							<AboutUs/>
 						</div>
 					)}					
