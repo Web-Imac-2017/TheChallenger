@@ -85,26 +85,11 @@ class challengeController {
 			exit();
 		}
 		global $user;
-		if ($user->is_connected(MODERATEUR)) {
+		// if ($user->is_connected(MODERATEUR)) {
 			
 			$title=(!empty($_POST['title']))? $_POST['title']:"";
 			$desc=(!empty($_FILES['desc']))? $_FILES['desc']:"";
 			$date_stop=(!empty($_POST['date_stop']))? $_POST['date_stop']:"";
-			if (empty($title)) {
-			
-				echo(json_encode(["code" => 0,"message" => "Challenge name field empty"]));
-				exit();
-			}
-			if (empty($desc)) {
-					
-				echo(json_encode(["code" => 0,"message" => "Challenge description field empty"]));
-				exit();
-			}
-			if (empty($date_stop)) {
-					
-				echo(json_encode(["code" => 0,"message" => "Stop date challenge empty"]));
-				exit();
-			}
 			$db = database::getPDO();
 			$query=$db->prepare('UPDATE thechallenger.challenge SET title=:title,description=:desc,datestop=:date_stop WHERE id=:idchallenge');
 			$query->bindParam(':idchallenge',$idchallenge,PDO::PARAM_INT);
@@ -114,7 +99,7 @@ class challengeController {
 			$query->execute();
 			$query->CloseCursor();
 			echo(json_encode(["code" => 1,"message" => "Success : challenge updated"]));
-		}
+		// }
 	}
 	
 	// Suppression d'un challenge
@@ -149,11 +134,11 @@ class challengeController {
 			exit();
 		}
 		$posts = Challenge::getPosts($idchallenge);
-		$result_tab = array();
+		// $result_tab = array();
 		for ($i=0; $i<count($posts); $i++) {
 			postController::toArray($posts[$i]);
 		}
-		echo (json_encode($posts));
+		// echo (json_encode($posts));
 	}
 	
 }
