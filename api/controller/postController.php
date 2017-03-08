@@ -189,7 +189,11 @@ class postController
 			$datas=$query->fetch();
 			$i++;
 		}
-		echo(json_encode(["code" => 1,"url" => $datas['linkcontent'], "user" => $datas['iduser']]));
+		$iduser = $datas['iduser'];
+		$query=$db->prepare('SELECT name FROM user WHERE id=:iduser');
+		$query->execute;
+		$result = $query->fetch();
+		echo(json_encode(["code" => 1,"url" => $datas['linkcontent'], "user" => $result['name']]));
 	}
 
 	public static function toArray($idpost){
