@@ -119,7 +119,7 @@ class postController
 		global $db;
 		//on vérifie si le name est déjà utilisé 
 		$query=$db->prepare('SELECT iduser FROM thechallenger.post WHERE id=:idpost');
-		$query->bindParam(':ispost',$idpost,PDO::PARAM_INT);
+		$query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
 		$query->execute();
 		$datas=$query->fetch();
 		$query->CloseCursor();
@@ -189,17 +189,18 @@ class postController
 	}
 
 	public static function toArray($idpost){
-		if(postController::checkpost($idpost)){
+		if(!postController::checkpost($idpost)){
 	    	echo(json_encode(["code" => 0,"message" => "error"]));
 			exit();
 		}
+		global $db;
 		$query=$db->prepare('SELECT * FROM thechallenger.post WHERE id=:idpost');
-		$query->bindParam(':idpost',$id,PDO::PARAM_INT);
+		$query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
 		$query->execute();
 		$datas=$query->fetch();
 		$query->CloseCursor();
 		$item = [
-			"id" => $id,
+			"id" => $idpost,
 			"title" => $datas['title'],
 			"state" => $datas['state'],
 			"type" => $datas['type'],
