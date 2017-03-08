@@ -29,21 +29,17 @@ export default class Login extends React.Component{
 	}
 
 	callback(data){
-		console.log("MAMA")
 		console.log(data);
 		if(typeof data === 'undefined' || data.url == null)
 			return;
-		console.log(data);
 		const path = Utility.getPublicPath();
-		console.log(path+data.url)
-		this.setState ({url : +data.url});
+		this.setState ({url : path+data.url});
 		this.setState ({artist : data.user});
 	}
 
 
 	render(){
 		//var imgUrl = this.state.nextImg ? this.state.nextImgSrc : this.state.song.imgSrc;
-        console.log(this.state.url)	
         var divStyle = {
             backgroundImage: 'url(' + this.state.url + ')'
         }
