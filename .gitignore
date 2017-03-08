@@ -1,8 +1,6 @@
 node_modules/*
 package.json
 *.log
-dist/*
 npm-debug.log
-dist/app/bundle.js
 challenger.sublime-project
 *.sublime-workspace

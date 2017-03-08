@@ -1,0 +1,31 @@
+.form {
+  text-align: center; 
+  position: relative;
+
+  .field-in{
+    color: black;
+  }
+}
+
+.field-in {
+  display: block;
+  padding: 6px 12px;
+  margin: 10px 0;
+  width: 100%;
+  border: 0px;
+  :focus{
+    outline: none;
+    padding: 15px;
+  }
+  &.error, &.error:focus{
+    border: 1px solid #ff0000;
+  }
+}
+
+.submit{
+  padding: 0px 20px; 
+}
+
+.date{
+  border-radius: 0px;
+}

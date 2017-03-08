@@ -1,0 +1,17 @@
+RewriteEngine on
+
+# Redirect all api uri to back-end
+RewriteCond %{REQUEST_URI} !(assets)
+RewriteCond %{REQUEST_URI} !(\.css|\.js|\.png|\.jpg|\.gif|robots\.txt)$ [NC]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^api/(.*)$ /api/index.php/$1 [L,QSA]
+
+
+# Redirect everithing else to front app
+RewriteCond %{REQUEST_URI} !(assets)
+RewriteCond %{REQUEST_URI} !(\.css|\.js|\.png|\.jpg|\.gif|robots\.txt)$ [NC]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^api/
+RewriteRule . index.php [L,QSA]
