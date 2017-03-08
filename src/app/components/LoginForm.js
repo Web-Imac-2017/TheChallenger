@@ -5,8 +5,8 @@ export default class LoginForm extends React.Component{
 		return(
 			<div className="form-group">
 				<form className="form" method="POST" action="api/user/login/">
-			     	<input type="email" name="email" className="field-in form-control" placeholder="Email" require/>
-			      	<input type="password" name="password" className="field-in form-control" placeholder="Password" require/>
+			     	<input type="email" name="email" className="field-in form-control" placeholder="Email" required/>
+			      	<input type="password" name="password" className="field-in form-control" placeholder="Password" required/>
 			      	<button className="submit btn btn-default" href="#">Login</button>
 			    </form>
 			</div>

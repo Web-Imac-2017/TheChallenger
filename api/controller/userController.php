@@ -1,5 +1,6 @@
 <?php
 include_once("model/User.php");
+$user=new User();
 
 class userController{
 
@@ -70,7 +71,7 @@ class userController{
 	    	    
 	    //TOUT EST BON ON PEUT INSERER L'UTILISATEUR
 
-	    $user=new User();
+	  	global $user;
    		$user->setName($name);
    		$user->setPassword($password);
    		$user->setEmail($email);
@@ -82,41 +83,38 @@ class userController{
 	}
 
 	//si l'utilisateur clique sur le lien envoyé par email on confirme l'inscription
-	public static function confirm($name,$key){
-		if(empty($name) || empty($key)){
+	public static function confirm($key){
+		if(empty($key)){
 	    	echo(json_encode(["code" => 0,"message" => "Error param"]));
 			exit();
 		}
 
 		global $db;
-		$query = $db->prepare("SELECT key,isActive FROM thechallenger.user WHERE name=:name ");
-		$query->bindParam(':name',$name,PDO::PARAM_STR);
-		if($query->execute(array(':name' => $name)) && $datas = $query->fetch())
+		$query = $db->prepare("SELECT name,rank FROM thechallenger.user WHERE keyactive=:key ");
+		$query->bindParam(':key',$key,PDO::PARAM_STR);
+		if($query->execute(array(':key' => $key)) && $datas = $query->fetch())
 		{
-			$keydb = $datas['key'];	// Récupération de la clé
-			$active = $datas['isActive']; // $actif contiendra alors 0 ou 1
+			$name = $datas['name'];	// Récupération de la clé
+			$rank = $datas['rank']; // $actif contiendra alors 0 ou 1
 		}
 
 		$query->CloseCursor();
-
-		if ($active==1){
+		if(empty($name)){
+	    	echo(json_encode(["code" => 0,"message" => "error, doesn't exis"]));
+			exit();
+		}
+		if ($rank>1){
 	    	echo(json_encode(["code" => 0,"message" => "account already activated"]));
 			exit();
 		} //membre deja actif
-	
-		if($key==$keydb){ //tout est bon on met à jour les infos
-			$query = $db->prepare("UPDATE thechallenger.user SET isActive=1, rank=2 WHERE name=:name");
-			$query->bindParam(':name',$name,PDO::PARAM_STR);
-			$query->execute();
-			$query->CloseCursor();
-			//on affiche le message de confirmation
-	    	echo(json_encode(["code" => 1,"message" => "Success"]));
-			exit();
-		}
-		else{
-	    	echo(json_encode(["code" => 0,"message" => "wrong key"]));
-			exit();
-		}
+		
+		$query = $db->prepare("UPDATE thechallenger.user SET rank=2 WHERE name=:name");
+		$query->bindParam(':name',$name,PDO::PARAM_STR);
+		$query->execute();
+		$query->CloseCursor();
+		//on affiche le message de confirmation
+    	echo(json_encode(["code" => 1,"message" => "Success"]));
+		
 	}
 
 	public static function login(){
@@ -129,7 +127,7 @@ class userController{
 		}
 
 		global $user;
-		if(isset($user) && $user->is_connected(MEMBRE)){
+		if($user->is_connected(MEMBRE)){
 	    	echo(json_encode(["code" => 0,"message" => "Already connected"]));
 			exit();
 		}
@@ -153,39 +151,39 @@ class userController{
 		//tout est bon
 		//création des cookies
 		$expire = time() + 365*24*3600;
-		setcookie('name', $datas['name'], $expire, null, null, false, true); 
-		setcookie('pwd', $datas['pwd'], $expire, null, null, false, true); 
-		setcookie('rank', $datas['rank'], $expire, null, null, false, true); 
-		setcookie('id', $datas['id'], $expire, null, null, false, true); 			
+		setcookie('name', $datas['name'], $expire, '/', null, false, true); 
+		setcookie('pwd', $datas['pwd'], $expire, '/', null, false, true); 
+		setcookie('rank', $datas['rank'], $expire, '/', null, false, true); 
+		setcookie('id', $datas['id'], $expire, '/', null, false, true); 			
 
 		echo(json_encode(["code" => 1,"message" => "Success"]));	
 	}
 
-	public static function logout(){
-		//s'il n'est pas connecté
+	public static function testConnect($rank){
 		global $user;
+		if($user->is_connected($rank)){
+	    	echo(json_encode(["code" => 1,"message" => "connected"]));
+			exit();
+		}
+		else{
+	    	echo(json_encode(["code" => 0,"message" => "not connected"]));
+			exit();
+		}
+	}
+
+	public static function logout(){
+		global $user;
+		//s'il n'est pas connecté
 		if(!$user->is_connected(INSCRIT)){
 	    	echo(json_encode(["code" => 0,"message" => "Not connected"]));
 			exit();
 		}
 
 		//sinon on détruit les cookie et la session
-		if (isset ($_COOKIE['name']))
-		{
-			setcookie('name', '', -1);
-		}
-		if (isset ($_COOKIE['pwd']))
-		{
-			setcookie('pwd', '', -1);
-		}
-		if (isset ($_COOKIE['rank']))
-		{
-			setcookie('rank', '', -1);
-		}
-		if (isset ($_COOKIE['id']))
-		{
-			setcookie('id', '', -1);
-		}
+		setcookie('name', '', -1,'/');
+		setcookie('pwd', '', -1,'/');
+		setcookie('rank', '', -1,'/');
+		setcookie('id', '', -1,'/');
 
 		session_destroy();
 
@@ -196,9 +194,13 @@ class userController{
 	//fonction ajout follower
 	public static function addfollower($id){
 		global $user;
+		if(!$user->is_connected(MEMBRE)){
+	    	echo(json_encode(["code" => 0,"message" => "not connected"]));
+			exit();
+		}
 		//si le follow existe deja
 		if($user->checkfollow($id)){
-	    	echo(json_encode(["code" => 0,"message" => "Not connected"]));
+	    	echo(json_encode(["code" => 0,"message" => "already follower"]));
 			exit();
 		}
 
@@ -208,27 +210,55 @@ class userController{
 		$query->bindParam(':idfollowed', $id, PDO::PARAM_INT);
 		$query->execute();
 		$query->CloseCursor();
+		echo(json_encode(["code" => 1,"message" => "success"]));
+
 	}
 
 	//fonction suppression follower
 	public static function deletefollower($id){
 		global $user;
+		if(!$user->is_connected(MEMBRE)){
+	    	echo(json_encode(["code" => 0,"message" => "not connected"]));
+			exit();
+		}
 		//si le follow n'existe pas
 		if(!$user->checkfollow($id)){
-	    	echo(json_encode(["code" => 0,"message" => "Not connected"]));
+	    	echo(json_encode(["code" => 0,"message" => "Not follower"]));
 			exit();
 		}
 		global $db;
-		$query=$db->prepare('DELETE FROM thechallenger.follow idfollower=:idfollower AND idfollowed=:idfollowed)');
+		$query=$db->prepare('DELETE FROM thechallenger.follow WHERE idfollower=:idfollower AND idfollowed=:idfollowed');
 		$query->bindParam(':idfollower', $_COOKIE['id'], PDO::PARAM_INT);
 		$query->bindParam(':idfollowed', $id, PDO::PARAM_INT);
 		$query->execute();
 		$query->CloseCursor();
-		
+		echo(json_encode(["code" => 1,"message" => "success"]));
+	}
+
+	//nombre de personne que le user suit
+	public static function nbfollow($id){
+		global $db;
+		$query=$db->prepare('SELECT COUNT(*) AS nbfollow FROM thechallenger.follow WHERE idfollower=:id');
+		$query->bindParam(':id', $id, PDO::PARAM_INT);
+		$query->execute();
+		$datas=$query->fetch();
+		$query->CloseCursor();
+		echo(json_encode(["code" => 1,"nb" => $datas['nbfollow']]));
+	}
+
+	//nombre de personne qui suivent le user
+	public static function nbfollower($id){
+		global $db;
+		$query=$db->prepare('SELECT COUNT(*) AS nbfollower FROM thechallenger.follow WHERE idfollowed=:id');
+		$query->bindParam(':id', $id, PDO::PARAM_INT);
+		$query->execute();
+		$datas=$query->fetch();
+		$query->CloseCursor();
+		echo(json_encode(["code" => 1,"nb" => $datas['nbfollower']]));
 	}
 
 	//fonction modification utilisateur, ajout avertissement et modif de rang
-	public function changeuser($id){
+	public static function changeuser($id){
 		$description=(!empty($_POST['description']))? $_POST['description']:"";
 		$birthdate=(!empty($_POST['birthdate']))? $_POST['birthdate']:"";
 		$photo=(!empty($_POST['photo']))? $_POST['photo']:"";
@@ -270,6 +300,31 @@ class userController{
 		}
 
 		echo(json_encode(["code" => 1,"message" => "Success"]));
+	}
+
+	public static function toArray($id){
+		global $db;
+		$query=$db->prepare('SELECT * FROM thechallenger.user WHERE id=:id');
+		$query->bindParam(':id',$id,PDO::PARAM_INT);
+		$query->execute();
+		$datas=$query->fetch();
+		$query->CloseCursor();
+		if(empty($datas['id'])){
+	    	echo(json_encode(["code" => 0,"message" => "user doesn't exist"]));
+			exit();
+		}
+		$item = [
+			"id" => $id,
+			"rank" => $datas['rank'],
+			"name" => $datas['name'],
+			"email" => $datas['email'],
+			"photo" => $datas['photo'],
+			"description" => $datas['description'],
+			"registerdate" => $datas['registerdate'],
+			"birthdate" => $datas['birthdate'],
+			"cptwarnings" => $datas['cptwarnings']
+		];
+		echo(json_encode($item));
 	}
 
 }

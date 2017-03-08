@@ -1,7 +1,5 @@
 <?php 
-// session_start();
-include("identifiants.php");
-// include("constants.php");
+
 class Post
 {
 	public function test_image($image){
@@ -47,6 +45,17 @@ class Post
 
 	}
 
+	public static function postexists($idpost) {
+		
+		global $db;
+		$query=$db->prepare('SELECT * FROM post WHERE id=:idpost');
+		$query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
+		$query->execute();
+		$datas=($query->fetchColumn()==0)?0:1;
+		$query->CloseCursor();
+		return $datas;
+	}
+	
 	//fonction déplacer le fichier image
 	public function move_image($image,$destination)
 	{

@@ -10,5 +10,5 @@
 <body>
 	<div id="app"></div>
 	<script src="./dist/app/bundle.js"></script>
-</body>
+</body>	
 </html>

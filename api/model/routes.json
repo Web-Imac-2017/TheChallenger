@@ -19,7 +19,11 @@
         "request" : "userController@logout"
     },
 
-    "user/confirm/{name}/{key}" : {
+    "user/testconnect/{rank}" : {
+        "request" : "userController@testConnect"
+    },
+
+    "user/confirm/{key}" : {
         "request" : "userController@confirm"
     },
 
@@ -31,8 +35,20 @@
         "request" : "userController@deletefollower"
     },
 
+    "user/follow/nbfollow/{id}": {
+        "request" : "userController@nbfollow"
+    },
+
+    "user/follow/nbfollower/{id}": {
+        "request" : "userController@nbfollower"
+    },
+
     "user/change/{id}" : {
         "request" : "userController@changeuser"
+    },
+
+    "user/show/{id}": {
+        "request" : "userController@toArray"
     },
 
     "post/add/{id}" : {
@@ -47,7 +63,7 @@
         "request" : "postController@deletepost"
     },
 
-     "post/like/add/{id}" : {
+    "post/like/add/{id}" : {
         "request" : "postController@addlike"
     },
 
@@ -69,5 +85,25 @@
 
     "message/send/": {
         "request" : "contactController@sendMessage"
-    }
+    },
+	
+	"challenge/show/{id}": {
+		"request" : "challengeController@toArray"
+	},
+	
+	"challenge/add/": {
+		"request" : "challengeController@add_challenge"
+	},
+	
+	"challenge/update/{id}": {
+		"request" : "challengeController@update_challenge"
+	},
+
+	"challenge/delete/{id}": {
+		"request" : "challengeController@delete_challenge"
+	},
+	
+	"challenge/posts/{id}" :{
+		"request" : "challengeController@show_posts"
+	}
 }

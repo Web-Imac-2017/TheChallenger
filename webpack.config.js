@@ -9,12 +9,12 @@ var config = {
     output: {
         path: DIST_DIR + "/app",
         filename: "bundle.js",
-        publicPath: "/dist/app/"
+        publicPath: "/app/"
     },
     module: {
         loaders: [
             {
-                test: /\.js?/,
+                test: /\.js?/,  
                 include: SRC_DIR,
                 loader: "babel-loader",
                 exclude: /node_modules/,
@@ -27,7 +27,7 @@ var config = {
                 loader: "style-loader!css-loader!sass-loader"
             },
             {
-                test: /.*\.(gif|png|jpe?g|svg)$/i,
+                test: /.*\.(gif|png|jpe?g|svg|json)$/i,
                 loaders: [
                     'file-loader',
                     {
