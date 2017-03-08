@@ -8,8 +8,8 @@ export default class Header extends React.Component{
 		return(
 			<div className="header row">
 				<SearchBar/>
-            <LogoArea/>
-            <UserMenu/>
+				<LogoArea/>
+				<UserMenu/>
 			</div>
 		);
 	}

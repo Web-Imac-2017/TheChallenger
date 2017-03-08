@@ -6,6 +6,7 @@
     /* justify-content: space-between; */
     /* align-items: center; */
     background-color: $banniereColor;
+	
 }
 
 .search-bar {
@@ -58,17 +59,31 @@ input {
 
 .img-profil:hover{
 
-     transform:scale(1.1);
+     transform:scale(1.15);
+}
+
+.tab-user{
+display:none;
+}
+
+.img profil tab-user{
+display:block;
 }
 
 .circle-back {
+	position : relative;	
+	margin-top:10px;
     display: block;
-    width:58px;
-    height: 58px;
+    width:55px;
+    height: 55px;
 	border-radius:50%;
     background-color:transparent;  
     text-align:center;
 	border:2px solid white;
+	z-index:2;
+	
+	
+	
 	
 }
 
@@ -80,7 +95,7 @@ input {
     padding-left: 10px;
     color: transparent;
     cursor: pointer;
-    
+    margin-top:10px;
     -webkit-appearance: textfield;
     -webkit-box-sizing: content-box;
     font-family: inherit;
@@ -109,4 +124,59 @@ input {
     &:hover{
         background-color: #fff;
     }
+}
+
+.table-user{
+	background-color:blue;
+}
+
+.vignette{
+	width:55px;
+	border-radius: 50%;
+	
+	
+	
+}
+
+.tab-user-menu{
+	
+	
+	border-radius:5px;
+	background-color:#E6E6E6;
+	position:absolute;
+	width:90%;
+	right:10px;
+	height:110px;
+	top:5px;
+	text-align:center;
+	
+	
+	
+	
+}
+
+@media screen and (max-width: 700px) {
+   .access-profil{
+	display:none;
+}
+
+.disconnect{
+	font-size: 60%;
+	 
+}
+}
+
+.disconnect{
+	width:80%;
+	position: absolute;
+    bottom: 10%;
+	left:10%;
+	 
+}
+
+.access-profil{
+	position: absolute;
+    bottom:55%;
+	left:15%;
+	width:80%;
 }
