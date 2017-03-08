@@ -179,16 +179,18 @@ class postController
 		$query->execute();
 		$datas=$query->fetch();
 		$nbhd=$datas['nbhd'];
+		echo $nbhd;
 		$query->CloseCursor();
 		$random=rand(1,$nbhd);
 		$query=$db->prepare('SELECT * FROM thechallenger.post WHERE hd=1');
-		$lien=$query->fetch();
 		$query->execute();
 		$i=1;
-		while($datas=$query->fetch() && $i!=$random){
+		$datas=$query->fetch();
+		while($i!=$random){
+			$datas=$query->fetch();
 			$i++;
 		}
-		echo(json_encode(["code" => 1,"lien" => $lien['linkcontent'], "user" => $lien['iduser']]));
+		echo(json_encode(["code" => 1,"url" => $datas['linkcontent'], "user" => $datas['iduser']]));
 	}
 
 	public static function toArray($idpost){
