@@ -7,9 +7,13 @@ export default class PostProfilBar extends React.Component{
 
 	constructor(props){
 		super(props);
+		const defaultUser ={
+			"id" : 1,
+			"photo" : "./../../../img/pp.jpg",
+			"name" : "michel"
+		}
 		this.state ={
-			user : null, 
-			LoadedImg : null
+			user : defaultUser
 		}
 		this.loadData();
 	}
@@ -17,8 +21,8 @@ export default class PostProfilBar extends React.Component{
 	loadData(){
 		var userId = this.props.userId;
 		//var data = Object.values(getJSON('/getUser/{'+userId+'}');
-		var jsonPath = require('./../../json/user'+userId+'.json');
-		Utility.getJSON(jsonPath, this);	
+		//var jsonPath = require('./../../json/user'+userId+'.json');
+		Utility.getJSON('api/user/show/'+userId, this);	
 	}
 
 	callback(data){
@@ -28,11 +32,11 @@ export default class PostProfilBar extends React.Component{
 		this.checkFollowing();
 	}
 
-	loadImg(photo){
+/*	loadImg(photo){
 		console.log(photo)
 		const img = require(String(photo));
 		this.setState ({ LoadedImg : img });
-	}
+	}*/
 
 	checkFollowing(){
 		//TODO checker quoi afficher Follow ou following
@@ -42,10 +46,11 @@ export default class PostProfilBar extends React.Component{
 	render(){
 		if(this.state.user === null)
 			return null;
+		const path = Utility.getPublicPath();
 		return(
 			<div className="post__profil_bar">
 				<Link to={"/profil/"+this.state.user.id}>
-					<img src={this.state.user.photo} alt="" className="profil_pic"/>
+					<img src={path+this.state.user.photo} alt="" className="profil_pic"/>
 					<h3>{this.state.user.name}</h3>
 				</Link>
 				<button className="follow_btn button" href="#">FOLLOW</button>

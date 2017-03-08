@@ -4,6 +4,7 @@ import Utility from "./../utilities/Utility"
 
 require('isomorphic-fetch');
 //const imgBG = require ('./../../img/background.jpg');
+//const  jsonPath = require('./../json/bg.json');
 
 export default class Login extends React.Component{
 	constructor(props) {
@@ -23,7 +24,9 @@ export default class Login extends React.Component{
 
 	getRandomImg(){
 		
-		Utility.getJSON("api/post/getRandomBackground/", this);
+		//Utility.getJSON("api/post/getRandomBackground/", this);
+		//Utility.getJSON("."+jsonPath, this);
+
 	}
 
 	callback(data){
@@ -31,14 +34,16 @@ export default class Login extends React.Component{
 		if(typeof data === 'undefined')
 			return;
 		console.log(data);
-		this.setState ({
-	      url : data.url
-	    });
+		const path = Utility.getPublicPath;
+		console.log(path+data.url)
+		this.setState ({url : +data.url});
+		this.setState ({artist : data.user});
 	}
 
 
 	render(){
 		//var imgUrl = this.state.nextImg ? this.state.nextImgSrc : this.state.song.imgSrc;
+        console.log(this.state.url)	
         var divStyle = {
             backgroundImage: 'url(' + this.state.url + ')'
         }

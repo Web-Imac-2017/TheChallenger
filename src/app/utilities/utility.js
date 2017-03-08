@@ -16,6 +16,9 @@ var utility = {
 			.catch(function (error) {
 		    console.error("Request error :"+error.message);
 		});
+	},
+
+	getPublicPath(){
 	}
 
 }
