@@ -19,6 +19,7 @@ var utility = {
 	},
 
 	getPublicPath(){
+		return "./data/";
 	}
 
 }
