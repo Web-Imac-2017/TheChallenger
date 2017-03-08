@@ -194,9 +194,13 @@ class userController{
 	//fonction ajout follower
 	public static function addfollower($id){
 		global $user;
+		if(!$user->is_connected(MEMBRE)){
+	    	echo(json_encode(["code" => 0,"message" => "not connected"]));
+			exit();
+		}
 		//si le follow existe deja
 		if($user->checkfollow($id)){
-	    	echo(json_encode(["code" => 0,"message" => "Not connected"]));
+	    	echo(json_encode(["code" => 0,"message" => "already follower"]));
 			exit();
 		}
 
@@ -206,22 +210,29 @@ class userController{
 		$query->bindParam(':idfollowed', $id, PDO::PARAM_INT);
 		$query->execute();
 		$query->CloseCursor();
+		echo(json_encode(["code" => 1,"message" => "success"]));
+
 	}
 
 	//fonction suppression follower
 	public static function deletefollower($id){
 		global $user;
+		if(!$user->is_connected(MEMBRE)){
+	    	echo(json_encode(["code" => 0,"message" => "not connected"]));
+			exit();
+		}
 		//si le follow n'existe pas
 		if(!$user->checkfollow($id)){
-	    	echo(json_encode(["code" => 0,"message" => "Not connected"]));
+	    	echo(json_encode(["code" => 0,"message" => "Not follower"]));
 			exit();
 		}
 		global $db;
-		$query=$db->prepare('DELETE FROM thechallenger.follow idfollower=:idfollower AND idfollowed=:idfollowed)');
+		$query=$db->prepare('DELETE FROM thechallenger.follow WHERE idfollower=:idfollower AND idfollowed=:idfollowed');
 		$query->bindParam(':idfollower', $_COOKIE['id'], PDO::PARAM_INT);
 		$query->bindParam(':idfollowed', $id, PDO::PARAM_INT);
 		$query->execute();
 		$query->CloseCursor();
+		echo(json_encode(["code" => 1,"message" => "success"]));
 	}
 
 	//nombre de personne que le user suit

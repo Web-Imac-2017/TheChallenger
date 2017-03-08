@@ -101,19 +101,15 @@ class User
 	}
 
 	//fonction verifier follow
-	public static function checkfollow($id){
-		if(!$this->is_connected(MEMBRE)){
-	    	echo(json_encode(["code" => 0,"message" => "Not connected"]));
-			exit();
-		}
-
+	public function checkfollow($id){
 		global $db;
 		$query=$db->prepare('SELECT id FROM thechallenger.follow WHERE idfollower=:idfollower AND idfollowed=:idfollowed');
         $query->bindParam(':idfollower',$_COOKIE['id'],PDO::PARAM_INT);
         $query->bindParam(':idfollowed',$id,PDO::PARAM_INT);
         $query->execute();
-        $exist=($query->fetchColumn()==0)?true:false;
+        $exist=($query->fetchColumn()==0)?false:true;
         $query->CloseCursor();
+        return $exist;
 	}
 
 	//fonction qui vérifie si l'utilisateur à plus de 3 avertissments
