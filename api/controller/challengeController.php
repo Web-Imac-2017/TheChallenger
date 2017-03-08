@@ -2,9 +2,10 @@
 
 require_once("model/challenge.php");
 require_once("model/database.php");
+$user=new User();
+$post = new Post();
 
 class challengeController {
-	// $user=new User();
 
 	// Informations/affichage d'un challenge
 	
@@ -50,8 +51,8 @@ class challengeController {
 			echo(json_encode(["code" => 0,"message" => "Error : challenge does not exist"]));
 			exit();
 		}
-		// global $user;
-		// if ($user->is_connected(MODERATEUR)) {
+		global $user;
+		if ($user->is_connected(MODERATEUR)) {
 			
 			$title=(!empty($_POST['title']))? $_POST['title']:"";
 			$desc=(!empty($_FILES['desc']))? $_FILES['desc']:"";
@@ -67,7 +68,7 @@ class challengeController {
 			$query->execute();
 			$query->CloseCursor();
 			echo(json_encode(["code" => 1,"message" => "Success : challenge updated"]));
-		// }
+		}
 	}
 	
 	// Suppression d'un challenge
@@ -82,7 +83,7 @@ class challengeController {
 		global $user;
 		if ($user->is_connected(MODERATEUR)) {
 		
-		global $db;
+			global $db;
 			$query=$db->prepare('DELETE FROM thechallenger.challenge WHERE id=:idchallenge');
 			$query->bindParam(':idchallenge',$idchallenge,PDO::PARAM_INT);
 			$query->execute();
@@ -96,7 +97,7 @@ class challengeController {
 		//Post::addpost($id);
 	}
 
-	// Envoyer tous les posts d'un challenge
+	// retourner tous les posts d'un challenge
 
 	public static function show_posts($idchallenge) {
 		
@@ -106,10 +107,11 @@ class challengeController {
 			echo(json_encode(["code" => 0,"message" => "Error : challenge does not exist"]));
 			exit();
 		}
-		$post = $challenge->getPosts();
+		$posts = Challenge::getPosts($idchallenge);
 		$result_tab = array();
-		foreach ($post as $p) array_push($result_tab, $p->toArray());
-		echo(json_encode($result_tab));
+		for ($i=0; $i<count($posts); $i++) {
+			Post::toArray($posts[$i]);
+		}
 	}
 	
 }

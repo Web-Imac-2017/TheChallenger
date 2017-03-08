@@ -74,7 +74,7 @@ class Challenge
 		$query=$db->prepare('SELECT * FROM thechallenger.challenge WHERE id =:id');
         $query->bindParam(':id',$id,PDO::PARAM_INT);
         $query->execute();
-		$datas=($query->fetchColumn()==0)?1:0;
+		$datas=($query->fetchColumn()==0)?0:1;
 		$query->CloseCursor();
 		return $datas;
 		// if($datas != 0) {
@@ -98,9 +98,12 @@ class Challenge
 		$query = $db->prepare('SELECT * FROM thechallenger.post WHERE id=:idchallenge');
 		$query->bindParam(':idchallenge',$idchallenge,PDO::PARAM_INT);
 		$query->execute();
-		$posts = $quert->fetch();
+		$tab = array();
+		while ($datas = $query->fetch()) { 
+			array_push($datas['id']);
+		};
 		$query->CloseCursor();
-		return posts;
+		return $tab;
 	}
 	
 	// Récupérer le gagnant du post
@@ -113,7 +116,6 @@ class Challenge
 		$query->execute();
 		$datas=$query->fetch();
 		$query->CloseCursor();
-		return $datas;
 	}
 	
 	// Retourne les données en JSON
