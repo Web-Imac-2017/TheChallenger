@@ -89,23 +89,23 @@ class userController{
 		}
 
 		global $db;
-		$query = $db->prepare("SELECT key,isActive FROM thechallenger.user WHERE name=:name ");
+		$query = $db->prepare("SELECT key,rank FROM thechallenger.user WHERE name=:name ");
 		$query->bindParam(':name',$name,PDO::PARAM_STR);
 		if($query->execute(array(':name' => $name)) && $datas = $query->fetch())
 		{
 			$keydb = $datas['key'];	// Récupération de la clé
-			$active = $datas['isActive']; // $actif contiendra alors 0 ou 1
+			$rank = $datas['rank']; // $actif contiendra alors 0 ou 1
 		}
 
 		$query->CloseCursor();
 
-		if ($active==1){
+		if ($rank>1){
 	    	echo(json_encode(["code" => 0,"message" => "account already activated"]));
 			exit();
 		} //membre deja actif
 	
 		if($key==$keydb){ //tout est bon on met à jour les infos
-			$query = $db->prepare("UPDATE thechallenger.user SET isActive=1, rank=2 WHERE name=:name");
+			$query = $db->prepare("UPDATE thechallenger.user SET rank=2 WHERE name=:name");
 			$query->bindParam(':name',$name,PDO::PARAM_STR);
 			$query->execute();
 			$query->CloseCursor();
