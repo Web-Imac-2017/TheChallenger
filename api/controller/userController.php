@@ -290,8 +290,8 @@ class userController{
 		echo(json_encode(["code" => 1,"message" => "Success"]));
 	}
 
-	public function toArray($id){
-
+	public static function toArray($id){
+		global $db;
 		$query=$db->prepare('SELECT * FROM thechallenger.user WHERE id=:id');
 		$query->bindParam(':id',$id,PDO::PARAM_INT);
 		$query->execute();

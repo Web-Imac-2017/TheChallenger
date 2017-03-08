@@ -38,24 +38,21 @@ class User
 	function setEmail($email){$this->_email = $email;}
 
 	//fonction qui vérifie que l'utilisateur est bien connecté et vérifie aussi son rang
-	public static function is_connected($rank){
+	public function is_connected($rank){
 		$autorisation=false;
 
-		if (isset($_COOKIE['id']) && !empty($_COOKIE['id']) && isset($_COOKIE['name']) && !empty($_COOKIE['name']) && isset($_COOKIE['pwd']) && !empty($_COOKIE['pwd'])  && isset($_COOKIE['rank']) && !empty($_COOKIE['rank']))
+		if (!empty($_COOKIE['id']) && !empty($_COOKIE['name']) && !empty($_COOKIE['pwd']) && !empty($_COOKIE['rank']))
 		{
 			global $db;
-			$query= $db->prepare('SELECT id, name, pwd, rank FROM thechallenger.user WHERE name = :name');
+			$query= $db->prepare('SELECT id, name, pwd, rank FROM thechallenger.user WHERE name=:name');
 			$query->bindParam(':name', $_COOKIE['name'], PDO::PARAM_STR);
 			$query->execute();
 			$datas=$query->fetch();
 			$query->CloseCursor();
 
-			if ($_COOKIE['id']==$datas['id'] && $_COOKIE['pwd']==$datas['pwd'] && $_COOKIE['rank']==$datas['rank'] )
+			if ($_COOKIE['id']==$datas['id'] && $_COOKIE['pwd']==$datas['pwd'] && $_COOKIE['rank']==$datas['rank'] && $_COOKIE['rank']>=$rank)
 			{
-				if ($_COOKIE['rank']>=$rang)
-				{
-					$autorisation=true;
-				}
+				$autorisation=true;
 			}
 		}
 
