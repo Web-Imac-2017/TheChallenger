@@ -9,16 +9,30 @@ class challengeController {
 
 	// Informations/affichage d'un challenge
 	
-    public static function infos($id){
-            
-		$challenge = Challenge::challenge_exists($id);
+	public static function toArray($idchallenge) {
+			
+		$challenge = Challenge::challenge_exists($idchallenge);
 		if (!$challenge) {
 		
 			echo(json_encode(["code" => 0,"message" => "Error : challenge does not exist"]));
 			exit();
 		}
-        echo(json_encode($challenge->toArray()));
-    }
+		global $db;
+		$query=$db->prepare('SELECT * FROM challenge WHERE id=:idchallenge');
+		$query->bindParam(':idchallenge',$idchallenge,PDO::PARAM_INT);
+		$query->execute();
+		$datas=$query->fetch();
+		$query->CloseCursor();
+		$item = [
+			"id" => $idchallenge,
+			"title" => $datas['title'],
+			"description" => $datas['description'],
+			"datestart" => $datas['datestart'],
+			"datestop" => $datas['datestop']
+			
+		];
+		echo(json_encode($item));
+	}
 	
 	// Ajouter un challenge à la BDD
 	public static function add_challenge() {
