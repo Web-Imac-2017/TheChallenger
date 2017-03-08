@@ -1,7 +1,5 @@
 <?php 
-// session_start();
-include("identifiants.php");
-// include("constants.php");
+
 class Post
 {
 	public function test_image($image){
