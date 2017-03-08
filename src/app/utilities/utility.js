@@ -1,4 +1,3 @@
-
 var utility = {
 	getJSON(url, obj){
 		fetch(url)
@@ -14,26 +13,11 @@ var utility = {
 			.catch(function (error) {
 		    console.error("Request error :"+error.message);
 		});
-	}, 
+	},
 
-	/*JsonToMap(json){
-		var output = {};
-		for(var i=0; i<list.length; i++)
-		{
-		    for(var key in list[i])
-		    {
-		        if(list[i].hasOwnProperty(key))
-		        {
-		            if(typeof output[key] == 'undefined')
-		            {
-		                output[key] = [];
-		            }
-		            output[key].push(list[i][key]);
-		        }
-		    }
-		}
-	}*/
-
+	getPublicPath(){
+		return "./data/";
+	}
 }
 
 module.exports = utility;

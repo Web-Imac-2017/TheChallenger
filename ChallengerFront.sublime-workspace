@@ -1,0 +1,1195 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"getR",
+				"getRandomImg"
+			],
+			[
+				"create",
+				"createHashHistory"
+			],
+			[
+				"Rout",
+				"Router"
+			],
+			[
+				"re",
+				"refs	React: this.refs."
+			],
+			[
+				"sign",
+				"sign_up_form"
+			],
+			[
+				"bor",
+				"border-color"
+			],
+			[
+				"psw",
+				"pswIsWrong"
+			],
+			[
+				"si",
+				"sign_up_form"
+			],
+			[
+				"widt",
+				"width"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"class",
+				"className"
+			],
+			[
+				"imp",
+				"import"
+			],
+			[
+				"form",
+				"formVisible"
+			],
+			[
+				"changeImg",
+				"changeImgBG"
+			],
+			[
+				"setI",
+				"setInterval( handler: any, timeout?: long, arguments...: any ): long	Window"
+			],
+			[
+				"backgro",
+				"backgroundPosition	Style CSS"
+			],
+			[
+				"balc",
+				"background-color"
+			],
+			[
+				"back",
+				"background-size"
+			],
+			[
+				"z",
+				"z-index"
+			],
+			[
+				"fon",
+				"font-style"
+			],
+			[
+				"rg",
+				"rgba()"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"clas",
+				"className"
+			],
+			[
+				"Bac",
+				"background	Style CSS"
+			],
+			[
+				"LoginB",
+				"LoginBox"
+			],
+			[
+				"Lo",
+				"LoginBox"
+			],
+			[
+				"Login",
+				"LoginForm"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"p",
+				"padding	Style CSS"
+			],
+			[
+				"resu",
+				"resultsHeight"
+			],
+			[
+				"resultsW",
+				"resultsWidth"
+			],
+			[
+				"loc",
+				"location"
+			],
+			[
+				"locai",
+				"location"
+			],
+			[
+				"min",
+				"minX"
+			],
+			[
+				"loca",
+				"locationHeight"
+			],
+			[
+				"locationWi",
+				"locationWidth"
+			],
+			[
+				"lo",
+				"location"
+			],
+			[
+				"auto",
+				"autocomplete	Attr"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"result",
+				"results"
+			],
+			[
+				"app",
+				"appendChild( node: Node ): Node	Node"
+			],
+			[
+				"ci",
+				"cities"
+			],
+			[
+				"spl",
+				"split( separator: string, limit: int ): string	String"
+			],
+			[
+				"parse",
+				"parseResponse"
+			],
+			[
+				"setTI",
+				"setTimeout( handler: any, timeout?: long, arguments...: any ): long	Window"
+			],
+			[
+				"loa",
+				"loadCities"
+			],
+			[
+				"console",
+				"console.log()"
+			],
+			[
+				"tr",
+				"translate()"
+			],
+			[
+				"op",
+				"opacity"
+			],
+			[
+				"tran",
+				"transform"
+			],
+			[
+				"align",
+				"align-self"
+			],
+			[
+				"ali",
+				"align-items"
+			],
+			[
+				"fle",
+				"flex-flow"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"col",
+				"colm	columns"
+			],
+			[
+				"DOM",
+				"DOM_VK_BACKSPACE"
+			],
+			[
+				"conso",
+				"console.log()"
+			],
+			[
+				"que",
+				"querySelector( selectors: DOMString ): Element	Document"
+			],
+			[
+				"len",
+				"length: int	Function"
+			],
+			[
+				"le",
+				"length"
+			],
+			[
+				"u",
+				"url()"
+			],
+			[
+				"mar",
+				"margin"
+			],
+			[
+				"DOM_VK_RE",
+				"DOM_VK_RETURN"
+			],
+			[
+				"DOM_",
+				"DOM_VK_9"
+			],
+			[
+				"m",
+				"maxlength	Attr"
+			],
+			[
+				"Reac",
+				"ReactDOM"
+			],
+			[
+				"cons",
+				"console.log()"
+			],
+			[
+				"te",
+				"textShadow	Style CSS"
+			],
+			[
+				"ma",
+				"margin"
+			],
+			[
+				"DE",
+				"DEFAULT_BUTP2_POS_X"
+			],
+			[
+				"NB",
+				"NB_MAX_CHECKPT"
+			],
+			[
+				"but",
+				"butP2"
+			],
+			[
+				"Poi",
+				"PointXY"
+			],
+			[
+				"CH",
+				"checkpts"
+			],
+			[
+				"str_",
+				"str_split"
+			],
+			[
+				"DEF",
+				"DEFAULT_BALL_POS_Y"
+			],
+			[
+				"GL",
+				"GLuint"
+			],
+			[
+				"tex",
+				"textures"
+			],
+			[
+				"inc",
+				"include"
+			],
+			[
+				"Te",
+				"texture"
+			],
+			[
+				"pat",
+				"pathTextureVp1"
+			],
+			[
+				"path",
+				"pathTextureVp2"
+			],
+			[
+				"level",
+				"level1"
+			],
+			[
+				"fre",
+				"FreeGame"
+			],
+			[
+				"NN",
+				"NB_MAX_COLONNE"
+			],
+			[
+				"FRe",
+				"FreeLevel"
+			],
+			[
+				"VEc",
+				"Vector2D"
+			],
+			[
+				"def",
+				"defaultAcc"
+			],
+			[
+				"nb",
+				"nbLevel"
+			],
+			[
+				"s",
+				"sizeof"
+			],
+			[
+				"leve",
+				"level"
+			],
+			[
+				"window",
+				"windowname"
+			],
+			[
+				"id",
+				"idLevel"
+			],
+			[
+				"ter",
+				"terrain2D"
+			],
+			[
+				"textureIdVp",
+				"textureIdVp1"
+			],
+			[
+				"pathT",
+				"pathTextureTerrain"
+			],
+			[
+				"VP",
+				"vp1"
+			],
+			[
+				"fil",
+				"fileTerrain"
+			],
+			[
+				"icn",
+				"include"
+			],
+			[
+				"v",
+				"VP1"
+			],
+			[
+				"inter",
+				"interProche"
+			],
+			[
+				"sp",
+				"Sphere"
+			],
+			[
+				"S",
+				"nbSpheres"
+			],
+			[
+				"Sp",
+				"Sphere"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "src/app/vues/Login.js",
+			"settings":
+			{
+				"buffer_size": 880,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/app/components/LoginForm.js",
+			"settings":
+			{
+				"buffer_size": 453,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/app/components/SignUpForm.js",
+			"settings":
+			{
+				"buffer_size": 1864,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "webpack.config.js",
+			"settings":
+			{
+				"buffer_size": 1307,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 500.0,
+		"last_filter": "inst",
+		"selected_items":
+		[
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"PROEJT",
+				"Project: Save As"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 486.0
+	},
+	"console":
+	{
+		"height": 200.0,
+		"history":
+		[
+			"GDB",
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"import urllib2,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); by = urllib2.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); open( os.path.join( ipp, pf), 'wb' ).write(by) if dh == h else None; print('Error validating download (got %s instead of %s), please try manual install' % (dh, h) if dh != h else 'Please restart Sublime Text to finish installation')"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/wamp64/www/Challenger",
+		"/D/wamp64/www/Challenger/src",
+		"/D/wamp64/www/Challenger/src/app",
+		"/D/wamp64/www/Challenger/src/app/components",
+		"/D/wamp64/www/Challenger/src/app/vues",
+		"/D/wamp64/www/Challenger/src/img"
+	],
+	"file_history":
+	[
+		"/D/wamp64/www/test/index.html",
+		"/D/wamp64/bin/mysql/mysql5.7.9/my.ini",
+		"/D/wamp64/logs/mysql.log",
+		"/D/wamp64/bin/apache/apache2.4.17/bin/php.ini",
+		"/D/wamp64/www/ChallengerBack/controller.php",
+		"/C/Users/Antoine/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/D/wamp64/www/Challenger/src/app/vues/AboutUs.js",
+		"/D/wamp64/www/Challenger/src/css/_search.scss",
+		"/D/wamp64/www/Challenger/src/app/components/SearchBar.js",
+		"/D/wamp64/www/Challenger/src/app/components/LogoArea.js",
+		"/D/wamp64/www/Challenger/src/app/components/UserMenu.js",
+		"/D/wamp64/www/Challenger/src/app/components/CopyrightSection.js",
+		"/D/wamp64/www/Challenger/src/app/components/Form/Input.js",
+		"/D/wamp64/www/Challenger/src/app/components/Form/InputEmail.js",
+		"/D/wamp64/www/Challenger/src/index.html",
+		"/D/wamp64/www/Challenger/src/css/_grid.scss",
+		"/D/wamp64/www/Challenger/src/app/components/SingUpForm.js",
+		"/D/wamp64/www/Challenger/src/app/components/BackgroundImg.js",
+		"/D/wamp64/www/Challenger/package.json",
+		"/D/wamp64/www/Challenger/webpack.config.js",
+		"/D/wamp64/www/Challenger/src/css/_home.css",
+		"/D/wamp64/www/Challenger/src/css/_foundation_settings.scss",
+		"/D/wamp64/www/Challenger/src/css/_foundation_app.scss",
+		"/D/wamp64/www/merde/projectname/scss/_settings.scss",
+		"/D/wamp64/www/merde/projectname/scss/app.scss",
+		"/D/wamp64/www/Challenger/src/css/foundation.css",
+		"/D/wamp64/www/Challenger/src/app/vues/Homes.js",
+		"/D/wamp64/www/Challenger/src/app/vues/home.js",
+		"/D/wamp64/www/TripOnRail/templates/index.html",
+		"/D/wamp64/www/Challenger/src/app/components/Header.js",
+		"/C/Users/Antoine/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/D/wamp64/www/Challenger/src/app/components/Header/Header.js",
+		"/D/wamp64/www/TripOnRail/scripts/load.js",
+		"/D/wamp64/www/TripOnRail/css/destinations.css",
+		"/C/Users/Antoine/Desktop/testAgence187/script/utility.js",
+		"/C/Users/Antoine/Desktop/testAgence187/marker.html",
+		"/D/wamp64/www/TripOnRail/css/article.css",
+		"/D/wamp64/www/TripOnRail/css/style.css",
+		"/C/Users/Antoine/Desktop/testAgence187/style/form.css",
+		"/D/wamp64/www/TripOnRail/scripts/maps.js",
+		"/D/Documents/IMAC1/ProgWeb-DEMIERE-COUAVOUX/index.html",
+		"/D/wamp64/www/TripOnRail/css/contactform.css",
+		"/D/wamp64/www/TripOnRail/css/levoyagedesacha.css",
+		"/D/Documents/IMAC1/ProgWeb-DEMIERE-COUAVOUX/css/style.css",
+		"/D/wamp64/www/TripOnRail/index.html",
+		"/D/wamp64/www/TripOnRail/css/skeleton.css",
+		"/D/wamp64/www/Challenger/src/app/components/header.js",
+		"/D/wamp64/www/Challenger/src/css/style.css",
+		"/D/wamp64/www/Challenger/dist/index.html",
+		"/D/wamp64/www/Challenger/index.html",
+		"/D/Téléchargements/reactjs-basics-master/reactjs-basics-master/webpack.config.js",
+		"/C/Users/Antoine/AppData/Local/Temp/Rar$DIa0.219/webpack.config.js",
+		"/D/Documents/IMAC2/ProjetWeb/imac2-12-01-master/gulp/tasks/javascript.js",
+		"/D/Documents/IMAC2/ProjetWeb/imac2-12-01-master/gulp/tasks/default.js",
+		"/D/Documents/IMAC2/ProjetWeb/imac2-12-01-master/gulp/tasks/sass.js",
+		"/D/Documents/IMAC2/ProjetWeb/imac2-12-01-master/Gulpfile.js",
+		"/D/wamp64/www/canvasNode/dist/js/min.js",
+		"/D/wamp64/www/canvasNode/dist/css/min.css",
+		"/D/wamp64/www/canvasNode/dist/js/bin.js",
+		"/D/wamp64/www/canvasNode/dist/index.html",
+		"/D/wamp64/www/canvasNode/package.json",
+		"/D/wamp64/www/canvas/css/style.css",
+		"/D/wamp64/www/canvas/js/script.js",
+		"/D/wamp64/www/canvas/index.html",
+		"/D/wamp64/www/TripOnRail/css/font.css",
+		"/D/wamp64/www/canvas/css/style.scss",
+		"/D/wamp64/www/canvas/gulpfile.js",
+		"/D/wamp64/www/canvas/css/main.css",
+		"/D/wamp64/www/canvas/script.js",
+		"/D/Documents/IMAC2/OpenGL3/djm/bin/map/items.json",
+		"/D/Documents/IMAC1/Synthese_image/Hovercraft - Final/fond.txt",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/Makefile",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/src/main.c",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/include/Game.h",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/src/Game.c",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/include/Level.h",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/src/level.c",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/include/Terrain.h",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/src/Terrain.c",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/src/But.c",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/src/sdl_tools.c",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/include/Geometry.h",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/src/geometry.c",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/src/Collision.c",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/include/Collision.h",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/include/Vehicule.h",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/src/Vehicule.c",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/include/Ballon.h",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/src/Ballon.c",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/fond.txt",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/include/But.h",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/include/Vector2D.h",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/src/Vector2D.c",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/include/Point2D.h",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/src/Point2D.c",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/include/sdl_tools.h",
+		"/home/luxkyluke/.config/sublime-text-3/Packages/User/SublimeGDB.sublime-settings",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/src/Checkpoint.c",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/include/Checkpoint.h",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/hovercraft.sublime-project",
+		"/home/luxkyluke/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/luxkyluke/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/luxkyluke/Téléchargements/tree.c",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/OpenGL/TD5/Raytracer/src/geometry/Intersection.c",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/OpenGL/TD5/Raytracer/src/geometry/Sphere.c",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/OpenGL/TD5/Raytracer/include/raytracer/raytracer.h",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/OpenGL/TD5/Raytracer/src/geometry/Vector3D.c",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/OpenGL/TD5/Raytracer/src/raytracer/raytracer.c",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/OpenGL/TD5/Raytracer/src/scene/scene.c",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/OpenGL/TD5/Raytracer/src/main.c",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/OpenGL/TD3/minimal.c",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/OpenGL/TD2/minimal.c",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/Synthese_dimage/prg_pt/visu.h",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/Synthese_dimage/prg_pt/visu.c",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/Synthese_dimage/prg_pt/Makefile",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/Synthese_dimage/prg_pt/gldrawing.h",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/Synthese_dimage/prg_pt/gldrawing.c",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/Synthese_dimage/prg_pt/create_obj_pt.h",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/Synthese_dimage/prg_pt/create_obj_pt.c",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/Synthese_dimage/exoCours.c",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/OpenGL/TD2/Makefile",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/OpenGL/TD5/Raytracer/include/scene/scene.h",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/OpenGL/TD5/Raytracer/include/geometry/Intersection.h",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/OpenGL/TD5/Raytracer/include/geometry/Sphere.h",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/OpenGL/TD5/Raytracer/include/sdl_tools.h",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/src/Color3f.c",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/OpenGL/TD1/Makefile",
+		"/home/luxkyluke/Documents/IMAC_1ere_Annee/OpenGL/TD1/minimal.c"
+	],
+	"find":
+	{
+		"height": 32.0
+	},
+	"find_in_files":
+	{
+		"height": 158.0,
+		"where_history":
+		[
+			"D:\\wamp64\\www\\ChallengerBack",
+			"<current file>",
+			"<open folders>",
+			"<current file>",
+			"<current file>,<open files>",
+			"<current file>",
+			"<current file>,<open files>",
+			"<current file>",
+			"<open files>,<current file>",
+			"<open files>",
+			"",
+			"<select>,<current file>",
+			"<select>",
+			"",
+			"<current file>",
+			"",
+			"<current file>"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"save",
+			"Accès refusé ",
+			"Accès refusé pour l'utilisateur :",
+			"password",
+			"div",
+			"psw",
+			"pws",
+			"handleSubmitClick",
+			"value",
+			"				",
+			"placeHolder",
+			"Input",
+			"placeholder",
+			"className",
+			"input",
+			"2px",
+			"5px",
+			";",
+			"value",
+			"disp",
+			"1em",
+			"class",
+			"components",
+			"red",
+			"fff",
+			";\n",
+			"700ms",
+			"400ms",
+			"results",
+			"document.getElementById(\"location\")",
+			"X",
+			"Width",
+			"909",
+			"white",
+			"black",
+			"700ms",
+			"800ms",
+			"ease-out",
+			"700ms",
+			"1s",
+			"700ms",
+			"500ms",
+			"400ms",
+			"500ms",
+			"700ms",
+			"all 300ms ease-out 700ms",
+			"cubic-bezier(0.77, 0.02, 0.63, 1)",
+			"1s",
+			"out",
+			"animation",
+			"300ms",
+			"700ms",
+			"getJSON",
+			"parseResponse",
+			"300ms",
+			"200ms ease-in;",
+			"300ms",
+			"out",
+			"200ms",
+			"event",
+			"charCode",
+			"xhr",
+			"event",
+			"(\"",
+			"(){",
+			"outline",
+			" \"",
+			"cercle",
+			"timer",
+			"duration",
+			"timer",
+			"UpdateLevel",
+			"update",
+			"UpdateVehicule",
+			"UpdateRotation",
+			"update",
+			"MultVector",
+			"direction",
+			"acceleration",
+			"vitesse",
+			"defaultVit",
+			"vitesse",
+			"vp1",
+			"avance",
+			"Reflect",
+			"VectorXY",
+			"angle",
+			";\n",
+			"CollisionVehiculeVehicule",
+			"MakeCercle",
+			"pos->",
+			"centre->",
+			"posV->",
+			"nbLevel",
+			"TESS",
+			".\n",
+			");\n",
+			"level1",
+			"terr",
+			"position->",
+			"->",
+			"pos->",
+			"position->",
+			"direction->",
+			"vitesse ->",
+			"vitesse->",
+			"Point2D*",
+			"Vector2D*",
+			"Point2D*",
+			"Vector2D*",
+			"->",
+			";\n",
+			"GDB",
+			"f",
+			"ball",
+			"loadImage",
+			"nbLevel",
+			"nblevel",
+			"VP",
+			"VP1\n",
+			"VP\n",
+			");\n",
+			"test",
+			"h",
+			"rota",
+			");\n",
+			"h",
+			"800"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"getAjax",
+			"pos.",
+			"centre.",
+			"posV.",
+			"position.",
+			".",
+			"pos.",
+			"position.",
+			"direction.",
+			"vitesse.",
+			"Point2D",
+			"Vector2D",
+			"Point2D",
+			"Vector2D",
+			".",
+			"l",
+			"nbLevels",
+			"nblevels",
+			"level->vp",
+			"vp",
+			"vp1",
+			"vp",
+			"Vehicule",
+			"VectorXY",
+			"PointXY",
+			"Point2D*",
+			"Vector2D*",
+			"Vector2D"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/app/vues/Login.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 880,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								441,
+								441
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 99.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/app/components/LoginForm.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 453,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/app/components/SignUpForm.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1864,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1131,
+								1131
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 792.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "webpack.config.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1307,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								288,
+								288
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 32.0
+	},
+	"input":
+	{
+		"height": 66.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "ChallengerFront.sublime-project",
+	"replace":
+	{
+		"height": 60.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"index",
+				"index.php"
+			],
+			[
+				"login.",
+				"src\\css\\_login.scss"
+			],
+			[
+				"abou",
+				"src\\app\\vues\\AboutUs.js"
+			],
+			[
+				"veto",
+				"src\\Vector2D.c"
+			],
+			[
+				"col",
+				"src\\Collision.c"
+			],
+			[
+				"but",
+				"src/But.c"
+			],
+			[
+				"trer",
+				"src/Terrain.c"
+			],
+			[
+				"level",
+				"src/Level.c"
+			],
+			[
+				"v",
+				"src/Vehicule.c"
+			],
+			[
+				"veh",
+				"include/Vehicule.h"
+			],
+			[
+				"le",
+				"include/Level.h"
+			],
+			[
+				"tool",
+				"src/sdl_tools.c"
+			],
+			[
+				"ge",
+				"src/geometry.c"
+			],
+			[
+				"ci",
+				"include/Collision.h"
+			],
+			[
+				"coli",
+				"src/Collision.c"
+			],
+			[
+				"ball",
+				"src/Ballon.c"
+			],
+			[
+				"sd",
+				"src/sdl_tools.c"
+			],
+			[
+				"poi",
+				"src/Point2D.c"
+			],
+			[
+				"s",
+				"include/sdl_tools.h"
+			],
+			[
+				"geo",
+				"include/Geometry.h"
+			],
+			[
+				"",
+				"include/Vector2D.h"
+			],
+			[
+				"ved",
+				"include/Vector2D.h"
+			],
+			[
+				"eve",
+				"src/level.c"
+			],
+			[
+				"ter",
+				"include/Terrain.h"
+			],
+			[
+				"gam",
+				"include/Game.h"
+			],
+			[
+				"vehi",
+				"include/Vehicule.h"
+			],
+			[
+				"che",
+				"include/Checkpoint.h"
+			],
+			[
+				"bal",
+				"include/Ballon.h"
+			],
+			[
+				"fon",
+				"~/Documents/IMAC_1ere_Annee/gitHovercraft/fond.txt"
+			],
+			[
+				"but.c",
+				"src/But.c"
+			],
+			[
+				"bl",
+				"include/Ballon.h"
+			],
+			[
+				"main",
+				"src/main.c"
+			],
+			[
+				"sce",
+				"Raytracer/src/scene/scene.c"
+			],
+			[
+				"t",
+				"include/Terrain.h"
+			],
+			[
+				"inter",
+				"Raytracer/include/geometry/Intersection.h"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 280.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

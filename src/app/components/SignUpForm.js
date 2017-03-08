@@ -33,42 +33,41 @@ export default class SignUpForm extends React.Component{
 	}
 
 	render(){
-		var formStyle = {display : this.state.formVisible?'block':'none'}
-		var pwdError = this.state.pwdIsWrong?"error":""
-
+		  var formStyle = {display : this.state.formVisible?'block':'none'};
+		  var pwdError = (this.state.pwdIsWrong)?" error":"";
 		return(
 			<div>
 				<div>
 					<button className="button btn btn-default" href="#" onClick={this.handleClick.bind(this)}>Create an account</button>
 				</div>
 				<div style={formStyle}>
-					<form className="form" ref="sign_up_form" method="POST" action="signUp">
-				     	<input type="text" name="pseudo" className="field-in form-control" placeholder="Pseudo"/>
+					<form className="form" ref="sign_up_form" method="POST" action="api/user/register/">
+				     	<input type="text" name="name" className="field-in" placeholder="Pseudo" required/>
 				     	<input 
 				     		type="email" 
 				     		name="email" 
 				     		className="field-in form-control" 
 				     		placeholder="Email"
-				     	/>
+				     	required/>
 				      	<input 
 				      		type="password" 
-				      		name="password" 
+				      		name="pwd" 
 				      		ref="pwd1" 
 				      		className="field-in form-control" 
 				      		placeholder="Password"
-				      	/>
+				      	required/>
 				      	<input 
 				      		type="password" 
-				      		name="re-password"
+				      		name="pwdconfirm"
 				      		ref="pwd2" 
-				      		className={"field-in form-control"+ pwdError} 
+				      		className={"field-in form-control "+ pwdError} 
 				      		placeholder="Confirm your password" 
 				      		onBlur={this.handleLostFocus.bind(this)}
-				      	/>
+				      	required/>
 				      	<button className="submit btn btn-default" onClick={this.handleSubmitClick.bind(this)}>Sign Up</button>
 				    </form>
 			    </div>
 			</div>
 		);
-	}
+}
 }

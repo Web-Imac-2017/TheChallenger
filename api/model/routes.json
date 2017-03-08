@@ -1,0 +1,109 @@
+{
+    "404/" : {
+        "request" : "controller/404.php"
+    },
+
+    "user/register/" : {
+        "request" : "userController@register"
+    },
+
+    "user/login/" : {
+        "request" : "userController@login"
+    },
+
+    "user/show/{id}" : {
+       "request" : "userController@show"
+    },
+
+    "user/logout/" : {
+        "request" : "userController@logout"
+    },
+
+    "user/testconnect/{rank}" : {
+        "request" : "userController@testConnect"
+    },
+
+    "user/confirm/{key}" : {
+        "request" : "userController@confirm"
+    },
+
+    "user/follow/add/{id}" : {
+        "request" : "userController@addfollower"
+    },
+
+    "user/follow/delete/{id}" : {
+        "request" : "userController@deletefollower"
+    },
+
+    "user/follow/nbfollow/{id}": {
+        "request" : "userController@nbfollow"
+    },
+
+    "user/follow/nbfollower/{id}": {
+        "request" : "userController@nbfollower"
+    },
+
+    "user/change/{id}" : {
+        "request" : "userController@changeuser"
+    },
+
+    "user/show/{id}": {
+        "request" : "userController@toArray"
+    },
+
+    "post/add/{id}" : {
+        "request" : "postController@addpost"
+    },
+
+    "post/update/{id}" : {
+        "request" : "postController@updatepost"
+    },
+
+    "post/delete/{id}" : {
+        "request" : "postController@deletepost"
+    },
+
+    "post/like/add/{id}" : {
+        "request" : "postController@addlike"
+    },
+
+    "post/like/delete/{id}" : {
+        "request" : "postController@deletelike"
+    },
+
+    "post/getRandomBackground/": {
+        "request" : "postController@getRandomBackground"
+    },
+
+    "post/show/{id}": {
+        "request" : "postController@toArray"
+    },
+
+    "search/": {
+        "request" : "searchController@search"
+    },
+
+    "message/send/": {
+        "request" : "contactController@sendMessage"
+    },
+	
+	"challenge/show/{id}": {
+		"request" : "challengeController@toArray"
+	},
+	
+	"challenge/add/": {
+		"request" : "challengeController@add_challenge"
+	},
+	
+	"challenge/update/{id}": {
+		"request" : "challengeController@update_challenge"
+	},
+
+	"challenge/delete/{id}": {
+		"request" : "challengeController@delete_challenge"
+	},
+	
+	"challenge/posts/{id}" :{
+		"request" : "challengeController@show_posts"
+	}
+}

@@ -9,20 +9,22 @@ export default class PostProfilBar extends React.Component{
 
 	constructor(props){
 		super(props);
+		const defaultUser ={
+			"id" : 1,
+			"photo" : "./../../../img/pp.jpg",
+			"name" : "michel"
+		};
 		this.state ={
-			user : null, 
-			LoadedImg : null, 
-			follow : false
-		}
+			user : defaultUser
+		};
 		this.loadData();
 	}
 
 	loadData(){
 		var userId = this.props.userId;
 		//var data = Object.values(getJSON('/getUser/{'+userId+'}');
-
-		var jsonPath = require('./../../json/user'+userId+'.json');
-		Utility.getJSON(jsonPath, this);	
+		//var jsonPath = require('./../../json/user'+userId+'.json');
+		Utility.getJSON('api/user/show/'+userId, this);	
 	}
 
 	callback(data){
@@ -30,10 +32,6 @@ export default class PostProfilBar extends React.Component{
 		//this.loadImg(data.photo);
 		this.checkFollowing();
 	}
-
-	/*loadImg(photo){
-		this.setState ({ LoadedImg : img });
-	}*/
 
 	checkFollowing(){
 		//TODO checker quoi afficher Follow ou following
@@ -54,9 +52,9 @@ export default class PostProfilBar extends React.Component{
 			return null;
 		var divStyle = {
             backgroundImage: 'url(' + this.state.user.photo + ')'
-        }
+    };
         var strFollow;
-        (this.state.follow)? strFollow="Following" : strFollow="Follow"
+      (this.state.follow)? strFollow="Following" : strFollow="Follow";
         //TODO Trouver une solution pour les chemins !!
 		return(
 			<div className="post__profil_bar">
