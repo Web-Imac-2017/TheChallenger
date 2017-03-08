@@ -130,10 +130,11 @@ class postController
 		}
 		return true;
 	}
-
+	
+	
 	//modifier post
 	public static function updatepost($idpost){
-		if(!postController::checkpost($idpost)){
+		if(!Post::postexists($idpost)){
 	    	echo(json_encode(["code" => 0,"message" => "error"]));
 			exit();
 		}
@@ -156,8 +157,8 @@ class postController
 
 	//supprimer post
 	public static function deletepost($idpost){
-		if(postController::checkpost($idpost)){
-	    	echo(json_encode(["code" => 0,"message" => "error"]));
+		if(!Post::postexists($idpost)){
+	    	echo(json_encode(["code" => 0,"message" => "post does not exist"]));
 			exit();
 		}
 		global $user; 
@@ -167,6 +168,7 @@ class postController
 	        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
 	        $query->execute();
 	        $query->CloseCursor();
+			echo(json_encode(["code" => 1,"message" => "success : post deleted"]));	
 	    }
 	}
 
@@ -179,20 +181,21 @@ class postController
 		$nbhd=$datas['nbhd'];
 		$query->CloseCursor();
 		$random=rand(1,$nbhd);
-		$query=$db->prepare('SELECT linkcontent FROM thechallenger.post WHERE hd=1');
+		$query=$db->prepare('SELECT * FROM thechallenger.post WHERE hd=1');
+		$lien=$query->fetch();
 		$query->execute();
 		$i=1;
 		while($datas=$query->fetch() && $i!=$random){
 			$i++;
 		}
-		echo(json_encode(["code" => 1,"lien" => $datas['linkcontent']]));
+		echo(json_encode(["code" => 1,"lien" => $lien['linkcontent'], "user" => $lien['iduser']]));
 	}
 
 	public static function toArray($idpost){
-		// if(!postController::checkpost($idpost)){
-	    	// echo(json_encode(["code" => 0,"message" => "error"]));
-			// exit();
-		// }
+		if(!Post::postexists($idpost)){
+	    	echo(json_encode(["code" => 0,"message" => "post does not exists"]));
+			exit();
+		}
 		global $db;
 		$query=$db->prepare('SELECT * FROM thechallenger.post WHERE id=:idpost');
 		$query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
