@@ -43,15 +43,30 @@ class challengeController {
 		
 		//global $user;
 		// if ($user->is_connected(MODERATEUR)) {
+			
+			global $db;
+			// $db = database::getPDO();
 			$title=(!empty($_POST['title']))? $_POST['title']:"";
 			$desc=(!empty($_FILES['desc']))? $_FILES['desc']:"";
-			$date_start=(!empty($_POST['date_start']))? $_POST['date_start']:"";
-			$date_stop=(!empty($_POST['date_stop']))? $_POST['date_stop']:"";
-			$db = database::getPDO();
-			$query=$db->prepare('INSERT INTO thechallenger.challenge (title, description, datestart, datestop) VALUES(:title,:desc,:date_start,:date_stop)');
+			$date_stop=(!empty($_POST['date_stop']))? $_POST['date_stop']:"";			
+			if (empty($title)) {
+			
+				echo(json_encode(["code" => 0,"message" => "Challenge name field empty"]));
+				exit();
+			}
+			if (empty($desc)) {
+					
+				echo(json_encode(["code" => 0,"message" => "Challenge description field empty"]));
+				exit();
+			}
+			if (empty($date_stop)) {
+					
+				echo(json_encode(["code" => 0,"message" => "Stop date challenge empty"]));
+				exit();
+			}
+			$query=$db->prepare('INSERT INTO thechallenger.challenge (title, description, datestart, datestop) VALUES(:title,:desc,NOW(),:date_stop)');
 			$query->bindParam(':title',$title,PDO::PARAM_STR);
 			$query->bindParam(':desc',$desc,PDO::PARAM_STR);
-			$query->bindParam(':date_start',$date,PDO::PARAM_STR);
 			$query->bindParam(':date_stop',$date,PDO::PARAM_STR);
 			$query->execute();
 			$query->CloseCursor();
@@ -74,14 +89,27 @@ class challengeController {
 			
 			$title=(!empty($_POST['title']))? $_POST['title']:"";
 			$desc=(!empty($_FILES['desc']))? $_FILES['desc']:"";
-			$date_start=(!empty($_POST['date_start']))? $_POST['date_start']:"";
 			$date_stop=(!empty($_POST['date_stop']))? $_POST['date_stop']:"";
+			if (empty($title)) {
+			
+				echo(json_encode(["code" => 0,"message" => "Challenge name field empty"]));
+				exit();
+			}
+			if (empty($desc)) {
+					
+				echo(json_encode(["code" => 0,"message" => "Challenge description field empty"]));
+				exit();
+			}
+			if (empty($date_stop)) {
+					
+				echo(json_encode(["code" => 0,"message" => "Stop date challenge empty"]));
+				exit();
+			}
 			$db = database::getPDO();
-			$query=$db->prepare('UPDATE thechallenger.challenge SET title=:title,description=:desc,datestart=:date_start,datestop=:date_stop WHERE id=:idchallenge');
+			$query=$db->prepare('UPDATE thechallenger.challenge SET title=:title,description=:desc,datestop=:date_stop WHERE id=:idchallenge');
 			$query->bindParam(':idchallenge',$idchallenge,PDO::PARAM_INT);
 			$query->bindParam(':title',$title,PDO::PARAM_STR);
 			$query->bindParam(':desc',$desc,PDO::PARAM_STR);
-			$query->bindParam(':date_start',$date,PDO::PARAM_STR);
 			$query->bindParam(':date_stop',$date,PDO::PARAM_STR);
 			$query->execute();
 			$query->CloseCursor();
