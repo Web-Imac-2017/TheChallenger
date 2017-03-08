@@ -10,12 +10,12 @@ export default class Login extends React.Component{
 	constructor(props) {
 	  super(props);
 
-	  this.getRandomImg();
-
 	  this.state = {
 	  	url : './../../img/background.jpg',
 	  	artist: "jeanMi"
 	  };
+
+	  this.getRandomImg();
 	}
 	/*
 	componentDidMount(){
@@ -23,18 +23,18 @@ export default class Login extends React.Component{
 	}*/	
 
 	getRandomImg(){
-		
-		//Utility.getJSON("api/post/getRandomBackground/", this);
+		Utility.getJSON("api/post/getRandomBackground/", this);
 		//Utility.getJSON("."+jsonPath, this);
 
 	}
 
 	callback(data){
 		console.log("MAMA")
-		if(typeof data === 'undefined')
+		console.log(data);
+		if(typeof data === 'undefined' || data.url == null)
 			return;
 		console.log(data);
-		const path = Utility.getPublicPath;
+		const path = Utility.getPublicPath();
 		console.log(path+data.url)
 		this.setState ({url : +data.url});
 		this.setState ({artist : data.user});
