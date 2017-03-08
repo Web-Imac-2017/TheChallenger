@@ -173,7 +173,9 @@ class postController
 	    }
 	}
 
-	public function getRandomBackground(){
+	public static function getRandomBackground(){
+		
+		global $db;
 		$query=$db->prepare('SELECT COUNT(*) AS nbhd FROM thechallenger.post WHERE hd=1');
 		$query->execute();
 		$datas=$query->fetch();
