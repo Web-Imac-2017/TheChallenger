@@ -151,8 +151,9 @@ class challengeController {
 		$posts = Challenge::getPosts($idchallenge);
 		$result_tab = array();
 		for ($i=0; $i<count($posts); $i++) {
-			Post::toArray($posts[$i]);
+			postController::toArray($posts[$i]);
 		}
+		echo (json_encode($posts));
 	}
 	
 }
