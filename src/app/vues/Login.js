@@ -1,19 +1,21 @@
 import React from "react";
 import LoginBox from "./../components/LoginBox.js";
+import Utility from "./../utilities/Utility"
 
 require('isomorphic-fetch');
-const imgBG = require ('./../../img/background.jpg');
+//const imgBG = require ('./../../img/background.jpg');
+//const  jsonPath = require('./../json/bg.json');
 
 export default class Login extends React.Component{
 	constructor(props) {
 	  super(props);
 
-	  this.getRandomImg();
-
 	  this.state = {
-	  	url : '.'+imgBG,
+	  	url : './../../img/background.jpg',
 	  	artist: "jeanMi"
 	  };
+
+	  this.getRandomImg();
 	}
 	/*
 	componentDidMount(){
@@ -21,20 +23,27 @@ export default class Login extends React.Component{
 	}*/	
 
 	getRandomImg(){
-		fetch('api/post/getRandomBackground')
-			.then(function(response){
-				this.setState({url : response.text})
-			})
-			.then(function(text) {  
-				console.log('Request successful', text);  
-			})  
-			.catch(function(error) {  
-				console.log('Request failed', error)  
-			});
+		Utility.getJSON("api/post/getRandomBackground/", this);
+		//Utility.getJSON("."+jsonPath, this);
+
 	}
+
+	callback(data){
+		console.log("MAMA")
+		console.log(data);
+		if(typeof data === 'undefined' || data.url == null)
+			return;
+		console.log(data);
+		const path = Utility.getPublicPath();
+		console.log(path+data.url)
+		this.setState ({url : +data.url});
+		this.setState ({artist : data.user});
+	}
+
 
 	render(){
 		//var imgUrl = this.state.nextImg ? this.state.nextImgSrc : this.state.song.imgSrc;
+        console.log(this.state.url)	
         var divStyle = {
             backgroundImage: 'url(' + this.state.url + ')'
         }
