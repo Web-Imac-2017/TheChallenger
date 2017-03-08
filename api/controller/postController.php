@@ -189,7 +189,7 @@ class postController
 		echo(json_encode(["code" => 1,"lien" => $datas['linkcontent']]));
 	}
 
-	public function toArray($id){
+	public static function toArray($id){
 		if(!$this->checkpost($idpost)){
 	    	echo(json_encode(["code" => 0,"message" => "error"]));
 			exit();

@@ -1,5 +1,6 @@
 <?php
 include_once("model/User.php");
+$user=new User();
 
 class userController{
 
@@ -70,7 +71,7 @@ class userController{
 	    	    
 	    //TOUT EST BON ON PEUT INSERER L'UTILISATEUR
 
-	    $user=new User();
+	  	global $user;
    		$user->setName($name);
    		$user->setPassword($password);
    		$user->setEmail($email);
@@ -126,7 +127,7 @@ class userController{
 		}
 
 		global $user;
-		if(isset($user) && $user->is_connected(MEMBRE)){
+		if($user->is_connected(MEMBRE)){
 	    	echo(json_encode(["code" => 0,"message" => "Already connected"]));
 			exit();
 		}
@@ -150,39 +151,39 @@ class userController{
 		//tout est bon
 		//création des cookies
 		$expire = time() + 365*24*3600;
-		setcookie('name', $datas['name'], $expire, null, null, false, true); 
-		setcookie('pwd', $datas['pwd'], $expire, null, null, false, true); 
-		setcookie('rank', $datas['rank'], $expire, null, null, false, true); 
-		setcookie('id', $datas['id'], $expire, null, null, false, true); 			
+		setcookie('name', $datas['name'], $expire, '/', null, false, true); 
+		setcookie('pwd', $datas['pwd'], $expire, '/', null, false, true); 
+		setcookie('rank', $datas['rank'], $expire, '/', null, false, true); 
+		setcookie('id', $datas['id'], $expire, '/', null, false, true); 			
 
 		echo(json_encode(["code" => 1,"message" => "Success"]));	
 	}
 
-	public static function logout(){
-		//s'il n'est pas connecté
+	public static function testConnect($rank){
 		global $user;
+		if($user->is_connected($rank)){
+	    	echo(json_encode(["code" => 1,"message" => "connected"]));
+			exit();
+		}
+		else{
+	    	echo(json_encode(["code" => 0,"message" => "not connected"]));
+			exit();
+		}
+	}
+
+	public static function logout(){
+		global $user;
+		//s'il n'est pas connecté
 		if(!$user->is_connected(INSCRIT)){
 	    	echo(json_encode(["code" => 0,"message" => "Not connected"]));
 			exit();
 		}
 
 		//sinon on détruit les cookie et la session
-		if (isset ($_COOKIE['name']))
-		{
-			setcookie('name', '', -1);
-		}
-		if (isset ($_COOKIE['pwd']))
-		{
-			setcookie('pwd', '', -1);
-		}
-		if (isset ($_COOKIE['rank']))
-		{
-			setcookie('rank', '', -1);
-		}
-		if (isset ($_COOKIE['id']))
-		{
-			setcookie('id', '', -1);
-		}
+		setcookie('name', '', -1,'/');
+		setcookie('pwd', '', -1,'/');
+		setcookie('rank', '', -1,'/');
+		setcookie('id', '', -1,'/');
 
 		session_destroy();
 
@@ -224,7 +225,7 @@ class userController{
 	}
 
 	//nombre de personne que le user suit
-	public static function ndfollow($id){
+	public static function nbfollow($id){
 		global $db;
 		$query=$db->prepare('SELECT COUNT(*) AS nbfollow FROM thechallenger.follow WHERE idfollower=:id');
 		$query->bindParam(':id', $id, PDO::PARAM_INT);
@@ -235,7 +236,7 @@ class userController{
 	}
 
 	//nombre de personne qui suivent le user
-	public static function ndfollower($id){
+	public static function nbfollower($id){
 		global $db;
 		$query=$db->prepare('SELECT COUNT(*) AS nbfollower FROM thechallenger.follow WHERE idfollowed=:id');
 		$query->bindParam(':id', $id, PDO::PARAM_INT);
@@ -246,7 +247,7 @@ class userController{
 	}
 
 	//fonction modification utilisateur, ajout avertissement et modif de rang
-	public function changeuser($id){
+	public static function changeuser($id){
 		$description=(!empty($_POST['description']))? $_POST['description']:"";
 		$birthdate=(!empty($_POST['birthdate']))? $_POST['birthdate']:"";
 		$photo=(!empty($_POST['photo']))? $_POST['photo']:"";

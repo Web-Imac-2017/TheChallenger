@@ -44,13 +44,13 @@ class User
 		if (!empty($_COOKIE['id']) && !empty($_COOKIE['name']) && !empty($_COOKIE['pwd']) && !empty($_COOKIE['rank']))
 		{
 			global $db;
-			$query= $db->prepare('SELECT id, name, pwd, rank FROM thechallenger.user WHERE name=:name');
-			$query->bindParam(':name', $_COOKIE['name'], PDO::PARAM_STR);
+			$query= $db->prepare('SELECT id,name,pwd,rank FROM thechallenger.user WHERE id=:id');
+			$query->bindParam(':id', $_COOKIE['id'], PDO::PARAM_INT);
 			$query->execute();
 			$datas=$query->fetch();
 			$query->CloseCursor();
 
-			if ($_COOKIE['id']==$datas['id'] && $_COOKIE['pwd']==$datas['pwd'] && $_COOKIE['rank']==$datas['rank'] && $_COOKIE['rank']>=$rank)
+			if($_COOKIE['id']==$datas['id'] && $_COOKIE['pwd']==$datas['pwd'] && $_COOKIE['name']==$datas['name'] && $_COOKIE['rank']==$datas['rank'] && $_COOKIE['rank']>=$rank)
 			{
 				$autorisation=true;
 			}
