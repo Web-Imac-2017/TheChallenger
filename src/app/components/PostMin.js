@@ -36,5 +36,4 @@ export default class PostMin extends React.Component{
             </div>
     );
   }
-
 }

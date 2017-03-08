@@ -1,7 +1,7 @@
 var path = require("path");
 var webpack = require("webpack");
 
-var DIST_DIR = path.resolve(__dirname, "");
+var DIST_DIR = path.resolve(__dirname, "dist");
 var SRC_DIR = path.resolve(__dirname, "src");
 
 var config = {
@@ -27,7 +27,7 @@ var config = {
                 loader: "style-loader!css-loader!sass-loader"
             },
             {
-                test: /.*\.(gif|png|jpe?g|svg)$/i,
+                test: /.*\.(gif|png|jpe?g|svg|json)$/i,
                 loaders: [
                     'file-loader',
                     {

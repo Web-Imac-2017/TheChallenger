@@ -1,6 +1,7 @@
-import React from "react";
-import Header from "../components/Header.js";
-import Footer from "../components/Footer.js";
+import React 	from "react";
+import Header 	from "../components/Header.js";
+import Footer 	from "../components/Footer.js";
+import PostMin 	from "../components/PostMin.js"
 
 export default class Home extends React.Component{
 	constructor(props){
@@ -11,8 +12,9 @@ export default class Home extends React.Component{
 		return(
 			<div id="home">
 	            <Header/>
-				<h1>HOME</h1>
-	            <Footer/>	
+				<h1>HOME</h1>	
+				<PostMin postId="1"/>
+	            <Footer/>
 			</div>
 		);
 	}
