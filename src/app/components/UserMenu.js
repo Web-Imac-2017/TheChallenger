@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDom from "react-dom";
 import Vignette from "./Vignette.js";
-
 import TabUser from "./TabUser.js";
 
 export default class UserMenu extends React.Component {
