@@ -75,6 +75,10 @@
         "request" : "postController@deletepost"
     },
 
+    "post/like/check/{id}" : {
+        "request" : "postController@checklike"
+    },
+
     "post/like/add/{id}" : {
         "request" : "postController@addlike"
     },

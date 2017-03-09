@@ -4,6 +4,16 @@
 class postController
 {
 
+	//on vérifie si la personne a deja like
+	public static function checkLike($idpost){
+		if(Post::checklike($idpost)){
+			echo(json_encode(["code" => 1,"message" => "Success"]));
+			exit();
+		}
+
+		echo(json_encode(["code" => 0,"message" => "error"]));
+	}
+
 	//gestion des like de post
 	public static function addlike($idpost){
 		if(Post::checklike($idpost)){
@@ -21,7 +31,7 @@ class postController
         $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
         $query->execute();
         $query->CloseCursor();
-		
+		echo(json_encode(["code" => 1,"message" => "Success"]));
 	}
 
 	public static function deletelike($idpost){
@@ -40,7 +50,7 @@ class postController
         $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
         $query->execute();
         $query->CloseCursor();
-	    
+	    echo(json_encode(["code" => 1,"message" => "Success"]));
 	}
 
 
