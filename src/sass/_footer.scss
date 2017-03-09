@@ -67,6 +67,30 @@ a:link {
 
 .social-links{
 background:red;
+	text-align:center;
 	
+	.facebook,.twitter,.instagram {
+      width:10%;
 	
+	  height:5%;
+		position:relative;
+       display:inline-block;
+     }
+}
+
+@media screen and (max-width: 700px) {
+   .social-links{
+	background:red;
+	text-align:center;
+	
+	.facebook,.twitter,.instagram {
+      width:10%;
+	  margin-left:10%;
+	  margin-right:10%;
+	  height:5%;
+		position:relative;
+       display:inline-block;
+     }
+}
+
 }

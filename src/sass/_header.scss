@@ -168,10 +168,22 @@ display:block;
 	
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 1631px) {
    .access-profil{
 		border-radius:20px;
+		display:none;
+	
+	}
+
+@media screen and (max-width: 1200px) {
+   .tab-user-menu{
+		width:70px;
+		background-color:blue;
+	}
+
+	
 }
+
 
 .disconnect{
 	font-size: 60%;

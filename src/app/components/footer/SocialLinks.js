@@ -10,13 +10,13 @@ export default class SocialLinks extends React.Component {
          
 			 	<div className="social-links col-xs-4 " >
 				
-						<ul>
-							<li> <Facebook/> 
+						
+							 <Facebook/> 
 				
 				
 						 <Twitter/>	
-						 <Instagram/> </li>
-						</ul>
+						<Instagram/> 
+						
 					
                 </div>
 		

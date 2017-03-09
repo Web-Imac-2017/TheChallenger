@@ -63,7 +63,7 @@ export default class Footer extends React.Component {
 					< SocialLinks/>	
 									
 					<div className="col-xs-4">
-						<button id="btn"  onClick={this.openAbout}> About Us </button>
+						<button id="btn-about"  onClick={this.openAbout}> About Us </button>
 					</div>
 										
 					{this.state.contactActive&&(
