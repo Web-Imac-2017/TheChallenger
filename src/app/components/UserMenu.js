@@ -1,5 +1,5 @@
 import React from "react";
-import Vignette from "./vignette.js";
+import Vignette from "./Vignette.js";
 
 export default class UserMenu extends React.Component {
     render() {

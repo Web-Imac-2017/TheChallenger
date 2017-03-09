@@ -3,9 +3,8 @@ import React from "react";
 export default class Vignette extends React.Component {
 	constructor(props){
 		super(props);
-		const img = require(this.props.image);
 		this.state = {
-			image : '.'+img
+			image : '.'+this.props.image
 		}
 	}
 

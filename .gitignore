@@ -4,3 +4,4 @@ package.json
 npm-debug.log
 challenger.sublime-project
 *.sublime-workspace
+src/app/components/vignette.js
