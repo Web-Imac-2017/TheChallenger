@@ -105,5 +105,9 @@
 	
 	"challenge/posts/{id}" :{
 		"request" : "challengeController@show_posts"
+	},
+	
+	"challenge/timeleft/{id}" :{
+		"request" : "challengeController@time_left"
 	}
 }

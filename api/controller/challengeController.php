@@ -46,7 +46,7 @@ class challengeController {
 			global $db;
 			// $db = database::getPDO();
 			$title=(!empty($_POST['title']))? $_POST['title']:"";
-			$desc=(!empty($_FILES['desc']))? $_FILES['desc']:"";
+			$desc=(!empty($_POST['desc']))? $_POST['desc']:"";
 			$date_stop=(!empty($_POST['date_stop']))? $_POST['date_stop']:"";			
 			if (empty($title)) {
 			
@@ -66,13 +66,19 @@ class challengeController {
 			$query=$db->prepare('INSERT INTO thechallenger.challenge (title, description, datestart, datestop) VALUES(:title,:desc,NOW(),:date_stop)');
 			$query->bindParam(':title',$title,PDO::PARAM_STR);
 			$query->bindParam(':desc',$desc,PDO::PARAM_STR);
-			$query->bindParam(':date_stop',$date,PDO::PARAM_STR);
+			$query->bindParam(':date_stop',$date_stop,PDO::PARAM_STR);
 			$query->execute();
 			$query->CloseCursor();
 			echo(json_encode(["code" => 1,"message" => "Success : challenge added"]));;
 		// }
 	}
 	
+	
+	public static function time_left($idchallenge) {
+	
+		$item = Challenge::timeLeft($idchallenge);
+		echo (json_encode($item));
+	}
 	
 	// Modifier un challenge dans la BDD
 	public static function update_challenge($idchallenge) {
@@ -94,7 +100,7 @@ class challengeController {
 			$query->bindParam(':idchallenge',$idchallenge,PDO::PARAM_INT);
 			$query->bindParam(':title',$title,PDO::PARAM_STR);
 			$query->bindParam(':desc',$desc,PDO::PARAM_STR);
-			$query->bindParam(':date_stop',$date,PDO::PARAM_STR);
+			$query->bindParam(':date_stop',$date_stop,PDO::PARAM_STR);
 			$query->execute();
 			$query->CloseCursor();
 			echo(json_encode(["code" => 1,"message" => "Success : challenge updated"]));
@@ -132,12 +138,13 @@ class challengeController {
 			echo(json_encode(["code" => 0,"message" => "Error : challenge does not exist"]));
 			exit();
 		}
-		$posts = Challenge::getPosts($idchallenge);
-		// $result_tab = array();
-		for ($i=0; $i<count($posts); $i++) {
-			postController::toArray($posts[$i]);
+		$tab = Challenge::getPosts($idchallenge);
+		$result_tab = array();
+		for ($i=0; $i<count($tab); $i++) {
+			$item = postController::returnArray($tab[$i]);
+			array_push($result_tab, $item);
 		}
-		// echo (json_encode($posts));
+		echo (json_encode($result_tab));
 	}
 	
 }
