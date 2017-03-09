@@ -334,7 +334,7 @@ class userController{
 		
 			"nbfollow" => $nbf,
 			"nbpost" => $nbp,
-			"idp" => $idp
+			"id" => $idp
 		];
 		
 		echo (json_encode($item));
