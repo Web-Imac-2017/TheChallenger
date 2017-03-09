@@ -14,9 +14,10 @@ class Layout extends React.Component{
 	render(){
 		return(
 			<Router history={hashHistory}>
-			      <Route path="/" component={Login}/>
-			      <Route path="/home" component={Home}/>
-				    <Route path="/contact" component={Contact}/>
+			    <Route path="/" component={Login}/>
+			    <Route path="/home" component={Home}/>
+				<Route path="/contact" component={Contact}/>
+				<Route path="/profil/{:id}" component={Contact}/>
 			</Router>	
 		);
 	}
