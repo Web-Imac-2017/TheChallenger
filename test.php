@@ -17,6 +17,8 @@
  	<meta charset="utf-8">	
 </head>
 <body>
+
+	<h3>ajout de posts</h3>
 	<form method="post" enctype="multipart/form-data" action="api/post/add/2" autocomplete="on">
 		<input type="text" name="title" placeholder="title">
 		<input type="file" name="image" placeholder="title">

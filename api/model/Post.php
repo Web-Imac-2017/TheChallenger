@@ -45,16 +45,16 @@ class Post
 
 	}
 
-	public static function postexists($idpost) {
+	// public static function postexists($idpost) {
 		
-		global $db;
-		$query=$db->prepare('SELECT * FROM post WHERE id=:idpost');
-		$query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
-		$query->execute();
-		$datas=($query->fetchColumn()==0)?0:1;
-		$query->CloseCursor();
-		return $datas;
-	}
+	// 	global $db;
+	// 	$query=$db->prepare('SELECT * FROM post WHERE id=:idpost');
+	// 	$query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
+	// 	$query->execute();
+	// 	$datas=($query->fetchColumn()==0)?0:1;
+	// 	$query->CloseCursor();
+	// 	return $datas;
+	// }
 
 	//on vérifie si la personne a deja like
 	public static function checklike($idpost){
