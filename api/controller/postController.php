@@ -72,8 +72,8 @@ class postController
 	public static function addpost($idchallenge){
 		$title=(!empty($_POST['title']))? $_POST['title']:"";
 		$image=(!empty($_FILES['image']))? $_FILES['image']:"";
-		$type=(!empty($_FILES['type']))? $_FILES['type']:"";
-		$desc=(!empty($_FILES['desc']))? $_FILES['desc']:"";
+		$type=(!empty($_POST['type']))? $_POST['type']:"";
+		$desc=(!empty($_POST['desc']))? $_POST['desc']:"";
 
 		global $user;
 
@@ -86,8 +86,6 @@ class postController
 	    	echo(json_encode(["code" => 0,"message" => "too many warnings, can't post anymore"]));
 			exit();
 		}
-
-		$date=date("d m Y");
 	
 		global $db;
 		$post=new Post();
@@ -98,16 +96,15 @@ class postController
 
 			//on ajoute les donnees dans la bdd
 			if($testimage==1){ //si image pas hd
-				$query=$db->prepare('INSERT INTO thechallenger.post (title,state,linkcontent,type,hd,description,datepost,iduser,idchallenge) VALUES (:title,0,:linkcontent,:type,0,:description,:datepost,:iduser,:idchallenge)');
+				$query=$db->prepare('INSERT INTO thechallenger.post (title,state,linkcontent,type,hd,description,datepost,iduser,idchallenge) VALUES (:title,0,:linkcontent,:type,0,:description,DATE(NOW()),:iduser,:idchallenge)');
 			}
 			elseif($testimage==2){ //si image hd
-				$query=$db->prepare('INSERT INTO thechallenger.post (title,state,linkcontent,type,hd,description,datepost,iduser,idchallenge) VALUES (:title,0,:linkcontent,:type,1,:description,:datepost,:iduser,:idchallenge)');
+				$query=$db->prepare('INSERT INTO thechallenger.post (title,state,linkcontent,type,hd,description,datepost,iduser,idchallenge) VALUES (:title,0,:linkcontent,:type,1,:description,DATE(NOW()),:iduser,:idchallenge)');
 			}
 	        $query->bindParam(':title',$title,PDO::PARAM_STR);
 	        $query->bindParam(':linkcontent',$linkcontent,PDO::PARAM_STR);
 	        $query->bindParam(':type',$type,PDO::PARAM_STR);
 	        $query->bindParam(':description',$desc,PDO::PARAM_STR);
-	        $query->bindParam(':datepost',$date,PDO::PARAM_STR);
 	        $query->bindParam(':iduser',$_COOKIE['id'],PDO::PARAM_INT);
 	        $query->bindParam(':idchallenge',$idchallenge,PDO::PARAM_INT);
 	        $query->execute();
@@ -128,16 +125,17 @@ class postController
 	    	return false;
 	    	exit();
 		}
-		return true;
+		return $iduser;
 	}
 	
 	
 	//modifier post
 	public static function updatepost($idpost){
-		if(!Post::postexists($idpost)){
+		if(!self::checkpost($idpost)){
 	    	echo(json_encode(["code" => 0,"message" => "error"]));
 			exit();
 		}
+		$iduser=self::checkpost($idpost);
 		global $user; 
 		if($user->is_connected(MODERATEUR) || ($user->is_connected(MEMBRE) && $iduser==$_COOKIE['id'])){
 			$title=(!empty($_POST['title']))? $_POST['title']:"";
@@ -157,13 +155,22 @@ class postController
 
 	//supprimer post
 	public static function deletepost($idpost){
-		if(!Post::postexists($idpost)){
+		if(!self::checkpost($idpost)){
 	    	echo(json_encode(["code" => 0,"message" => "post does not exist"]));
 			exit();
 		}
+		$iduser=self::checkpost($idpost);
 		global $user; 
 		if($user->is_connected(MODERATEUR) || ($user->is_connected(MEMBRE) && $iduser==$_COOKIE['id'])){
 			global $db;
+			$query=$db->prepare("SELECT linkcontent FROM thechallenger.post WHERE id=:idpost AND type='image'");
+	        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
+	        $query->execute();
+	        $datas=$query->fetch();
+	        //si c'est une image on la supprime des fichiers
+	        if(!empty($datas['linkcontent'])){
+	        	unlink('../data/post/'.$datas['linkcontent']);
+	        }
 			$query=$db->prepare('DELETE FROM thechallenger.post WHERE id=:idpost');
 	        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
 	        $query->execute();
