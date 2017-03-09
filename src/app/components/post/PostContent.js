@@ -8,7 +8,7 @@ export default class PostContent extends React.Component{
         super(props);
         this.state = {
             post : {
-                "id" : 2,
+                "id" : 5,
                 "user" : 1,
                 "type" : "video",
                 "content" : "https://www.youtube.com/embed/fWRISvgAygU",
@@ -18,6 +18,7 @@ export default class PostContent extends React.Component{
             renderContent: null
         };
         this.loadData();
+        this.preRender();
     }
 
     preRender() {
@@ -25,6 +26,7 @@ export default class PostContent extends React.Component{
             return null;
         // media sera inséré dans return(), comme ça ça dépend du type du post.
         let media = null;
+        console.log(this.state.post)
         switch(this.state.post.type) {
         case "text":
             media = (<p>{this.state.post.content}</p>);

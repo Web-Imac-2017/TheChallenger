@@ -10,13 +10,13 @@ export default class Home extends React.Component{
 
 	render(){
 		return(
-			      <div id="home">
-	          <Header/>
+			<div id="home">
+	        	<Header/>
 				    <h1>HOME</h1>
 				    <PostMin postId="2"/>
 				    <PostMin postId="1"/>
-	          <Footer/>
-			      </div>
+	          	<Footer/>
+			</div>
 		);
 	}
 }

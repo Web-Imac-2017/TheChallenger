@@ -2,9 +2,9 @@ import React from "react";
 import { BrowserRouter as Router,
          Link } from "react-router";
 
-import SocialLinks from "./components_footer/SocialLinks.js";
-import Contact from "./components_footer/Contact.js";
-import AboutUs from "./components_footer/AboutUs.js";
+import SocialLinks from "./footer/SocialLinks.js";
+import Contact from "./footer/Contact.js";
+import AboutUs from "./footer/AboutUs.js";
 
 
 
