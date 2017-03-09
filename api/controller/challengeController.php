@@ -40,8 +40,8 @@ class challengeController {
 	// Ajouter un challenge à la BDD
 	public static function add_challenge() {
 		
-		//global $user;
-		// if ($user->is_connected(MODERATEUR)) {
+		global $user;
+		if ($user->is_connected(MODERATEUR)) {
 			
 			global $db;
 			// $db = database::getPDO();
@@ -70,15 +70,20 @@ class challengeController {
 			$query->execute();
 			$query->CloseCursor();
 			echo(json_encode(["code" => 1,"message" => "Success : challenge added"]));;
-		// }
+		}
+		else {
+			
+			echo(json_encode(["code" => 0, "message" => "Error : moderator and admin only"]));
+			exit();		
+		}
 	}
-	
 	
 	public static function time_left($idchallenge) {
 	
 		$item = Challenge::timeLeft($idchallenge);
 		echo (json_encode($item));
-	}
+	}	
+
 	
 	// Modifier un challenge dans la BDD
 	public static function update_challenge($idchallenge) {
@@ -90,7 +95,7 @@ class challengeController {
 			exit();
 		}
 		global $user;
-		// if ($user->is_connected(MODERATEUR)) {
+		if ($user->is_connected(MODERATEUR)) {
 			
 			$title=(!empty($_POST['title']))? $_POST['title']:"";
 			$desc=(!empty($_FILES['desc']))? $_FILES['desc']:"";
@@ -104,7 +109,12 @@ class challengeController {
 			$query->execute();
 			$query->CloseCursor();
 			echo(json_encode(["code" => 1,"message" => "Success : challenge updated"]));
-		// }
+		}
+		else {
+		
+			echo(json_encode(["code" => 0, "message" => "Error : moderator and admin only"]));
+			exit();
+		}
 	}
 	
 	// Suppression d'un challenge
@@ -126,6 +136,11 @@ class challengeController {
 			$query->CloseCursor();
 			echo(json_encode(["code" => 1,"message" => "Success : challenge deleted"]));
 		}
+		else {
+		
+			echo(json_encode(["code" => 0, "message" => "Error : moderator and admin only"]));
+			exit();
+		}
 	}
 
 	// retourner tous les posts d'un challenge
@@ -141,7 +156,7 @@ class challengeController {
 		$tab = Challenge::getPosts($idchallenge);
 		$result_tab = array();
 		for ($i=0; $i<count($tab); $i++) {
-			$item = postController::returnArray($tab[$i]);
+			$item = postController::toArray($tab[$i]);
 			array_push($result_tab, $item);
 		}
 		echo (json_encode($result_tab));

@@ -115,12 +115,12 @@ class Challenge
 		$query->closeCursor();
 		$date=strtotime($stop['datestop']);
 		$diff=$date-time();
-		$days=floor($diff/(60*60*24));
+		$days=round($diff/(60*60*24));
 		$hours=round(($diff-$days*60*60*24)/(60*60));
 		$time = [
 		
 			"days" => $days,
-			"hours" => $hours
+			"hours" => $hours,
 		];
 		return $time;
 	}
