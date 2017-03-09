@@ -9,7 +9,7 @@ export default class Header extends React.Component{
 			<div className="header row">
 				<SearchBar/>
             <LogoArea/>
-            <UserMenu/>
+            <UserMenu user={"Jean-Mich"}/>
 			</div>
 		);
 	}

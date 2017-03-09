@@ -7,7 +7,7 @@ export default class Contact extends React.Component {
         return(
             <div id="contact" >
                 <Header/>
-                <p>Ceci est une page de contact</p>
+                <p>Ceci est une page de contact lol</p>
                 <Footer/>
             </div>
         );
