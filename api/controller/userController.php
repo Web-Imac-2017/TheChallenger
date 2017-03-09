@@ -246,29 +246,6 @@ class userController{
 		echo(json_encode(["code" => 0,"message" => "not follower"]));
 	}
 
-	//nombre de personne que le user suit
-	public static function nbfollow($id){
-		global $db;
-		$query=$db->prepare('SELECT COUNT(*) AS nbfollow FROM thechallenger.follow WHERE idfollower=:id');
-		$query->bindParam(':id', $id, PDO::PARAM_INT);
-		$query->execute();
-		$datas=$query->fetch();
-		$query->CloseCursor();
-		echo(json_encode(["code" => 1,"nb" => $datas['nbfollow']]));
-	}
-
-	//nombre de personne qui suivent le user
-	public static function nbfollower($id){
-		global $db;
-		$query=$db->prepare('SELECT COUNT(*) AS nbfollower FROM thechallenger.follow WHERE idfollowed=:id');
-		$query->bindParam(':id', $id, PDO::PARAM_INT);
-		$query->execute();
-		$datas=$query->fetch();
-		$query->CloseCursor();
-		echo(json_encode(["code" => 1,"nb" => $datas['nbfollower']]));
-		return $datas['nbfollower'];
-	}
-
 	//fonction modification utilisateur, ajout avertissement et modif de rang
 	public static function changeuser($id){
 		$description=(!empty($_POST['description']))? $_POST['description']:"";
@@ -317,13 +294,21 @@ class userController{
 	public static function getinfos($id) {
 		
 		global $db;
-		//nombre de followers
+		//nombre de personne que le user suit
+		$query=$db->prepare('SELECT COUNT(*) AS nbfollow FROM thechallenger.follow WHERE idfollower=:id');
+		$query->bindParam(':id', $id, PDO::PARAM_INT);
+		$query->execute();
+		$datas=$query->fetch();
+		$query->CloseCursor();
+		$nbfollow=$datas['nbfollow'];
+
+		//nombre de followers du user
 		$query=$db->prepare('SELECT COUNT(*) AS nbfollower FROM thechallenger.follow WHERE idfollowed=:id');
 		$query->bindParam(':id', $id, PDO::PARAM_INT);
 		$query->execute();
 		$followers=$query->fetch();
 		$query->CloseCursor();
-		$nbf = $followers['nbfollower'];
+		$nbfollower = $followers['nbfollower'];
 		
 		//nombre de posts
 		$query=$db->prepare('SELECT COUNT(*) AS nbpost FROM thechallenger.post WHERE iduser=:id');
@@ -342,8 +327,8 @@ class userController{
 		$idp = $idpost['id'];
 		
 		$item = [
-		
-			"nbfollow" => $nbf,
+			"nbfollow" => $nbfollow,
+			"nbfollower" => $nbfollower,
 			"nbpost" => $nbp,
 			"id" => $idp
 		];
@@ -379,7 +364,7 @@ class userController{
 	public static function getposts($id) {
 
 		global $db;
-		$query=$db->prepare('SELECT * FROM post WHERE iduser=:id');
+		$query=$db->prepare('SELECT * FROM thechallenger.post WHERE iduser=:id');
 		$query->bindParam(':id', $id, PDO::PARAM_INT);
 		$query->execute();
 		$posts=$query->fetch();
