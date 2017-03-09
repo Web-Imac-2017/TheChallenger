@@ -51,8 +51,12 @@
         "request" : "userController@toArray"
     },
 
-    "user/show/{id}/posts/": {
+    "user/{id}/posts/": {
         "request" : "userController@getposts"
+    },
+	
+	"user/{id}/infos/": {
+        "request" : "userController@getinfos"
     },
  
     "post/add/{id}" : {
@@ -117,5 +121,9 @@
 	
 	"challenge/timeleft/{id}" :{
 		"request" : "challengeController@time_left"
+	},
+	
+	"winners":{
+		"request" : "postController@getWinners"
 	}
 }

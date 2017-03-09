@@ -255,6 +255,7 @@ class userController{
 		$datas=$query->fetch();
 		$query->CloseCursor();
 		echo(json_encode(["code" => 1,"nb" => $datas['nbfollower']]));
+		return $datas['nbfollower'];
 	}
 
 	//fonction modification utilisateur, ajout avertissement et modif de rang
@@ -302,6 +303,43 @@ class userController{
 		echo(json_encode(["code" => 1,"message" => "Success"]));
 	}
 
+	public static function getinfos($id) {
+		
+		global $db;
+		//nombre de followers
+		$query=$db->prepare('SELECT COUNT(*) AS nbfollower FROM thechallenger.follow WHERE idfollowed=:id');
+		$query->bindParam(':id', $id, PDO::PARAM_INT);
+		$query->execute();
+		$followers=$query->fetch();
+		$query->CloseCursor();
+		$nbf = $followers['nbfollower'];
+		
+		//nombre de posts
+		$query=$db->prepare('SELECT COUNT(*) AS nbpost FROM thechallenger.post WHERE iduser=:id');
+		$query->bindParam(':id', $id, PDO::PARAM_INT);
+		$query->execute();
+		$posts=$query->fetch();
+		$query->CloseCursor();
+		$nbp = $posts['nbpost'];
+		
+		//id de posts
+		$query=$db->prepare('SELECT id FROM post WHERE iduser=:id');
+		$query->bindParam(':id', $id, PDO::PARAM_INT);
+		$query->execute();
+		$idpost=$query->fetch();
+		$query->CloseCursor();
+		$idp = $idpost['id'];
+		
+		$item = [
+		
+			"nbfollow" => $nbf,
+			"nbpost" => $nbp,
+			"idp" => $idp
+		];
+		
+		echo (json_encode($item));
+	}
+	
 	public static function toArray($id){
 		global $db;
 		$query=$db->prepare('SELECT * FROM thechallenger.user WHERE id=:id');

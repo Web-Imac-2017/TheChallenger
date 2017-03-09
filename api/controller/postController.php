@@ -239,6 +239,16 @@ class postController
 
 		return $item;
 	}
+	
+	public static function getWinners() {
+	
+		global $db;
+		$query=$db->prepare('SELECT * FROM post WHERE winner = 1');
+		$query->execute();
+		$result = $query->fetch();
+		$query->CloseCursor();
+		echo(json_encode($result));
+	}
 
 }
 
