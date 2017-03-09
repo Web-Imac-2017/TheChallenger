@@ -1,4 +1,7 @@
+@import 'mixins';
 .page_about{
+	justify-content: space-between; 
+    align-items: center;
 	button{
 		background:transparent;
 		border : none;
@@ -10,6 +13,7 @@
 	}	
 }
 .aboutus{
+	width: 90%;
 	color: black;
 	border-radius: 1%;
 	background-color: rgba(200, 200, 200, 1);
@@ -21,11 +25,12 @@
   	left: 0;
   	right: 0;
 	padding: 0%;
-	padding-bottom: 1%;
 	height: 90%;
 
 	.membersList {
-		padding:0 30px;
+		display: flex;
+		justify-content: space-around;
+		flex-wrap: wrap;
 	}
 	h1{
 		position: relative;
@@ -38,35 +43,28 @@
     	margin-top: 2%;
 	}
 	.member{
+		display: flex;
+		flex-direction: row;
     	background-color: white;
 		border-radius: 2%;		
-		display: inline-block;
-		width: 100%;
-		padding: 0;
+		flex-basis: 45%;
+
+		@include mobile {
+			flex-basis: 90%;
+		}
 		img {
 			width: 75px;
 			height: 75px;
 			border-radius: 50%;
-			margin: 4%;
-			padding: 0;
 		}
 		h4 {
 			text-align: center;
 	    	display: inline-block;
-	    	margin: 0;
-	    	margin-top: 10%;
-	    	padding: 0;
 		}
 		p{
 	    	text-align: center;
 	    	display: inline-block;
-	    	margin-bottom : 0;
-	    	font-size: 90%;
-	    	padding: 0;
 		}
-	}
-	ul{
-		margin: auto;
 	}
 }
 

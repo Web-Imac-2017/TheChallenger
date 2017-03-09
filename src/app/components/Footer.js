@@ -51,44 +51,33 @@ export default class Footer extends React.Component {
     render() {     
         return(			
 										
-			<footer>
-			
-				<div className="the_footer row"  >
-											
-										
-					<div className="col-xs-4">
-						<button id="btn"  onClick={this.openContact}> Contact </button>
-					</div>
-										
-					< SocialLinks/>	
+			<footer className="the_footer">				
+				<button id="btn"  onClick={this.openContact}> Contact </button>
 									
-					<div className="col-xs-4">
-						<button id="btn"  onClick={this.openAbout}> About Us </button>
-					</div>
-										
-					{this.state.contactActive&&(
-						<div className ="page_contact">
-							<button onClick={this.closeContact} className="close-contact" >
-								<img src = "../../img/icons/cross_quit.png"width="30" height="30"/>
-							</button>
-							<Contact/>
-													
-						</div>
-					)}
-										
-										
-					{this.state.aboutActive&&(
-						<div className ="page_about">
-							<div className= "overlay"></div>
-							<button onClick={this.closeAbout} className="close-aboutus" >
-                   				<img src= "../img/icons/cross_quit.png"width="30" height="30"/>
-                			</button>
-							<AboutUs/>
-						</div>
-					)}					
+				<SocialLinks/>	
+						
+				<button id="btn"  onClick={this.openAbout}> About Us </button>
 									
-				</div>
-				
+				{this.state.contactActive&&(
+					<div className ="page_contact">
+						<button onClick={this.closeContact} className="close-contact" >
+							<img src = "../../img/icons/cross_quit.png"width="30" height="30"/>
+						</button>
+						<Contact/>
+												
+					</div>
+				)}
+									
+									
+				{this.state.aboutActive&&(
+					<div className ="page_about">
+						<div className= "overlay"></div>
+						<button onClick={this.closeAbout} className="close-aboutus" >
+	           				<img src= "../img/icons/cross_quit.png"width="30" height="30"/>
+	        			</button>
+						<AboutUs/>
+					</div>
+				)}					
 			</footer>
 		
         );
