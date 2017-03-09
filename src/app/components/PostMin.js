@@ -20,9 +20,7 @@ export default class PostMin extends React.Component{
 
     loadData(){
         var postId = this.props.postId;
-        //var jsonPath = Object.values(getJSON('/getUser/{'+userId+'}');
-        //var jsonPath = require('./../json/post'+postId+'.json');
-        //Utility.getJSON("api/user/show/"+userId, this);
+        Utility.getJSON("api/user/show/"+postId, this);
     }
 
     callback(data){

@@ -51,9 +51,8 @@ export default class PostContent extends React.Component{
     }
 
     loadData() {
-        let postId = this.props.postId;
-        let jsonPath = require("./../../json/post"+postId+".json");
-        Utility.getJSON(jsonPath, this);
+        var postId = this.props.postId;
+        Utility.getJSON("api/user/show/"+postId, this);
     }
 
     callback(data) {
