@@ -1,0 +1,8 @@
+{
+    "id" : 2,
+	  "user" : 1,
+    "type" : "video",
+	  "content" : "https://www.youtube.com/embed/fWRISvgAygU",
+	  "description" : "Je suis une courte description",
+    "likes": 8
+}
