@@ -1,7 +1,6 @@
 <?php
 
-require_once("model/challenge.php");
-require_once("model/database.php");
+// require_once("model/challenge.php");
 $user=new User();
 $post = new Post();
 

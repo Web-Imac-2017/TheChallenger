@@ -1,50 +1,20 @@
 <?php 
-include_once("model/Post.php");
-$user=new User();
+//include_once("model/Post.php");
 
 class postController
 {
-
-	//recupère toutes les infos d'un post
-	public static function displaypost($id){
-		global $db;
-		$query=$db->prepare('SELECT * FROM thechallenger.post WHERE id =:id');
-        $query->bindParam(':id',$id,PDO::PARAM_INT);
-        $query->execute();
-        $datas=$query->fetch();
-        $query->CloseCursor();
-        return $datas;
-	}
-
-	//on vérifie si la personne a deja like
-	public static function checklike($idpost){
-		global $db;
-		global $user;
-		if(!$user->is_connected(MEMBRE)){
-			exit();
-		}
-		else{
-			$query=$db->prepare('SELECT id FROM thechallenger.score WHERE iduser=:iduser AND idpost=:idpost');
-	        $query->bindParam(':iduser',$iduser,PDO::PARAM_INT);
-	        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
-	        $query->execute();
-	        $exist=($query->fetchColumn()==0)?true:false;
-	        $query->CloseCursor();
-	        return $exist;
-		}
-	}
 
 	//gestion des like de post
 	public static function addlike($idpost){
 		global $db;
 		//si l'utilisateur n'a pas encore like le post
-		if(!postController::checklike($idpost)){
-			$query=$db->prepare('INSERT INTO thechallenger.score (iduser,idpost,idchallenge) VALUES (:iduser,:idpost,:idchallenge)');
+		if(!Post::checklike($idpost)){
+			$query=$db->prepare('INSERT INTO thechallenger.score (iduser,idpost) VALUES (:iduser,:idpost)');
 	        $query->bindParam(':iduser',$iduser,PDO::PARAM_INT);
 	        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
 	        $query->execute();
 	        $query->CloseCursor();
-	        $query=$db->prepare('UPDATE thechallenger.post SET score=score+1 WHERE id=:idpost AND idchallenge=:idchallenge');
+	        $query=$db->prepare('UPDATE thechallenger.post SET score=score+1 WHERE id=:idpost');
 	        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
 	        $query->execute();
 	        $query->CloseCursor();
@@ -54,13 +24,13 @@ class postController
 	public static function deletelike($idpost){
 		global $db;
 		//si l'utilisateur a like
-		if(postController::checklike($idpost)){
-			$query=$db->prepare('DELETE FROM thechallenger.score WHERE iduser=:iduser AND idpost=:idpost AND idchallenge=:idchallenge');
+		if(Post::checklike($idpost)){
+			$query=$db->prepare('DELETE FROM thechallenger.score WHERE iduser=:iduser AND idpost=:idpost');
 	        $query->bindParam(':iduser',$iduser,PDO::PARAM_INT);
 	        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
 	        $query->execute();
 	        $query->CloseCursor();
-	        $query=$db->prepare('UPDATE thechallenger.post SET score=score-1 WHERE id=:idpost AND idchallenge=:idchallenge');
+	        $query=$db->prepare('UPDATE thechallenger.post SET score=score-1 WHERE id=:idpost');
 	        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
 	        $query->execute();
 	        $query->CloseCursor();
@@ -94,7 +64,7 @@ class postController
 		$testimage=$post->test_image($image);
 		if($testimage==1 || $testimage==2){ //pas d'erreur sur l'image
 			//on déplace l'image dans le bon dossier
-			$linkcontent=$post->move_image($image,'images/images_posts');
+			$linkcontent=$post->move_image($image,'../data/post/');
 
 			//on ajoute les donnees dans la bdd
 			if($testimage==1){ //si image pas hd
@@ -112,6 +82,8 @@ class postController
 	        $query->bindParam(':idchallenge',$idchallenge,PDO::PARAM_INT);
 	        $query->execute();
 	        $query->CloseCursor();
+	       	echo(json_encode(["code" => 1,"message" => "success"]));
+
 		}
 	}
 
@@ -223,7 +195,7 @@ class postController
 			"iduser" => $datas['iduser'],
 			"idchallenge" => $datas['idchallenge']
 		];
-		echo(json_encode($item));
+		return $item;
 	}
 }
 
