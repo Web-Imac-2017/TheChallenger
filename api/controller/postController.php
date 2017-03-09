@@ -48,6 +48,7 @@ class postController
 	public static function addpost($idchallenge){
 		$title=(!empty($_POST['title']))? $_POST['title']:"";
 		$image=(!empty($_FILES['image']))? $_FILES['image']:"";
+		$link=(!empty($_POST['link']))? $_POST['link']:"";
 		$type=(!empty($_POST['type']))? $_POST['type']:"";
 		$desc=(!empty($_POST['desc']))? $_POST['desc']:"";
 
@@ -65,29 +66,41 @@ class postController
 	
 		global $db;
 		$post=new Post();
-		$testimage=$post->test_image($image);
-		if($testimage==1 || $testimage==2){ //pas d'erreur sur l'image
-			//on déplace l'image dans le bon dossier
-			$linkcontent=$post->move_image($image,'../data/post/');
-
-			//on ajoute les donnees dans la bdd
-			if($testimage==1){ //si image pas hd
-				$query=$db->prepare('INSERT INTO thechallenger.post (title,state,linkcontent,type,hd,description,datepost,iduser,idchallenge) VALUES (:title,0,:linkcontent,:type,0,:description,DATE(NOW()),:iduser,:idchallenge)');
-			}
-			elseif($testimage==2){ //si image hd
-				$query=$db->prepare('INSERT INTO thechallenger.post (title,state,linkcontent,type,hd,description,datepost,iduser,idchallenge) VALUES (:title,0,:linkcontent,:type,1,:description,DATE(NOW()),:iduser,:idchallenge)');
-			}
-	        $query->bindParam(':title',$title,PDO::PARAM_STR);
-	        $query->bindParam(':linkcontent',$linkcontent,PDO::PARAM_STR);
-	        $query->bindParam(':type',$type,PDO::PARAM_STR);
-	        $query->bindParam(':description',$desc,PDO::PARAM_STR);
-	        $query->bindParam(':iduser',$_COOKIE['id'],PDO::PARAM_INT);
-	        $query->bindParam(':idchallenge',$idchallenge,PDO::PARAM_INT);
-	        $query->execute();
-	        $query->CloseCursor();
-	       	echo(json_encode(["code" => 1,"message" => "success"]));
-
+		if(empty($image) && empty($link)){
+	    	echo(json_encode(["code" => 0,"message" => "empty field"]));
+			exit();
 		}
+		//si c'est une image
+		if(!empty($image) && empty($link)){
+			$testimage=$post->test_image($image);
+			if($testimage==1 || $testimage==2){ //pas d'erreur sur l'image
+				//on déplace l'image dans le bon dossier
+				$linkcontent=$post->move_image($image,'../data/post/');
+
+				//on ajoute les donnees dans la bdd
+				if($testimage==1){ //si image pas hd
+					$query=$db->prepare('INSERT INTO thechallenger.post (title,state,linkcontent,type,hd,description,datepost,iduser,idchallenge) VALUES (:title,0,:linkcontent,:type,0,:description,DATE(NOW()),:iduser,:idchallenge)');
+				}
+				elseif($testimage==2){ //si image hd
+					$query=$db->prepare('INSERT INTO thechallenger.post (title,state,linkcontent,type,hd,description,datepost,iduser,idchallenge) VALUES (:title,0,:linkcontent,:type,1,:description,DATE(NOW()),:iduser,:idchallenge)');
+				}
+			}
+		}
+		//si c'est un lien et pas une image
+		if(empty($image) && !empty($link)){
+			$linkcontent=$link
+			$query=$db->prepare('INSERT INTO thechallenger.post (title,state,linkcontent,type,hd,description,datepost,iduser,idchallenge) VALUES (:title,0,:linkcontent,:type,0,:description,DATE(NOW()),:iduser,:idchallenge)');			}
+		}
+		$query->bindParam(':title',$title,PDO::PARAM_STR);
+		$query->bindParam(':linkcontent',$linkcontent,PDO::PARAM_STR);
+		$query->bindParam(':type',$type,PDO::PARAM_INT);
+		$query->bindParam(':description',$desc,PDO::PARAM_STR);
+		$query->bindParam(':iduser',$_COOKIE['id'],PDO::PARAM_INT);
+		$query->bindParam(':idchallenge',$idchallenge,PDO::PARAM_INT);
+		$query->execute();
+		$query->CloseCursor();
+		
+		echo(json_encode(["code" => 1,"message" => "success"]));
 	}
 
 	public static function checkpost($idpost){
@@ -155,7 +168,7 @@ class postController
 		global $user; 
 		if($user->is_connected(MODERATEUR) || ($user->is_connected(MEMBRE) && $iduser==$_COOKIE['id'])){
 			global $db;
-			$query=$db->prepare("SELECT linkcontent FROM thechallenger.post WHERE id=:idpost AND type='image'");
+			$query=$db->prepare("SELECT linkcontent FROM thechallenger.post WHERE id=:idpost AND type=".IMAGE);
 	        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
 	        $query->execute();
 	        $datas=$query->fetch();

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:8889
--- Généré le :  Mer 08 Mars 2017 à 09:26
+-- Généré le :  Jeu 09 Mars 2017 à 16:24
 -- Version du serveur :  5.5.38
 -- Version de PHP :  5.5.14
 
@@ -44,7 +44,14 @@ CREATE TABLE `follow` (
 `id` int(11) NOT NULL,
   `idfollower` int(11) NOT NULL,
   `idfollowed` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `follow`
+--
+
+INSERT INTO `follow` (`id`, `idfollower`, `idfollowed`) VALUES
+(1, 7, 4);
 
 -- --------------------------------------------------------
 
@@ -65,7 +72,14 @@ CREATE TABLE `post` (
   `datepost` date NOT NULL,
   `iduser` int(11) NOT NULL,
   `idchallenge` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+
+--
+-- Contenu de la table `post`
+--
+
+INSERT INTO `post` (`id`, `title`, `state`, `type`, `hd`, `linkcontent`, `description`, `winner`, `score`, `datepost`, `iduser`, `idchallenge`) VALUES
+(11, 'bonjour', 1, 0, 0, '1489070831.png', '', 0, 0, '2017-03-09', 7, 2);
 
 -- --------------------------------------------------------
 
@@ -77,7 +91,7 @@ CREATE TABLE `score` (
 `id` int(11) NOT NULL,
   `iduser` int(11) NOT NULL,
   `idpost` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -97,17 +111,18 @@ CREATE TABLE `user` (
   `registerdate` varchar(200) NOT NULL,
   `birthdate` date NOT NULL,
   `cptwarnings` int(3) DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Contenu de la table `user`
 --
 
 INSERT INTO `user` (`id`, `rank`, `name`, `pwd`, `email`, `photo`, `description`, `keyactive`, `registerdate`, `birthdate`, `cptwarnings`) VALUES
-(3, 2, 'test', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'quentin54.louis@laposte.net', '', '', 'f0dd85e6e386ef55a82cf4ef62254ff3396d35cd', '06 03 2017', '0000-00-00', 0),
 (4, 1, 'yorka', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'test@test.com', '', '', 'e0c70ab1fa346e1a16493915ede279e7748bce27', '06 03 2017', '0000-00-00', 0),
 (5, 1, 'fdslfksld', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'dlkfsdlk@flkdflkdf.com', '', '', '794fb554c126c74b005460ba27597946272db172', '06 03 2017', '0000-00-00', 0),
-(6, 1, 'dsflsm', '752c14ea195c460bac3c3b7896975ee9fd15eeb7', 'psododslq@ldfljkdhfsh.com', '', '', '8dbcefe7635c8600fecefc49ff83ede1d45292cf', '06 03 2017', '0000-00-00', 0);
+(6, 1, 'dsflsm', '752c14ea195c460bac3c3b7896975ee9fd15eeb7', 'psododslq@ldfljkdhfsh.com', '', '', '8dbcefe7635c8600fecefc49ff83ede1d45292cf', '06 03 2017', '0000-00-00', 0),
+(7, 3, 'test', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'test@test2.com', '', '', '3f9f4218a7f49be692b4328edeefbadfc29f1da4', '08 03 2017', '0000-00-00', 0),
+(8, 1, 'testsss', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'teeest@test.com', '', '', '050e4224b66d9c3b53b55a0f981f36eec5f52384', '08 03 2017', '0000-00-00', 0);
 
 --
 -- Index pour les tables exportées
@@ -156,22 +171,22 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT pour la table `follow`
 --
 ALTER TABLE `follow`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `post`
 --
 ALTER TABLE `post`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT pour la table `score`
 --
 ALTER TABLE `score`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
