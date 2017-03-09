@@ -1,0 +1,76 @@
+.page_contact{
+	background-color:white;
+	z-index:1;
+	position : absolute;
+	border:1px solid grey;
+	border-radius : 10px;
+	left:40%;
+	width:25%;
+	top:-400px;
+	padding-top:20px;
+	padding-bottom:40px;
+	padding-left:20px;
+	padding-right:20px;
+	height:335px;	
+}
+
+
+.field-contact{
+	border : 1px solid grey;
+	margin-top: 20px;
+	margin-left:20px;
+	width:80%;
+	border-radius:5px;
+	color:black
+}
+
+
+.field-contact-message{
+	border : 1px solid grey;
+	margin-top: 20px;
+	margin-left:20px;
+	width:80%;
+	border-radius:5px;
+	resize:vertical;
+	outline:none;
+	color:grey
+}
+
+
+
+.envoyer{
+	border:1px solid grey;
+	background-color:#CCCCCC;
+	color:black;
+	position:absolute;
+	top:300px;
+	right:5px;
+	border-radius:5px;
+	padding-left:30px;
+	padding-right:30px;
+	padding-top:3px;
+	padding-bottom:3px;
+	outline:none;
+}
+
+
+.envoyer:hover{
+	border:1px solide grey;
+	background-color:white;
+}
+
+
+.close-contact{
+	background:transparent;
+	border : none;
+	position: relative;
+	top: -36px;
+    right: -100%;
+	outline:none;
+}
+
+
+.text-top{
+	margin-left:100px;
+	color:black;
+}
