@@ -27,6 +27,10 @@
         "request" : "userController@confirm"
     },
 
+     "user/follow/check/{id}" : {
+        "request" : "userController@checkfollow"
+    },
+
     "user/follow/add/{id}" : {
         "request" : "userController@addfollower"
     },

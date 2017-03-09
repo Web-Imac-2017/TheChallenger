@@ -235,6 +235,17 @@ class userController{
 		echo(json_encode(["code" => 1,"message" => "success"]));
 	}
 
+	//fonction suppression follower
+	public static function checkfollow($id){
+		global $user;
+		if($user->checkfollow($id)){
+	    	echo(json_encode(["code" => 1,"message" => "Success"]));
+			exit();
+		}
+		
+		echo(json_encode(["code" => 0,"message" => "not follower"]));
+	}
+
 	//nombre de personne que le user suit
 	public static function nbfollow($id){
 		global $db;
