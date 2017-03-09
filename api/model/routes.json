@@ -51,6 +51,10 @@
         "request" : "userController@toArray"
     },
 
+    "user/show/{id}/posts/": {
+        "request" : "userController@getposts"
+    },
+ 
     "post/add/{id}" : {
         "request" : "postController@addpost"
     },

@@ -88,9 +88,9 @@ class postController
 		}
 		//si c'est un lien et pas une image
 		if(empty($image) && !empty($link)){
-			$linkcontent=$link
+			$linkcontent=$link;
 			$query=$db->prepare('INSERT INTO thechallenger.post (title,state,linkcontent,type,hd,description,datepost,iduser,idchallenge) VALUES (:title,0,:linkcontent,:type,0,:description,DATE(NOW()),:iduser,:idchallenge)');			}
-		}
+
 		$query->bindParam(':title',$title,PDO::PARAM_STR);
 		$query->bindParam(':linkcontent',$linkcontent,PDO::PARAM_STR);
 		$query->bindParam(':type',$type,PDO::PARAM_INT);

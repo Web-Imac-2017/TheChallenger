@@ -327,6 +327,17 @@ class userController{
 		echo(json_encode($item));
 	}
 
+	public static function getposts($id) {
+
+		global $db;
+		$query=$db->prepare('SELECT * FROM post WHERE iduser=:id');
+		$query->bindParam(':id', $id, PDO::PARAM_INT);
+		$query->execute();
+		$posts=$query->fetch();
+		$query->CloseCursor();
+		echo(json_encore($posts));
+	}
+
 }
 
 
