@@ -8,14 +8,12 @@ export default class PostContent extends React.Component{
         super(props);
         this.state = {
             post : {
-                id : null,
-                // type peut valoir 'image', 'audio', 'video', 'text', 'file'.
-                // description est un court texte de description (évident).
-                // content dépend du type. Si c'est le post est un texte, alors c'est du texte, sinon c'est un lien vers une resource..
-                type : null,
-                // NOTE: pour ce component la description n'est pas utile normalement, mais c'est pour y penser dans le formet JSON d'un post.
-                // description : null,
-                content : null
+                "id" : 2,
+                "user" : 1,
+                "type" : "video",
+                "content" : "https://www.youtube.com/embed/fWRISvgAygU",
+                "description" : "Je suis une courte description",
+                "likes": 8
             },
             renderContent: null
         };
