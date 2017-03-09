@@ -30,5 +30,12 @@
 		<textarea name="desc">description</textarea>
 		<input type="submit" value="envoyer">
 	</form>
+
+	<h3>update de posts</h3>
+	<form method="post" enctype="multipart/form-data" action="api/post/update/11" autocomplete="on">
+		<input type="text" name="title" placeholder="title">
+		<textarea name="desc">description</textarea>
+		<input type="submit" value="envoyer">
+	</form>
 </body>
 </html>

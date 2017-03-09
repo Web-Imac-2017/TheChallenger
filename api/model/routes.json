@@ -59,6 +59,10 @@
         "request" : "postController@updatepost"
     },
 
+    "post/validate/{id}" : {
+        "request" : "postController@validatepost"
+    },
+
     "post/delete/{id}" : {
         "request" : "postController@deletepost"
     },

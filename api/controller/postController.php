@@ -6,35 +6,41 @@ class postController
 
 	//gestion des like de post
 	public static function addlike($idpost){
-		global $db;
-		//si l'utilisateur n'a pas encore like le post
-		if(!Post::checklike($idpost)){
-			$query=$db->prepare('INSERT INTO thechallenger.score (iduser,idpost) VALUES (:iduser,:idpost)');
-	        $query->bindParam(':iduser',$iduser,PDO::PARAM_INT);
-	        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
-	        $query->execute();
-	        $query->CloseCursor();
-	        $query=$db->prepare('UPDATE thechallenger.post SET score=score+1 WHERE id=:idpost');
-	        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
-	        $query->execute();
-	        $query->CloseCursor();
+		if(Post::checklike($idpost)){
+			echo(json_encode(["code" => 0,"message" => "error"]));
+			exit();
 		}
+		//si l'utilisateur n'a pas encore like le post
+		global $db;
+		$query=$db->prepare('INSERT INTO thechallenger.score (iduser,idpost) VALUES (:iduser,:idpost)');
+        $query->bindParam(':iduser',$_COOKIE['id'],PDO::PARAM_INT);
+        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
+        $query->execute();
+        $query->CloseCursor();
+        $query=$db->prepare('UPDATE thechallenger.post SET score=score+1 WHERE id=:idpost');
+        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
+        $query->execute();
+        $query->CloseCursor();
+		
 	}
 
 	public static function deletelike($idpost){
-		global $db;
 		//si l'utilisateur a like
-		if(Post::checklike($idpost)){
-			$query=$db->prepare('DELETE FROM thechallenger.score WHERE iduser=:iduser AND idpost=:idpost');
-	        $query->bindParam(':iduser',$iduser,PDO::PARAM_INT);
-	        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
-	        $query->execute();
-	        $query->CloseCursor();
-	        $query=$db->prepare('UPDATE thechallenger.post SET score=score-1 WHERE id=:idpost');
-	        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
-	        $query->execute();
-	        $query->CloseCursor();
-	    }
+		if(!Post::checklike($idpost)){
+			echo(json_encode(["code" => 0,"message" => "error"]));
+			exit();
+		}
+		global $db;
+		$query=$db->prepare('DELETE FROM thechallenger.score WHERE iduser=:iduser AND idpost=:idpost');
+        $query->bindParam(':iduser',$_COOKIE['id'],PDO::PARAM_INT);
+        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
+        $query->execute();
+        $query->CloseCursor();
+        $query=$db->prepare('UPDATE thechallenger.post SET score=score-1 WHERE id=:idpost');
+        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
+        $query->execute();
+        $query->CloseCursor();
+	    
 	}
 
 
@@ -104,25 +110,39 @@ class postController
 	//modifier post
 	public static function updatepost($idpost){
 		if(!self::checkpost($idpost)){
-	    	echo(json_encode(["code" => 0,"message" => "error"]));
+	    	echo(json_encode(["code" => 0,"message" => "post does not exist"]));
 			exit();
 		}
 		$iduser=self::checkpost($idpost);
 		global $user; 
 		if($user->is_connected(MODERATEUR) || ($user->is_connected(MEMBRE) && $iduser==$_COOKIE['id'])){
 			$title=(!empty($_POST['title']))? $_POST['title']:"";
-			$type=(!empty($_FILES['type']))? $_FILES['type']:"";
-			$desc=(!empty($_FILES['desc']))? $_FILES['desc']:"";
+			$desc=(!empty($_POST['desc']))? $_POST['desc']:"";
 
 			global $db;
-			$query=$db->prepare('UPDATE thechallenger.post SET title=:title,type=:type,description=:description WHERE id=:idpost');
+			$query=$db->prepare('UPDATE thechallenger.post SET title=:title,description=:description WHERE id=:idpost');
 	        $query->bindParam(':title',$title,PDO::PARAM_STR);
-	        $query->bindParam(':type',$type,PDO::PARAM_STR);
 	        $query->bindParam(':description',$desc,PDO::PARAM_STR);
 	        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
 	        $query->execute();
 	        $query->CloseCursor();
 		}
+	}
+
+	//fonction valider post
+	public static function validatepost($idpost){
+		global $user;
+		if(!$user->is_connected(MODERATEUR)){
+	    	echo(json_encode(["code" => 0,"message" => "you can't do that young man"]));
+			exit();
+		}
+		global $db;
+		$query=$db->prepare('UPDATE thechallenger.post SET state=1 WHERE id=:idpost');
+		$query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
+		$query->execute();
+		$query->CloseCursor();
+		echo(json_encode(["code" => 1,"message" => "success"]));
+
 	}
 
 	//supprimer post
@@ -178,7 +198,7 @@ class postController
 	}
 
 	public static function toArray($idpost){
-		if(!Post::postexists($idpost)){
+		if(!self::checkpost($idpost)){
 	    	echo(json_encode(["code" => 0,"message" => "post does not exists"]));
 			exit();
 		}
@@ -202,36 +222,11 @@ class postController
 			"iduser" => $datas['iduser'],
 			"idchallenge" => $datas['idchallenge']
 		];
+		//echo(json_encode($item));
+
 		return $item;
 	}
-	
-	public static function returnArray($idpost){
-		if(!Post::postexists($idpost)){
-	    	echo(json_encode(["code" => 0,"message" => "post does not exists"]));
-			exit();
-		}
-		global $db;
-		$query=$db->prepare('SELECT * FROM thechallenger.post WHERE id=:idpost');
-		$query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
-		$query->execute();
-		$datas=$query->fetch();
-		$query->CloseCursor();
-		$item = [
-			"id" => $idpost,
-			"title" => $datas['title'],
-			"state" => $datas['state'],
-			"type" => $datas['type'],
-			"hd" => $datas['hd'],
-			"linkcontent" => $datas['linkcontent'],
-			"description" => $datas['description'],
-			"winner" => $datas['winner'],
-			"score" => $datas['score'],
-			"datepost" => $datas['datepost'],
-			"iduser" => $datas['iduser'],
-			"idchallenge" => $datas['idchallenge']
-		];
-		return $item;
-	}
+
 }
 
 ?>
