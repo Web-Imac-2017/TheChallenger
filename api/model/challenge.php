@@ -141,6 +141,36 @@ class Challenge
 		$today = date("Y-m-d");
 		return ($date > $today);
 	}
+	
+	public static function setWinner($idchallenge) {
+		
+		if (deadLine($idchallenge)) {
+		
+			global $db;
+			// on cherche le nombre maximal de likes sur les pots du challenge
+			$query_max = $db->prepare('SELECT max(score) FROM post WHERE idchallenge=:idchallenge');
+			$query_max->bindParam(':idchallenge',$idchallenge,PDO::PARAM_INT);
+			$query_max->execute();
+			$result = $query_max->fetch(); 
+			$query_max->closeCursor();
+			$max = $result['max(score)'];
+			
+			// on cherche le post ayant le plus de like du challenge
+			$query = $db->prepare('SELECT * FROM post WHERE idchallenge=:idchallenge AND score = :max');
+			$query->bindParam(':idchallenge',$idchallenge,PDO::PARAM_INT);
+			$query->bindParam(':max',$max,PDO::PARAM_INT);
+			$query->execute();
+			$data = $query->fetch();
+			$query->closeCursor();
+			$id = $data['id'];
+			
+			// le post est winner
+			$query_win = $db->prepare('UPDATE post SET winner = 1 WHERE id=:id');
+			$query_win->bindParam(':id',$id,PDO::PARAM_INT);
+			$query_win->execute();
+			$query_win->closeCursor();
+		}
+	}
 }
 
 ?>
