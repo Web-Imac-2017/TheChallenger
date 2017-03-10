@@ -52,7 +52,7 @@ export default class UserMenu extends React.Component {
 					<div className="vignette" onClick={this.openMenu} onMouseOver={this.mouseOver.bind(this)} onMouseOut={this.mouseOut.bind(this)}  >
 				
 					
-							<Vignette image ={"img/no-image.png"}/> 
+							<Vignette image ={"img/no-image.png"} /> 
 							<TabUser ref="tabUser" />  
 					    							
 					</div>	
