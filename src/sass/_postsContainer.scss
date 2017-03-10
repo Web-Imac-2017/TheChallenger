@@ -6,13 +6,10 @@ $postColorBG : #e6e6e6;
 $squareWidth : 20px;
 
 .post-min{
-	  width: 350px;
-	  background-color: $postColorBG;
+	width: 350px;
+	background-color: $postColorBG;
     display: inline-block;
     margin: 10px;
-
-
-
 	  .post__profil_bar{
 		    display: flex;
 		    flex-flow: row ;
@@ -25,22 +22,15 @@ $squareWidth : 20px;
 			      justify-content: space-between;
 			      align-items: center;
 			      align-content: flex-start;
-			      flex: 1;
 
 			      padding: 0 15px 0 5px;
-
-			      div{
-				        flex: 1;
-			      }
 			      
 			      h4{
-				        flex: 2;
 				        padding: 0 10px;
 			      }
 		    }
 
 		    button{
-			      flex: 2;
 			      flex-flow: row wrap;
 		        border-radius: 5px;
 		        border : 1px solid;
