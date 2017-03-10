@@ -322,15 +322,17 @@ class userController{
 		$query=$db->prepare('SELECT id FROM post WHERE iduser=:id');
 		$query->bindParam(':id', $id, PDO::PARAM_INT);
 		$query->execute();
-		$idpost=$query->fetch();
+		$idspost=array();
+		while($datas=$query->fetch()){
+			array_push($idspost, $datas['id']);
+		}
 		$query->CloseCursor();
-		$idp = $idpost['id'];
 		
 		$item = [
 			"nbfollow" => $nbfollow,
 			"nbfollower" => $nbfollower,
 			"nbpost" => $nbp,
-			"id" => $idp
+			"id" => $idspost
 		];
 		
 		echo (json_encode($item));
