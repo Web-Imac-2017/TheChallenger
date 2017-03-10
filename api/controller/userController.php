@@ -1,5 +1,5 @@
 <?php
-include_once("model/User.php");
+//include_once("model/User.php");
 $user=new User();
 
 class userController{
@@ -235,26 +235,15 @@ class userController{
 		echo(json_encode(["code" => 1,"message" => "success"]));
 	}
 
-	//nombre de personne que le user suit
-	public static function nbfollow($id){
-		global $db;
-		$query=$db->prepare('SELECT COUNT(*) AS nbfollow FROM thechallenger.follow WHERE idfollower=:id');
-		$query->bindParam(':id', $id, PDO::PARAM_INT);
-		$query->execute();
-		$datas=$query->fetch();
-		$query->CloseCursor();
-		echo(json_encode(["code" => 1,"nb" => $datas['nbfollow']]));
-	}
-
-	//nombre de personne qui suivent le user
-	public static function nbfollower($id){
-		global $db;
-		$query=$db->prepare('SELECT COUNT(*) AS nbfollower FROM thechallenger.follow WHERE idfollowed=:id');
-		$query->bindParam(':id', $id, PDO::PARAM_INT);
-		$query->execute();
-		$datas=$query->fetch();
-		$query->CloseCursor();
-		echo(json_encode(["code" => 1,"nb" => $datas['nbfollower']]));
+	//fonction suppression follower
+	public static function checkfollow($id){
+		global $user;
+		if($user->checkfollow($id)){
+	    	echo(json_encode(["code" => 1,"message" => "Success"]));
+			exit();
+		}
+		
+		echo(json_encode(["code" => 0,"message" => "not follower"]));
 	}
 
 	//fonction modification utilisateur, ajout avertissement et modif de rang
@@ -301,7 +290,7 @@ class userController{
 
 		echo(json_encode(["code" => 1,"message" => "Success"]));
 	}
-
+	
 	public static function toArray($id){
 		global $db;
 		$query=$db->prepare('SELECT * FROM thechallenger.user WHERE id=:id');
@@ -324,9 +313,63 @@ class userController{
 			"birthdate" => $datas['birthdate'],
 			"cptwarnings" => $datas['cptwarnings']
 		];
-		echo(json_encode($item));
+		return json_encode($item);
 	}
 
+	public static function show($id){
+		echo(self::toArray($id));
+	}
+
+	public static function getinfos($id) {
+		
+		global $db;
+		//nombre de personne que le user suit
+		$query=$db->prepare('SELECT COUNT(*) AS nbfollow FROM thechallenger.follow WHERE idfollower=:id');
+		$query->bindParam(':id', $id, PDO::PARAM_INT);
+		$query->execute();
+		$datas=$query->fetch();
+		$query->CloseCursor();
+		$nbfollow=$datas['nbfollow'];
+
+		//nombre de followers du user
+		$query=$db->prepare('SELECT COUNT(*) AS nbfollower FROM thechallenger.follow WHERE idfollowed=:id');
+		$query->bindParam(':id', $id, PDO::PARAM_INT);
+		$query->execute();
+		$followers=$query->fetch();
+		$query->CloseCursor();
+		$nbfollower = $followers['nbfollower'];
+		
+		//nombre de posts
+		$query=$db->prepare('SELECT COUNT(*) AS nbpost FROM thechallenger.post WHERE iduser=:id');
+		$query->bindParam(':id', $id, PDO::PARAM_INT);
+		$query->execute();
+		$posts=$query->fetch();
+		$query->CloseCursor();
+		$nbp = $posts['nbpost'];
+		
+		//id de posts
+		$query=$db->prepare('SELECT id FROM thechallenger.post WHERE iduser=:id');
+		$query->bindParam(':id', $id, PDO::PARAM_INT);
+		$query->execute();
+		$idspost=array();
+		while($datas=$query->fetch()){
+			array_push($idspost, $datas['id']);
+		}
+		$query->CloseCursor();
+
+		$showUser=json_decode(self::toArray($id),true);
+		
+		$item = [
+			"nbfollow" => $nbfollow,
+			"nbfollower" => $nbfollower,
+			"nbpost" => $nbp,
+			"idpost" => $idspost
+		];
+
+		$item=$item+$showUser;
+		
+		echo (json_encode($item));
+	}
 }
 
 

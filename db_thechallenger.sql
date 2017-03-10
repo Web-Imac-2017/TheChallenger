@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 08 Mars 2017 à 15:50
+-- Généré le :  Ven 10 Mars 2017 à 09:20
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -39,9 +39,10 @@ CREATE TABLE `challenge` (
 --
 
 INSERT INTO `challenge` (`id`, `title`, `description`, `datestart`, `datestop`) VALUES
-(2, 'TITRE', 'DESCRIPTION', '2016-01-01', '2017-01-01'),
-(4, 'LOL', '', '2011-01-01', '2011-01-01'),
-(5, 'challenge', 'cool', '2017-03-08', '2017-03-17');
+(4, 'Mickey', '', '2017-03-09', '2017-03-16'),
+(8, 'Nature', 'eh ouais mamene', '2017-03-09', '2017-03-23'),
+(9, 'Balec', 'ziojgozaj', '2017-03-09', '2017-03-26'),
+(10, 'groschallenge', 'tropouf', '2017-03-09', '2017-03-31');
 
 -- --------------------------------------------------------
 
@@ -54,6 +55,17 @@ CREATE TABLE `follow` (
   `idfollower` int(11) NOT NULL,
   `idfollowed` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `follow`
+--
+
+INSERT INTO `follow` (`id`, `idfollower`, `idfollowed`) VALUES
+(1, 10, 12),
+(2, 10, 11),
+(3, 11, 12),
+(4, 9, 12),
+(5, 7, 12);
 
 -- --------------------------------------------------------
 
@@ -81,7 +93,8 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`id`, `title`, `state`, `type`, `hd`, `linkcontent`, `description`, `winner`, `score`, `datepost`, `iduser`, `idchallenge`) VALUES
-(1, 'image1', 0, 0, 1, '0', '0', 0, 0, '2011-01-01', 0, 4);
+(1, 'image1', 0, 0, 1, 'background.jpg', '0', 0, 0, '2011-01-01', 3, 4),
+(3, 'balec', 0, 0, 1, 'background.jpg', 'ah', 1, 3, '2016-01-01', 4, 4);
 
 -- --------------------------------------------------------
 
@@ -119,9 +132,16 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `rank`, `name`, `pwd`, `email`, `keyactive`, `isActive`, `registerdate`, `birthdate`, `cptwarnings`) VALUES
-(3, 2, 'test', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'quentin54.louis@laposte.net', 'f0dd85e6e386ef55a82cf4ef62254ff3396d35cd', 0, '06 03 2017', '0000-00-00', 0),
 (4, 1, 'yorka', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'test@test.com', 'e0c70ab1fa346e1a16493915ede279e7748bce27', 0, '06 03 2017', '0000-00-00', 0),
-(5, 2, 'laure', '530226d0f0a4ce262450ab17e0ed44a90a529e6d', 'laureisssa@gmail.com', 'c4ebba6a50d3a6ab020b700e18e407772e1500bb', 0, '08 03 2017', NULL, 0);
+(5, 2, 'laure', '530226d0f0a4ce262450ab17e0ed44a90a529e6d', 'laureisssa@gmail.com', 'c4ebba6a50d3a6ab020b700e18e407772e1500bb', 0, '08 03 2017', NULL, 0),
+(6, 3, 'test2', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'issalaure@yahoo.fr', '6225f0280c919c900b1b086e07d0327b523cf4c3', NULL, '08 03 2017', NULL, 0),
+(7, 1, 'ihfzo', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'fziohg@gmail.com', '79e884b7a6b8e570dc639f4837f52b85db896ec5', NULL, '08 03 2017', NULL, 0),
+(8, 1, 'Michel', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'user1@test.com', 'd6acb1367a5b2266aecf7675439f9f21e9e75061', NULL, '10 03 2017', NULL, 0),
+(9, 1, 'Mickey', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'user2@test.com', '9f3c81854848cf3b39664a7dfa56b76fe707f2ba', NULL, '10 03 2017', NULL, 0),
+(10, 1, 'Lorie', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'user3@test.com', '707e24e7e1d87705735ecde61e1c39748aa7e525', NULL, '10 03 2017', NULL, 0),
+(11, 1, 'Flavie', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'user4@test.com', 'f39bc6b61b1a16f5fcefa67e5fd4a5168726bbcf', NULL, '10 03 2017', NULL, 0),
+(12, 1, 'Marie-Lou', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'user5@test.com', 'e62462149e6939900c9ddeb101aeedce4f14cb14', NULL, '10 03 2017', NULL, 0),
+(13, 1, 'Matthieu', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'user6@test.com', '5fe84fc5740e748c9199d58fa191201ecb4c2ea9', NULL, '10 03 2017', NULL, 0);
 
 --
 -- Index pour les tables exportées
@@ -165,17 +185,17 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `challenge`
 --
 ALTER TABLE `challenge`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT pour la table `follow`
 --
 ALTER TABLE `follow`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT pour la table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `score`
 --
@@ -185,7 +205,7 @@ ALTER TABLE `score`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
