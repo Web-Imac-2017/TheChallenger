@@ -39,12 +39,20 @@
         "request" : "userController@deletefollower"
     },
 
+    "user/follow/nbfollow/{id}": {
+        "request" : "userController@nbfollow"
+    },
+
+    "user/follow/nbfollower/{id}": {
+        "request" : "userController@nbfollower"
+    },
+
     "user/change/{id}" : {
         "request" : "userController@changeuser"
     },
 
     "user/show/{id}": {
-        "request" : "userController@show"
+        "request" : "userController@toArray"
     },
 
     "user/{id}/posts/": {
@@ -123,7 +131,7 @@
 		"request" : "challengeController@time_left"
 	},
 	
-	"winners/{id}":{
+	"winners/":{
 		"request" : "postController@getWinners"
 	}
 }
