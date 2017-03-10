@@ -1,8 +1,8 @@
-import React      from 'react';
-import Utility      from './../utilities/utility.js';
-import PostProfilBar  from './post/PostProfilBar.js';
-import PostContent from './post/PostContent.js';
-import PostLikesbar from './post/PostLikesBar.js';
+import React            from 'react';
+import Utility          from './../utilities/utility.js';
+import PostProfilBar    from './post/PostProfilBar.js';
+import PostContent      from './post/PostContent.js';
+import PostLikesbar     from './post/PostLikesBar.js';
 
 export default class PostMin extends React.Component{
     constructor(props){

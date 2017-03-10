@@ -1,4 +1,4 @@
-let utility = {
+const utility = {
 	query(url, callback){
 		fetch(url)
 			.then(function(response){

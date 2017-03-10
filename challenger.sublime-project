@@ -2,7 +2,19 @@
 	"folders":
 	[
 		{
-			"path": "."
+			"path": "imgs"
+		},
+		{
+			"path": "src"
+		},
+		{
+			"path": "api"
+		},
+		{
+			"path": "data"
+		},
+		{
+			"path": "dist"
 		}
 	]
 }
