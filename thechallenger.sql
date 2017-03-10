@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:8889
--- Généré le :  Ven 10 Mars 2017 à 18:23
+-- Généré le :  Ven 10 Mars 2017 à 18:26
 -- Version du serveur :  5.5.38
 -- Version de PHP :  5.5.14
 
@@ -46,13 +46,6 @@ CREATE TABLE `follow` (
   `idfollowed` int(11) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
---
--- Contenu de la table `follow`
---
-
-INSERT INTO `follow` (`id`, `idfollower`, `idfollowed`) VALUES
-(1, 7, 4);
-
 -- --------------------------------------------------------
 
 --
@@ -74,14 +67,6 @@ CREATE TABLE `post` (
   `idchallenge` int(11) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
---
--- Contenu de la table `post`
---
-
-INSERT INTO `post` (`id`, `title`, `state`, `type`, `hd`, `linkcontent`, `description`, `winner`, `score`, `datepost`, `iduser`, `idchallenge`) VALUES
-(11, 'bonjour', 1, 0, 0, '1489070831.png', '', 0, 1, '2017-03-09', 7, 2),
-(12, 'dsdsfds', 0, 0, 1, '1489143143.jpg', 'sdfssd', 0, 0, '2017-03-10', 7, 2);
-
 -- --------------------------------------------------------
 
 --
@@ -93,13 +78,6 @@ CREATE TABLE `score` (
   `iduser` int(11) NOT NULL,
   `idpost` int(11) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
--- Contenu de la table `score`
---
-
-INSERT INTO `score` (`id`, `iduser`, `idpost`) VALUES
-(1, 7, 11);
 
 -- --------------------------------------------------------
 
