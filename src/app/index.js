@@ -1,12 +1,13 @@
 require ('../sass/main.scss');
 
-
 import React from "react";
 import ReactDOM from "react-dom";
 import { Router, Route, hashHistory } from 'react-router';
+
 import Login from "./vues/Login.js";
 import Home from "./vues/Home.js";
 import Contact from "./vues/Contact.js";
+import UserProfil from "./vues/UserProfil.js";
 
 const app = document.getElementById('app');
 
@@ -17,7 +18,7 @@ class Layout extends React.Component{
 			    <Route path="/" component={Login}/>
 			    <Route path="/home" component={Home}/>
 				<Route path="/contact" component={Contact}/>
-				<Route path="/profil/{:id}" component={Contact}/>
+				<Route path="profil/:userId" name="/profil" component={UserProfil}/>
 			</Router>	
 		);
 	}

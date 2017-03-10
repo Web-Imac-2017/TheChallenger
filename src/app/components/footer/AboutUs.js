@@ -2,12 +2,10 @@ import React from "react";
 import Member from "./Member.js";
 
 export default class AboutUs extends React.Component {
+    
     render() {
     	return(
-            <div className="aboutus col-lg-6 col-sm-11 col-centered">
-                <button onClick={this.closeAbout} className="close-aboutus" >
-                    <img src= "../img/icons/cross_quit.png"width="30" height="30"/>
-                </button>
+            <div className="aboutus col-lg-6 col-xs-8 col-centered">
 
                 <h1>Our Team</h1>
                 <p>- The Cap Squad -</p>
