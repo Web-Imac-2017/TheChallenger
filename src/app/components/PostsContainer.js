@@ -6,12 +6,29 @@ import Utility from './../utilities/utility.js';
 export default class PostsContainer extends React.Component{
 	  constructor(props){
 		    super(props);
-        this.setState({
-            posts: null
-        });
-        // Utility.getJSON("api/user/show/"+postId, this);
+        this.state = {
+            postsIds: null,
+            posts : null,
+            postsFiltered: null
+        };
+        Utility.query("api/winners", this.callBackData().bind(this));
         this.filterBar = <FilterBar updateParent={()=>console.log("click")} filters={{"all": "All", "pasAll":"Pas All"}} />;
 	  }
+
+    callBackData(data) {
+        this.setState({
+            postsIds: data,
+            posts: data.map((id) => {return(<PostMin postId={id} />);})
+        });
+        updatePostsFiltered();
+    }
+
+    updatePostsFiltered(filter) {
+        // TODO faire le tri
+        this.setState({
+            postsFiltered: this.state.posts
+        });
+    }
 
 	  render(){
 		    return(
