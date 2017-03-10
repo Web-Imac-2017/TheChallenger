@@ -80,8 +80,28 @@ class challengeController {
 	
 	public static function time_left($idchallenge) {
 	
-		$item = Challenge::timeLeft($idchallenge);
-		echo (json_encode($item));
+		$challenge = Challenge::challenge_exists($idchallenge);
+		if (!$challenge) {
+		
+			echo(json_encode(["code" => 0,"message" => "Error : challenge does not exist"]));
+			exit();
+		}
+		global $db;
+		$query=$db->prepare('SELECT datestop FROM challenge WHERE id=:idchallenge');
+		$query->bindParam(':idchallenge',$idchallenge,PDO::PARAM_INT);
+		$query->execute();
+		$stop=$query->fetch();
+		$query->closeCursor();
+		$date=strtotime($stop['datestop']);
+		$diff=$date-time();
+		$days=round($diff/(60*60*24));
+		$hours=round(($diff-$days*60*60*24)/(60*60));
+		$time = [
+		
+			"days" => $days,
+			"hours" => $hours,
+		];
+		echo (json_encode($time));
 	}	
 
 	
