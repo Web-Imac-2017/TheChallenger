@@ -290,6 +290,35 @@ class userController{
 
 		echo(json_encode(["code" => 1,"message" => "Success"]));
 	}
+	
+	public static function toArray($id){
+		global $db;
+		$query=$db->prepare('SELECT * FROM thechallenger.user WHERE id=:id');
+		$query->bindParam(':id',$id,PDO::PARAM_INT);
+		$query->execute();
+		$datas=$query->fetch();
+		$query->CloseCursor();
+		if(empty($datas['id'])){
+	    	echo(json_encode(["code" => 0,"message" => "user doesn't exist"]));
+			exit();
+		}
+		$item = [
+			"id" => $id,
+			"rank" => $datas['rank'],
+			"name" => $datas['name'],
+			"email" => $datas['email'],
+			"photo" => $datas['photo'],
+			"description" => $datas['description'],
+			"registerdate" => $datas['registerdate'],
+			"birthdate" => $datas['birthdate'],
+			"cptwarnings" => $datas['cptwarnings']
+		];
+		return json_encode($item);
+	}
+
+	public static function show($id){
+		echo(self::toArray($id));
+	}
 
 	public static function getinfos($id) {
 		
@@ -319,59 +348,28 @@ class userController{
 		$nbp = $posts['nbpost'];
 		
 		//id de posts
-		$query=$db->prepare('SELECT id FROM post WHERE iduser=:id');
+		$query=$db->prepare('SELECT id FROM thechallenger.post WHERE iduser=:id');
 		$query->bindParam(':id', $id, PDO::PARAM_INT);
 		$query->execute();
-		$idpost=$query->fetch();
+		$idspost=array();
+		while($datas=$query->fetch()){
+			array_push($idspost, $datas['id']);
+		}
 		$query->CloseCursor();
-		$idp = $idpost['id'];
+
+		$showUser=json_decode(self::toArray($id),true);
 		
 		$item = [
 			"nbfollow" => $nbfollow,
 			"nbfollower" => $nbfollower,
 			"nbpost" => $nbp,
-			"id" => $idp
+			"idpost" => $idspost
 		];
+
+		$item=$item+$showUser;
 		
 		echo (json_encode($item));
 	}
-	
-	public static function toArray($id){
-		global $db;
-		$query=$db->prepare('SELECT * FROM thechallenger.user WHERE id=:id');
-		$query->bindParam(':id',$id,PDO::PARAM_INT);
-		$query->execute();
-		$datas=$query->fetch();
-		$query->CloseCursor();
-		if(empty($datas['id'])){
-	    	echo(json_encode(["code" => 0,"message" => "user doesn't exist"]));
-			exit();
-		}
-		$item = [
-			"id" => $id,
-			"rank" => $datas['rank'],
-			"name" => $datas['name'],
-			"email" => $datas['email'],
-			"photo" => $datas['photo'],
-			"description" => $datas['description'],
-			"registerdate" => $datas['registerdate'],
-			"birthdate" => $datas['birthdate'],
-			"cptwarnings" => $datas['cptwarnings']
-		];
-		echo(json_encode($item));
-	}
-
-	public static function getposts($id) {
-
-		global $db;
-		$query=$db->prepare('SELECT * FROM thechallenger.post WHERE iduser=:id');
-		$query->bindParam(':id', $id, PDO::PARAM_INT);
-		$query->execute();
-		$posts=$query->fetch();
-		$query->CloseCursor();
-		echo(json_encore($posts));
-	}
-
 }
 
 

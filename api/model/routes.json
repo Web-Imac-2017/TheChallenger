@@ -39,20 +39,12 @@
         "request" : "userController@deletefollower"
     },
 
-    "user/follow/nbfollow/{id}": {
-        "request" : "userController@nbfollow"
-    },
-
-    "user/follow/nbfollower/{id}": {
-        "request" : "userController@nbfollower"
-    },
-
     "user/change/{id}" : {
         "request" : "userController@changeuser"
     },
 
     "user/show/{id}": {
-        "request" : "userController@toArray"
+        "request" : "userController@show"
     },
 
     "user/{id}/posts/": {
