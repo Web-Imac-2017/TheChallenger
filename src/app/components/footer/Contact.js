@@ -2,6 +2,8 @@ import React from "react";
 import Header from "../Header.js";
 import Footer from "../Footer.js";
 
+const logoCross = require("./../../../img/icons/cross.png");
+
 export default class Contact extends React.Component {
 	constructor (props) {
         super(props);
@@ -25,7 +27,7 @@ export default class Contact extends React.Component {
                 <div className= "overlay"></div>
             	<div className="contact">
            			<button onClick={this.close.bind(this)} className="close-aboutus" >
-                        <img src= "../img/icons/cross.png"width="30" height="30"/>
+                        <img src= {logoCross} width="30" height="30"/>
                     </button>
 
                 	<div className="text-top"><p>Give us some news</p></div>

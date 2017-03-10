@@ -1,6 +1,8 @@
 import React from "react";
 import Member from "./Member.js";
 
+const logoCross = require("./../../../img/icons/cross.png");
+
 export default class AboutUs extends React.Component {
     constructor (props) {
         super(props);
@@ -24,7 +26,7 @@ export default class AboutUs extends React.Component {
                 <div className= "overlay"></div>
                 <div className="aboutus">
                     <button onClick={this.close.bind(this)} className="close-aboutus" >
-                        <img src= "../img/icons/cross.png"width="30" height="30"/>
+                        <img src= {logoCross} width="30" height="30"/>
                     </button>
                     <h1>Our Team</h1>
                     <p>- The Cap Squad -</p>
