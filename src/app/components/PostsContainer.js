@@ -11,16 +11,16 @@ export default class PostsContainer extends React.Component{
             posts : null,
             postsFiltered: null
         };
-        Utility.query("api/winners", this.callBackData().bind(this));
+        Utility.query("api/winners", this.callBackData.bind(this));
         this.filterBar = <FilterBar updateParent={()=>console.log("click")} filters={{"all": "All", "pasAll":"Pas All"}} />;
 	  }
 
     callBackData(data) {
         this.setState({
             postsIds: data,
-            posts: data.map((id) => {return(<PostMin postId={id} />);})
+            posts: data == null ? null : data.map((id) => {return(<PostMin postId={id} />);})
         });
-        updatePostsFiltered();
+        this.updatePostsFiltered("all");
     }
 
     updatePostsFiltered(filter) {
