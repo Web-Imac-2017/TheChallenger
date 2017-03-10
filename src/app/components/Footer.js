@@ -11,53 +11,43 @@ import AboutUs from "./footer/AboutUs.js";
 export default class Footer extends React.Component {
 	
 	constructor (props) {
-		super(props);
-		
-		// ouvrir/fermer la page de contact //
-		this.state = { contactActive: false };
-		this.openContact = this.openContact.bind(this);
-		this.closeContact = this.closeContact.bind(this);
-		
-		
-		// ouvrir/fermer la page about //
-		this.state = { aboutActive: false };
-		this.openAbout = this.openAbout.bind(this);
-		this.closeAbout = this.closeAbout.bind(this);
-		
-	}
+        super(props);
+
+        // ouvrir/fermer la page de contact //
+        this.state = { contactActive: false };
+        this.openContact = this.openContact.bind(this);
+        this.closeContact = this.closeContact.bind(this);
+    }		
+	
 	
 	closeContact () {
 		this.setState({ contactActive: false });
-	};
+	}
  
 	
 	openContact () {
-		this.setState({ contactActive: true })
-	};
+		this.setState({ contactActive: true });
+	}
 	  
 	  
-	  
-	closeAbout () {
-		this.setState({ aboutActive: false });
-		
-	};
- 
+	handleAboutBtnClick(){
+		console.log(this.refs.aboutBtn);
+		this.refs.about.open(); 
+	}
 	
-	openAbout () {
-    this.setState({ aboutActive: true })
-
-	};
    
-    render() {     
+    render() {   
+
         return(			
 										
 			<footer className="the_footer">				
-				<button id="btn"  onClick={this.openContact}> Contact </button>
+				<button id="btn"  onClick={this.openContact}>Contact</button>
 									
 				<SocialLinks/>	
 						
-				<button id="btn"  onClick={this.openAbout}> About Us </button>
-									
+				<button id="btn"   onClick={this.handleAboutBtnClick.bind(this)}>About Us</button>
+						
+				<AboutUs ref="about"/>				
 				{this.state.contactActive&&(
 					<div className ="page_contact">
 						<button onClick={this.closeContact} className="close-contact" >
@@ -66,18 +56,7 @@ export default class Footer extends React.Component {
 						<Contact/>
 												
 					</div>
-				)}
-									
-									
-				{this.state.aboutActive&&(
-					<div className ="page_about">
-						<div className= "overlay"></div>
-						<button onClick={this.closeAbout} className="close-aboutus" >
-	           				<img src= "../img/icons/cross_quit.png"width="30" height="30"/>
-	        			</button>
-						<AboutUs/>
-					</div>
-				)}					
+				)}			
 			</footer>
 		
         );
