@@ -245,9 +245,9 @@ class postController
 			"iduser" => $datas['iduser'],
 			"idchallenge" => $datas['idchallenge']
 		];
-		//echo(json_encode($item));
+		echo(json_encode($item));
 
-		return $item;
+		// return $item;
 	}
 	
 	public static function getWinners() {
@@ -255,9 +255,12 @@ class postController
 		global $db;
 		$query=$db->prepare('SELECT * FROM post WHERE winner = 1');
 		$query->execute();
-		$result = $query->fetch();
+		$win=array();
+		while($datas=$query->fetch()){
+			array_push($win, $datas);
+		}
 		$query->CloseCursor();
-		echo(json_encode($result));
+		echo(json_encode($win));
 	}
 
 }
