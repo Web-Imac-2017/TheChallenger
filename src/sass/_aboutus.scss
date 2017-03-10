@@ -1,5 +1,13 @@
 .page_about{
-	
+	button{
+		background:transparent;
+		border : none;
+		position: absolute;
+		margin: auto;
+		z-index: 2;
+   	  	right: 25%;
+    	top: -2529%;
+	}	
 }
 .aboutus{
 	color: black;
@@ -18,14 +26,6 @@
 
 	.membersList {
 		padding:0 30px;
-	}
-	button{
-		background:transparent;
-		border : none;
-		position: relative;
-		margin: auto;
-		z-index: 1;
-	    right: -95%;
 	}
 	h1{
 		position: relative;
@@ -47,9 +47,7 @@
 			width: 75px;
 			height: 75px;
 			border-radius: 50%;
-			margin-bottom: 4%;
-			margin-top: 4%;
-			margin-left: 4%;
+			margin: 4%;
 			padding: 0;
 		}
 		h4 {

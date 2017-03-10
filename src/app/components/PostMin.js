@@ -15,12 +15,13 @@ export default class PostMin extends React.Component{
         this.state = {
             post : defaultPost
         };
+        
         this.loadData();	
     }
 
     loadData(){
         var postId = this.props.postId;
-        Utility.getJSON("api/user/show/"+postId, this);
+        Utility.query("api/user/show/"+postId, this.callback.bind(this));
     }
 
     callback(data){
@@ -33,11 +34,11 @@ export default class PostMin extends React.Component{
         if(this.state.post === null)
             return null;
         return(
-                <div className="post-min">
+            <div className="post-min">
                 <PostProfilBar userId = {this.state.post.user} />
                 <PostContent postId = {this.state.post.id} />
                 <PostLikesbar postId = {this.state.post.id} />
-                </div>
+            </div>
         );
     }
 }

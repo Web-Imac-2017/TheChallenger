@@ -1,5 +1,5 @@
-var utility = {
-	getJSON(url, obj){
+let utility = {
+	query(url, callback){
 		fetch(url)
 			.then(function(response){
 				if (response.status !== 200) {  
@@ -7,7 +7,7 @@ var utility = {
 			    	return;  
 			    }
 				response.json().then(function(data) {  
-			    	obj.callback(data);  
+			    	callback(data);  
 			    });
 			})
 			.catch(function (error) {

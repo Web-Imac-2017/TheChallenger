@@ -16,8 +16,8 @@ export default class PostLikesbar extends React.Component{
     }
 
     loadData() {
-        var postId = this.props.postId;
-        Utility.getJSON("api/user/show/"+postId, this);
+        const postId = this.props.postId;
+        Utility.query("api/user/show/"+postId, this.callback.bind(this));
     }
 
     callback(data) {
