@@ -1,5 +1,5 @@
 .posts-container {
-    text-align: center; 
+    text-align: center;
 }
 
 $postColorBG : #e6e6e6;
@@ -10,6 +10,8 @@ $squareWidth : 20px;
 	background-color: $postColorBG;
     display: inline-block;
     margin: 10px;
+    padding: 10px;
+    border-radius: 4px;
 	  .post__profil_bar{
 		    display: flex;
 		    flex-flow: row ;
