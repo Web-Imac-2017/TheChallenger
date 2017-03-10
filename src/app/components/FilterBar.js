@@ -12,9 +12,9 @@ import React 	from "react";
 export default class FilterBar extends React.Component{
 	  constructor(props){
 		    super(props);
-        this.setState({
+        this.state = {
             key: Object.keys(this.props.filters)[0] // on se met sur le premier filtre par défaut
-        });
+        };
         this.buttons = null;
 	  }
 
