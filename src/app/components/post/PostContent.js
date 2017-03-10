@@ -35,10 +35,10 @@ export default class PostContent extends React.Component{
             media = (<img src={this.state.post.content} alt={this.state.post.content} />);
             break;
         case "audio":
-            media = (<iframe width="100%" height="450" scrolling="no" frameborder="no" src={this.state.post.content}></iframe>);
+            media = (<iframe width="100%" height="200" scrolling="no" frameborder="no" src={this.state.post.content}></iframe>);
             break;
         case "video":
-            media = (<iframe width="420" height="315"
+            media = (<iframe width="100%"
                      src={this.state.post.content}>
                      </iframe> );
             break;
