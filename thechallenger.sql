@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:8889
--- Généré le :  Jeu 09 Mars 2017 à 16:24
+-- Généré le :  Ven 10 Mars 2017 à 18:23
 -- Version du serveur :  5.5.38
 -- Version de PHP :  5.5.14
 
@@ -72,14 +72,15 @@ CREATE TABLE `post` (
   `datepost` date NOT NULL,
   `iduser` int(11) NOT NULL,
   `idchallenge` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Contenu de la table `post`
 --
 
 INSERT INTO `post` (`id`, `title`, `state`, `type`, `hd`, `linkcontent`, `description`, `winner`, `score`, `datepost`, `iduser`, `idchallenge`) VALUES
-(11, 'bonjour', 1, 0, 0, '1489070831.png', '', 0, 0, '2017-03-09', 7, 2);
+(11, 'bonjour', 1, 0, 0, '1489070831.png', '', 0, 1, '2017-03-09', 7, 2),
+(12, 'dsdsfds', 0, 0, 1, '1489143143.jpg', 'sdfssd', 0, 0, '2017-03-10', 7, 2);
 
 -- --------------------------------------------------------
 
@@ -92,6 +93,13 @@ CREATE TABLE `score` (
   `iduser` int(11) NOT NULL,
   `idpost` int(11) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `score`
+--
+
+INSERT INTO `score` (`id`, `iduser`, `idpost`) VALUES
+(1, 7, 11);
 
 -- --------------------------------------------------------
 
@@ -118,11 +126,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `rank`, `name`, `pwd`, `email`, `photo`, `description`, `keyactive`, `registerdate`, `birthdate`, `cptwarnings`) VALUES
-(4, 1, 'yorka', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'test@test.com', '', '', 'e0c70ab1fa346e1a16493915ede279e7748bce27', '06 03 2017', '0000-00-00', 0),
-(5, 1, 'fdslfksld', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'dlkfsdlk@flkdflkdf.com', '', '', '794fb554c126c74b005460ba27597946272db172', '06 03 2017', '0000-00-00', 0),
-(6, 1, 'dsflsm', '752c14ea195c460bac3c3b7896975ee9fd15eeb7', 'psododslq@ldfljkdhfsh.com', '', '', '8dbcefe7635c8600fecefc49ff83ede1d45292cf', '06 03 2017', '0000-00-00', 0),
-(7, 3, 'test', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'test@test2.com', '', '', '3f9f4218a7f49be692b4328edeefbadfc29f1da4', '08 03 2017', '0000-00-00', 0),
-(8, 1, 'testsss', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'teeest@test.com', '', '', '050e4224b66d9c3b53b55a0f981f36eec5f52384', '08 03 2017', '0000-00-00', 0);
+(7, 3, 'test', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'test@test.com', '', '', '3f9f4218a7f49be692b4328edeefbadfc29f1da4', '08 03 2017', '0000-00-00', 0);
 
 --
 -- Index pour les tables exportées
@@ -176,7 +180,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT pour la table `post`
 --
 ALTER TABLE `post`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT pour la table `score`
 --
