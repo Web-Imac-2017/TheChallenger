@@ -245,9 +245,9 @@ class postController
 			"iduser" => $datas['iduser'],
 			"idchallenge" => $datas['idchallenge']
 		];
-		echo(json_encode($item));
+		// echo(json_encode($item));
 
-		// return $item;
+		return $item;
 	}
 	
 	public static function getWinners() {
