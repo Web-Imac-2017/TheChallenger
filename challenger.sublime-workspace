@@ -4,6 +4,50 @@
 		"selected_items":
 		[
 			[
+				"wi",
+				"width	Style CSS"
+			],
+			[
+				"calss",
+				"className"
+			],
+			[
+				"unfo",
+				"unfollow"
+			],
+			[
+				"Follo",
+				"FollowBtn"
+			],
+			[
+				"Folo",
+				"FollowBtn"
+			],
+			[
+				"pr",
+				"preRender"
+			],
+			[
+				"backgr",
+				"background	Style CSS"
+			],
+			[
+				"follo",
+				"follow"
+			],
+			[
+				"col",
+				"color"
+			],
+			[
+				"padd",
+				"padding-left"
+			],
+			[
+				"sq",
+				"squareWidth"
+			],
+			[
 				"B",
 				"BackgroundImage"
 			],
@@ -101,10 +145,6 @@
 			],
 			[
 				"widt",
-				"width"
-			],
-			[
-				"wi",
 				"width"
 			],
 			[
@@ -274,10 +314,6 @@
 			[
 				"ali",
 				"align-items"
-			],
-			[
-				"col",
-				"colm	columns"
 			],
 			[
 				"DOM",
@@ -480,10 +516,10 @@
 	"buffers":
 	[
 		{
-			"file": "src/app/vues/Login.js",
+			"file": "src/app/index.js",
 			"settings":
 			{
-				"buffer_size": 680,
+				"buffer_size": 721,
 				"line_ending": "Windows"
 			}
 		},
@@ -491,74 +527,90 @@
 			"file": "src/app/components/PostMin.js",
 			"settings":
 			{
-				"buffer_size": 1010,
+				"buffer_size": 1117,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/app/components/post/PostProfilBar.js",
+			"file": "src/app/vues/UserProfil.js",
 			"settings":
 			{
-				"buffer_size": 1441,
+				"buffer_size": 1485,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/app/index.js",
+			"file": "src/app/components/ProfilBox.js",
 			"settings":
 			{
-				"buffer_size": 1032,
+				"buffer_size": 714,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "package.json",
+			"file": "src/app/components/assets/FollowBtn.js",
 			"settings":
 			{
-				"buffer_size": 1052,
-				"line_ending": "Unix"
+				"buffer_size": 1459,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/app/components/header/UserMenu.js",
+			"settings":
+			{
+				"buffer_size": 1398,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/app/components/assets/Vignette.js",
+			"settings":
+			{
+				"buffer_size": 576,
+				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "src/app/utilities/utility.js",
 			"settings":
 			{
-				"buffer_size": 795,
+				"buffer_size": 468,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "$postColorBG : #e6e6e6;\n\n.post-min{\n	.post__profil_bar{\n		display: flex;\n		flex-flow: row wrap;\n		justify-content: space-between;\n		align-items: center;\n		align-content: flex-start;\n		a{\n			flex: 1;\n			\n		}\n\n		button{\n			flex: 2;\n			flex-flow: row wrap;\n		    border-radius: 5px;\n		    border : 1px solid;\n		    border-color: $banniereColor;\n		    color: $banniereColor;\n		    font-size: 1em;\n		    background-color: transparent;\n		    text-decoration: none;\n		    \n		    &:hover{\n				background-color : $banniereColor;\n		    	color: $postColorBG;\n		    }\n\n		}\n	}\n\n	.profil_pic{\n		width: 30px;\n		border-radius: 50%;\n	}\n}\n\n",
-			"file": "src/sass/_home.scss",
-			"file_size": 685,
-			"file_write_time": 131333128570371570,
+			"file": "src/app/components/post/PostContent.js",
 			"settings":
 			{
-				"buffer_size": 622,
+				"buffer_size": 2316,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/sass/_constantes.scss",
+			"contents": "<!DOCTYPE html>\n<html>\n<head>\n	<title></title>\n</head>\n<body>\n	<img src={this.props.photo} alt=\"\" className=\"profil_pic\">\n	\n</body>\n</html>	\n\n",
+			"file": "/C/Users/Antoine/Desktop/merde.html",
+			"file_size": 150,
+			"file_write_time": 131335527793733931,
 			"settings":
 			{
-				"buffer_size": 26,
+				"buffer_size": 142,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/sass/main.scss",
+			"file": "src/app/vues/Login.js",
 			"settings":
 			{
-				"buffer_size": 323,
+				"buffer_size": 1312,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/sass/_pages.scss",
+			"file": "src/sass/_utility.scss",
 			"settings":
 			{
-				"buffer_size": 69,
+				"buffer_size": 111,
 				"line_ending": "Windows"
 			}
 		}
@@ -610,32 +662,54 @@
 	},
 	"expanded_folders":
 	[
-		"/D/wamp64/www/Challenger",
-		"/D/wamp64/www/Challenger/dist",
+		"/D/wamp64/www/Challenger/imgs",
 		"/D/wamp64/www/Challenger/src",
-		"/D/wamp64/www/Challenger/src/app",
-		"/D/wamp64/www/Challenger/src/app/components",
-		"/D/wamp64/www/Challenger/src/app/components/post",
-		"/D/wamp64/www/Challenger/src/app/json",
-		"/D/wamp64/www/Challenger/src/app/utilities",
-		"/D/wamp64/www/Challenger/src/app/vues",
-		"/D/wamp64/www/Challenger/src/sass"
+		"/D/wamp64/www/Challenger/api",
+		"/D/wamp64/www/Challenger/data",
+		"/D/wamp64/www/Challenger/dist"
 	],
 	"file_history":
 	[
-		"/D/wamp64/www/Challenger/src/app/components/post/PostProfilBar.js",
-		"/D/wamp64/www/Challenger/src/app/index.js",
-		"/D/wamp64/www/Challenger/src/app/json/user1.json",
-		"/D/wamp64/www/Challenger/src/app/vues/Login.js",
-		"/D/wamp64/www/Challenger/src/index.html",
-		"/D/wamp64/www/Challenger/src/app/components/SignUpForm.js",
-		"/D/wamp64/www/Challenger/.htaccess",
-		"/D/wamp64/www/Challenger/src/app/components/vignette.js",
 		"/D/wamp64/www/Challenger/src/app/components/UserMenu.js",
-		"/D/wamp64/www/Challenger/src/app/components/LoginForm.js",
+		"/D/wamp64/www/Challenger/src/app/components/header/Vignette.js",
+		"/D/wamp64/www/Challenger/src/app/components/post/PostProfilBar.js",
+		"/D/wamp64/www/ChallengerBack/api/model/routes.json",
+		"/D/wamp64/www/Challenger/src/app/components/post/PostLikesBar.js",
+		"/D/wamp64/www/Challenger/src/app/components/ProfilBox.js",
+		"/D/wamp64/www/Challenger/src/app/components/Footer.js",
+		"/D/wamp64/www/Challenger/src/app/components/post/PostContent.js",
+		"/D/wamp64/www/Challenger/src/app/vues/Login.js",
+		"/D/wamp64/www/Challenger/src/app/vues/Home.js",
+		"/D/wamp64/www/Challenger/src/app/json/post2.json",
 		"/D/wamp64/www/Challenger/src/app/components/Header.js",
+		"/D/wamp64/www/Challenger/src/app/components/Vignette.js",
+		"/C/Users/Antoine/Desktop/vignette.js",
+		"/D/wamp64/www/Challenger/src/app/components/vignette.js",
+		"/D/wamp64/www/Challenger/api/controller/postController.php",
+		"/D/wamp64/www/Challenger/src/app/components/PostMin.js",
+		"/D/wamp64/www/Challenger/src/sass/_home.scss",
+		"/D/wamp64/www/Challenger/webpack.config.js",
+		"/D/wamp64/www/Challenger/api/model/routes.json",
+		"/D/wamp64/www/Challenger/src/css/_search.scss",
+		"/D/wamp64/www/Challenger/src/app/json/post1.json",
+		"/D/wamp64/www/Challenger/src/sass/_constantes.scss",
+		"/D/wamp64/www/Challenger/src/sass/main.scss",
+		"/C/Users/Antoine/Desktop/merde.html",
+		"/D/wamp64/www/Challenger/src/sass/_pages.scss",
+		"/D/wamp64/www/Challenger/src/app/components/LoginBox.js",
+		"/D/wamp64/www/Challenger/src/app/index.js",
+		"/D/wamp64/www/Challenger/index.html",
+		"/D/wamp64/www/Challenger/src/app/components/LoginForm.js",
+		"/D/wamp64/www/Challenger/src/app/components/SignUpForm.js",
+		"/D/wamp64/www/Challenger/index.php",
+		"/D/wamp64/www/Challenger/package.json",
+		"/D/wamp64/www/Challenger/src/app/utilities/utility.js",
+		"/D/wamp64/www/Challenger/app/bundle.js",
 		"/D/wamp64/www/Challenger/dist/index.html",
 		"/D/wamp64/www/Challenger/.gitignore",
+		"/D/wamp64/www/Challenger/src/index.html",
+		"/D/wamp64/www/Challenger/src/app/json/user1.json",
+		"/D/wamp64/www/Challenger/.htaccess",
 		"/D/wamp64/www/semaineWeb/api/controller/publicationController.php",
 		"/D/wamp64/www/Challenger/model/routing.php",
 		"/D/wamp64/www/Challenger/model/routes.json",
@@ -647,15 +721,11 @@
 		"/D/wamp64/www/ChallengerBack/constants.php",
 		"/D/wamp64/www/ChallengerBack/controller.php",
 		"/D/wamp64/www/ChallengerBack/user.php",
-		"/D/wamp64/www/Challenger/src/app/components/Footer.js",
 		"/D/wamp64/www/Challenger/dist/app/3fbf8f23fa8081f04a1e67df82202d18.json",
-		"/D/wamp64/www/Challenger/webpack.config.js",
-		"/D/wamp64/www/Challenger/src/app/vues/Home.js",
 		"/D/wamp64/www/Challenger/src/app/utilities/vues.js",
 		"/D/wamp64/www/Challenger/src/app/components/utility.js",
 		"/D/wamp64/www/Challenger/src/app/vues.js",
 		"/D/wamp64/www/Challenger/src/app/components/Instagram.js",
-		"/D/wamp64/www/Challenger/src/app/components/post/PostLikesBar.js",
 		"/D/wamp64/www/Challenger/src/css/_form.scss",
 		"/D/wamp64/www/Challenger/src/css/_login.scss",
 		"/D/wamp64/www/Challenger/src/css/_pages.scss",
@@ -675,14 +745,12 @@
 		"/D/wamp64/logs/mysql.log",
 		"/D/wamp64/bin/apache/apache2.4.17/bin/php.ini",
 		"/C/Users/Antoine/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
-		"/D/wamp64/www/Challenger/src/css/_search.scss",
 		"/D/wamp64/www/Challenger/src/app/components/CopyrightSection.js",
 		"/D/wamp64/www/Challenger/src/app/components/Form/Input.js",
 		"/D/wamp64/www/Challenger/src/app/components/Form/InputEmail.js",
 		"/D/wamp64/www/Challenger/src/css/_grid.scss",
 		"/D/wamp64/www/Challenger/src/app/components/SingUpForm.js",
 		"/D/wamp64/www/Challenger/src/app/components/BackgroundImg.js",
-		"/D/wamp64/www/Challenger/package.json",
 		"/D/wamp64/www/Challenger/src/css/_home.css",
 		"/D/wamp64/www/Challenger/src/css/_foundation_settings.scss",
 		"/D/wamp64/www/Challenger/src/css/_foundation_app.scss",
@@ -710,7 +778,6 @@
 		"/D/wamp64/www/TripOnRail/css/skeleton.css",
 		"/D/wamp64/www/Challenger/src/app/components/header.js",
 		"/D/wamp64/www/Challenger/src/css/style.css",
-		"/D/wamp64/www/Challenger/index.html",
 		"/D/Téléchargements/reactjs-basics-master/reactjs-basics-master/webpack.config.js",
 		"/C/Users/Antoine/AppData/Local/Temp/Rar$DIa0.219/webpack.config.js",
 		"/D/Documents/IMAC2/ProjetWeb/imac2-12-01-master/gulp/tasks/javascript.js",
@@ -730,37 +797,21 @@
 		"/D/wamp64/www/canvas/gulpfile.js",
 		"/D/wamp64/www/canvas/css/main.css",
 		"/D/wamp64/www/canvas/script.js",
-		"/D/Documents/IMAC2/OpenGL3/djm/bin/map/items.json",
-		"/D/Documents/IMAC1/Synthese_image/Hovercraft - Final/fond.txt",
-		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/Makefile",
-		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/src/main.c",
-		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/include/Game.h",
-		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/src/Game.c",
-		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/include/Level.h",
-		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/src/level.c",
-		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/include/Terrain.h",
-		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/src/Terrain.c",
-		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/src/But.c",
-		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/src/sdl_tools.c",
-		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/include/Geometry.h",
-		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/src/geometry.c",
-		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/src/Collision.c",
-		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/include/Collision.h",
-		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/include/Vehicule.h",
-		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/src/Vehicule.c",
-		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/include/Ballon.h",
-		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/src/Ballon.c",
-		"/home/luxkyluke/Documents/IMAC_1ere_Annee/gitHovercraft/fond.txt"
+		"/D/Documents/IMAC2/OpenGL3/djm/bin/map/items.json"
 	],
 	"find":
 	{
-		"height": 32.0
+		"height": 48.0
 	},
 	"find_in_files":
 	{
 		"height": 158.0,
 		"where_history":
 		[
+			"D:\\wamp64\\www\\Challenger\\src",
+			"D:\\wamp64\\www\\Challenger",
+			"D:\\wamp64\\www\\Challenger\\src\\app",
+			"D:\\wamp64\\www\\Challenger\\src\\app\\components",
 			"D:\\wamp64\\www\\Challenger\\src\\app\\vues",
 			"D:\\wamp64\\www\\Challenger\\src\\app\\components",
 			"D:\\wamp64\\www\\semaineWeb\\api",
@@ -793,9 +844,34 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": false,
+		"case_sensitive": true,
 		"find_history":
 		[
+			"this",
+			"this.props.size",
+			"nbfollower",
+			"nbpost",
+			"name",
+			"photo",
+			"Utily",
+			"Util",
+			"isFollowing",
+			"query",
+			"getJSON",
+			"postId",
+			"defaultUSer",
+			"contact",
+			"components_footer",
+			"\"./",
+			"vignette",
+			"background",
+			".search-form input[type=search]",
+			" http://static.tumblr.com/",
+			"ftv85bp/MIXmud4tx/search-icon.png ",
+			"setS",
+			"The Bite",
+			"app",
+			"all",
 			"postBGColor",
 			"background-color",
 			"log",
@@ -898,32 +974,7 @@
 			"vitesse",
 			"defaultVit",
 			"vitesse",
-			"vp1",
-			"avance",
-			"Reflect",
-			"VectorXY",
-			"angle",
-			";\n",
-			"CollisionVehiculeVehicule",
-			"MakeCercle",
-			"pos->",
-			"centre->",
-			"posV->",
-			"nbLevel",
-			"TESS",
-			".\n",
-			");\n",
-			"level1",
-			"terr",
-			"position->",
-			"->",
-			"pos->",
-			"position->",
-			"direction->",
-			"vitesse ->",
-			"vitesse->",
-			"Point2D*",
-			"Vector2D*"
+			"vp1"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -931,6 +982,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"query",
 			"getJSON",
 			"getAjax",
 			"pos.",
@@ -970,36 +1022,35 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 8,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/app/vues/Login.js",
+					"file": "src/app/index.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 680,
+						"buffer_size": 721,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								78,
-								78
+								265,
+								265
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
@@ -1008,201 +1059,79 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1010,
+						"buffer_size": 1117,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								418,
-								418
+								498,
+								498
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 2,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "src/app/components/post/PostProfilBar.js",
+					"file": "src/app/vues/UserProfil.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1441,
+						"buffer_size": 1485,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								27,
-								87
+								1465,
+								1465
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/app/index.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1032,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								212,
-								212
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "package.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1052,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								527,
-								486
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "src/app/utilities/utility.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 795,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								305,
-								305
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
-				{
-					"buffer": 6,
-					"file": "src/sass/_home.scss",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 622,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								194,
-								194
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 566.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "src/sass/_constantes.scss",
+					"buffer": 3,
+					"file": "src/app/components/ProfilBox.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 26,
+						"buffer_size": 714,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								26,
-								26
+								116,
+								116
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1212,25 +1141,178 @@
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "src/sass/main.scss",
+					"buffer": 4,
+					"file": "src/app/components/assets/FollowBtn.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 323,
+						"buffer_size": 1459,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								319,
-								319
+								988,
+								988
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.sublime-syntax"
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 987.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/app/components/header/UserMenu.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1398,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								99,
+								99
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 998.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/app/components/assets/Vignette.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 576,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								463,
+								463
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/app/utilities/utility.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 468,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3,
+								3
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "src/app/components/post/PostContent.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2316,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								568,
+								568
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 9,
+					"file": "/C/Users/Antoine/Desktop/merde.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 142,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								142,
+								142
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1240,20 +1322,49 @@
 					"type": "text"
 				},
 				{
-					"buffer": 9,
-					"file": "src/sass/_pages.scss",
+					"buffer": 10,
+					"file": "src/app/vues/Login.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 69,
+						"buffer_size": 1312,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								68,
-								68
+								825,
+								825
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 550.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "src/sass/_utility.scss",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 111,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1264,7 +1375,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 8,
 					"type": "text"
 				}
 			]
@@ -1298,7 +1409,7 @@
 		"cols":
 		[
 			0.0,
-			0.671951219512,
+			0.62743902439,
 			1.0
 		],
 		"rows":
@@ -1325,6 +1436,26 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"potli",
+				"src\\app\\components\\post\\PostLikesBar.js"
+			],
+			[
+				"postcont",
+				"src\\app\\components\\post\\PostContent.js"
+			],
+			[
+				"postmin",
+				"src\\app\\components\\PostMin.js"
+			],
+			[
+				"home",
+				"src\\app\\vues\\Home.js"
+			],
+			[
+				"login",
+				"src\\app\\components\\LoginBox.js"
+			],
 			[
 				"userm",
 				"src\\app\\components\\UserMenu.js"

@@ -5,9 +5,6 @@ import { BrowserRouter as Router,
 
 		 
 export default class Vignette extends React.Component {
-	
-	
-	
     render() {
     	var divStyle = {
             backgroundImage: 'url(' + this.props.image + ')'
