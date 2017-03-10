@@ -2,12 +2,14 @@
 .page_about{
 	justify-content: space-between; 
     align-items: center;
-    display: none;
+    .overlay{
+		z-index: 2;
+	}
 }
 .aboutus{
 	width: 90%;
 	color: black;
-	border-radius: 1%;
+	border-radius: 1%;	
 	background-color: rgba(200, 200, 200, 1);
 	z-index:2;
 	position: absolute;
@@ -15,11 +17,7 @@
   	top: 62px;
   	left: 0;
   	right: 0;
-	padding: 0%;
-	@include mobile {
-		
-	}
-
+	padding: 0;
 	.close-aboutus{
 		background:transparent;
 		border : none;

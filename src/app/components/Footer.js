@@ -9,30 +9,12 @@ import AboutUs from "./footer/AboutUs.js";
 
 
 export default class Footer extends React.Component {
-	
-	constructor (props) {
-        super(props);
-
-        // ouvrir/fermer la page de contact //
-        this.state = { contactActive: false };
-        this.openContact = this.openContact.bind(this);
-        this.closeContact = this.closeContact.bind(this);
-    }		
-	
-	
-	closeContact () {
-		this.setState({ contactActive: false });
-	}
- 
-	
-	openContact () {
-		this.setState({ contactActive: true });
-	}
-	  
 	  
 	handleAboutBtnClick(){
-		console.log(this.refs.aboutBtn);
-		this.refs.about.open(); 
+		this.refs.about.open();
+	}
+	handleContactBtnClick(){
+		this.refs.contact.open();
 	}
 	
    
@@ -41,24 +23,17 @@ export default class Footer extends React.Component {
         return(			
 										
 			<footer className="the_footer">				
-				<button id="btn"  onClick={this.openContact}>Contact</button>
+				<button id="btn"  onClick={this.handleAboutBtnClick.bind(this)}>About Us</button>
 									
 				<SocialLinks/>	
 						
-				<button id="btn"   onClick={this.handleAboutBtnClick.bind(this)}>About Us</button>
+				<button id="btn"   onClick={this.handleContactBtnClick.bind(this)}>Contact</button>
 						
-				<AboutUs ref="about"/>				
-				{this.state.contactActive&&(
-					<div className ="page_contact">
-						<button onClick={this.closeContact} className="close-contact" >
-							<img src = "../../img/icons/cross_quit.png"width="30" height="30"/>
-						</button>
-						<Contact/>
-												
-					</div>
-				)}			
+				<AboutUs ref="about"/>		
+
+				<Contact ref="contact"/>
+							
 			</footer>
-		
         );
     }
 }

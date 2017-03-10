@@ -5,30 +5,24 @@ export default class AboutUs extends React.Component {
     constructor (props) {
         super(props);
 
-        // ouvrir/fermer la page about //
-
         this.state = { active: false };
         this.open = this.open.bind(this);
-    
-       }
+    }
     close () {
         this.setState({ active: false });
     }
- 
-    
     open () {
         this.setState({ active: true });
     }
     
-
     render() {
         var myStyle =   {
-            visibility : (this.state.active)?"visible":"hidden"
+            display : (this.state.active)?"block":"none"
         };
         return(
             <div className ="page_about" style={myStyle}>
                 <div className= "overlay"></div>
-                <div className="aboutus" >
+                <div className="aboutus">
                     <button onClick={this.close.bind(this)} className="close-aboutus" >
                         <img src= "../img/icons/cross.png"width="30" height="30"/>
                     </button>
