@@ -18,7 +18,7 @@ export default class PostContent extends React.Component{
             renderContent: null
         };
         this.loadData();
-        this.preRender();
+        this.state.renderContent = this.preRender();
     }
 
     preRender() {
