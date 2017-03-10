@@ -1,17 +1,29 @@
 .page_contact{
-	background-color:white;
-	z-index:1;
-	position : absolute;
-	border:1px solid grey;
-	border-radius : 10px;
-	left:40%;
-	width:25%;
-	top:-400px;
-	padding-top:20px;
-	padding-bottom:40px;
-	padding-left:20px;
-	padding-right:20px;
-	height:335px;	
+	justify-content: space-between; 
+    align-items: center;
+    .overlay{
+		z-index: 2;
+	}	
+}
+.contact{
+	width: 90%;
+	color: black;
+	border-radius: 1%;
+	background-color: rgba(200, 200, 200, 1);
+	z-index:2;
+	position: absolute;
+  	margin: auto;
+  	top: 62px;
+  	left: 0;
+  	right: 0;
+	padding: 0;
+	.close-aboutus{
+		background:transparent;
+		border : none;
+		img{
+			border-radius: 16px;
+		}
+	}
 }
 
 
