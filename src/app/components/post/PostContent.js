@@ -52,7 +52,7 @@ export default class PostContent extends React.Component{
 
     loadData() {
         var postId = this.props.postId;
-        Utility.getJSON("api/user/show/"+postId, this);
+        Utility.query("api/user/show/"+postId, this.callback.bind(this));
     }
 
     callback(data) {

@@ -9,13 +9,12 @@ export default class Vignette extends React.Component {
 	
 	
     render() {
+    	var divStyle = {
+            backgroundImage: 'url(' + this.props.image + ')'
+        }
+
         return(
-			<div className="circle-back">
-				<img 	src={this.props.image}  
-						alt="vignette" 
-						className="img-profil" 
-						width="47px" 
-						height="47px" />				
+			<div className="img-profil circle-back background_img" style={divStyle}>								
 			</div>
         );
     }

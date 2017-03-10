@@ -23,8 +23,8 @@ export default class Login extends React.Component{
 	}*/	
 
 	getRandomImg(){
-		Utility.getJSON("api/post/getRandomBackground/", this);
-		//Utility.getJSON("."+jsonPath, this);
+		Utility.query("api/post/getRandomBackground/", this);
+		//Utility.query("."+jsonPath, this);
 
 	}
 
