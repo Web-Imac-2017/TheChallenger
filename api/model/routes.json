@@ -131,7 +131,7 @@
 		"request" : "challengeController@time_left"
 	},
 	
-	"winners":{
+	"winners/{id}":{
 		"request" : "postController@getWinners"
 	}
 }
