@@ -1,9 +1,7 @@
 .header {
 	display: flex; 
 	height:70px;
-    flex-direction: row; 
-    flex-wrap: no-wrap; 
-    justify-content:flex-start; 
+  
     align-items: center; 
 	text-align:middle;
     background-color: $banniereColor;
@@ -221,48 +219,31 @@ input {
 		font-size:12px;
 		height:35px;
 		
+		
 	}
 	
-	.search-bar {
-	display:block;
-	position:relative;
+	.search-form {
+	
+
 	
 	}
+	
+	.logo-area{
+	
+	margin-left:90;}
+
 
 }
 
 @media screen and (max-width: 740px) {
-	.header{
-		text-align:middle;
-	}
-
-	.search-form input[type=search]{
-		position:relative;
-		margin-bottom:80px;
-		/*margin-left:-50%;*/
-	}
-
 	.logo-area{
-		position:absolute;
-		margin-left:25%;
-		font-size:12px;
-		/*display:absolute;*/
-		
+	margin-left:-22%;
+		font-size:10px;
 	}
-	.search-bar{
-		margin-top:80px;
-	}
+	.user-menu{
 	
-	.disconnect{
-		margin-bottom:-5px;
-		width:70%;
-		font-size:6px;
-	}
-	
-	.user-menu {
-		margin-bottom:5px;
-		width:50px;
-		margin-right:-80px;
+	width:5%;
+	margin-left:-20%;
 	
 	}
 }
