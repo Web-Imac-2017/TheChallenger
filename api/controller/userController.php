@@ -316,6 +316,10 @@ class userController{
 		return json_encode($item);
 	}
 
+	public static function show($id){
+		echo(self::toArray($id));
+	}
+
 	public static function getinfos($id) {
 		
 		global $db;
