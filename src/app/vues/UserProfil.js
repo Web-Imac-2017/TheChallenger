@@ -31,14 +31,14 @@ export default class UserProfil extends React.Component {
     }
 
     loadData(){
-    	var userId = this.props.userId;
-        Utility.query("api/user/"+userId+"/infos/", this.callback.bind(this));
+        Utility.query("api/user/"+this.state.user.id+"/infos/", this.callback.bind(this));
     }
 
     render() {
         return(
             <div id="profil" >
                 <ProfilBox 
+                	id = {this.state.user.id}
                 	photo = {this.state.user.photo}
                 	name = {this.state.user.name}
                 	nbPost = {this.state.user.nbpost}

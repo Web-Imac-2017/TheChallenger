@@ -16,7 +16,7 @@ export default class PostsContainer extends React.Component{
 
         // remplissage par défaut
         this.state = {
-            posts: this.state.postsIds.map(()=>{
+            posts: this.state.postsIds.map(()=>{    
                 return(<PostMin postId={1} />);
             })
         };
