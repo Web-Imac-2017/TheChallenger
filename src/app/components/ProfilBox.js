@@ -7,11 +7,14 @@ export default class ProfilBox extends React.Component{
 	render(){
 		return(
 			<div id="profil_box">
-				<Vignette 	className ="profil_box__photo"
-							image={this.props.photo}/>
+				<div className ="profil_box__photo">
+					<Vignette image={this.props.photo}/>
+				</div>
 				<div className="profil_box__text">
-					<h2 className="title">{this.props.name}</h2>
-					<FollowBtn userId={this.props.id}/>
+					<div className="profil_box__header">
+						<h2 className="title">{this.props.name}</h2>
+						<FollowBtn userId={this.props.id}/>
+					</div>
 					<div className="profil_box__nbpost"><b>{this.props.nbPost}</b> Posts</div>
 					<div className="profil_box__nbfollow"><b>{this.props.nbFollower}</b> Followers</div>
 					<div className="profil_box__email">{this.props.email}</div>

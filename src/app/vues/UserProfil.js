@@ -36,7 +36,7 @@ export default class UserProfil extends React.Component {
 
     render() {
         return(
-            <div id="profil" >
+            <div id="profil" className="page">
                 <ProfilBox 
                 	id = {this.state.user.id}
                 	photo = {this.state.user.photo}
@@ -46,7 +46,6 @@ export default class UserProfil extends React.Component {
                 	email = {this.state.user.email}
                 	desc = {this.state.user.description}
                 />
-                
             </div>
         );
     }

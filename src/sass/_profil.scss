@@ -1,13 +1,39 @@
 #profil{
 	display: flex;
+	align-items: flex-start;
 	justify-content: center;
 
 	#profil_box{
 		width : 60%;
+		margin: 2em 0;
+		background-color: $blockBackgroundColor;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+	
+
+
 		.img-profil{
 			width: 150px;
 			height: 150px;
+			margin: 0;
 			border: 2px solid #000;
 		}
-	}	
+		
+		.profil_box__photo{
+			margin: 1em 2em;
+		}
+
+		.profil_box__text{
+			display: flex;
+			flex-direction: column;
+			align-self: flex-start;
+			margin-left: 2em 1em;
+
+			.profil_box__header{
+				display: flex;
+				flex-direction: row;
+			}
+		}
+	}
 }
