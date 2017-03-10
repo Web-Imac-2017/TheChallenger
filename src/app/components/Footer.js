@@ -51,7 +51,7 @@ export default class Footer extends React.Component {
     render() {     
         return(			
 										
-			<footer >
+			<footer>
 			
 				<div className="the_footer row"  >
 											
@@ -80,6 +80,9 @@ export default class Footer extends React.Component {
 					{this.state.aboutActive&&(
 						<div className ="page_about">
 							<div className= "overlay"></div>
+							<button onClick={this.closeAbout} className="close-aboutus" >
+                   				<img src= "../img/icons/cross_quit.png"width="30" height="30"/>
+                			</button>
 							<AboutUs/>
 						</div>
 					)}					
