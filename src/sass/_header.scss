@@ -1,6 +1,5 @@
 .header {
-   display: flex; 
-   
+	display: flex; 
 	height:70px;
     flex-direction: row; 
     flex-wrap: no-wrap; 
@@ -13,9 +12,9 @@
 
 .search-bar {
     display: block;
-     flex: auto; 
+    flex: auto; 
 	flex-grow: 1; 
-     flex-basis: 33%; 
+    flex-basis: 33%; 
 }
 
 .search-field {
@@ -26,7 +25,6 @@
 .logo-area {
    /* display: block;*/
     margin-right:10%;
-	
     flex-grow: 1; 
     /* position: absolute; */
      margin-left: 2px;
@@ -43,11 +41,10 @@
 }
 
 .user-menu {
+
 	transform : scale(0.8);
 	margin-right:-10%;
-
-	
-    display: block;
+	display: block;
     height: 50px;
 	flex: auto; 
     flex-grow: 1; 
@@ -60,9 +57,8 @@
 		width:55px;
 		border-radius: 50%;
 		margin-top:-2px;
-		margin-left:20%;
-		
-    }
+		margin-left:-50%;
+	}
 
     .user-menu-drop-down {
         background-color: white;
@@ -70,11 +66,13 @@
     
 }
 
+
 input {
     outline: none;
 }
 
 .img-profil{
+	display:block;
 	border-radius: 50%;
 	margin-top:2px;
 	transition: transform 0.5s ease;
@@ -82,23 +80,15 @@ input {
 }
 
 .img-profil:hover{
-
-     transform:scale(1.15);
+	transform:scale(1.15);
 }
 
 
-
-.img profil{
-display:block;
-}
 
 .circle-back {
-
 	/*margin-left:100%;*/
 	margin-left: 50%;;
-
 	position : relative;	
-	
 	/*left:800%;*/
     display: block;
     width:100%;
@@ -108,24 +98,17 @@ display:block;
     text-align:center;
 	border:2px solid white;
 	z-index:1;
-	
-	
 }
 
 .search-form input[type=search]{
-
-	margin-left:20%;
+	margin-left:-35%;
 	margin-top:1px;
-	
     background: #fff  url(http://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
     width: 15px;
     padding: 3px 7px 7px 20px;
     padding-left: 10px;
     color: transparent;
     cursor: pointer;
-	
-	
-	
 	
     -webkit-appearance: textfield;
     -webkit-box-sizing: content-box;
@@ -143,11 +126,12 @@ display:block;
     transition: all .5s;
 
     &:focus {
-        width: 130px;
+		width: 20%;
         padding-left: 32px;
         color: #000;
         background-color: #fff;
         cursor: auto;
+		border-left:10%;
 
         -webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
         -moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
@@ -157,9 +141,8 @@ display:block;
     &:hover{
         background-color: #fff;
 		z-index:1;
-		
-		
     }
+	
 }
 
 .table-user{
@@ -168,30 +151,23 @@ display:block;
 
 
 .tab-user-menu{
-	/*transform:scale(1.2);*/
-	
 	border-radius:5px;
 	background-color:#E6E6E6;
 	position:absolute;
-	
-	left:65%;
-	width:20px;
-	height:100px;
-	top:2px;
+	left:24%;
+	width:125px;
+	height:110px;
+	top:-5px;
 	text-align:center;
-	
-	
-	
-	
 }
 
 
 
 .disconnect{
-	width:80%;
+	width:90%;
 	position: absolute;
     bottom: 10%;
-	left:10%;
+	left:5%;
 		
 	border-radius: 6px;
 	font-family: Arial;
@@ -212,7 +188,6 @@ display:block;
     bottom:55%;
 	left:30%;
 	font-family: Montserrat;
-	
 	border-radius: 6px;
 	font-family: Arial;
 	color: #170b17;
@@ -230,13 +205,12 @@ display:block;
 		
 		top:-60px;
 		width:90px;
-		margin-left:-40%;
+		margin-left:-5%;
 		position:relative;
-
     }
-	.access-profil{
-	display:none;
 	
+	.access-profil{
+		display:none;
 	}
 	
 	.disconnect{
@@ -247,13 +221,13 @@ display:block;
 
 @media screen and (max-width: 740px) {
 	.header{
-	text-align:middle;
+		text-align:middle;
 	}
 
 	.search-form input[type=search]{
 		position:relative;
 		margin-bottom:80px;
-		margin-left:10%;
+		/*margin-left:-50%;*/
 	}
 
 	.logo-area{
