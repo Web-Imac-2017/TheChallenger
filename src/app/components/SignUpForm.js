@@ -42,7 +42,7 @@ export default class SignUpForm extends React.Component{
 				</div>
 				<div style={formStyle}>
 					<form className="form" ref="sign_up_form" method="POST" action="api/user/register/">
-				     	<input type="text" name="name" className="field-in" placeholder="Pseudo" required/>
+				     	<input type="text" name="name" className="field-in form-control" placeholder="Pseudo" required/>
 				     	<input 
 				     		type="email" 
 				     		name="email" 
