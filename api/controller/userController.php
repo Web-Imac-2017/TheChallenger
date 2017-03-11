@@ -1,5 +1,8 @@
 <?php
 //include_once("model/User.php");
+
+include_once("model/utility.php");
+
 $user=new User();
 
 class userController{
@@ -129,6 +132,7 @@ class userController{
 		global $user;
 		if($user->is_connected(MEMBRE)){
 	    	echo(json_encode(["code" => 0,"message" => "Already connected"]));
+	    	Utility::nextPage("home");
 			exit();
 		}
 		
