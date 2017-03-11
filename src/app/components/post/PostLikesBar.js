@@ -33,7 +33,8 @@ export default class PostLikesbar extends React.Component{
 	  render(){
 		    return(
                 <div className="post-likes-bar">
-                <img src="like.png" alt="likes" /> <p>{this.state.post.likes}</p>
+                <img src="../../../img/icons/like.png" alt="likes" />
+                <p>{this.state.post.likes}</p>
                 </div>
 		    );
 	  }

@@ -57,6 +57,22 @@ $squareWidth : 20px;
 		    height: $squareWidth;
 		    border-radius: 50%;
 	  }
+
+    .post-likes-bar {
+        text-align: left;
+        img {
+            display: inline;
+            height: 14px;
+            margin-right: 8px;
+            transition: all 0.3s;
+            &:hover {
+                transform: scale(1.3);
+            }
+        }
+        p {
+            display: inline;
+        }
+    }
 }
 
 
