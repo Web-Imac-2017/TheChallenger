@@ -28,7 +28,6 @@ export default class PostProfilBar extends React.Component{
 
 	callback(data){
 		this.setState({ user : data });
-		this.checkFollowing();
 	}
 
 	render(){
