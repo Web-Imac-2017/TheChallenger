@@ -15,7 +15,14 @@
    	align-items: center;
     width: 260px;
     padding: 12px;
+    display: inline;
 
+    @include mobile-por{
+    	margin: 0 auto;
+    	top: 7%;
+		left: 0;
+		right: 0;
+    }
 	.title{
 		margin-top: 6px;
 		margin-bottom: 20px;
