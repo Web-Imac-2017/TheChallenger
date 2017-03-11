@@ -133,5 +133,9 @@
 	
 	"winners/":{
 		"request" : "postController@getWinners"
+	},
+	
+	"user/id/": {
+		"request" : "userController@id_connected"
 	}
 }
