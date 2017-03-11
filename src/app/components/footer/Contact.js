@@ -35,7 +35,7 @@ export default class Contact extends React.Component {
     					<input type="Name" name="name" className="field-contact" placeholder="Your Name"/>
     					<input type="Email" name="email" className="field-contact" placeholder="Your e-mail"/>
     					<input type="Subject" name="subject" className="field-contact" placeholder="Subject"/>    				    
-    					<textarea type = "Message" className="field-contact" >Your Message</textarea>
+    					<textarea type = "Message" className="field-contact" placeholder="Your Message"></textarea>
     					<button className="field-contact" href="#">Send</button>
 					</form>
 				</div>
