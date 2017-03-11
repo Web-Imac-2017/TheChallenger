@@ -1,5 +1,8 @@
 <?php
 //include_once("model/User.php");
+
+include_once("model/utility.php");
+
 $user=new User();
 
 class userController{
@@ -129,6 +132,7 @@ class userController{
 		global $user;
 		if($user->is_connected(MEMBRE)){
 	    	echo(json_encode(["code" => 0,"message" => "Already connected"]));
+	    	Utility::nextPage("home");
 			exit();
 		}
 		
@@ -156,7 +160,8 @@ class userController{
 		setcookie('rank', $datas['rank'], $expire, '/', null, false, true); 
 		setcookie('id', $datas['id'], $expire, '/', null, false, true); 			
 
-		echo(json_encode(["code" => 1,"message" => "Success"]));	
+		echo(json_encode(["code" => 1,"message" => "Success"]));
+		Utility::nextPage("home");	
 	}
 
 	public static function testConnect($rank){
@@ -171,6 +176,20 @@ class userController{
 		}
 	}
 
+	public static function id_connected(){
+		
+		global $user;
+		if($user->is_connected(MEMBRE)){
+			$item = [
+					
+					"id" => $_COOKIE['id']
+			];
+			echo (json_encode($item));
+			exit();
+		}
+		else echo(json_encode(["code" => 0,"message" => "Not connected"]));
+	}
+	
 	public static function logout(){
 		global $user;
 		//s'il n'est pas connecté
