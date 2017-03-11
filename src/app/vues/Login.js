@@ -29,7 +29,6 @@ export default class Login extends React.Component{
 	}
 
 	callback(data){
-		console.log(data);
 		if(typeof data === 'undefined' || data.url == null)
 			return;
 		const path = Utility.getPublicPath();

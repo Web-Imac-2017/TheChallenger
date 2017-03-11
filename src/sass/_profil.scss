@@ -1,7 +1,83 @@
-#profil_box{
-	.img-profil{
-		width: 150px;
-		height: 150px;
-		border: 2px solid #000;
+#profil{
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+	#profil_box{
+		width : 50%;
+		margin: 2em;
+		padding:0.5em;
+		background-color: $blockBackgroundColor;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		border-radius: 	5px;
+		
+		@include laptop{
+			width: 70%;
+		}
+		@include mobile{
+    		width: 95%;
+    	}
+		@include mobile-por{
+    		width: 100%;
+    		flex-direction: column;
+    		margin: 0;
+    	}
+
+		.img-profil{
+			width: 150px;
+			height: 150px;
+			margin: 0;
+			border: 2px solid #000;
+		}
+		
+		.profil_box__photo{
+			margin: 1em 2em;
+		}
+
+		.profil_box__text{
+			display: flex;
+			flex-direction: column;
+			align-self: flex-start;
+			@include mobile-por{
+				margin-left: 1em;
+			}
+
+			.profil_box__header{
+				align-items: center;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				h2{
+					margin: 0;
+				}
+			}
+			
+			.profil_box__nb{ 	
+				align-items: center;
+				display: flex;
+				flex-direction: row;
+			}
+
+			.profil_box__desc{
+				margin:0 0 1.5em 0;
+			}
+
+			.profil_box__nbfollow{
+				margin-left: 20%;
+			}
+
+			.profil_box__email{
+				margin: 1em 0;
+			}
+
+		}
+
+		button.follow_btn{
+			font-size: 1.1em;
+			margin: 1.5em;
+		}
 	}
 }

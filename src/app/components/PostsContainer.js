@@ -7,12 +7,21 @@ export default class PostsContainer extends React.Component{
 	  constructor(props){
 		    super(props);
         this.state = {
-            postsIds: null,
-            posts : null,
+            postsIds: [1,2,3,4,5,1,1],
+            posts : this.props.posts,
             postsFiltered: null
         };
-        Utility.query("api/winners", this.callBackData.bind(this));
+        if(this.props.query !== null)
+            Utility.query(this.props.query, this.callBackData.bind(this));
         this.filterBar = <FilterBar updateParent={()=>console.log("click")} filters={{"all": "All", "pasAll":"Pas All"}} />;
+
+        // remplissage par défaut
+        this.state = {
+            posts: this.state.postsIds.map(()=>{    
+                return(<PostMin postId={1} />);
+            })
+        };
+        this.updatePostsFiltered("all");
 	  }
 
     callBackData(data) {
@@ -32,10 +41,10 @@ export default class PostsContainer extends React.Component{
 
 	  render(){
 		    return(
-            <div className="posts-container">
-                {this.filterBar}
-            {this.state.posts}
-            </div>
+                <div className="posts-container">
+                    {this.filterBar}
+                    {this.state.posts}
+                </div>
 		    );
 	  }
 }

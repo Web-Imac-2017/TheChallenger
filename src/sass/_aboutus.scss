@@ -1,31 +1,42 @@
+@import 'mixins';
+
 .page_about{
-	button{
-		background:transparent;
-		border : none;
-		position: absolute;
-		margin: auto;
+	justify-content: space-between; 
+    align-items: center;
+    .overlay{
 		z-index: 2;
-   	  	right: 25%;
-    	top: -2529%;
-	}	
+	}
 }
 .aboutus{
+	width: 90%;
 	color: black;
-	border-radius: 1%;
+	border-radius: 1%;	
 	background-color: rgba(200, 200, 200, 1);
-	z-index:1;
-	position: fixed;
+	z-index:2;
+	position: absolute;
   	margin: auto;
-  	top: 0;
-  	bottom: 0;
   	left: 0;
   	right: 0;
-	padding: 0%;
-	padding-bottom: 1%;
-	height: 90%;
+	padding: 0;
+	.close-button{
+		background:transparent;
+		border : none;
+		padding: 0;
+		position: absolute;
+		right: 0;
+    	margin: 3px;
+    	z-index: 3;
+		img{
+			border-radius: 16px;
+		}
+	}
 
 	.membersList {
-		padding:0 30px;
+		display: flex;
+		justify-content: space-around;
+		flex-wrap: wrap;
+	    margin: 12px;
+	    height: 73%;
 	}
 	h1{
 		position: relative;
@@ -34,39 +45,34 @@
 	}
 	p{
 		text-align: center;
-	    margin-bottom: 4%;
+	    margin-bottom: 0;
     	margin-top: 2%;
 	}
 	.member{
-    	background-color: white;
-		border-radius: 2%;		
-		display: inline-block;
-		width: 100%;
-		padding: 0;
+		background-color: white;
+		border-radius: 2%;	
+	    display: flex;
+	    flex-wrap: wrap;
+       	justify-content: space-around;
+		flex-basis: 45%;
+	    margin: 2px;
+    	padding: 5px;
+
+		@include mobile {
+			flex-basis: 90%;
+		}
 		img {
 			width: 75px;
 			height: 75px;
 			border-radius: 50%;
-			margin: 4%;
-			padding: 0;
 		}
-		h4 {
+		.membertxt{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: 73%;
 			text-align: center;
-	    	display: inline-block;
-	    	margin: 0;
-	    	margin-top: 10%;
-	    	padding: 0;
 		}
-		p{
-	    	text-align: center;
-	    	display: inline-block;
-	    	margin-bottom : 0;
-	    	font-size: 90%;
-	    	padding: 0;
-		}
-	}
-	ul{
-		margin: auto;
 	}
 }
 

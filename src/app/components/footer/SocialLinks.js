@@ -8,16 +8,10 @@ export default class SocialLinks extends React.Component {
         return(
 		
          
-			 	<div className="social-links col-xs-4 row " >
-				
-					
-					<Facebook/> 
-				
-				
+			 	<div className="social-links" >
+					<Facebook/>				
 					<Twitter/>	
 					<Instagram/>
-				
-					
                 </div>
 		
 				

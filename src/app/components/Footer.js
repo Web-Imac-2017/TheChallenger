@@ -9,88 +9,31 @@ import AboutUs from "./footer/AboutUs.js";
 
 
 export default class Footer extends React.Component {
-	
-	constructor (props) {
-		super(props);
-		
-		// ouvrir/fermer la page de contact //
-		this.state = { contactActive: false };
-		this.openContact = this.openContact.bind(this);
-		this.closeContact = this.closeContact.bind(this);
-		
-		
-		// ouvrir/fermer la page about //
-		this.state = { aboutActive: false };
-		this.openAbout = this.openAbout.bind(this);
-		this.closeAbout = this.closeAbout.bind(this);
-		
+	  
+	handleAboutBtnClick(){
+		this.refs.about.open();
+	}
+	handleContactBtnClick(){
+		this.refs.contact.open();
 	}
 	
-	closeContact () {
-		this.setState({ contactActive: false });
-	};
- 
-	
-	openContact () {
-		this.setState({ contactActive: true })
-	};
-	  
-	  
-	  
-	closeAbout () {
-		this.setState({ aboutActive: false });
-		
-	};
- 
-	
-	openAbout () {
-    this.setState({ aboutActive: true })
-
-	};
    
-    render() {     
+    render() {   
+
         return(			
 										
-			<footer>
-			
-				<div className="the_footer row"  >
-											
-										
-					<div className="col-xs-4">
-						<button id="btn"  onClick={this.openContact}> Contact </button>
-					</div>
-										
-					< SocialLinks/>	
+			<footer className="the_footer">				
+				<button id="btn"  onClick={this.handleAboutBtnClick.bind(this)}>About Us</button>
 									
-					<div className="col-xs-4">
-						<button id="btn"  onClick={this.openAbout}> About Us </button>
-					</div>
-										
-					{this.state.contactActive&&(
-						<div className ="page_contact">
-							<button onClick={this.closeContact} className="close-contact" >
-								<img src = "../../img/icons/cross_quit.png"width="30" height="30"/>
-							</button>
-							<Contact/>
-													
-						</div>
-					)}
-										
-										
-					{this.state.aboutActive&&(
-						<div className ="page_about">
-							<div className= "overlay"></div>
-							<button onClick={this.closeAbout} className="close-aboutus" >
-                   				<img src= "../img/icons/cross_quit.png"width="30" height="30"/>
-                			</button>
-							<AboutUs/>
-						</div>
-					)}					
-									
-				</div>
-				
+				<SocialLinks/>	
+						
+				<button id="btn"   onClick={this.handleContactBtnClick.bind(this)}>Contact</button>
+						
+				<AboutUs ref="about"/>		
+
+				<Contact ref="contact"/>
+							
 			</footer>
-		
         );
     }
 }

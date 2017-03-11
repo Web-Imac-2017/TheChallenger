@@ -2,6 +2,7 @@ import React from "react";
 
 import Utility from './../utilities/utility.js';
 import ProfilBox from './../components/ProfilBox.js'
+import PostsContainer from './../components/PostsContainer.js'
 
 export default class UserProfil extends React.Component {
     constructor(props){
@@ -31,14 +32,14 @@ export default class UserProfil extends React.Component {
     }
 
     loadData(){
-    	var userId = this.props.userId;
-        Utility.query("api/user/"+userId+"/infos/", this.callback.bind(this));
+        Utility.query("api/user/"+this.state.user.id+"/infos/", this.callback.bind(this));
     }
 
     render() {
         return(
-            <div id="profil" >
+            <div id="profil" className="page">
                 <ProfilBox 
+                	id = {this.state.user.id}
                 	photo = {this.state.user.photo}
                 	name = {this.state.user.name}
                 	nbPost = {this.state.user.nbpost}
@@ -46,7 +47,7 @@ export default class UserProfil extends React.Component {
                 	email = {this.state.user.email}
                 	desc = {this.state.user.description}
                 />
-                
+                <PostsContainer posts={this.state.user.posts}/>
             </div>
         );
     }

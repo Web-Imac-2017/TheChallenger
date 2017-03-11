@@ -1,27 +1,65 @@
+@import 'mixins';
+
 .page_contact{
-	background-color:white;
-	z-index:1;
-	position : absolute;
-	border:1px solid grey;
-	border-radius : 10px;
-	left:40%;
-	width:25%;
-	top:-400px;
-	padding-top:20px;
-	padding-bottom:40px;
-	padding-left:20px;
-	padding-right:20px;
-	height:335px;	
+	justify-content: space-between; 
+    align-items: center;
+    .overlay{
+		z-index: 2;
+	}	
+}
+.contact{
+	width: 50%;
+	display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+	color: black;
+	border-radius: 1%;
+	background-color: $pageBackgroundColor;
+	z-index:2;
+	position: fixed;
+  	bottom: 20%;
+  	left: 0;
+  	right: 0;
+	padding: 15px;
+	margin: auto;
+	@include mobile{
+		width: 90%;
+	}
+	.close-button{
+		background:transparent;
+		border: none;
+		padding: 0;
+		position: absolute;
+		right: 15px;
+		img{
+			border-radius: 16px;
+		}
+	}
+	form{
+		display: flex;
+	    flex-wrap: wrap;
+	    justify-content: space-around;
+	    textarea{
+	    	height: 100px;
+	    	resize: none;
+	    }
+	    button{
+	    	width: 25%;
+	    	background-color: $blockBackgroundColor;
+	    	color: $banniereColor;
+	    }
+	}
 }
 
 
 .field-contact{
-	border : 1px solid grey;
-	margin-top: 20px;
-	margin-left:20px;
+	border : 0;
+	margin: 3px;
 	width:80%;
 	border-radius:5px;
-	color:black
+	color:#a3a3a3;
+	padding: 6px 12px;
 }
 
 
@@ -36,9 +74,7 @@
 	color:grey
 }
 
-
-
-.envoyer{
+.send{
 	border:1px solid grey;
 	background-color:#CCCCCC;
 	color:black;
@@ -67,10 +103,4 @@
 	top: -36px;
     right: -100%;
 	outline:none;
-}
-
-
-.text-top{
-	margin-left:100px;
-	color:black;
 }

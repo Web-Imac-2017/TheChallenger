@@ -1,12 +1,9 @@
 @import 'constantes';
-@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
 @import 'pages';
 
 html, body{
-	width: 100%;
-	height: 100%;
 	margin:0;
-	background-color : #fff;
+	background-color : $blockBackgroundColor;
 	font-family: montserrat;
 	h1, h2, h3, h4, p{
 		font-family: montserrat;
@@ -32,4 +29,9 @@ a{
 }
 li{
 	list-style: none;
+}
+
+.page{
+	background-color: $pageBackgroundColor;
+	overflow : hidden;
 }

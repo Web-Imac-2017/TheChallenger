@@ -37,7 +37,7 @@ export default class FilterBar extends React.Component{
 
 	  render(){
 		    return(
-                <div className="posts-container">
+                <div className="filter-bar">
                 {this.buttons}
                 </div>
 		    );
