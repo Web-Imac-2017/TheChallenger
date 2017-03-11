@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Sam 11 Mars 2017 à 11:21
+-- Généré le :  Sam 11 Mars 2017 à 11:42
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -40,7 +40,7 @@ CREATE TABLE `challenge` (
 
 INSERT INTO `challenge` (`id`, `title`, `description`, `datestart`, `datestop`) VALUES
 (11, 'Light', 'Find a dark place and light it up.', '2017-03-11', '2017-03-19'),
-(12, 'Little life', 'Show us see the unseen.', '2017-03-11', '2017-03-19'),
+(12, 'Little life', 'Show us the unseen.', '2017-03-11', '2017-03-19'),
 (13, 'Future', 'How do you imagine it ?', '2017-03-11', '2017-03-19');
 
 -- --------------------------------------------------------
@@ -93,7 +93,10 @@ CREATE TABLE `post` (
 
 INSERT INTO `post` (`id`, `title`, `state`, `type`, `hd`, `linkcontent`, `description`, `winner`, `score`, `datepost`, `iduser`, `idchallenge`) VALUES
 (1, 'image1', 0, 0, 1, 'background.jpg', '0', 1, 0, '2011-01-01', 12, 4),
-(3, 'balec', 0, 0, 1, 'background.jpg', 'ah', 1, 3, '2016-01-01', 12, 4);
+(3, 'balec', 0, 0, 1, 'background.jpg', 'ah', 1, 3, '2016-01-01', 12, 4),
+(4, 'City ', 0, 1, 0, '1489231644.jpg', 'taken with my iphone :$\r\n', 0, 0, '2017-03-11', 14, 11),
+(5, 'p i z z a * * ', 0, 1, 1, '1489231788.jpg', 'omg i did it myself', 0, 0, '2017-03-11', 14, 12),
+(6, 'SKY', 0, 1, 1, '1489232276.jpg', 'WE ARE THE LITTLE ONES', 0, 1, '2017-03-11', 11, 11);
 
 -- --------------------------------------------------------
 
@@ -106,6 +109,13 @@ CREATE TABLE `score` (
   `iduser` int(11) NOT NULL,
   `idpost` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `score`
+--
+
+INSERT INTO `score` (`id`, `iduser`, `idpost`) VALUES
+(1, 11, 6);
 
 -- --------------------------------------------------------
 
@@ -193,12 +203,12 @@ ALTER TABLE `follow`
 -- AUTO_INCREMENT pour la table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT pour la table `score`
 --
 ALTER TABLE `score`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `user`
 --
