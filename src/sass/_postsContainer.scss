@@ -31,27 +31,6 @@ $squareWidth : 20px;
 				padding: 0 10px;
 		    }
 	    }
-
-	    button{
-		    flex-flow: row wrap;
-	        border-radius: 5px;
-	        border : 1px solid;
-	        border-color: $banniereColor;
-	        color: $banniereColor;
-	        font-size: 0.9em;
-	        background-color: transparent;
-	        text-decoration: none;
-	        
-	        margin: 0 9px;
-
-		      -webkit-transition: all ease 300ms; 
-		    transition: all ease 300ms;
-
-	        &:hover{
-			    background-color : $banniereColor;
-	    	    color: $blockBackgroundColor;
-	        }
-	    }
 	  }
 
 	  .profil_pic{
@@ -59,4 +38,26 @@ $squareWidth : 20px;
 		    height: $squareWidth;
 		    border-radius: 50%;
 	  }
+}
+
+
+button.follow_btn {
+    flex-flow: row wrap;
+    border-radius: 5px;
+    border : 1px solid;
+    border-color: $banniereColor;
+    color: $banniereColor;
+    font-size: 0.9em;
+    background-color: transparent;
+    text-decoration: none;
+    padding: 5px 12px;
+    margin: 0 9px;
+
+      -webkit-transition: all ease 300ms; 
+    transition: all ease 300ms;
+
+    &:hover{
+	    background-color : $banniereColor;
+	    color: $blockBackgroundColor;
+    }
 }

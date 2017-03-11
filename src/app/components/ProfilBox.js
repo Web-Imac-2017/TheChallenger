@@ -15,8 +15,10 @@ export default class ProfilBox extends React.Component{
 						<h2 className="title">{this.props.name}</h2>
 						<FollowBtn userId={this.props.id}/>
 					</div>
-					<div className="profil_box__nbpost"><b>{this.props.nbPost}</b> Posts</div>
-					<div className="profil_box__nbfollow"><b>{this.props.nbFollower}</b> Followers</div>
+					<div className="profil_box__nb">
+						<div className="profil_box__nbpost"><b>{this.props.nbPost}</b> Posts</div>
+						<div className="profil_box__nbfollow"><b>{this.props.nbFollower}</b> Followers</div>
+					</div>
 					<div className="profil_box__email">{this.props.email}</div>
 					<div className="profil_box__desc">
 						<h4>Description</h4>
