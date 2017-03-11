@@ -1,3 +1,5 @@
+@import 'mixins';
+
 .page_contact{
 	justify-content: space-between; 
     align-items: center;
@@ -13,17 +15,23 @@
     align-items: center;
 	color: black;
 	border-radius: 1%;
-	background-color: rgba(200, 200, 200, 1);
+	background-color: $pageBackgroundColor;
 	z-index:2;
-	position: relative;
-  	bottom: 360px;
+	position: fixed;
+  	bottom: 20%;
   	left: 0;
   	right: 0;
-	padding: 0;
+	padding: 15px;
 	margin: auto;
-	.close-aboutus{
+	@include mobile{
+		width: 90%;
+	}
+	.close-button{
 		background:transparent;
 		border: none;
+		padding: 0;
+		position: absolute;
+		right: 15px;
 		img{
 			border-radius: 16px;
 		}
@@ -38,7 +46,8 @@
 	    }
 	    button{
 	    	width: 25%;
-	    	background-color: $banniereColor;
+	    	background-color: $blockBackgroundColor;
+	    	color: $banniereColor;
 	    }
 	}
 }

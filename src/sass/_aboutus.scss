@@ -1,4 +1,5 @@
 @import 'mixins';
+
 .page_about{
 	justify-content: space-between; 
     align-items: center;
@@ -18,9 +19,11 @@
   	left: 0;
   	right: 0;
 	padding: 0;
-	.close-aboutus{
+	.close-button{
 		background:transparent;
 		border : none;
+		padding: 0;
+    	float: right;
 		img{
 			border-radius: 16px;
 		}

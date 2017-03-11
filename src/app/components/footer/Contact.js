@@ -19,14 +19,14 @@ export default class Contact extends React.Component {
     }
     
     render() {
-    	var myStyle =   {
+    	var myStyle ={
             display : (this.state.active)?"block":"none"
         };
         return(
         	 <div className ="page_contact" style={myStyle}>
                 <div className= "overlay"></div>
             	<div className="contact">
-           			<button onClick={this.close.bind(this)} className="close-aboutus" >
+           			<button onClick={this.close.bind(this)} className="close-button" >
                         <img src= {logoCross} width="30" height="30"/>
                     </button>
 
