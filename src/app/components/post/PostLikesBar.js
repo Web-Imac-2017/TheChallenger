@@ -3,6 +3,9 @@ import { BrowserRouter as Router,
          Link } from "react-router";
 import Utility from './../../utilities/utility.js';
 
+const likeImg = require("./../../../img/icons/like.png");
+const noLikeImg = require("./../../../img/icons/no-like.png");
+
 export default class PostLikesbar extends React.Component{
     constructor(props) {
         super(props);
@@ -10,17 +13,20 @@ export default class PostLikesbar extends React.Component{
             post: {
                 id: null,
                 likes: 0
-            }
+            },
+            userLike: 0
         };
         this.loadData();
+        this.img = noLikeImg; // par défaut
     }
 
     loadData() {
         const postId = this.props.postId;
-        Utility.query("api/user/show/"+postId, this.callback.bind(this));
+        Utility.query("api/post/show/"+postId, this.callbackNbLikes.bind(this));
+        Utility.query("api/post/like/check/"+postId, this.callbackUserLike.bind(this));
     }
 
-    callback(data) {
+    callbackNbLikes(data) {
         console.log(data);
         this.setState({
             post: {
@@ -30,10 +36,18 @@ export default class PostLikesbar extends React.Component{
         });
     }
 
+    callbackUserLike(data) {
+        console.log(data);
+        this.setState({
+            userLike: data.code
+        });
+        this.img = this.state.userLike ? likeImg : noLikeImg;
+    }
+
 	  render(){
 		    return(
                 <div className="post-likes-bar">
-                <img src="../../../img/icons/like.png" alt="likes" />
+                <img src={this.img} alt="likes" />
                 <p>{this.state.post.likes}</p>
                 </div>
 		    );
