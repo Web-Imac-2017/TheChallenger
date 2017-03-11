@@ -35,34 +35,19 @@
 	.submit {
 		background-color: $banniereColor;
 		color: rgb(255,255,255);
-		/* width: 100%;
-		padding: 2%;
-		margin-top: 8%; */
 		border-style: none;	
 	}
 	.button{
 		border-style: none;
-		/* width: 100%;
-		margin-bottom: 20px; */
 		color: $banniereColor;	
 	}
 	p{
 		margin: 0;
-		/* margin: 4%;
-		margin-top: -2%; */
 	}	
 	.form-group{
 		margin: 0;
 	}
 }
-
-/* .overlay{
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-} */
 
 .blur{
 	-webkit-filter: blur(1px);
