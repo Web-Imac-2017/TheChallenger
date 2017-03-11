@@ -160,7 +160,8 @@ class userController{
 		setcookie('rank', $datas['rank'], $expire, '/', null, false, true); 
 		setcookie('id', $datas['id'], $expire, '/', null, false, true); 			
 
-		echo(json_encode(["code" => 1,"message" => "Success"]));	
+		echo(json_encode(["code" => 1,"message" => "Success"]));
+		Utility::nextPage("home");	
 	}
 
 	public static function testConnect($rank){
