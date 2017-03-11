@@ -11,6 +11,7 @@ export default class PostsContainer extends React.Component{
             posts : this.props.posts,
             postsFiltered: null
         };
+
         if(this.props.query !== null){
             Utility.query(this.props.query, this.callBackData.bind(this));
             console.log("POSTS REQUETES ENVOYEE");
@@ -21,9 +22,7 @@ export default class PostsContainer extends React.Component{
                 })
             };
         }
-        
         this.filterBar = <FilterBar updateParent={()=>console.log("click")} filters={{"all": "All", "pasAll":"Pas All"}} />;
-
         this.updatePostsFiltered("all");
 	  }
 
@@ -44,12 +43,12 @@ export default class PostsContainer extends React.Component{
         });
     }
 
-	  render(){
-		    return(
-                <div className="posts-container">
-                    {this.filterBar}
-                    {this.state.posts}
-                </div>
-		    );
-	  }
+    render(){
+	    return(
+            <div className="posts-container">
+                {this.filterBar}
+                {this.state.posts}
+            </div>
+	    );
+	}
 }
