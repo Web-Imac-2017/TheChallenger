@@ -16,11 +16,9 @@
     align-items: center;
   }
 }
- 
 a:link {
-    color: white;
+  color: white;
 }
-
 #btn {
 	background-color: Transparent;
   background-repeat:no-repeat;
@@ -33,7 +31,6 @@ a:link {
 #btn:focus{
 	ouline:0 !important;
 }
-
 #btn:hover:after{
  visibility: visible;
   -webkit-transform: scaleX(1);
@@ -41,8 +38,6 @@ a:link {
   outline:none;
   bottom:5px;
 }
-
-
 #btn:after {
   content: "";
   position: absolute;

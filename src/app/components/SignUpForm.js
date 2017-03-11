@@ -36,9 +36,9 @@ export default class SignUpForm extends React.Component{
 		  var formStyle = {display : this.state.formVisible?'block':'none'};
 		  var pwdError = (this.state.pwdIsWrong)?" error":"";
 		return(
-			<div>
+			<div className="transform">
 				<div>
-					<button className="button btn btn-default transform" href="#" onClick={this.handleClick.bind(this)}>Create an account</button>
+					<button className="button btn btn-default" href="#" onClick={this.handleClick.bind(this)}>Create an account</button>
 				</div>
 				<div style={formStyle}>
 					<form className="form" ref="sign_up_form" method="POST" action="api/user/register/">
