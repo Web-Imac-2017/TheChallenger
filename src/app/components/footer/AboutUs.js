@@ -2,6 +2,14 @@ import React from "react";
 import Member from "./Member.js";
 
 const logoCross = require("./../../../img/icons/cross.png");
+const lisa = require("./../../../img/members/lisa.jpg");
+const valentin = require("./../../../img/members/valentin.jpg");
+const antoine = require("./../../../img/members/antoine.jpg");
+const mael = require("./../../../img/members/mael.jpg");
+const laure = require("./../../../img/members/laure.jpg");
+const quentin = require("./../../../img/members/quentin.jpg");
+const marc = require("./../../../img/members/marc.jpg");
+const albert = require("./../../../img/members/albert.jpg");
 
 export default class AboutUs extends React.Component {
     constructor (props) {
@@ -32,14 +40,14 @@ export default class AboutUs extends React.Component {
                     <p>- The Cap Squad -</p>
         
                     <div className="membersList">
-                        <Member image="../img/members/lisa.jpg" name="Lisa Couavoux" desc="Team Leader"/>
-                        <Member image="../img/members/valentin.jpg" name="Valentin Bacon" desc="Graphist"/> 
-                        <Member image="../img/members/antoine.jpg" name="Antoine Demiere" desc="Front-end Developper"/>
-                        <Member image="../img/members/mael.jpg" name="Maël Crespin-Pommier" desc="Front-end Developper"/>
-                        <Member image="../img/members/laure.jpg" name="Laure Issa" desc="Back-end Developper"/>
-                        <Member image="../img/members/quentin.jpg" name="Quentin Louis" desc="Back-end Developper"/>
-                        <Member image="../img/members/marc.jpg" name="Marc Blactot" desc="Back-end Developper"/>
-                        <Member image="../img/members/albert.jpg" name="Albert-Henri Moyrand" desc="Back-end Developper"/>
+                        <Member image={lisa} name="Lisa Couavoux" desc="Team Leader"/>
+                        <Member image={valentin} name="Valentin Bacon" desc="Graphist"/> 
+                        <Member image={antoine} name="Antoine Demiere" desc="Front-end Developper"/>
+                        <Member image={mael} name="Maël Crespin-Pommier" desc="Front-end Developper"/>
+                        <Member image={laure} name="Laure Issa" desc="Back-end Developper"/>
+                        <Member image={quentin} name="Quentin Louis" desc="Back-end Developper"/>
+                        <Member image={marc} name="Marc Blactot" desc="Back-end Developper"/>
+                        <Member image={albert} name="Albert-Henri Moyrand" desc="Back-end Developper"/>
                     </div>
                 </div>            
             </div>

@@ -1,4 +1,5 @@
 import React from "react";
+const instagram = require("./../../../img/icons/logo_instagram.png");
 
 export default class Instagram extends React.Component {
     render() {
@@ -6,7 +7,7 @@ export default class Instagram extends React.Component {
         return(
                 <div className="item"> 
 					<a href="http://www.instagram.com/" >
-					<img src="../../../img/icons/logo_instagram.png" height="20px" width="20px"/>
+					<img src={instagram} height="20px" width="20px"/>
 					</a>
 				
                 </div>

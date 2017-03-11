@@ -25,10 +25,9 @@ a:link {
 	background-color: Transparent;
   background-repeat:no-repeat;
   border: none;
-	font-family: Montserrat;
 	font-size: 12px;
 	padding: 0;
-	
+  position: relative;
 }
 
 #btn:focus{
@@ -58,4 +57,3 @@ a:link {
   transition: all 0.3s ease-in-out 0s;
   outline:none;
 }
-

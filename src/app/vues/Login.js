@@ -11,7 +11,7 @@ export default class Login extends React.Component{
 	  super(props);
 
 	  this.state = {
-	  	url : './../../img/background.jpg',
+	  	url : './../../img/background3.jpg',
 	  	artist: "jeanMi"
 	  };
 
@@ -23,7 +23,7 @@ export default class Login extends React.Component{
 	}*/	
 
 	getRandomImg(){
-		Utility.query("api/post/getRandomBackground/", this);
+		Utility.query("api/post/getRandomBackground/", this.callback.bind(this));
 		//Utility.query("."+jsonPath, this);
 
 	}
@@ -45,7 +45,7 @@ export default class Login extends React.Component{
 
 		return(
 			<div id="login">
-				<div className="background_img blur" style={divStyle}></div>
+				<div className="background_img" style={divStyle}></div>
 				<div className="overlay"></div>
 				<span className="artist"><p>by {this.state.artist}</p></span>
 				<LoginBox/>

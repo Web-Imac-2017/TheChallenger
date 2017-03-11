@@ -1,3 +1,4 @@
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
 @import 'constantes';
 @import 'pages';
 
@@ -16,7 +17,7 @@ html, body{
     left: 0;
     right: 0;
     bottom: 0;
-	background-color: rgba(0, 0, 0, 0.8);
+	background-color: rgba(0, 0, 0, 0.2);
 	overflow: hidden;
 }
 a{
