@@ -2,6 +2,8 @@ import React from "react";
 
 import Utility from './../utilities/utility.js';
 import ProfilBox from './../components/ProfilBox.js'
+import Header 	from "../components/Header.js";
+import Footer 	from "../components/Footer.js";
 import PostsContainer from './../components/PostsContainer.js'
 
 export default class UserProfil extends React.Component {
@@ -37,17 +39,21 @@ export default class UserProfil extends React.Component {
 
     render() {
         return(
-            <div id="profil" className="page">
-                <ProfilBox 
-                	id = {this.state.user.id}
-                	photo = {this.state.user.photo}
-                	name = {this.state.user.name}
-                	nbPost = {this.state.user.nbpost}
-                	nbFollower = {this.state.user.nbfollower}
-                	email = {this.state.user.email}
-                	desc = {this.state.user.description}
-                />
-                <PostsContainer posts={this.state.user.posts}/>
+            <div className="page">
+        		<Header/>
+        		<div id="profil">
+	                <ProfilBox 
+	                	id = {this.state.user.id}
+	                	photo = {this.state.user.photo}
+	                	name = {this.state.user.name}
+	                	nbPost = {this.state.user.nbpost}
+	                	nbFollower = {this.state.user.nbfollower}
+	                	email = {this.state.user.email}
+	                	desc = {this.state.user.description}
+	                />
+	                <PostsContainer posts={this.state.user.posts}/>
+                </div>
+            	<Footer/>
             </div>
         );
     }

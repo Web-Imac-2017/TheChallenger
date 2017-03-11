@@ -1,3 +1,10 @@
+
+.page{
+	text-align:center;
+	background-color: $pageBackgroundColor;
+	overflow : hidden;
+}
+
 .posts-container {
     width: 85%;
     margin: auto;
@@ -5,13 +12,12 @@
     @include laptop{
     	width: 100%;
     }
-    padding-top:2em;
+    padding:2em 0 4em;
 }
 
 $squareWidth : 20px;
 
 .post-min{
-	/* width: 350px; */
 	background-color: $blockBackgroundColor;
     display: inline-block;
     margin: 10px;
