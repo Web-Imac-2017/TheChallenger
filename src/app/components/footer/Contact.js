@@ -19,14 +19,14 @@ export default class Contact extends React.Component {
     }
     
     render() {
-    	var myStyle =   {
+    	var myStyle ={
             display : (this.state.active)?"block":"none"
         };
         return(
         	 <div className ="page_contact" style={myStyle}>
                 <div className= "overlay"></div>
             	<div className="contact">
-           			<button onClick={this.close.bind(this)} className="close-aboutus" >
+           			<button onClick={this.close.bind(this)} className="close-button" >
                         <img src= {logoCross} width="30" height="30"/>
                     </button>
 
@@ -35,7 +35,7 @@ export default class Contact extends React.Component {
     					<input type="Name" name="name" className="field-contact" placeholder="Your Name"/>
     					<input type="Email" name="email" className="field-contact" placeholder="Your e-mail"/>
     					<input type="Subject" name="subject" className="field-contact" placeholder="Subject"/>    				    
-    					<textarea type = "Message" className="field-contact" >Your Message</textarea>
+    					<textarea type = "Message" className="field-contact" placeholder="Your Message"></textarea>
     					<button className="field-contact" href="#">Send</button>
 					</form>
 				</div>

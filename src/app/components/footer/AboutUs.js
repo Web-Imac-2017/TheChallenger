@@ -25,7 +25,7 @@ export default class AboutUs extends React.Component {
             <div className ="page_about" style={myStyle}>
                 <div className= "overlay"></div>
                 <div className="aboutus">
-                    <button onClick={this.close.bind(this)} className="close-aboutus" >
+                    <button onClick={this.close.bind(this)} className="close-button" >
                         <img src= {logoCross} width="30" height="30"/>
                     </button>
                     <h1>Our Team</h1>
