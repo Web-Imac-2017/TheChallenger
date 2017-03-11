@@ -1,5 +1,6 @@
 import React from "react";
-import {browserHistory} from 'react-router';
+import { BrowserRouter as Router,
+         Link } from "react-router";
 import ReactDom from "react-dom";
 
 import Vignette from "./../assets/Vignette.js";
@@ -18,12 +19,11 @@ export default class UserMenu extends React.Component {
 			hover:false,
 			user:{
 				"id" : 2,
-				"photo" : {noImg}
+				"photo" : noImg
 			}
 		};	
 		console.log("FETCH ID !!!!");
 		Utility.query("api/user/id/", this.callbackIsConnected.bind(this))
-
 
 		this.mouseOver = this.mouseOver.bind(this);
         this.mouseOut = this.mouseOut.bind(this);
@@ -74,12 +74,14 @@ export default class UserMenu extends React.Component {
    	render() {
         return(
             <div className="user-menu" >
-				<div 	className="vignette" 
-						onClick={this.openMenu} 
+            	
+				<div 	className="vignette" onClick={this.openMenu} 
 						onMouseOver={this.mouseOver.bind(this)} 
-						onMouseOut={this.mouseOut.bind(this)}  >
-
-					<Vignette image ={this.state.user.photo} /> 
+						onMouseOut={this.mouseOut.bind(this)}>
+						
+					<Link to={"/profil/"+this.state.user.id}>
+						<Vignette image ={this.state.user.photo}/> 
+					</Link>
 					<TabUser userId ={this.state.user.id} ref="tabUser" />  			
 				</div>		
 			</div>
