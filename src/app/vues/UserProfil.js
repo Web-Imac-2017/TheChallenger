@@ -2,6 +2,7 @@ import React from "react";
 
 import Utility from './../utilities/utility.js';
 import ProfilBox from './../components/ProfilBox.js'
+import PostsContainer from './../components/PostsContainer.js'
 
 export default class UserProfil extends React.Component {
     constructor(props){
@@ -46,6 +47,7 @@ export default class UserProfil extends React.Component {
                 	email = {this.state.user.email}
                 	desc = {this.state.user.description}
                 />
+                <PostsContainer posts={this.state.user.posts}/>
             </div>
         );
     }

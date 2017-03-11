@@ -13,7 +13,7 @@ export default class Home extends React.Component{
 			<div id="home" className="page"> 
 		        <Header/>
 	            <h1>Last Winners</h1>
-	            <PostsContainer />
+	            <PostsContainer query={"api/winners/"}/>
 		        <Footer/>
 			</div>
 		);
