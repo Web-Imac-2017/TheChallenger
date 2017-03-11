@@ -89,10 +89,10 @@ class postController
 
 				//on ajoute les donnees dans la bdd
 				if($testimage==1){ //si image pas hd
-					$query=$db->prepare('INSERT INTO thechallenger.post (title,state,linkcontent,type,hd,description,datepost,iduser,idchallenge,winner) VALUES (:title,0,:linkcontent,1,0,:description,DATE(NOW()),:iduser,:idchallenge)');
+					$query=$db->prepare('INSERT INTO thechallenger.post (title,state,linkcontent,type,hd,description,datepost,iduser,idchallenge,winner) VALUES (:title,0,:linkcontent,:type,0,:description,DATE(NOW()),:iduser,:idchallenge)');
 				}
 				elseif($testimage==2){ //si image hd
-					$query=$db->prepare('INSERT INTO thechallenger.post (title,state,linkcontent,type,hd,description,datepost,iduser,idchallenge,winner) VALUES (:title,0,:linkcontent,1,1,:description,DATE(NOW()),:iduser,:idchallenge)');
+					$query=$db->prepare('INSERT INTO thechallenger.post (title,state,linkcontent,type,hd,description,datepost,iduser,idchallenge,winner) VALUES (:title,0,:linkcontent,:type,1,:description,DATE(NOW()),:iduser,:idchallenge)');
 				}
 			}
 		}
@@ -103,7 +103,7 @@ class postController
 
 		$query->bindParam(':title',$title,PDO::PARAM_STR);
 		$query->bindParam(':linkcontent',$linkcontent,PDO::PARAM_STR);
-		// $query->bindParam(':type',$type,PDO::PARAM_INT);
+		$query->bindParam(':type',$type,PDO::PARAM_INT);
 		$query->bindParam(':description',$desc,PDO::PARAM_STR);
 		$query->bindParam(':iduser',$_COOKIE['id'],PDO::PARAM_INT);
 		$query->bindParam(':idchallenge',$idchallenge,PDO::PARAM_INT);
