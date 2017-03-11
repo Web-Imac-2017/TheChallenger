@@ -1,4 +1,5 @@
 import React from "react";
+const twitter = require("./../../../img/icons/logo_twitter.png");
 
 export default class Twitter extends React.Component {
     render() {
@@ -6,7 +7,7 @@ export default class Twitter extends React.Component {
         return(
                 <div className="item"> 
 					<a href="http://www.twitter.com/" >
-					<img src="../../../img/icons/logo_twitter.png" height="20px" width="20px"/>
+					<img src={twitter} height="20px" width="20px"/>
 					</a>
 				
                 </div>
