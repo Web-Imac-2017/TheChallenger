@@ -34,7 +34,7 @@ export default class ChallengeMin extends React.Component{
                 <Link to={"/challenge/"+this.state.challenge.id}>
                     <Vignette image={this.state.challenge.photo}/>
                     <h4>{this.state.challenge.title}</h4> 
-                    <p>Challenge</p>
+                    <h4>Challenge</h4>
                 </Link>
             </div>
 	    );
