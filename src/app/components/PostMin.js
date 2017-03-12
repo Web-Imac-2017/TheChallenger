@@ -8,8 +8,8 @@ export default class PostMin extends React.Component{
     constructor(props){
         super(props);
         const defaultPost ={
-    	      "user" : 3, 
-		        "id" : 5
+            "user" : 3, 
+		    "id" : 5
         };
 
         this.state = {
