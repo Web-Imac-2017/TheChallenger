@@ -7,13 +7,19 @@ export default class PostsContainer extends React.Component{
 	  constructor(props){
 		    super(props);
         this.state = {
-            postsIds: [1,2,3,4,5,1,1],
+            postsIds: [1,2],
+            postsTypes: {},
             posts : this.props.posts,
             postsFiltered: null
         };
         if(this.props.query !== null)
             Utility.query(this.props.query, this.callBackData.bind(this));
-        this.filterBar = <FilterBar updateParent={()=>console.log("click")} filters={{"all": "All", "pasAll":"Pas All"}} />;
+        this.filterBar = <FilterBar updateParent={this.updatePostsFiltered.bind(this)} filters={{
+            "all": "All",
+            "audio":"Audio",
+            "video": "Video",
+            "text": "Text"
+        }} />;
 
         // remplissage par défaut
         this.state = {
@@ -21,30 +27,50 @@ export default class PostsContainer extends React.Component{
                 return(<PostMin postId={1} />);
             })
         };
-        this.updatePostsFiltered("all");
+        // this.updatePostsFiltered("all");
 	  }
+
+    callBackPostType(postId, type) {
+        this.state.postsTypes[postId] = type;
+    }
 
     callBackData(data) {
         this.setState({
             postsIds: data,
-            posts: data == null ? null : data.map((id) => {return(<PostMin postId={id} />);})
+            posts: data == null ? null : data.map(
+                function(id) {
+                    return(
+                            <PostMin postId={id} callbackParent={this.callBackPostType.bind(this)} />
+                    );
+                })
         });
         this.updatePostsFiltered("all");
     }
 
     updatePostsFiltered(filter) {
-        // TODO faire le tri
+        console.log("Filtre: "+filter);
+        let tmpPosts = [];
+        for(let postId in this.state.postsIds) {
+            let type = this.state.postsTypes[postId];
+            if(type == filter || filter == "all") {
+                tmpPosts.push(this.state.posts[postId]);
+            }
+        }
         this.setState({
-            postsFiltered: this.state.posts
+            // postsFiltered: this.state.posts
+            postsFiltered: tmpPosts
         });
+        // console.log(tmpPosts);
+        console.log(this.state.postsFiltered);
+        // console.log(this.state.posts);
     }
 
 	  render(){
 		    return(
                 <div className="posts-container">
-                    {this.filterBar}
-                    {this.state.posts}
-                </div>
+                {this.filterBar}
+            {this.state.postsFiltered}
+            </div>
 		    );
 	  }
 }

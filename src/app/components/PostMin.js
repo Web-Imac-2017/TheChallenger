@@ -8,8 +8,14 @@ export default class PostMin extends React.Component{
     constructor(props){
         super(props);
         const defaultPost ={
-    	      "user" : 3, 
-		        "id" : 5
+            post : {
+                "id" : 1,
+	              "user" : 1,
+                "type" : "audio",
+	              "content" : "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/34019569&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true",
+	              "description" : "Je suis une courte description",
+                "likes": 5
+            }
         };
 
         this.state = {
@@ -28,6 +34,7 @@ export default class PostMin extends React.Component{
         this.setState ({
             post : data
         });
+        this.props.callbackParent(this.state.post.id, this.state.post.type);
     }
 
     render(){
@@ -36,7 +43,7 @@ export default class PostMin extends React.Component{
         return(
             <div className="post-min">
                 <PostProfilBar userId = {this.state.post.user} />
-                <PostContent postId = {this.state.post.id} />
+                <PostContent post = {this.state.post} />
                 <PostLikesbar postId = {this.state.post.id} />
             </div>
         );

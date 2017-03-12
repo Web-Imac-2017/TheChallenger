@@ -7,67 +7,38 @@ export default class PostContent extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            post : {
-                "id" : 5,
-                "user" : 1,
-                "type" : "video",
-                "content" : "https://www.youtube.com/embed/fWRISvgAygU",
-                "description" : "Je suis une courte description",
-                "likes": 8
-            },
-            renderContent: null
+            post: this.props.post,
+            renderContent: this.preRender(this.props.post)
         };
-        this.loadData();
-        this.state.renderContent = this.preRender();
     }
 
-    preRender() {
-        if(this.state.post == null)
+    preRender(post) {
+        if(post == null)
             return null;
         // media sera inséré dans return(), comme ça ça dépend du type du post.
         let media = null;
-        console.log(this.state.post);
-        switch(this.state.post.type) {
+        console.log(post);
+        switch(post.type) {
         case "text":
-            media = (<p>{this.state.post.content}</p>);
+            media = (<p>{post.content}</p>);
             break;
         case "image":
-            media = (<img src={this.state.post.content} alt={this.state.post.content} />);
+            media = (<img src={post.content} alt={post.content} />);
             break;
         case "audio":
-            media = (<iframe width="100%" height="200" scrolling="no" frameBorder="no" src={this.state.post.content}></iframe>);
+            media = (<iframe width="100%" height="200" scrolling="no" frameBorder="no" src={post.content}></iframe>);
             break;
         case "video":
             media = (<iframe width="100%" frameBorder="no"
-                     src={this.state.post.content}>
+                     src={post.content}>
                      </iframe> );
             break;
         case "file":
-            media = (<p>FILE: {this.state.post.content}</p>);
+            media = (<p>FILE: {post.content}</p>);
             break;
         default: break;
         }
         return media;
-    }
-
-    loadData() {
-        var postId = this.props.postId;
-        Utility.query("api/post/show/"+postId, this.callback.bind(this));
-    }
-
-    callback(data) {
-        console.log(data);
-        this.setState({
-            post : {
-                id : data.id,
-                type : data.type,
-                content : data.content
-            }
-        });
-        this.setState({
-            post: this.state.post,
-            renderContent: this.preRender()
-        });
     }
 
     render(){
