@@ -9,7 +9,7 @@ var config = {
     output: {
         path: DIST_DIR + "/app",
         filename: "bundle.js",
-        publicPath: "./dist/app/"
+        publicPath: "/app/"
     },
     module: {
         loaders: [
