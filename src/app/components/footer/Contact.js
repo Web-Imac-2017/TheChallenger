@@ -31,7 +31,7 @@ export default class Contact extends React.Component {
                     </button>
 
                 	<p className="text-top">Give us some news</p>
-					<form action="Message" name="envoi" method="POST" enctype="text/plain">				
+					<form action="Message" name="envoi" method="POST">				
     					<input type="Name" name="name" className="field-contact" placeholder="Your Name"/>
     					<input type="Email" name="email" className="field-contact" placeholder="Your e-mail"/>
     					<input type="Subject" name="subject" className="field-contact" placeholder="Subject"/>    				    

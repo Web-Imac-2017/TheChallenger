@@ -1,4 +1,3 @@
-
 .page{
 	text-align:center;
 	background-color: $pageBackgroundColor;
@@ -24,7 +23,7 @@ $squareWidth : 20px;
     padding: 10px;
     border-radius: 4px;
 	@include mobile{
-		width: 80%
+		width: 60%
 	}
 	@include mobile-por{
 		width: 95%

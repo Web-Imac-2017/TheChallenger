@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 08 Mars 2017 à 15:50
+-- Généré le :  Sam 11 Mars 2017 à 11:42
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -39,9 +39,9 @@ CREATE TABLE `challenge` (
 --
 
 INSERT INTO `challenge` (`id`, `title`, `description`, `datestart`, `datestop`) VALUES
-(2, 'TITRE', 'DESCRIPTION', '2016-01-01', '2017-01-01'),
-(4, 'LOL', '', '2011-01-01', '2011-01-01'),
-(5, 'challenge', 'cool', '2017-03-08', '2017-03-17');
+(11, 'Light', 'Find a dark place and light it up.', '2017-03-11', '2017-03-19'),
+(12, 'Little life', 'Show us the unseen.', '2017-03-11', '2017-03-19'),
+(13, 'Future', 'How do you imagine it ?', '2017-03-11', '2017-03-19');
 
 -- --------------------------------------------------------
 
@@ -54,6 +54,17 @@ CREATE TABLE `follow` (
   `idfollower` int(11) NOT NULL,
   `idfollowed` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `follow`
+--
+
+INSERT INTO `follow` (`id`, `idfollower`, `idfollowed`) VALUES
+(1, 10, 12),
+(2, 10, 11),
+(3, 11, 12),
+(4, 9, 12),
+(5, 7, 12);
 
 -- --------------------------------------------------------
 
@@ -81,7 +92,11 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`id`, `title`, `state`, `type`, `hd`, `linkcontent`, `description`, `winner`, `score`, `datepost`, `iduser`, `idchallenge`) VALUES
-(1, 'image1', 0, 0, 1, '0', '0', 0, 0, '2011-01-01', 0, 4);
+(1, 'image1', 0, 0, 1, 'background.jpg', '0', 1, 0, '2011-01-01', 12, 4),
+(3, 'balec', 0, 0, 1, 'background.jpg', 'ah', 1, 3, '2016-01-01', 12, 4),
+(4, 'City ', 0, 1, 0, '1489231644.jpg', 'taken with my iphone :$\r\n', 0, 0, '2017-03-11', 14, 11),
+(5, 'p i z z a * * ', 0, 1, 1, '1489231788.jpg', 'omg i did it myself', 0, 0, '2017-03-11', 14, 12),
+(6, 'SKY', 0, 1, 1, '1489232276.jpg', 'WE ARE THE LITTLE ONES', 0, 1, '2017-03-11', 11, 11);
 
 -- --------------------------------------------------------
 
@@ -94,6 +109,13 @@ CREATE TABLE `score` (
   `iduser` int(11) NOT NULL,
   `idpost` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `score`
+--
+
+INSERT INTO `score` (`id`, `iduser`, `idpost`) VALUES
+(1, 11, 6);
 
 -- --------------------------------------------------------
 
@@ -119,9 +141,15 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `rank`, `name`, `pwd`, `email`, `keyactive`, `isActive`, `registerdate`, `birthdate`, `cptwarnings`) VALUES
-(3, 2, 'test', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'quentin54.louis@laposte.net', 'f0dd85e6e386ef55a82cf4ef62254ff3396d35cd', 0, '06 03 2017', '0000-00-00', 0),
 (4, 1, 'yorka', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'test@test.com', 'e0c70ab1fa346e1a16493915ede279e7748bce27', 0, '06 03 2017', '0000-00-00', 0),
-(5, 2, 'laure', '530226d0f0a4ce262450ab17e0ed44a90a529e6d', 'laureisssa@gmail.com', 'c4ebba6a50d3a6ab020b700e18e407772e1500bb', 0, '08 03 2017', NULL, 0);
+(5, 2, 'laure', '530226d0f0a4ce262450ab17e0ed44a90a529e6d', 'laureisssa@gmail.com', 'c4ebba6a50d3a6ab020b700e18e407772e1500bb', 0, '08 03 2017', NULL, 0),
+(8, 2, 'Michel', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'user1@test.com', 'd6acb1367a5b2266aecf7675439f9f21e9e75061', NULL, '10 03 2017', NULL, 0),
+(9, 2, 'Mickey', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'user2@test.com', '9f3c81854848cf3b39664a7dfa56b76fe707f2ba', NULL, '10 03 2017', NULL, 0),
+(10, 2, 'Lorie', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'user3@test.com', '707e24e7e1d87705735ecde61e1c39748aa7e525', NULL, '10 03 2017', NULL, 0),
+(11, 2, 'Flavie', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'user4@test.com', 'f39bc6b61b1a16f5fcefa67e5fd4a5168726bbcf', NULL, '10 03 2017', NULL, 0),
+(12, 2, 'Marie-Lou', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'user5@test.com', 'e62462149e6939900c9ddeb101aeedce4f14cb14', NULL, '10 03 2017', NULL, 0),
+(13, 2, 'Matthieu', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'user6@test.com', '5fe84fc5740e748c9199d58fa191201ecb4c2ea9', NULL, '10 03 2017', NULL, 0),
+(14, 2, 'd4rk girl', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'dark@test.com', 'a5c407278ab0fd2740741899799fbf3ab4b6f283', NULL, '11 03 2017', NULL, 0);
 
 --
 -- Index pour les tables exportées
@@ -165,27 +193,27 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `challenge`
 --
 ALTER TABLE `challenge`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT pour la table `follow`
 --
 ALTER TABLE `follow`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT pour la table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT pour la table `score`
 --
 ALTER TABLE `score`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -8,8 +8,8 @@ export default class PostMin extends React.Component{
     constructor(props){
         super(props);
         const defaultPost ={
-    	      "user" : 3, 
-		        "id" : 5
+            "user" : 3, 
+		    "id" : 5
         };
 
         this.state = {
@@ -21,10 +21,14 @@ export default class PostMin extends React.Component{
 
     loadData(){
         var postId = this.props.postId;
-        Utility.query("api/user/show/"+postId, this.callback.bind(this));
+        console.log("POSTID POST MIN : "+postId);
+        console.log(postId);
+        Utility.query("api/post/show/"+postId, this.callback.bind(this));
     }
 
     callback(data){
+        console.log("POST SHOW CALLBACK")
+        console.log(data)
         this.setState ({
             post : data
         });
@@ -35,7 +39,7 @@ export default class PostMin extends React.Component{
             return null;
         return(
             <div className="post-min">
-                <PostProfilBar userId = {this.state.post.user} />
+                <PostProfilBar userId = {this.state.post.iduser} />
                 <PostContent postId = {this.state.post.id} />
                 <PostLikesbar postId = {this.state.post.id} />
             </div>

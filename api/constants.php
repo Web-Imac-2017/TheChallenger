@@ -6,4 +6,9 @@ define('MEMBRE',2);
 define('MODERATEUR',3);
 define('ADMIN',4);
 
+//definition des types de fichiers
+define('IMAGE',1);
+define('YOUTUBE',2);
+define('SOUNDCLOUD',3);
+
 ?>
