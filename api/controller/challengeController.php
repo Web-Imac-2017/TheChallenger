@@ -182,5 +182,24 @@ class challengeController {
 		echo (json_encode($result_tab));
 	}
 	
+	public static function current_challenges() {
+			
+		global $db;
+		$query = $db->prepare('SELECT * FROM challenge');
+		$query->execute();
+		$tab = array();
+		while ($datas = $query->fetch()) { 
+			array_push($tab,$datas['id']);
+		};
+		$query->CloseCursor();
+		$current = array();
+		for ($i = 0; $i<count($tab); $i++) {
+		
+			if (Challenge::deadLine($tab[$i])) {
+				array_push($current, $tab[$i]);
+			}
+		}
+		echo (json_encode($current));
+	}
 }
 ?>

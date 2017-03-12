@@ -131,6 +131,10 @@
 		"request" : "challengeController@time_left"
 	},
 	
+	"challenge/current/": {
+		"request" : "challengeController@current_challenges"
+	},
+	
 	"winners/":{
 		"request" : "postController@getWinners"
 	},

@@ -124,7 +124,6 @@ class Challenge
 		];
 		return $time;
 	}
-	
 	// Date limite passée ou non
 	public static function deadLine($idchallenge) {
 		
@@ -168,6 +167,8 @@ class Challenge
 			$query_win->closeCursor();
 		}
 	}
+	
+
 }
 
 ?>
