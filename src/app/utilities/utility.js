@@ -2,7 +2,7 @@ const utility = {
 	query(url, callback){
 		/*if(url === undefined)
 			return;*/
-		fetch(url)
+		fetch(url, {credentials: "same-origin"})
 			.then(function(response){
 				if (response.status !== 200) {  
 			      	console.log('Error loading JSON Code: ' + response.status);  

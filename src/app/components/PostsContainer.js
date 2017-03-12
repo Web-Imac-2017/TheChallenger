@@ -31,7 +31,7 @@ export default class PostsContainer extends React.Component{
         console.log(data);
         this.setState({
             postsIds: data,
-            posts: data == null ? null : data.map((id) => {return(<PostMin postId={id} />);})
+            posts: data == null ? null : data.map((post) => {return(<PostMin postId={post.id} />);})
         });
         this.updatePostsFiltered("all");
     }

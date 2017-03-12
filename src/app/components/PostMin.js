@@ -8,8 +8,8 @@ export default class PostMin extends React.Component{
     constructor(props){
         super(props);
         const defaultPost ={
-            "user" : 3, 
-		    "id" : 5
+            "iduser" : 4, 
+		    "id" : 26
         };
 
         this.state = {
@@ -35,13 +35,16 @@ export default class PostMin extends React.Component{
     }
 
     render(){
+        console.log("IDUSER");
+        console.log(this.state.post.iduser)
+        console.log(this.state.post)
         if(this.state.post === null)
             return null;
         return(
             <div className="post-min">
                 <PostProfilBar userId = {this.state.post.iduser} />
                 <PostContent postId = {this.state.post.id} />
-                <PostLikesbar postId = {this.state.post.id} />
+                <PostLikesbar postId = {this.state.post.id} />  
             </div>
         );
     }

@@ -1,0 +1,7 @@
+TODO:
+	challenge/currents/
+
+
+ERROR:
+	post/show/id 
+
