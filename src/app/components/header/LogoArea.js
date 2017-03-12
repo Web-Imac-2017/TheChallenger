@@ -5,7 +5,7 @@ import { BrowserRouter as Router,
 export default class LogoArea extends React.Component {
     render() {
         return(
-            <div className="logo-area">
+            <div id="logo-area" className="logo-area">
             	<Link to={"/home"}>
             		<h1> The Challenger </h1>
             	</Link>

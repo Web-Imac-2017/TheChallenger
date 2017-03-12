@@ -2,7 +2,7 @@ import React 	from "react";
 import Header 	from "../components/Header.js";
 import Footer 	from "../components/Footer.js";
 import PostsContainer from "../components/PostsContainer.js";
-import Challenge from "../components/Challenge.js";
+import ChallengeContainer from "../components/ChallengeContainer.js";
 
 export default class Home extends React.Component{
 	constructor(props){
@@ -14,8 +14,8 @@ export default class Home extends React.Component{
 			<div id="home" className="page"> 
 		        <Header/>
 		        <div className="challenge-carrousel">
-			        <h1 className="title">Pick up your Challenge :</h1>
-			        <Challenge/>
+			        <h1>Pick up your Challenge</h1>
+			        <ChallengeContainer/>
 		        </div>
 	            <h1>Last Winners</h1>
 	            <PostsContainer query={"api/winners/"}/>
