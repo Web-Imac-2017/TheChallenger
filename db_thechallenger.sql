@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Sam 11 Mars 2017 à 11:42
+-- Généré le :  Sam 11 Mars 2017 à 20:26
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -96,7 +96,36 @@ INSERT INTO `post` (`id`, `title`, `state`, `type`, `hd`, `linkcontent`, `descri
 (3, 'balec', 0, 0, 1, 'background.jpg', 'ah', 1, 3, '2016-01-01', 12, 4),
 (4, 'City ', 0, 1, 0, '1489231644.jpg', 'taken with my iphone :$\r\n', 0, 0, '2017-03-11', 14, 11),
 (5, 'p i z z a * * ', 0, 1, 1, '1489231788.jpg', 'omg i did it myself', 0, 0, '2017-03-11', 14, 12),
-(6, 'SKY', 0, 1, 1, '1489232276.jpg', 'WE ARE THE LITTLE ONES', 0, 1, '2017-03-11', 11, 11);
+(6, 'SKY', 0, 1, 1, '1489232276.jpg', 'WE ARE THE LITTLE ONES', 0, 1, '2017-03-11', 11, 11),
+(8, 'Copernic', 0, 1, 0, '1489256559.png', 'But it\'s not for today', 0, 0, '2017-03-11', 8, 13),
+(9, 'Future', 0, 1, 1, '1489259397.jpg', 'Nayvadius DeMun ', 0, 0, '2017-03-11', 9, 13),
+(10, 'Hand', 0, 1, 0, '1489259487.jpg', 'Human and Technology', 0, 0, '2017-03-11', 10, 13),
+(11, 'Futureman', 0, 1, 0, '1489259728.jpg', 'What will look like Man in 1000 years ?', 0, 0, '2017-03-11', 11, 13),
+(12, 'Evolution', 0, 1, 0, '1489259785.jpg', 'Like a robot', 0, 0, '2017-03-11', 12, 13),
+(13, 'Mars', 0, 1, 0, '1489259928.png', 'The conquest of Mars', 0, 0, '2017-03-11', 13, 13),
+(14, 'Ikea\'s table', 0, 1, 1, '1489260060.jpg', '"Give me the salt please"', 0, 0, '2017-03-11', 14, 13),
+(15, 'Technology', 0, 1, 0, '1489260102.jpg', 'All is about technolgy', 0, 0, '2017-03-11', 4, 13),
+(16, 'Eiffel Tower', 0, 1, 1, '1489260184.jpg', 'Let\'s be pessimistic', 0, 0, '2017-03-11', 5, 13),
+(17, 'Green city', 0, 1, 1, '1489260389.jpg', '"Paris est magique"', 0, 0, '2017-03-11', 9, 13),
+(18, 'Acarien', 0, 1, 0, '1489260704.jpg', 'It itches', 0, 0, '2017-03-11', 8, 12),
+(19, 'Atomes', 0, 1, 0, '1489260858.png', 'Atom looks like candy', 0, 0, '2017-03-11', 9, 12),
+(20, 'Criquet', 0, 1, 0, '1489261051.jpg', 'Hello world', 0, 0, '2017-03-11', 10, 12),
+(21, 'A drop', 0, 1, 0, '1489261125.jpg', '"Drop it like it\'s hot"', 0, 0, '2017-03-11', 11, 12),
+(22, 'What is that ?', 0, 1, 0, '1489261257.jpg', 'The carapace of the Cetonia aurata', 0, 0, '2017-03-11', 12, 12),
+(23, 'Beautiful fish', 0, 1, 0, '1489261387.jpg', '"Fukushima my love"', 0, 0, '2017-03-11', 13, 12),
+(25, 'Little Life', 0, 1, 0, '1489261603.jpg', '', 0, 0, '2017-03-11', 14, 12),
+(26, 'Inside plastic', 0, 1, 0, '1489261652.jpg', '', 0, 0, '2017-03-11', 4, 12),
+(27, ' ', 0, 1, 1, '1489261698.jpg', '', 0, 0, '2017-03-11', 5, 12),
+(28, ' Vinyl', 0, 1, 0, '1489261754.jpg', 'Microscopic', 0, 0, '2017-03-11', 9, 11),
+(29, 'Amsterdam', 0, 1, 1, '1489261803.jpeg', '', 0, 0, '2017-03-11', 9, 11),
+(30, 'Amsterdam', 0, 1, 1, '1489261833.jpeg', '', 0, 0, '2017-03-11', 9, 11),
+(31, 'Jellyfish', 0, 1, 0, '1489261926.jpg', '', 0, 0, '2017-03-11', 9, 11),
+(32, 'Candles', 0, 1, 1, '1489261994.jpg', '', 0, 0, '2017-03-11', 9, 11),
+(33, ' ', 0, 1, 0, '1489262017.jpg', '', 0, 0, '2017-03-11', 9, 11),
+(34, ' ', 0, 1, 0, '1489262029.jpeg', '', 0, 0, '2017-03-11', 9, 11),
+(35, 'Spotlight', 0, 1, 0, '1489262103.jpg', '', 0, 0, '2017-03-11', 9, 11),
+(36, 'Timelapse', 0, 1, 1, '1489262463.jpg', '', 0, 0, '2017-03-11', 9, 11),
+(37, 'Bike', 0, 1, 1, '1489262568.jpeg', '', 0, 0, '2017-03-11', 9, 11);
 
 -- --------------------------------------------------------
 
@@ -203,12 +232,12 @@ ALTER TABLE `follow`
 -- AUTO_INCREMENT pour la table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT pour la table `score`
 --
 ALTER TABLE `score`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `user`
 --
