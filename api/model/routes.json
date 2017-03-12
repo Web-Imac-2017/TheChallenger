@@ -27,6 +27,10 @@
         "request" : "userController@confirm"
     },
 
+     "user/follow/check/{id}" : {
+        "request" : "userController@checkfollow"
+    },
+
     "user/follow/add/{id}" : {
         "request" : "userController@addfollower"
     },
@@ -51,6 +55,14 @@
         "request" : "userController@toArray"
     },
 
+    "user/{id}/posts/": {
+        "request" : "userController@getposts"
+    },
+	
+	"user/{id}/infos/": {
+        "request" : "userController@getinfos"
+    },
+ 
     "post/add/{id}" : {
         "request" : "postController@addpost"
     },
@@ -59,8 +71,16 @@
         "request" : "postController@updatepost"
     },
 
+    "post/validate/{id}" : {
+        "request" : "postController@validatepost"
+    },
+
     "post/delete/{id}" : {
         "request" : "postController@deletepost"
+    },
+
+    "post/like/check/{id}" : {
+        "request" : "postController@checklike"
     },
 
     "post/like/add/{id}" : {
@@ -105,5 +125,21 @@
 	
 	"challenge/posts/{id}" :{
 		"request" : "challengeController@show_posts"
+	},
+	
+	"challenge/timeleft/{id}" :{
+		"request" : "challengeController@time_left"
+	},
+	
+	"challenge/current/": {
+		"request" : "challengeController@current_challenges"
+	},
+	
+	"winners/":{
+		"request" : "postController@getWinners"
+	},
+	
+	"user/id/": {
+		"request" : "userController@id_connected"
 	}
 }

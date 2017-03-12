@@ -1,16 +1,21 @@
 import React from "react";
 
+import Utility from "./../../utilities/utility.js"
+
 export default class TabUser extends React.Component {
 	
-    render() {
-        return(
-          <div className="tab-user-menu" style={{display:"none"}}>		
+  handleDisconnect(){
+    Utility.query('user/login');
+  }
+
+  render() {
+    return(
+      <div className="tab-user-menu" style={{display:"none"}}>		
 				<button className="access-profil"> My Profil </button>
-				<button className="disconnect"> Disconnect </button>
-               
-           </div>
-        );
-    }
+				<button className="disconnect" onClick={this.handleDisconnect.bind(this)}> Disconnect </button>
+      </div>
+    );
+  }
 	
 	
 }

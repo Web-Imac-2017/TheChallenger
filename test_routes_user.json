@@ -1,0 +1,25 @@
+{
+    "" : {
+        "request" : "controller/viewHome.php"
+    },
+
+    "404/" : {
+        "request" : "controller/view404.php"
+    },
+
+    "user/signup/" : {
+        "request" : "userController@signup"
+    },
+
+    "user/login/" : {
+        "request" : "userController@login"
+    },
+
+    "user/show/{id}" : {
+       "request" : "userController@show"
+    },
+
+    "user/logout/" : {
+        "request" : "userController@logout"
+    }
+}

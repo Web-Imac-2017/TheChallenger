@@ -7,9 +7,9 @@ export default class Header extends React.Component{
 	render(){
 		return(
 			<div className="header ">
-			<SearchBar/>
-            <LogoArea/>
-            <UserMenu user={"Jean-Mich"}/>
+				<SearchBar/>
+	            <LogoArea/>
+	            <UserMenu user={"Jean-Mich"}/>
 			</div>
 		);
 	}

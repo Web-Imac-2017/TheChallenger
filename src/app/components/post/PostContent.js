@@ -29,8 +29,8 @@ export default class PostContent extends React.Component{
             media = (<iframe width="100%" height="200" scrolling="no" frameBorder="no" src={post.content}></iframe>);
             break;
         case "video":
-            media = (<iframe width="100%" frameBorder="no"
-                     src={post.content}>
+            media = (<iframe width="100%" allowFullScreen frameBorder="no"
+                     src={this.state.post.content}>
                      </iframe> );
             break;
         case "file":

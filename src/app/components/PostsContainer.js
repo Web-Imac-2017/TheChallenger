@@ -4,16 +4,18 @@ import FilterBar from "../components/FilterBar.js";
 import Utility from './../utilities/utility.js';
 
 export default class PostsContainer extends React.Component{
-	  constructor(props){
-		    super(props);
+    constructor(props){
+		super(props);
         this.state = {
             postsIds: [1,2],
             postsTypes: {},
             posts : this.props.posts,
             postsFiltered: null
         };
-        if(this.props.query !== null)
+
+        if(this.props.query !== null){
             Utility.query(this.props.query, this.callBackData.bind(this));
+        }
         this.filterBar = <FilterBar updateParent={this.updatePostsFiltered.bind(this)} filters={{
             "all": "All",
             "audio":"Audio",
@@ -35,6 +37,8 @@ export default class PostsContainer extends React.Component{
     }
 
     callBackData(data) {
+        console.log("CALLBACK POST CONTAINER");
+        console.log(data);
         this.setState({
             postsIds: data,
             posts: data == null ? null : data.map(
