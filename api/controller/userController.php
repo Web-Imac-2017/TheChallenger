@@ -385,7 +385,7 @@ class userController{
 			"idpost" => $idspost
 		];
 
-		$item=$item+$showUser;
+		$item = array_merge($item, $showUser);
 		
 		echo (json_encode($item));
 	}
