@@ -30,7 +30,18 @@ export default class UserProfil extends React.Component {
     }	
 
     callback(data){
-    	this.setState({user:data})
+    	this.setState({
+    		user : {
+    			"id" : data.id,
+    			"photo" : Utility.getPublicPath()+data.photo,
+    			"name" : data.name,
+    			"nbpost" : data.nbpost,
+    			"nbFollower" : data.nbFollower,
+    			"email" : data.email,
+    			"description" : data.description
+    		}
+
+    	});
     }
 
     loadData(){
