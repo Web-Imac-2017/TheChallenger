@@ -27,6 +27,7 @@ class challengeController {
 			"id" => $idchallenge,
 			"title" => $datas['title'],
 			"description" => $datas['description'],
+			"photo" => $datas['photo'],
 			"datestart" => $datas['datestart'],
 			"datestop" => $datas['datestop'],
 			"time" => $time
