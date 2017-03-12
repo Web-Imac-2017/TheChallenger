@@ -30,36 +30,6 @@ var config = {
                 test: /.*\.(gif|png|jpe?g|svg|json)$/i,
                 loaders: [
                     'file-loader',
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     {
                         loader: 'image-webpack-loader',
                         query: {
