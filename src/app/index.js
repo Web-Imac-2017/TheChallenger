@@ -8,6 +8,7 @@ import Login from "./vues/Login.js";
 import Home from "./vues/Home.js";
 import Contact from "./vues/Contact.js";
 import UserProfil from "./vues/UserProfil.js";
+import Challenge from "./vues/Challenge.js";
 
 const app = document.getElementById('app');
 
@@ -19,6 +20,7 @@ class Layout extends React.Component{
 			    <Route path="/home" component={Home}/>
 				<Route path="/contact" component={Contact}/>
 				<Route path="profil/:userId" name="/profil" component={UserProfil}/>
+				<Route path="challenge/:challengeId" name="/profil" component={Challenge}/>
 			</Router>	
 		);
 	}
