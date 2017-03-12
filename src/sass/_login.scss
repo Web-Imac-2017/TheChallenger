@@ -76,3 +76,62 @@
 	
 
 }
+
+#login{
+position:relative;
+}
+
+
+#what-is-it{
+position:relative;
+z-index:1;}
+
+.background_img{
+	
+	padding-left:35%;
+	padding-top:20%;
+	
+	.title-presentation{
+		text-align:center;
+		background-color:blue;
+		width:50%;
+		margin-bottom:3%;	
+		font-size:25px;
+	}
+	
+	.text-question{
+		background-color:green;
+		width:50%;
+		position:relative;
+		text-align:center;
+		left:-1%;
+		top:-3.5%;
+		
+		.borderBottom{
+			border-bottom:2px solid red;
+			left:46%;
+			position:absolute;		
+		}
+	}
+	
+	.ligne-vertical{
+		text-align:center;
+		
+		width:5px;
+		border-left:2px solid blue;
+		margin-left:25%;
+		height:5%;
+	}
+	
+	.text-presentation{
+		text-align:center;
+		background-color:red;
+		width:50%;
+		border:2px solid white;
+		border-radius:5px;
+		
+		padding: 2% 2% 2% 2%;
+	}
+	
+	
+}
