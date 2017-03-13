@@ -13,31 +13,31 @@ export default class PostMin extends React.Component{
         };
 
         this.state = {
-            post : defaultPost
+            post : null
         };
         
         this.loadData();	
     }
 
     loadData(){
-        var postId = this.props.postId;
+        var postId = this.props.postId;/*
         console.log("POSTID POST MIN : "+postId);
-        console.log(postId);
+        console.log(postId);*/
         Utility.query("api/post/show/"+postId, this.callback.bind(this));
     }
 
     callback(data){
-        console.log("POST SHOW CALLBACK")
-        console.log(data)
+       /* console.log("POST SHOW CALLBACK")
+        console.log(data)*/
         this.setState ({
             post : data
         });
     }
 
     render(){
-        console.log("IDUSER");
+  /*      console.log("IDUSER");
         console.log(this.state.post.iduser)
-        console.log(this.state.post)
+        console.log(this.state.post)*/
         if(this.state.post === null)
             return null;
         return(

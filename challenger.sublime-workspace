@@ -4,16 +4,24 @@
 		"selected_items":
 		[
 			[
+				"desc",
+				"description"
+			],
+			[
+				"sho",
+				"showUser"
+			],
+			[
+				"pa",
+				"params"
+			],
+			[
 				"COSN",
 				"console.log()"
 			],
 			[
 				"call",
 				"callbackIsConnected"
-			],
-			[
-				"pa",
-				"page_directory"
 			],
 			[
 				"str_re",
@@ -506,14 +514,6 @@
 			[
 				"window",
 				"windowname"
-			],
-			[
-				"id",
-				"idLevel"
-			],
-			[
-				"ter",
-				"terrain2D"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "src/app/index.js",
 			"settings":
 			{
-				"buffer_size": 721,
+				"buffer_size": 846,
 				"line_ending": "Windows"
 			}
 		},
@@ -531,7 +531,7 @@
 			"file": "src/app/vues/Home.js",
 			"settings":
 			{
-				"buffer_size": 484,
+				"buffer_size": 695,
 				"line_ending": "Windows"
 			}
 		},
@@ -547,7 +547,7 @@
 			"file": "src/app/components/PostMin.js",
 			"settings":
 			{
-				"buffer_size": 1362,
+				"buffer_size": 1401,
 				"line_ending": "Windows"
 			}
 		},
@@ -560,42 +560,10 @@
 			}
 		},
 		{
-			"file": "src/app/components/Header.js",
+			"file": "src/app/vues/UserProfil.js",
 			"settings":
 			{
-				"buffer_size": 374,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/app/components/header/LogoArea.js",
-			"settings":
-			{
-				"buffer_size": 358,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/app/components/header/UserMenu.js",
-			"settings":
-			{
-				"buffer_size": 2163,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/app/components/header/TabUser.js",
-			"settings":
-			{
-				"buffer_size": 476,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/app/components/footer/Contact.js",
-			"settings":
-			{
-				"buffer_size": 1574,
+				"buffer_size": 2079,
 				"line_ending": "Windows"
 			}
 		},
@@ -603,7 +571,7 @@
 			"file": "src/app/utilities/utility.js",
 			"settings":
 			{
-				"buffer_size": 700,
+				"buffer_size": 730,
 				"line_ending": "Windows"
 			}
 		},
@@ -619,18 +587,21 @@
 			}
 		},
 		{
-			"contents": "@import 'login';\n@import 'footer';\n@import 'header';\n@import 'page';\n@import 'contact';\n@import 'aboutus';\n@import 'profil';\n",
+			"contents": "@import 'login';\n@import 'footer';\n@import 'header';\n@import 'page';\n@import 'contact';\n@import 'aboutus';\n@import 'profil';\n@import 'challenge';\n",
 			"file": "src/sass/_pages.scss",
-			"file_size": 132,
-			"file_write_time": 131337029574702980,
+			"file_size": 154,
+			"file_write_time": 131337937175046617,
 			"settings":
 			{
-				"buffer_size": 125,
+				"buffer_size": 146,
 				"line_ending": "Windows"
 			}
 		},
 		{
+			"contents": "@import url(\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\");\n@import 'constantes';\n@import 'pages';\n\nhtml, body{\n	margin:0;\n	background-color : $blockBackgroundColor;\n	font-family: montserrat;\n	h1, h2, h3, h4, p{\n		font-family: montserrat;\n	}\n}\n\n.overlay{\n    position: fixed;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n	background-color: rgba(0, 0, 0, 0.2);\n	overflow: hidden;\n}\na{\n	color: #000;\n	text-decoration: none;\n	&:hover{\n		text-decoration:none;\n		color: inherit;\n	}\n}\nli{\n	list-style: none;\n}\n",
 			"file": "src/sass/main.scss",
+			"file_size": 572,
+			"file_write_time": 131337190933016962,
 			"settings":
 			{
 				"buffer_size": 539,
@@ -649,7 +620,7 @@
 			"contents": ".form {\n  text-align: center; \n  position: relative;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n\n  .field-in{\n    color: black;\n  }\n}\n\n.field-in {\n \n  padding: 6px 12px;\n  border: 0px;\n  margin: 3px;\n  :focus{\n    outline: none;\n    padding: 15px;\n  }\n  &.error, &.error:focus{\n    border: 1px solid #ff0000;\n  }\n}\n\n.submit{\n  padding: 0px 20px; \n}\n\n.date{\n  border-radius: 0px;\n}",
 			"file": "src/sass/_form.scss",
 			"file_size": 435,
-			"file_write_time": 131337064266756898,
+			"file_write_time": 131337190932916892,
 			"settings":
 			{
 				"buffer_size": 403,
@@ -660,7 +631,7 @@
 			"contents": "$mq-laptop : 1225px !default;\n$mq-tablet : 1059px !default;\n$mq-tablet-portrait : 800px !default;\n$mq-mobile : 767px !default;\n$mq-mobile-portrait : 450px !default;\n\n/*\n\n@include mobile {\n\n}\n\n*/\n\n@mixin laptop {\n    @media (max-width: $mq-laptop) {\n        @content;\n    }\n}\n\n@mixin tablet {\n    @media (max-width: $mq-tablet) {\n        @content;\n    }\n}\n\n@mixin tablet-only {\n    @media (min-width : $mq-mobile + 1) and (max-width : $mq-tablet) {\n        @content;\n    }\n}\n\n@mixin tabpor {\n    @media (min-width : $mq-mobile + 1) and (max-width : $mq-tablet-portrait){\n        @content;\n    }\n}\n\n@mixin mobile {\n    @media (max-width: $mq-mobile) {\n        @content;\n    }\n}\n\n@mixin mobile-por {\n    @media (max-width: $mq-mobile-portrait) {\n        @content;\n    }\n}",
 			"file": "src/sass/mixins.scss",
 			"file_size": 816,
-			"file_write_time": 131337014884660442,
+			"file_write_time": 131337190933036977,
 			"settings":
 			{
 				"buffer_size": 768,
@@ -671,7 +642,7 @@
 			"contents": ".header {\n	display: flex; \n	height:70px;\n	text-align: center;\n  \n    align-items: center; \n	text-align:middle;\n    background-color: $banniereColor;\n	\n}\n\n.search-bar {\n    display: block;\n    flex: auto; \n	flex-grow: 1; \n    flex-basis: 33%; \n}\n\n.search-field {\n    max-width: 150px;\n	\n}\n\n.logo-area {\n   /* display: block;*/\n    margin-right:10%;\n    flex-grow: 1; \n    /* position: absolute; */\n     margin-left: 2px;\n    /*transform: translateX(-50%); */\n     flex-basis: 33%; \n\n    h1 {\n         margin: auto; \n        text-align: center;\n        font-size: 2em;\n        color: white;\n        white-space:nowrap;\n    }\n}\n\n.user-menu {\n\n	transform : scale(0.8);\n	margin-right:-10%;\n	display: block;\n    height: 50px;\n	flex: auto; \n    flex-grow: 1; \n    flex-basis: 33%; \n\n    .vignette {\n        display: inline-block;\n        height: 100%;\n		width:20%;\n		width:55px;\n		border-radius: 50%;\n		margin-top:-2px;\n		margin-left:-50%;\n	}\n\n    .user-menu-drop-down {\n        background-color: white;\n    }\n    \n}\n\n\ninput {\n    outline: none;\n}\n\n.img-profil{\n	display:block;\n	border-radius: 50%;\n	margin-top:2px;\n	transition: transform 0.5s ease;\n\n}\n\n.img-profil:hover{\n     transform:scale(1.05);\n}\n\n\n\n.circle-back {\n	/*margin-left:100%;*/\n	margin-left: 50%;;\n	position : relative;	\n	/*left:800%;*/\n    display: block;\n    width:100%;\n    height: 110%;\n	border-radius:50%;\n    background-color:transparent;  \n    text-align:center;\n	border:2px solid white;\n	z-index:1;\n}\n\n.search-form input[type=search]{\n	margin-left:-35%;\n	margin-top:1px;\n    background: transparent  url(https://fcpp.org/sites/default/files/images/search-icon.png) no-repeat 9px center;\n	background-size:18px 18px;\n	\n    width: 15px;\n    padding: 3px 7px 7px 20px;\n    padding-left: 15px;\n    color: transparent;\n    cursor: pointer;\n	\n	color:white;\n	\n    -webkit-appearance: textfield;\n    -webkit-box-sizing: content-box;\n    font-family: inherit;\n    font-size: 100%;\n\n     -webkit-border-radius: 8px; \n     -moz-border-radius: 8px;\n	border-radius: 8px;\n     border-style: solid;\n    border-color: white;\n	/*border-radius : 5px solid white;*/\n	\n    -webkit-transition: all .5s;\n    -moz-transition: all .5s;\n    transition: all .5s;\n\n    &:focus {\n		width: 20%;\n        padding-left: 32px;\n        color:white;\n        background-color: transparent;\n        cursor: auto;\n		border-left:10%;\n	\n        -webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);\n        -moz-box-shadow: 0 0 5px rgba(109,207,246,.5);\n        box-shadow: 0 0 5px rgba(109,207,246,.5);\n    }\n\n    &:hover{\n        background-color: transparent;\n		z-index:1;\n		color:white;\n    }\n	\n}\n\n\n.tab-user-menu{\n	border-radius:5px;\n	background-color:#E6E6E6;\n	position:absolute;\n	left:24%;\n	width:125px;\n	height:110px;\n	top:-5px;\n	text-align:center;\n}\n\n\n\n.disconnect{\n	width:90%;\n	position: absolute;\n    bottom: 10%;\n	left:5%;\n	height:35px;	\n	border-radius: 6px;\n	font-family: Arial;\n	color: white;\n	font-size: 13px;\n	font-family: Montserrat;\n	background: $banniereColor;\n	padding: 5px 10px 5px 10px;\n	text-decoration: none;\n	\n	\n	\n	 \n}\n\n.access-profil{\n	position: absolute;\n    bottom:55%;\n	left:30%;\n	font-family: Montserrat;\n	border-radius: 6px;\n	font-family: Arial;\n	color: #170b17;\n	font-size: 13px;\n	font-family: Montserrat;\n	background: #ffffff;\n	padding: 5px 10px 5px 10px;\n	text-decoration: none;\n}\n\n@media screen and (max-width: 1400px) {\n	\n	\n   .tab-user-menu{ \n		\n		top:-60px;\n		width:120px;\n		height:125px;\n		margin-left:-30%;\n		position:relative;\n    }\n	\n	.access-profil{\n		display:none;\n	}\n	\n	.disconnect{\n		width:90%;\n		font-size:12px;\n		height:35px;\n		\n		\n	}\n	\n	.search-form {\n	\n\n	\n	}\n	\n	.logo-area{\n	\n	margin-left:90;}\n\n\n}\n\n@media screen and (max-width: 740px) {\n	.logo-area{\n	margin-left:-22%;\n		font-size:10px;\n	}\n	.user-menu{\n	\n	width:5%;\n	margin-left:-20%;\n	\n	}\n}",
 			"file": "src/sass/_header.scss",
 			"file_size": 4063,
-			"file_write_time": 131337029574633023,
+			"file_write_time": 131337190932936906,
 			"settings":
 			{
 				"buffer_size": 3814,
@@ -679,21 +650,24 @@
 			}
 		},
 		{
+			"contents": ".page{\n	text-align:center;\n	background-color: $pageBackgroundColor;\n	overflow : hidden;\n}\n\n.posts-container {\n    width: 85%;\n    margin: auto;\n    text-align: center;\n    @include laptop{\n    	width: 100%;\n    }\n    padding:2em 0 4em;\n}\n\n$squareWidth : 20px;\n\n.post-min{\n	background-color: $blockBackgroundColor;\n    display: inline-block;\n    margin: 10px;\n    padding: 10px;\n    border-radius: 4px;\n	@include mobile{\n		width: 60%\n	}\n	@include mobile-por{\n		width: 95%\n	}\n\n	.post__profil_bar{\n	    display: flex;\n	    flex-flow: row ;\n	    justify-content: space-between;\n	    align-items: center;\n	    align-content: flex-start;\n	    margin-bottom: 	5px;\n	    a{\n			display: flex;\n			flex-flow: row ;\n			justify-content: space-between;\n			align-items: center;\n			align-content: flex-start;\n			color : #000;\n			padding: 0 15px 0 5px;\n		      \n		    h4{\n				padding: 0 10px;\n		    }\n	    }\n	  }\n\n	  .profil_pic{\n		    width: $squareWidth;\n		    height: $squareWidth;\n		    border-radius: 50%;\n	  }\n\n    .post-likes-bar {\n        text-align: left;\n        img {\n            display: inline;\n            height: 14px;\n            margin-right: 8px;\n            transition: all 0.3s;\n            &:hover {\n                transform: scale(1.3);\n            }\n        }\n        p {\n            display: inline;\n        }\n    }\n}\n\n\nbutton.follow_btn {\n    flex-flow: row wrap;\n    border-radius: 5px;\n    border : 1px solid;\n    border-color: $banniereColor;\n    color: $banniereColor;\n    font-size: 0.9em;\n    background-color: transparent;\n    text-decoration: none;\n    padding: 5px 12px;\n    margin: 0 9px;\n\n      -webkit-transition: all ease 300ms; \n    transition: all ease 300ms;\n\n    &:hover{\n	    background-color : $banniereColor;\n	    color: $blockBackgroundColor;\n    }\n}",
 			"file": "src/sass/_page.scss",
+			"file_size": 1876,
+			"file_write_time": 131337937175036538,
 			"settings":
 			{
-				"buffer_size": 1781,
+				"buffer_size": 1780,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "@import '_form';\n@import '_utility';\n@import 'mixins';\n\n#login_box{\n	position: absolute;\n	top: 5%;\n	left: 3%;\n	background-color: rgba(255, 255, 255, 0.6);\n	border-radius: 5px;\n	text-align: center;\n  	max-height: 90%;\n    display: flex;\n    flex-direction: column;\n   	align-items: center;\n    width: 260px;\n    padding: 12px;\n    display: inline;\n\n    @include mobile-por{\n    	margin: 0 auto;\n    	top: 7%;\n		left: 0;\n		right: 0;\n    }\n	.title{\n		margin-top: 6px;\n		margin-bottom: 20px;\n	}\n	.btn{\n		width: 100%;\n		height: 32px;\n		margin: 7px 0;\n	}\n	.submit {\n		background-color: $banniereColor;\n		color: rgb(255,255,255);\n		border-style: none;	\n	}\n	.button{\n		border-style: none;\n		color: $banniereColor;	\n	}\n	p{\n		margin: 0;\n	}	\n	.form-group{\n		margin: 0;\n	}\n}\n\n.blur{\n	-webkit-filter: blur(1px);\n	-moz-filter: blur(1px);\n	-o-filter: blur(1px);\n	-ms-filter: blur(1px);\n	filter: blur(1px);\n}\n\n.artist {\n	position: absolute;\n	bottom: 0px;\n	right: 20px;\n	p{\n		color: $blockBackgroundColor;\n		font-size: 1em;\n}\n	\n\n}",
+			"contents": "@import '_form';\n@import '_utility';\n@import 'mixins';\n\n#login_box{\n	position: absolute;\n	top: 5%;\n	left: 3%;\n	background-color: rgba(255, 255, 255, 0.6);\n	border-radius: 5px;\n	text-align: center;\n  	max-height: 90%;\n    display: flex;\n    flex-direction: column;\n   	align-items: center;\n    width: 260px;\n    padding: 12px;\n    display: inline;\n    -webkit-transition: all 2s ease;  \n	-moz-transition: all 2s ease;  \n	-o-transition: all 2s ease;  \n	-ms-transition: all 2s ease;  \n	transition: all 2s ease;\n\n    @include mobile-por{\n    	margin: 0 auto;\n    	top: 7%;\n		left: 0;\n		right: 0;\n    }\n	.title{\n		margin-top: 6px;\n		margin-bottom: 20px;\n	}\n	.btn{\n		width: 100%;\n		height: 32px;\n		margin: 7px 0;\n	}\n	.submit {\n		background-color: $banniereColor;\n		color: rgb(255,255,255);\n		border-style: none;	\n	}\n	.button{\n		border-style: none;\n		color: $banniereColor;	\n	}\n	p{\n		margin: 0;\n	}	\n	.form-group{\n		margin: 0;\n	}\n	.transform:active{\n		\n	}\n}\n\n.blur{\n	-webkit-filter: blur(1px);\n	-moz-filter: blur(1px);\n	-o-filter: blur(1px);\n	-ms-filter: blur(1px);\n	filter: blur(1px);\n}\n\n.artist {\n	position: absolute;\n	bottom: 0px;\n	right: 20px;\n	p{\n		color: $blockBackgroundColor;\n		font-size: 1em;\n}\n	\n\n}",
 			"file": "src/sass/_login.scss",
-			"file_size": 1082,
-			"file_write_time": 131337067402294139,
+			"file_size": 1277,
+			"file_write_time": 131337511173889056,
 			"settings":
 			{
-				"buffer_size": 1013,
+				"buffer_size": 1200,
 				"line_ending": "Windows"
 			}
 		},
@@ -701,7 +675,7 @@
 			"contents": "#profil{\n	display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-direction: column;\n\n	#profil_box{\n		width : 50%;\n		margin: 2em;\n		padding:0.5em;\n		background-color: $blockBackgroundColor;\n		display: flex;\n		align-items: center;\n		justify-content: space-around;\n		border-radius: 	5px;\n		\n		@include laptop{\n			width: 70%;\n		}\n		@include mobile{\n    		width: 95%;\n    	}\n		@include mobile-por{\n    		width: 100%;\n    		flex-direction: column;\n    		margin: 0;\n    	}\n\n		.img-profil{\n			width: 150px;\n			height: 150px;\n			margin: 0;\n			border: 2px solid #000;\n		}\n		\n		.profil_box__photo{\n			margin: 1em 2em;\n		}\n\n		.profil_box__text{\n		    text-align: left;\n			display: flex;\n			flex-direction: column;\n			align-self: flex-start;\n			@include mobile-por{\n				margin-left: 1em;\n			}\n\n			.profil_box__header{\n				align-items: center;\n				display: flex;\n				flex-direction: row;\n				justify-content: space-between;\n				h2{\n					margin: 0;\n				}\n			}\n			\n			.profil_box__nb{ 	\n				align-items: center;\n				display: flex;\n				flex-direction: row;\n			}\n\n			.profil_box__desc{\n				margin:0 0 1.5em 0;\n			}\n\n			.profil_box__nbfollow{\n				margin-left: 20%;\n			}\n\n			.profil_box__email{\n				margin: 1em 0;\n			}\n\n		}\n\n		button.follow_btn{\n			font-size: 1.1em;\n			margin: 1.5em;\n		}\n	}\n}\n",
 			"file": "src/sass/_profil.scss",
 			"file_size": 1381,
-			"file_write_time": 131337034182233307,
+			"file_write_time": 131337190932986941,
 			"settings":
 			{
 				"buffer_size": 1297,
@@ -712,7 +686,7 @@
 			"contents": "$banniereColor : #9a1511;\n$pageBackgroundColor : #f3f3f3; //body color\n$blockBackgroundColor : #fff;",
 			"file": "src/sass/_constantes.scss",
 			"file_size": 102,
-			"file_write_time": 131337014884349305,
+			"file_write_time": 131337190932886896,
 			"settings":
 			{
 				"buffer_size": 100,
@@ -723,7 +697,7 @@
 			"contents": "@import 'mixins';\n\n.page_about{\n	justify-content: space-between; \n    align-items: center;\n    .overlay{\n		z-index: 2;\n		background-color: rgba(0, 0, 0, 0.8);\n	}\n}\n.aboutus{\n	width: 90%;\n	color: black;\n	border-radius: 1%;	\n	background-color: rgba(200, 200, 200, 1);\n	z-index:2;\n	position: absolute;\n  	margin: auto;\n  	left: 0;\n  	right: 0;\n	padding: 0;\n	.close-button{\n		background:transparent;\n		border : none;\n		padding: 0;\n		position: absolute;\n		right: 0;\n    	margin: 3px;\n    	z-index: 3;\n		img{\n			border-radius: 16px;\n		}\n	}\n\n	.membersList {\n		display: flex;\n		justify-content: space-around;\n		flex-wrap: wrap;\n	    margin: 12px;\n	    height: 73%;\n	}\n	h1{\n		position: relative;\n		text-align: center;\n		margin: auto;\n	}\n	p{\n		text-align: center;\n	    margin-bottom: 0;\n    	margin-top: 2%;\n	}\n	.member{\n		background-color: white;\n		border-radius: 2%;	\n	    display: flex;\n	    flex-wrap: wrap;\n       	justify-content: space-around;\n		flex-basis: 45%;\n	    margin: 2px;\n    	padding: 5px;\n\n		@include mobile {\n			flex-basis: 90%;\n		}\n		img {\n			width: 75px;\n			height: 75px;\n			border-radius: 50%;\n		}\n		.membertxt{\n			display: flex;\n			flex-direction: column;\n			align-items: center;\n			width: 73%;\n			text-align: center;\n		}\n	}\n}\n\n\n\n",
 			"file": "src/sass/_aboutus.scss",
 			"file_size": 1324,
-			"file_write_time": 131337067402219076,
+			"file_write_time": 131337190932866877,
 			"settings":
 			{
 				"buffer_size": 1243,
@@ -781,30 +755,32 @@
 		"/D/wamp64/www/Challenger/src",
 		"/D/wamp64/www/Challenger/src/app",
 		"/D/wamp64/www/Challenger/src/app/components",
-		"/D/wamp64/www/Challenger/src/app/components/header",
 		"/D/wamp64/www/Challenger/src/app/utilities",
 		"/D/wamp64/www/Challenger/src/app/vues",
-		"/D/wamp64/www/Challenger/api/controller",
 		"/D/wamp64/www/Challenger/api/model"
 	],
 	"file_history":
 	[
-		"/D/wamp64/www/Challenger/src/app/components/Post.js",
-		"/D/wamp64/www/Challenger/api/model/routes.json",
+		"/D/wamp64/www/Challenger/api/controller/userController.php",
+		"/D/wamp64/www/Challenger/src/app/components/Header.js",
+		"/D/wamp64/www/Challenger/src/app/components/header/LogoArea.js",
+		"/D/wamp64/www/Challenger/src/app/components/header/UserMenu.js",
+		"/D/wamp64/www/Challenger/src/app/components/header/TabUser.js",
 		"/D/wamp64/www/Challenger/webpack.config.js",
+		"/D/wamp64/www/Challenger/api/model/routes.json",
+		"/D/wamp64/www/Challenger/src/app/components/PostMin.js",
+		"/D/wamp64/www/Challenger/src/app/utilities/utility.js",
+		"/D/wamp64/www/Challenger/src/app/components/footer/Contact.js",
+		"/D/wamp64/www/Challenger/src/app/components/Post.js",
 		"/D/wamp64/www/Challenger/api/constants.php",
 		"/D/wamp64/www/Challenger/src/app/components/assets/Vignette.js",
 		"/D/wamp64/www/Challenger/src/app/components/assets/FollowBtn.js",
 		"/D/wamp64/www/Challenger/src/app/components/ProfilBox.js",
-		"/D/wamp64/www/Challenger/src/app/components/PostMin.js",
-		"/D/wamp64/www/Challenger/src/app/utilities/utility.js",
 		"/D/wamp64/www/Challenger/src/app/vues/Login.js",
 		"/D/wamp64/www/Challenger/src/app/components/PostsContainer.js",
 		"/D/wamp64/www/Challenger/src/app/vues/UserProfil.js",
-		"/D/wamp64/www/Challenger/src/app/components/header/UserMenu.js",
 		"/D/wamp64/www/Challenger/src/app/components/UserMenu.js",
 		"/D/wamp64/www/Challenger/api/model/utility.php",
-		"/D/wamp64/www/Challenger/api/controller/userController.php",
 		"/D/wamp64/www/Challenger/api/index.php",
 		"/D/wamp64/www/Challenger/src/sass/_postsContainer.scss",
 		"/D/wamp64/www/Challenger/src/sass/main.scss",
@@ -820,7 +796,6 @@
 		"/D/wamp64/www/Challenger/src/app/components/post/PostLikesBar.js",
 		"/D/wamp64/www/Challenger/src/app/components/Footer.js",
 		"/D/wamp64/www/Challenger/src/app/json/post2.json",
-		"/D/wamp64/www/Challenger/src/app/components/Header.js",
 		"/D/wamp64/www/Challenger/src/app/components/Vignette.js",
 		"/C/Users/Antoine/Desktop/vignette.js",
 		"/D/wamp64/www/Challenger/src/app/components/vignette.js",
@@ -913,10 +888,7 @@
 		"/D/Téléchargements/reactjs-basics-master/reactjs-basics-master/webpack.config.js",
 		"/C/Users/Antoine/AppData/Local/Temp/Rar$DIa0.219/webpack.config.js",
 		"/D/Documents/IMAC2/ProjetWeb/imac2-12-01-master/gulp/tasks/javascript.js",
-		"/D/Documents/IMAC2/ProjetWeb/imac2-12-01-master/gulp/tasks/default.js",
-		"/D/Documents/IMAC2/ProjetWeb/imac2-12-01-master/gulp/tasks/sass.js",
-		"/D/Documents/IMAC2/ProjetWeb/imac2-12-01-master/Gulpfile.js",
-		"/D/wamp64/www/canvasNode/dist/js/min.js"
+		"/D/Documents/IMAC2/ProjetWeb/imac2-12-01-master/gulp/tasks/default.js"
 	],
 	"find":
 	{
@@ -927,6 +899,7 @@
 		"height": 158.0,
 		"where_history":
 		[
+			"D:\\wamp64\\www\\Challenger\\api\\",
 			"D:\\wamp64\\www\\Challenger\\src\\",
 			"D:\\wamp64\\www\\Challenger\\src\\sass",
 			"D:\\wamp64\\www\\Challenger\\src",
@@ -968,6 +941,12 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"email",
+			"nbFollower",
+			"nbpost",
+			"name",
+			"self",
+			"IDUSER",
 			"query",
 			"enctype",
 			"api",
@@ -1089,13 +1068,7 @@
 			"getJSON",
 			"parseResponse",
 			"300ms",
-			"200ms ease-in;",
-			"300ms",
-			"out",
-			"200ms",
-			"event",
-			"charCode",
-			"xhr"
+			"200ms ease-in;"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1143,7 +1116,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 5,
 			"sheets":
 			[
 				{
@@ -1152,7 +1125,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 721,
+						"buffer_size": 846,
 						"regions":
 						{
 						},
@@ -1171,7 +1144,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -1180,7 +1153,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 484,
+						"buffer_size": 695,
 						"regions":
 						{
 						},
@@ -1200,7 +1173,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -1226,11 +1199,11 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 76.0,
+						"translation.x": 67.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -1239,15 +1212,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1362,
+						"buffer_size": 1401,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								721,
-								721
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1257,10 +1230,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 333.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -1276,8 +1249,8 @@
 						"selection":
 						[
 							[
-								723,
-								723
+								668,
+								672
 							]
 						],
 						"settings":
@@ -1286,172 +1259,55 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 506.0,
+						"translation.y": 120.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 5,
-					"file": "src/app/components/Header.js",
+					"file": "src/app/vues/UserProfil.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 374,
+						"buffer_size": 2079,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								324,
-								332
+								1276,
+								1276
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.x": 1.0,
+						"translation.y": 496.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 6,
-					"file": "src/app/components/header/LogoArea.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 358,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								97,
-								97
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "src/app/components/header/UserMenu.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2163,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1938,
-								1938
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1527.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "src/app/components/header/TabUser.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 476,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								221,
-								221
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "src/app/components/footer/Contact.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1574,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1043,
-								1043
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 30.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
 					"file": "src/app/utilities/utility.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 700,
+						"buffer_size": 730,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								77,
-								45
+								378,
+								378
 							]
 						],
 						"settings":
@@ -1459,11 +1315,11 @@
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
+						"translation.x": -0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -1473,7 +1329,7 @@
 			"sheets":
 			[
 				{
-					"buffer": 11,
+					"buffer": 7,
 					"file": "/C/Users/Antoine/Desktop/merde.html",
 					"semi_transient": false,
 					"settings":
@@ -1497,16 +1353,16 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 20,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 8,
 					"file": "src/sass/_pages.scss",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 125,
+						"buffer_size": 146,
 						"regions":
 						{
 						},
@@ -1525,11 +1381,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 9,
 					"file": "src/sass/main.scss",
 					"semi_transient": false,
 					"settings":
@@ -1553,11 +1409,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 10,
 					"file": "src/index.html",
 					"semi_transient": false,
 					"settings":
@@ -1581,11 +1437,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 11,
 					"file": "src/sass/_form.scss",
 					"semi_transient": false,
 					"settings":
@@ -1611,11 +1467,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 16,
+					"buffer": 12,
 					"file": "src/sass/mixins.scss",
 					"semi_transient": false,
 					"settings":
@@ -1641,11 +1497,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 16,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 17,
+					"buffer": 13,
 					"file": "src/sass/_header.scss",
 					"semi_transient": false,
 					"settings":
@@ -1669,16 +1525,16 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 19,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
-					"buffer": 18,
+					"buffer": 14,
 					"file": "src/sass/_page.scss",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1781,
+						"buffer_size": 1780,
 						"regions":
 						{
 						},
@@ -1697,16 +1553,16 @@
 						"translation.y": 361.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 19,
+					"buffer": 15,
 					"file": "src/sass/_login.scss",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1013,
+						"buffer_size": 1200,
 						"regions":
 						{
 						},
@@ -1725,11 +1581,11 @@
 						"translation.y": 374.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 17,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 20,
+					"buffer": 16,
 					"file": "src/sass/_profil.scss",
 					"semi_transient": false,
 					"settings":
@@ -1753,11 +1609,11 @@
 						"translation.y": 406.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 18,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
-					"buffer": 21,
+					"buffer": 17,
 					"file": "src/sass/_constantes.scss",
 					"semi_transient": false,
 					"settings":
@@ -1781,11 +1637,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 21,
+					"stack_index": 17,
 					"type": "text"
 				},
 				{
-					"buffer": 22,
+					"buffer": 18,
 					"file": "src/sass/_aboutus.scss",
 					"semi_transient": false,
 					"settings":
@@ -1810,7 +1666,7 @@
 						"translation.y": 271.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 22,
+					"stack_index": 18,
 					"type": "text"
 				}
 			]
@@ -1844,7 +1700,7 @@
 		"cols":
 		[
 			0.0,
-			0.713436385256,
+			0.885255648038,
 			1.0
 		],
 		"rows":
@@ -1871,6 +1727,18 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"userc",
+				"api\\controller\\userController.php"
+			],
+			[
+				"userco",
+				"api\\controller\\userController.php"
+			],
+			[
+				"routs",
+				"api\\model\\routes.json"
+			],
 			[
 				"main",
 				"src\\sass\\main.scss"

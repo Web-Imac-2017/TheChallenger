@@ -9,8 +9,8 @@ const utility = {
 			    	return;  
 			    }
 				response.json().then(function(data) {  
-					console.log(url)
-					console.log(data)
+					/*console.log(url)
+					console.log(data)*/
 			    	callback(data);  
 			    });
 			})

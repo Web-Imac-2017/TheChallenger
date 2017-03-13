@@ -27,7 +27,7 @@ export default class PostLikesbar extends React.Component{
     }
 
     callbackNbLikes(data) {
-        console.log(data);
+        //console.log(data);
         this.setState({
             post: {
                 id: data.id,
@@ -37,7 +37,7 @@ export default class PostLikesbar extends React.Component{
     }
 
     callbackUserLike(data) {
-        console.log(data);
+        //console.log(data);
         this.setState({
             userLike: data.code
         });

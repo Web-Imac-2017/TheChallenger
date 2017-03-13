@@ -22,7 +22,7 @@ export default class UserMenu extends React.Component {
 				"photo" : noImg
 			}
 		};	
-		console.log("FETCH ID !!!!");
+		//console.log("FETCH ID !!!!");
 		Utility.query("api/user/id/", this.callbackIsConnected.bind(this))
 
 		this.mouseOver = this.mouseOver.bind(this);
@@ -35,16 +35,16 @@ export default class UserMenu extends React.Component {
 	callbackUser(data){
 		if(data === undefined )
 			return;
-		console.log("CALLBACK USER");
-		console.log(data)
+		/*console.log("CALLBACK USER");
+		console.log(data)*/
 		this.setState({user:data});
 	}
 
 	callbackIsConnected(data){
 		if(data === undefined )
 			return;
-		console.log("CALLBACK USER");
-		console.log(data.id);
+		/*console.log("CALLBACK USER");
+		console.log(data.id);*/
 		/*if(!id)
 			browserHistory.push('./Challenger/');*/
 		Utility.query("api/user/show/"+data.id, this.callbackUser.bind(this));
@@ -74,7 +74,6 @@ export default class UserMenu extends React.Component {
    	render() {
         return(
             <div id="user-menu" className="user-menu" >
-            	
 				<div 	className="vignette" onClick={this.openMenu} 
 						onMouseOver={this.mouseOver.bind(this)} 
 						onMouseOut={this.mouseOut.bind(this)}>
