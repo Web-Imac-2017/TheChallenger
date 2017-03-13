@@ -44,7 +44,7 @@ export default class PostContent extends React.Component{
         //console.log(this.state.post);
         switch(this.state.post.type) {
             case TEXT:
-                media = (<p>{this.state.post.linkcontent}</p>);
+                media = (<p>{content}</p>);
                 break;
             case IMAGE:
                 media = (<img src={content} />);
@@ -54,15 +54,15 @@ export default class PostContent extends React.Component{
                                     height="200" 
                                     scrolling="no" 
                                     frameBorder="no" 
-                                    src={this.state.post.linkcontent}></iframe>);
+                                    src={content}></iframe>);
                 break;
             case YOUTUBE:
                 media = (<iframe width="100%" allowFullScreen frameBorder="no"
-                         src={this.state.post.linkcontent}>
+                         src={content}>
                          </iframe> );
                 break;
             case LINK:
-                media = (<p>FILE: {this.state.post.linkcontent}</p>);
+                media = (<p>FILE: {content}</p>);
                 break;
             default: break;
         }
