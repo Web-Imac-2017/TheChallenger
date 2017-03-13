@@ -19,7 +19,7 @@ export default class PostMin extends React.Component{
         };
 
         this.state = {
-            post : defaultPost
+            post : null
         };
         
         this.loadData();	

@@ -24,7 +24,7 @@ export default class UserProfil extends React.Component {
 		};
 
 	    this.state = {
-	        user : defaultUser
+	        user : null
 	    };
     	this.loadData();
     }	
@@ -41,7 +41,6 @@ export default class UserProfil extends React.Component {
     			"description" : data.description,
     			"idpost" : data.idpost
     		}
-
     	});
     }
 
