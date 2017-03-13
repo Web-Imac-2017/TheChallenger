@@ -257,7 +257,7 @@ class postController
 		$query->execute();
 		$win=array();
 		while($datas=$query->fetch()){
-			array_push($win, $datas);
+			array_push($win, $datas['id']);
 		}
 		$query->CloseCursor();
 		echo(json_encode($win));
