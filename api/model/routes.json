@@ -50,11 +50,7 @@
     "user/change/{id}" : {
         "request" : "userController@changeuser"
     },
-
-    "user/show/{id}": {
-        "request" : "userController@toArray"
-    },
-
+	
     "user/{id}/posts/": {
         "request" : "userController@getposts"
     },
