@@ -10,7 +10,7 @@ define('ADMIN',4);
 define('IMAGE',1);
 define('YOUTUBE',2);
 define('SOUNDCLOUD',3);
-define('FILE',4);
+define('TEXT',4);
 define('LINK',5);
 
 ?>
