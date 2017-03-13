@@ -27,6 +27,7 @@ class challengeController {
 			"id" => $idchallenge,
 			"title" => $datas['title'],
 			"description" => $datas['description'],
+			"photo" => 'challenge/'.$datas['photo'],
 			"datestart" => $datas['datestart'],
 			"datestop" => $datas['datestop'],
 			"time" => $time
@@ -43,10 +44,12 @@ class challengeController {
 		global $user;
 		if ($user->is_connected(MODERATEUR)) {
 			
+			$challenge = new Challenge();
 			global $db;
 			// $db = database::getPDO();
 			$title=(!empty($_POST['title']))? $_POST['title']:"";
 			$desc=(!empty($_POST['desc']))? $_POST['desc']:"";
+			$photo = (!empty($_FILES['photo']))? $_FILES['photo']:"";
 			$date_stop=(!empty($_POST['date_stop']))? $_POST['date_stop']:"";			
 			if (empty($title)) {
 			
@@ -58,14 +61,30 @@ class challengeController {
 				echo(json_encode(["code" => 0,"message" => "Challenge description field empty"]));
 				exit();
 			}
+			
 			if (empty($date_stop)) {
 					
-				echo(json_encode(["code" => 0,"message" => "Stop date challenge empty"]));
+				echo(json_encode(["code" => 0,"message" => "Stop date challenge field empty"]));
 				exit();
 			}
-			$query=$db->prepare('INSERT INTO thechallenger.challenge (title, description, datestart, datestop) VALUES(:title,:desc,NOW(),:date_stop)');
+			if(!empty($photo)){
+				
+				$testimage=$challenge->test_image($photo);
+				if($testimage){ 
+				
+					$linkcontent=$challenge->move_image($image,'../data/challenge');
+					$query=$db->prepare('INSERT INTO thechallenger.challenge (title, description, photo, datestart, datestop) VALUES(:title,:desc, :linkcontent, NOW(),:date_stop)');
+
+				}
+			}
+			else {
+			
+				echo(json_encode(["code" => 0,"message" => "photo challenge field empty"]));
+				exit();
+			}
 			$query->bindParam(':title',$title,PDO::PARAM_STR);
 			$query->bindParam(':desc',$desc,PDO::PARAM_STR);
+			$query->bindParam(':linkcontent',$desc,PDO::PARAM_STR);
 			$query->bindParam(':date_stop',$date_stop,PDO::PARAM_STR);
 			$query->execute();
 			$query->CloseCursor();

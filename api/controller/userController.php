@@ -326,7 +326,7 @@ class userController{
 			"rank" => $datas['rank'],
 			"name" => $datas['name'],
 			"email" => $datas['email'],
-			"photo" => $datas['photo'],
+			"photo" => 'profilepics/'.$datas['photo'],
 			"description" => $datas['description'],
 			"registerdate" => $datas['registerdate'],
 			"birthdate" => $datas['birthdate'],

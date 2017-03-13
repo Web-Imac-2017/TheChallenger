@@ -85,7 +85,7 @@ class postController
 			$testimage=$post->test_image($image);
 			if($testimage==1 || $testimage==2){ //pas d'erreur sur l'image
 				//on déplace l'image dans le bon dossier
-				$linkcontent=$post->move_image($image,'../data/');
+				$linkcontent=$post->move_image($image,'../data/post');
 
 				//on ajoute les donnees dans la bdd
 				if($testimage==1){ //si image pas hd
@@ -217,7 +217,7 @@ class postController
 		$query->bindParam(':iduser',$iduser,PDO::PARAM_INT);
 		$query->execute();
 		$result = $query->fetch();
-		echo(json_encode(["code" => 1,"url" => $datas['linkcontent'], "user" => $result['name']]));
+		echo(json_encode(["code" => 1,"url" => 'post/'.$datas['linkcontent'], "user" => $result['name']]));
 	}
 
 	public static function toArray($idpost){
