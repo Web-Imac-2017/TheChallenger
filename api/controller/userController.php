@@ -224,9 +224,9 @@ class userController{
 		}
 		
 		elseif ($id = $_COOKIE['id']) {
-			echo(json_encode(["code" => 3,"message" => "You can't follow yourself dude
-			%§M
-			µ
+			echo(json_encode(["code" => 3,"message" => "You can't follow yourself dude"]);
+			exit();
+		}
 		$query->execute();
 		$query->CloseCursor();
 		echo(json_encode(["code" => 1,"message" => "success"]));
