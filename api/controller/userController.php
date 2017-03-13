@@ -1,8 +1,7 @@
 <?php
+
 //include_once("model/User.php");
-
 include_once("model/utility.php");
-
 $user=new User();
 
 class userController{
@@ -83,6 +82,7 @@ class userController{
    		$user->registeremail();
         
 	    echo(json_encode(["code" => 1,"message" => "Success"]));
+		Utility::nextPage("root");	
 	}
 
 	//si l'utilisateur clique sur le lien envoyé par email on confirme l'inscription
@@ -100,17 +100,15 @@ class userController{
 			$name = $datas['name'];	// Récupération de la clé
 			$rank = $datas['rank']; // $actif contiendra alors 0 ou 1
 		}
-
 		$query->CloseCursor();
 		if(empty($name)){
 	    	echo(json_encode(["code" => 0,"message" => "error, doesn't exis"]));
 			exit();
 		}
-		if ($rank>1){
+		if ($rank>1) {
 	    	echo(json_encode(["code" => 0,"message" => "account already activated"]));
-			exit();
-		} //membre deja actif
-		
+			exit(); 
+		}
 		$query = $db->prepare("UPDATE thechallenger.user SET rank=2 WHERE name=:name");
 		$query->bindParam(':name',$name,PDO::PARAM_STR);
 		$query->execute();
@@ -206,7 +204,8 @@ class userController{
 
 		session_destroy();
 
-		echo(json_encode(["code" => 1,"message" => "Success"]));	
+		echo(json_encode(["code" => 1,"message" => "Success"]));
+		Utility::nextPage("root");	
 
 	}
 
@@ -222,15 +221,10 @@ class userController{
 	    	echo(json_encode(["code" => 0,"message" => "already follower"]));
 			exit();
 		}
-		
-		elseif ($id = $_COOKIE['id']) {
+		if ($id = $_COOKIE['id']) {
 			echo(json_encode(["code" => 3,"message" => "You can't follow yourself dude"]));
 			exit();
 		}
-		global $db;
-		$query=$db->prepare('INSERT INTO thechallenger.follow (idfollower,idfollowed) VALUES (:idfollower,:idfollowed)');
-		$query->bindParam(':idfollower', $_COOKIE['id'], PDO::PARAM_INT);
-		$query->bindParam(':idfollowed', $id, PDO::PARAM_INT);
 		$query->execute();
 		$query->CloseCursor();
 		echo(json_encode(["code" => 1,"message" => "success"]));

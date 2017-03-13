@@ -10,14 +10,14 @@ class Challenge extends Post
 
 	// CONSTRUCTEUR
 	
-	function __construct($val_id, $val_title, $val_desc, $val_start, $val_stop) {
+	// function __construct($val_id, $val_title, $val_desc, $val_start, $val_stop) {
 		
-		$this->id = $val_id;
-		$this->title = $val_title;
-		$this->desc = $val_desc;
-		$this->datestart = $val_start;
-		$this->datestop = $val_stop;
-	}
+		// $this->id = $val_id;
+		// $this->title = $val_title;
+		// $this->desc = $val_desc;
+		// $this->datestart = $val_start;
+		// $this->datestop = $val_stop;
+	// }
 		
 	// SETTERS
 	

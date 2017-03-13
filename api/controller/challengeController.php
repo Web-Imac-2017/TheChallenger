@@ -67,7 +67,12 @@ class challengeController {
 				echo(json_encode(["code" => 0,"message" => "Stop date challenge field empty"]));
 				exit();
 			}
-			if(!empty($photo)){
+			if (empty($photo)){
+				
+				echo(json_encode(["code" => 0,"message" => "photo challenge field empty"]));
+				exit();
+			}
+			else {
 				
 				$testimage=$challenge->test_image($photo);
 				if($testimage){ 
@@ -76,15 +81,11 @@ class challengeController {
 					$query=$db->prepare('INSERT INTO thechallenger.challenge (title, description, photo, datestart, datestop) VALUES(:title,:desc, :linkcontent, NOW(),:date_stop)');
 
 				}
-			}
-			else {
-			
-				echo(json_encode(["code" => 0,"message" => "photo challenge field empty"]));
-				exit();
+				
 			}
 			$query->bindParam(':title',$title,PDO::PARAM_STR);
 			$query->bindParam(':desc',$desc,PDO::PARAM_STR);
-			$query->bindParam(':linkcontent',$desc,PDO::PARAM_STR);
+			$query->bindParam(':linkcontent',$linkcontent,PDO::PARAM_STR);
 			$query->bindParam(':date_stop',$date_stop,PDO::PARAM_STR);
 			$query->execute();
 			$query->CloseCursor();
