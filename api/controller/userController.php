@@ -224,13 +224,9 @@ class userController{
 		}
 		
 		elseif ($id = $_COOKIE['id']) {
-			echo(json_encode(["code" => 3,"message" => "You can't follow yourself dude"]));
-			exit();
-		}
-		global $db;
-		$query=$db->prepare('INSERT INTO thechallenger.follow (idfollower,idfollowed) VALUES (:idfollower,:idfollowed)');
-		$query->bindParam(':idfollower', $_COOKIE['id'], PDO::PARAM_INT);
-		$query->bindParam(':idfollowed', $id, PDO::PARAM_INT);
+			echo(json_encode(["code" => 3,"message" => "You can't follow yourself dude
+			%§M
+			µ
 		$query->execute();
 		$query->CloseCursor();
 		echo(json_encode(["code" => 1,"message" => "success"]));

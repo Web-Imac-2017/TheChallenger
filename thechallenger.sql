@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 13 Mars 2017 à 08:49
+-- Généré le :  Lun 13 Mars 2017 à 15:30
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -95,6 +95,7 @@ CREATE TABLE `post` (
   `hd` int(11) NOT NULL,
   `linkcontent` text NOT NULL,
   `description` varchar(250) NOT NULL,
+  `tag` text,
   `winner` int(3) NOT NULL,
   `score` int(20) NOT NULL,
   `datepost` date NOT NULL,
@@ -106,39 +107,39 @@ CREATE TABLE `post` (
 -- Contenu de la table `post`
 --
 
-INSERT INTO `post` (`id`, `title`, `state`, `type`, `hd`, `linkcontent`, `description`, `winner`, `score`, `datepost`, `iduser`, `idchallenge`) VALUES
-(4, 'City ', 0, 1, 0, '1489231644.jpg', 'taken with my iphone :$\r\n', 1, 4, '2017-03-11', 14, 11),
-(5, 'p i z z a * * ', 0, 1, 1, '1489231788.jpg', 'omg i did it myself', 0, 3, '2017-03-11', 14, 12),
-(6, 'SKY', 0, 1, 1, '1489232276.jpg', 'WE ARE THE LITTLE ONES', 0, 3, '2017-03-11', 11, 11),
-(8, 'Copernic', 0, 1, 0, '1489256559.png', 'But it\'s not for today', 0, 1, '2017-03-11', 8, 13),
-(9, 'Future', 0, 1, 1, '1489259397.jpg', 'Nayvadius DeMun ', 0, 2, '2017-03-11', 9, 13),
-(10, 'Hand', 0, 1, 0, '1489259487.jpg', 'Human and Technology', 0, 1, '2017-03-11', 10, 13),
-(11, 'Futureman', 0, 1, 0, '1489259728.jpg', 'What will look like Man in 1000 years ?', 0, 3, '2017-03-11', 11, 13),
-(12, 'Evolution', 0, 1, 0, '1489259785.jpg', 'Like a robot', 0, 2, '2017-03-11', 12, 13),
-(13, 'Mars', 0, 1, 0, '1489259928.png', 'The conquest of Mars', 0, 3, '2017-03-11', 13, 13),
-(14, 'Ikea\'s table', 0, 1, 1, '1489260060.jpg', '"Give me the salt please"', 0, 3, '2017-03-11', 14, 13),
-(15, 'Technology', 0, 1, 0, '1489260102.jpg', 'All is about technolgy', 0, 1, '2017-03-11', 4, 13),
-(16, 'Eiffel Tower', 0, 1, 1, '1489260184.jpg', 'Let\'s be pessimistic', 0, 2, '2017-03-11', 5, 13),
-(17, 'Green city', 0, 1, 1, '1489260389.jpg', '"Paris est magique"', 0, 2, '2017-03-11', 9, 13),
-(18, 'Acarien', 0, 1, 0, '1489260704.jpg', 'It itches', 0, 2, '2017-03-11', 8, 12),
-(19, 'Atomes', 0, 1, 0, '1489260858.png', 'Atom looks like candy', 0, 3, '2017-03-11', 9, 12),
-(20, 'Criquet', 0, 1, 0, '1489261051.jpg', 'Hello world', 0, 2, '2017-03-11', 10, 12),
-(21, 'A drop', 0, 1, 0, '1489261125.jpg', '"Drop it like it\'s hot"', 0, 4, '2017-03-11', 11, 12),
-(22, 'What is that ?', 0, 1, 0, '1489261257.jpg', 'The carapace of the Cetonia aurata', 0, 4, '2017-03-11', 12, 12),
-(23, 'Beautiful fish', 0, 1, 0, '1489261387.jpg', '"Fukushima my love"', 0, 4, '2017-03-11', 13, 12),
-(25, 'Little Life', 0, 1, 0, '1489261603.jpg', '', 0, 4, '2017-03-11', 14, 12),
-(26, 'Inside plastic', 0, 1, 0, '1489261652.jpg', '', 0, 2, '2017-03-11', 4, 12),
-(27, ' ', 0, 1, 1, '1489261698.jpg', '', 0, 2, '2017-03-11', 5, 12),
-(28, ' Vinyl', 0, 1, 0, '1489261754.jpg', 'Microscopic', 0, 2, '2017-03-11', 9, 11),
-(29, 'Amsterdam', 0, 1, 1, '1489261803.jpeg', '', 0, 2, '2017-03-11', 9, 11),
-(30, 'Amsterdam', 0, 1, 1, '1489261833.jpeg', '', 0, 1, '2017-03-11', 9, 11),
-(31, 'Jellyfish', 0, 1, 0, '1489261926.jpg', '', 0, 0, '2017-03-11', 9, 11),
-(32, 'Candles', 0, 1, 1, '1489261994.jpg', '', 0, 0, '2017-03-11', 9, 11),
-(33, ' ', 0, 1, 0, '1489262017.jpg', '', 0, 0, '2017-03-11', 9, 11),
-(34, ' ', 0, 1, 0, '1489262029.jpeg', '', 0, 0, '2017-03-11', 9, 11),
-(35, 'Spotlight', 0, 1, 0, '1489262103.jpg', '', 0, 0, '2017-03-11', 9, 11),
-(36, 'Timelapse', 0, 1, 1, '1489262463.jpg', '', 0, 0, '2017-03-11', 9, 11),
-(37, 'Bike', 0, 1, 1, '1489262568.jpeg', '', 0, 0, '2017-03-11', 9, 11);
+INSERT INTO `post` (`id`, `title`, `state`, `type`, `hd`, `linkcontent`, `description`, `tag`, `winner`, `score`, `datepost`, `iduser`, `idchallenge`) VALUES
+(4, 'City ', 0, 1, 0, '1489231644.jpg', 'taken with my iphone :$\r\n', NULL, 1, 4, '2017-03-11', 14, 11),
+(5, 'p i z z a * * ', 0, 1, 1, '1489231788.jpg', 'omg i did it myself', NULL, 0, 3, '2017-03-11', 14, 12),
+(6, 'SKY', 0, 1, 1, '1489232276.jpg', 'WE ARE THE LITTLE ONES', NULL, 0, 3, '2017-03-11', 11, 11),
+(8, 'Copernic', 0, 1, 0, '1489256559.png', 'But it\'s not for today', NULL, 0, 1, '2017-03-11', 8, 13),
+(9, 'Future', 0, 1, 1, '1489259397.jpg', 'Nayvadius DeMun ', NULL, 0, 2, '2017-03-11', 9, 13),
+(10, 'Hand', 0, 1, 0, '1489259487.jpg', 'Human and Technology', NULL, 0, 1, '2017-03-11', 10, 13),
+(11, 'Futureman', 0, 1, 0, '1489259728.jpg', 'What will look like Man in 1000 years ?', NULL, 0, 3, '2017-03-11', 11, 13),
+(12, 'Evolution', 0, 1, 0, '1489259785.jpg', 'Like a robot', NULL, 0, 2, '2017-03-11', 12, 13),
+(13, 'Mars', 0, 1, 0, '1489259928.png', 'The conquest of Mars', NULL, 0, 3, '2017-03-11', 13, 13),
+(14, 'Ikea\'s table', 0, 1, 1, '1489260060.jpg', '"Give me the salt please"', NULL, 0, 3, '2017-03-11', 14, 13),
+(15, 'Technology', 0, 1, 0, '1489260102.jpg', 'All is about technolgy', NULL, 0, 1, '2017-03-11', 4, 13),
+(16, 'Eiffel Tower', 0, 1, 1, '1489260184.jpg', 'Let\'s be pessimistic', NULL, 0, 2, '2017-03-11', 5, 13),
+(17, 'Green city', 0, 1, 1, '1489260389.jpg', '"Paris est magique"', NULL, 0, 2, '2017-03-11', 9, 13),
+(18, 'Acarien', 0, 1, 0, '1489260704.jpg', 'It itches', NULL, 0, 2, '2017-03-11', 8, 12),
+(19, 'Atomes', 0, 1, 0, '1489260858.png', 'Atom looks like candy', NULL, 0, 3, '2017-03-11', 9, 12),
+(20, 'Criquet', 0, 1, 0, '1489261051.jpg', 'Hello world', NULL, 0, 2, '2017-03-11', 10, 12),
+(21, 'A drop', 0, 1, 0, '1489261125.jpg', '"Drop it like it\'s hot"', NULL, 0, 4, '2017-03-11', 11, 12),
+(22, 'What is that ?', 0, 1, 0, '1489261257.jpg', 'The carapace of the Cetonia aurata', NULL, 0, 4, '2017-03-11', 12, 12),
+(23, 'Beautiful fish', 0, 1, 0, '1489261387.jpg', '"Fukushima my love"', NULL, 0, 4, '2017-03-11', 13, 12),
+(25, 'Little Life', 0, 1, 0, '1489261603.jpg', '', NULL, 0, 4, '2017-03-11', 14, 12),
+(26, 'Inside plastic', 0, 1, 0, '1489261652.jpg', '', NULL, 0, 2, '2017-03-11', 4, 12),
+(27, ' ', 0, 1, 1, '1489261698.jpg', '', NULL, 0, 2, '2017-03-11', 5, 12),
+(28, ' Vinyl', 0, 1, 0, '1489261754.jpg', 'Microscopic', NULL, 0, 2, '2017-03-11', 9, 11),
+(29, 'Amsterdam', 0, 1, 1, '1489261803.jpeg', '', NULL, 0, 2, '2017-03-11', 9, 11),
+(30, 'Amsterdam', 0, 1, 1, '1489261833.jpeg', '', NULL, 0, 1, '2017-03-11', 9, 11),
+(31, 'Jellyfish', 0, 1, 0, '1489261926.jpg', '', NULL, 0, 0, '2017-03-11', 9, 11),
+(32, 'Candles', 0, 1, 1, '1489261994.jpg', '', NULL, 0, 0, '2017-03-11', 9, 11),
+(33, ' ', 0, 1, 0, '1489262017.jpg', '', NULL, 0, 0, '2017-03-11', 9, 11),
+(34, ' ', 0, 1, 0, '1489262029.jpeg', '', NULL, 0, 0, '2017-03-11', 9, 11),
+(35, 'Spotlight', 0, 1, 0, '1489262103.jpg', '', NULL, 0, 0, '2017-03-11', 9, 11),
+(36, 'Timelapse', 0, 1, 1, '1489262463.jpg', '', NULL, 0, 0, '2017-03-11', 9, 11),
+(37, 'Bike', 0, 1, 1, '1489262568.jpeg', '', NULL, 0, 0, '2017-03-11', 9, 11);
 
 -- --------------------------------------------------------
 
@@ -259,7 +260,7 @@ INSERT INTO `user` (`id`, `rank`, `name`, `pwd`, `email`, `keyactive`, `isActive
 (12, 2, 'Marie-Lou', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'user5@test.com', 'e62462149e6939900c9ddeb101aeedce4f14cb14', NULL, '10 03 2017', NULL, 0, 'pp.jpg', 's p a c e * '),
 (13, 2, 'Matthieu', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'user6@test.com', '5fe84fc5740e748c9199d58fa191201ecb4c2ea9', NULL, '10 03 2017', NULL, 0, 'pp.jpg', 'Frontend developper'),
 (14, 2, 'd4rk girl', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'dark@test.com', 'a5c407278ab0fd2740741899799fbf3ab4b6f283', NULL, '11 03 2017', NULL, 0, 'pp.jpg', 'Too dark for you'),
-(15, 1, 'test', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'test1@test.com', '1233797d812783bd3e4bfe48dc2ff9fac306a665', NULL, '12 03 2017', NULL, 0, 'pp.jpg', NULL);
+(18, 3, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin@admin.com', 'd85b51717d5c746dd3a7dfe76d5c87a531e49991', NULL, '13 03 2017', NULL, 0, 'pp.jpg', 'Watch out');
 
 --
 -- Index pour les tables exportées
@@ -308,7 +309,7 @@ ALTER TABLE `challenge`
 -- AUTO_INCREMENT pour la table `follow`
 --
 ALTER TABLE `follow`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT pour la table `post`
 --
@@ -323,7 +324,7 @@ ALTER TABLE `score`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
