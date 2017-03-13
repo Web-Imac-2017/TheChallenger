@@ -6,7 +6,7 @@ export default class Instagram extends React.Component {
 		
         return(
                 <div className="item"> 
-					<a href="http://www.instagram.com/" >
+					<a href="https://www.instagram.com/thechallengerimac/" >
 					<img src={instagram} height="20px" width="20px"/>
 					</a>
 				

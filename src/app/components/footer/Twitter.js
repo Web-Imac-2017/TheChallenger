@@ -6,7 +6,7 @@ export default class Twitter extends React.Component {
 		
         return(
                 <div className="item"> 
-					<a href="http://www.twitter.com/" >
+					<a href="https://twitter.com/ChallengerIMAC">
 					<img src={twitter} height="20px" width="20px"/>
 					</a>
 				
