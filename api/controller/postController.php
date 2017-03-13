@@ -247,6 +247,7 @@ class postController
 			"hd" => $datas['hd'],
 			"linkcontent" => 'post/'.$datas['linkcontent'],
 			"description" => $datas['description'],
+			"tag" => $datas['tag'],
 			"winner" => $datas['winner'],
 			"score" => $datas['score'],
 			"datepost" => $datas['datepost'],
