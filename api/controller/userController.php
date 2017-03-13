@@ -1,8 +1,7 @@
 <?php
+
 //include_once("model/User.php");
-
 include_once("model/utility.php");
-
 $user=new User();
 
 class userController{
@@ -100,17 +99,15 @@ class userController{
 			$name = $datas['name'];	// Récupération de la clé
 			$rank = $datas['rank']; // $actif contiendra alors 0 ou 1
 		}
-
 		$query->CloseCursor();
 		if(empty($name)){
 	    	echo(json_encode(["code" => 0,"message" => "error, doesn't exis"]));
 			exit();
 		}
-		if ($rank>1){
+		if ($rank>1) {
 	    	echo(json_encode(["code" => 0,"message" => "account already activated"]));
-			exit();
-		} //membre deja actif
-		
+			exit(); 
+		}
 		$query = $db->prepare("UPDATE thechallenger.user SET rank=2 WHERE name=:name");
 		$query->bindParam(':name',$name,PDO::PARAM_STR);
 		$query->execute();
@@ -222,9 +219,8 @@ class userController{
 	    	echo(json_encode(["code" => 0,"message" => "already follower"]));
 			exit();
 		}
-		
-		elseif ($id = $_COOKIE['id']) {
-			echo(json_encode(["code" => 3,"message" => "You can't follow yourself dude"]);
+		if ($id = $_COOKIE['id']) {
+			echo(json_encode(["code" => 3,"message" => "You can't follow yourself dude"]));
 			exit();
 		}
 		$query->execute();
