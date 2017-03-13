@@ -2,7 +2,7 @@ import React from "react";
 import LoginBox from "./../components/LoginBox.js";
 import Utility from "./../utilities/utility.js";
 import WhatIsIt from "./../components/WhatIsIt.js";
-
+const bottomArrow = require("./../../img/icons/bottomArrow.png");
 require('isomorphic-fetch');
 //const imgBG = require ('./../../img/background.jpg');
 //const  jsonPath = require('./../json/bg.json');
@@ -44,20 +44,40 @@ export default class Login extends React.Component{
             backgroundImage: 'url(' + this.state.url + ')'
         }
 		
-		var ypos,image;
+		var ypos,image,elem,elem2;
+
 		function parallax(){
 			ypos=window.pageYOffset;
 			image=document.getElementById('login');
 			image.style.top = ypos * .8 + 'px';
 		}
+		
+		var scrolldelay=2;
+		window.onload = function (){ 
+		
+			elem=document.getElementById('arrow');
+			elem2=document.getElementById('what-is-it');
+			
+			elem.onclick = function pageScroll() {	
+								window.scrollBy(0,50);
+								scrolldelay = setTimeout(pageScroll,20);
+								if(window.pageYOffset > elem2.offsetHeight )
+								{
+									clearTimeout(scrolldelay);
+								}	
+			}
+			
+		};		
 		window.addEventListener('scroll',parallax);
-
+	 // <div className="overlay"></div>
 		return(
 		<div id="page-login">
 			
 			<div id="login">
-				<div className="background_img" style={divStyle}></div>
-				<div className="overlay"></div>
+
+				<div className="background_img" id="background-x"style={divStyle}>	
+					<img src={bottomArrow} id="arrow" className="arrow" alt="Mountain View"/> 
+				</div>
 				<span className="artist"><p>by {this.state.artist}</p></span>
 				<LoginBox/>
 				
