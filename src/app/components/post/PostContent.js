@@ -7,8 +7,8 @@ import Utility from './../../utilities/utility.js';
 const IMAGE = 1;
 const YOUTUBE = 2;
 const SOUNDCLOUD = 3;
-const FILE = 4;
-const LINK = 5;
+const TEXT = 4;
+const LINK = 5; 
 
 export default class PostContent extends React.Component{
     constructor(props) {
@@ -18,7 +18,7 @@ export default class PostContent extends React.Component{
                 "id" : 5,
                 "user" : 1,
                 "type" : "video",
-                "content" : "https://www.youtube.com/embed/fWRISvgAygU",
+                "linkcontent" : "https://www.youtube.com/embed/fWRISvgAygU",
                 "description" : "Je suis une courte description",
                 "likes": 8
             },
@@ -36,21 +36,21 @@ export default class PostContent extends React.Component{
         //console.log(this.state.post);
         switch(this.state.post.type) {
         case TEXT:
-            media = (<p>{this.state.post.content}</p>);
+            media = (<p>{this.state.post.linkcontent}</p>);
             break;
         case IMAGE:
-            media = (<img src={this.state.post.content} alt={this.state.post.content} />);
+            media = (<img src={this.state.post.linkcontent} alt={this.state.post.linkcontent} />);
             break;
         case SOUNDCLOUD:
-            media = (<iframe width="100%" height="200" scrolling="no" frameBorder="no" src={this.state.post.content}></iframe>);
+            media = (<iframe width="100%" height="200" scrolling="no" frameBorder="no" src={this.state.post.linkcontent}></iframe>);
             break;
         case YOUTUBE:
             media = (<iframe width="100%" allowFullScreen frameBorder="no"
-                     src={this.state.post.content}>
+                     src={this.state.post.linkcontent}>
                      </iframe> );
             break;
         case LINK:
-            media = (<p>FILE: {this.state.post.content}</p>);
+            media = (<p>FILE: {this.state.post.linkcontent}</p>);
             break;
         default: break;
         }
@@ -68,7 +68,7 @@ export default class PostContent extends React.Component{
             post : {
                 id : data.id,
                 type : data.type,
-                content : data.content
+                linkcontent : data.linkcontent
             }
         });
         this.setState({
