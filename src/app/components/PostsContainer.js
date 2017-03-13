@@ -8,8 +8,6 @@ export default class PostsContainer extends React.Component{
 		super(props);
 
         this.state = {
-            postsIds: [1,2],
-            postsTypes: {},
             posts : null,
             postsFiltered: null
         };
@@ -24,11 +22,11 @@ export default class PostsContainer extends React.Component{
         }else if(this.props.query !== undefined){
             Utility.query(this.props.query, this.callBackData.bind(this));
             // remplissage par défaut
-            this.state = {
+            /*this.state = {
                 posts: this.state.postsIds.map(()=>{    
                     return(<PostMin postId={1} callbackParent={this.callBackPostType.bind(this)}/>);
                 })
-            };
+            };*/
         }
         console.log(this.state.posts);
         this.filterBar = <FilterBar updateParent={this.updatePostsFiltered.bind(this)} filters={{
@@ -53,14 +51,13 @@ export default class PostsContainer extends React.Component{
     callBackData(data) {
        /* console.log("CALLBACK POST CONTAINER")
         console.log(data);*/
+        let tmp = data == null ? null : data.map((id) => {
+                    return(<PostMin postId={id} 
+                                    callbackParent={this.callBackPostType.bind(this)} />);
+                });
         this.setState({
-            postsIds: data,
-            posts: data == null ? null : data.map(
-                function(id) {
-                    return(
-                            <PostMin postId={id} callbackParent={this.callBackPostType.bind(this)} />
-                    );
-                })
+            posts: tmp,
+            postsFiltered : tmp
         });
         this.updatePostsFiltered("all");
     }
@@ -84,11 +81,13 @@ export default class PostsContainer extends React.Component{
     }
 
 	  render(){
-		    return(
-                <div className="posts-container">
-                    {this.filterBar}
-                    {this.state.postsFiltered}
-                </div>
-		    );
+        if(this.state.posts === null)
+            return null;
+        //{this.filterBar}
+	    return(
+            <div className="posts-container">
+                {this.state.postsFiltered}
+            </div>
+	    );
 	  }
 }

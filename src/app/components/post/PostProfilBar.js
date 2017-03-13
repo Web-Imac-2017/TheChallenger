@@ -36,13 +36,13 @@ export default class PostProfilBar extends React.Component{
 		if(this.state.user === null)
 			return null;
 		var divStyle = {
-            backgroundImage: 'url(' + this.state.user.photo + ')'
+            backgroundImage: 'url(' + Utility.getPublicPath() +this.state.user.photo + ')'
     	};
 		return(
 			<div className="post__profil_bar">
 				<Link to={"/profil/"+this.state.user.id}>
 					<div	style={divStyle} 
-							className="profil_pic"/>
+							className="profil_pic background_img"/>
 					<h4 className="post__profil__pseudo">{this.state.user.name}</h4>
 				</Link>
 				<FollowBtn userId={this.state.user.id}/>
