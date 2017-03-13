@@ -10,6 +10,7 @@ export default class PostContent extends React.Component{
             post: this.props.post.post,
             renderContent: this.preRender(this.props.post.post)
         };
+        this.class = "post-content " + (this.props.preview ? "veil" : "");
     }
 
     preRender(post) {
@@ -42,7 +43,7 @@ export default class PostContent extends React.Component{
 
     render(){
         return (
-                <div className="post-content" >
+                <div className={this.class} >
                 {this.state.renderContent}
             </div>
         );
