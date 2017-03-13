@@ -205,7 +205,7 @@ class userController{
 		session_destroy();
 
 		echo(json_encode(["code" => 1,"message" => "Success"]));
-		Utility::nextPage("root");	
+		Utility::nextPage("");	
 
 	}
 

@@ -1,11 +1,11 @@
-import React 	from "react";
-import PostMin 	from "../components/PostMin.js";
+import React    from "react";
+import PostMin  from "../components/PostMin.js";
 import FilterBar from "../components/FilterBar.js";
 import Utility from './../utilities/utility.js';
 
 export default class PostsContainer extends React.Component{
     constructor(props){
-		super(props);
+        super(props);
 
         this.state = {
             posts : null,
@@ -42,7 +42,7 @@ export default class PostsContainer extends React.Component{
         this.state = {
             postsFiltered: this.state.posts
         };
-	  }
+      }
 
     callBackPostType(postId, type) {
         this.state.postsTypes[postId] = type;
@@ -80,14 +80,14 @@ export default class PostsContainer extends React.Component{
         // console.log(this.state.posts);
     }
 
-	  render(){
+      render(){
         if(this.state.posts === null)
             return null;
         //{this.filterBar}
-	    return(
+        return(
             <div className="posts-container">
                 {this.state.postsFiltered}
             </div>
-	    );
-	  }
+        );
+      }
 }
