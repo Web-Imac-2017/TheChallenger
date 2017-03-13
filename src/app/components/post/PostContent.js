@@ -22,14 +22,14 @@ export default class PostContent extends React.Component{
                 "description" : "Je suis une courte description",
                 "likes": 8
             },
-            renderContent: null
+            renderContent: null,
+            post: this.props.post.post,
+            renderContent: this.preRender(this.props.post.post)
         };
-        this.loadData();
-        this.state.renderContent = this.preRender();
     }
 
-    preRender() {
-        if(this.state.post == null)
+    preRender(post) {
+        if(post == null)
             return null;
         // media sera inséré dans return(), comme ça ça dépend du type du post.
         let media = null;
@@ -57,29 +57,9 @@ export default class PostContent extends React.Component{
         return media;
     }
 
-    loadData() {
-        var postId = this.props.postId;
-        Utility.query("api/post/show/"+postId, this.callback.bind(this));
-    }
-
-    callback(data) {
-        console.log(data);
-        this.setState({
-            post : {
-                id : data.id,
-                type : data.type,
-                linkcontent : data.linkcontent
-            }
-        });
-        this.setState({
-            post: this.state.post,
-            renderContent: this.preRender()
-        });
-    }
-
     render(){
         return (
-                <div className="post-content">
+                <div className="post-content" >
                 {this.state.renderContent}
             </div>
         );

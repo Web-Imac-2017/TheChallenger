@@ -7,52 +7,87 @@ export default class PostsContainer extends React.Component{
     constructor(props){
 		super(props);
         this.state = {
-            postsIds: [1,2,3,4,5],
+            postsIds: [1,2],
+            postsTypes: {},
+            posts : null,
             postsFiltered: null
         };
         console.log(this.props.posts);
         if(this.props.posts !== undefined){
             this.state = {
-                posts: this.props.posts.map((post) => {return(<PostMin postId={post.id} />);})
+                posts: this.props.posts.map((id) => {
+                    return(<PostMin postId={id} 
+                                    callbackParent={this.callBackPostType.bind(this)}/>);
+                })
             };
         }else if(this.props.query !== undefined){
             Utility.query(this.props.query, this.callBackData.bind(this));
-            console.log("POSTS REQUETES ENVOYEE");
             // remplissage par défaut
             this.state = {
                 posts: this.state.postsIds.map(()=>{    
-                    return(<PostMin postId={1} />);
+                    return(<PostMin postId={1} callbackParent={this.callBackPostType.bind(this)}/>);
                 })
             };
         }
         console.log(this.state.posts);
-        this.filterBar = <FilterBar updateParent={()=>console.log("click")} filters={{"all": "All", "pasAll":"Pas All"}} />;
-        this.updatePostsFiltered("all");
+        this.filterBar = <FilterBar updateParent={this.updatePostsFiltered.bind(this)} filters={{
+            "all": "All",
+            "audio":"Audio",
+            "video": "Video",
+            "image": "Image",
+            "text": "Text",
+            "file": "Fichier"
+        }} />;
+
+        
+        this.state = {
+            postsFiltered: this.state.posts
+        };
 	  }
+
+    callBackPostType(postId, type) {
+        this.state.postsTypes[postId] = type;
+    }
 
     callBackData(data) {
        /* console.log("CALLBACK POST CONTAINER")
         console.log(data);*/
         this.setState({
             postsIds: data,
-            posts: data == null ? null : data.map((post) => {return(<PostMin postId={post.id} />);})
+            posts: data == null ? null : data.map(
+                function(id) {
+                    return(
+                            <PostMin postId={id} callbackParent={this.callBackPostType.bind(this)} />
+                    );
+                })
         });
         this.updatePostsFiltered("all");
     }
 
     updatePostsFiltered(filter) {
-        // TODO faire le tri
-        this.setState({
-            postsFiltered: this.state.posts
-        });
+        // console.log("Filtre: "+filter);
+        // let tmpPosts = [];
+        // for(let postId in this.state.postsIds) {
+        //     let type = this.state.postsTypes[postId];
+        //     if(type == filter || filter == "all") {
+        //         tmpPosts.push(this.state.posts[postId]);
+        //     }
+        // }
+        // this.setState({
+        //     postsFiltered: this.state.posts
+            // postsFiltered: tmpPosts
+        // });
+        // console.log(tmpPosts);
+        // console.log(this.state.postsFiltered);
+        // console.log(this.state.posts);
     }
 
-    render(){
-	    return(
-            <div className="posts-container">
-                {this.filterBar}
-                {this.state.posts}
-            </div>
-	    );
-	}
+	  render(){
+		    return(
+                <div className="posts-container">
+                    {this.filterBar}
+                    {this.state.postsFiltered}
+                </div>
+		    );
+	  }
 }
