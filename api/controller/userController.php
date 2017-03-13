@@ -82,6 +82,7 @@ class userController{
    		$user->registeremail();
         
 	    echo(json_encode(["code" => 1,"message" => "Success"]));
+		Utility::nextPage("root");	
 	}
 
 	//si l'utilisateur clique sur le lien envoyé par email on confirme l'inscription
@@ -203,7 +204,8 @@ class userController{
 
 		session_destroy();
 
-		echo(json_encode(["code" => 1,"message" => "Success"]));	
+		echo(json_encode(["code" => 1,"message" => "Success"]));
+		Utility::nextPage("root");	
 
 	}
 
