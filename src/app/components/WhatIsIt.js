@@ -17,7 +17,8 @@ export default class Login extends React.Component{
 
 	
 
-
+// <div className="overlay ">
+					// </div>
 	render(){
 	
         var divStyle = {
@@ -32,8 +33,7 @@ export default class Login extends React.Component{
 					<div className="img " style={divStyle}>
 					</div>
 					
-					<div className="overlay ">
-					</div>
+					
 					
 					<div className="title-presentation" > 
 						THE CHALLENGER
