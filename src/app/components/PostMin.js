@@ -2,7 +2,7 @@ import React            from 'react';
 import Utility          from './../utilities/utility.js';
 import PostProfilBar    from './post/PostProfilBar.js';
 import PostContent      from './post/PostContent.js';
-import PostLikesbar     from './post/PostLikesBar.js';
+import PostLikesBar     from './post/PostLikesBar.js';
 
 export default class PostMin extends React.Component{
     constructor(props){
@@ -48,7 +48,7 @@ export default class PostMin extends React.Component{
             <div className="post-min">
                 <PostProfilBar userId = {this.state.post.user} />
                 <PostContent post = {this.state.post}  preview={1} />
-                <PostLikesbar postId = {this.state.post.id} />
+                <PostLikesBar postId = {this.state.post.id} />
             </div>
         );
     }

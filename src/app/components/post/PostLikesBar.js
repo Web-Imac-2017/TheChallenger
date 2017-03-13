@@ -6,7 +6,7 @@ import Utility from './../../utilities/utility.js';
 const likeImg = require("./../../../img/icons/like.png");
 const noLikeImg = require("./../../../img/icons/no-like.png");
 
-export default class PostLikesbar extends React.Component{
+export default class PostLikesBar extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
