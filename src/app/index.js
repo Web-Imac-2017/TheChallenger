@@ -20,7 +20,7 @@ class Layout extends React.Component{
 			    <Route path="/home" component={Home}/>
 				<Route path="/contact" component={Contact}/>
 				<Route path="profil/:userId" name="/profil" component={UserProfil}/>
-				<Route path="challenge/:challengeId" name="/profil" component={Challenge}/>
+				<Route path="challenge/:challengeId" name="/challenge" component={Challenge}/>
 			</Router>	
 		);
 	}
