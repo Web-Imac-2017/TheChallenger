@@ -24,7 +24,7 @@ export default class UserProfil extends React.Component {
 		};
 
 	    this.state = {
-	        user : null
+	        user : defaultUser
 	    };
     	this.loadData();
     }	

@@ -16,7 +16,7 @@ export default class PostProfilBar extends React.Component{
 			"name" : "michel"
 		};
 		this.state = {
-			user : null
+			user : defaultUser
 		};
 		this.loadData();
 	}

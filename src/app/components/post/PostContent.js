@@ -13,25 +13,36 @@ const LINK = 5;
 export default class PostContent extends React.Component{
     constructor(props) {
         super(props);
-        this.state = {
+
+        const defaultPost = {
             post : {
                 "id" : 5,
                 "user" : 1,
-                "type" : "video",
+                "type" : 2,
                 "linkcontent" : "https://www.youtube.com/embed/fWRISvgAygU",
                 "description" : "Je suis une courte description",
                 "likes": 8
-            },
-            renderContent: null,
-            post: this.props.post.post,
-            renderContent: this.preRender(this.props.post.post)
+            }
+        }
+        this.state = {
+            post: this.props.post
+        };
+        //{defaultPost /*this.props.post.post*/}
+        const renderCnt=this.preRender(this.state.post.post);
+
+        this.state = {
+            renderContent: renderCnt
         };
         this.class = "post-content " + (this.props.preview ? "veil" : "");
     }
 
     preRender(post) {
-        if(post == null)
+        if(post == undefined){
+            console.log("ERROR PostContent -> prerender -> post==undefined");
             return null;
+        }
+        console.log("prerender")
+        console.log(this.state)
         // media sera inséré dans return(), comme ça ça dépend du type du post.
         let media = null;
         //console.log(this.state.post);

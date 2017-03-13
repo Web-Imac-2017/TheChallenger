@@ -6,6 +6,7 @@ import Utility from './../utilities/utility.js';
 export default class PostsContainer extends React.Component{
     constructor(props){
 		super(props);
+
         this.state = {
             postsIds: [1,2],
             postsTypes: {},

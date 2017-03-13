@@ -7,3 +7,4 @@ challenger.sublime-project
 *.sublime-workspace
 src/app/components/vignette.js
 webpack.config.js
+webpack.config.js
