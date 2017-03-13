@@ -3,6 +3,13 @@ import { BrowserRouter as Router,
          Link } from "react-router";
 import Utility from './../../utilities/utility.js';
 
+//definition des types de fichiers
+const IMAGE = 1;
+const YOUTUBE = 2;
+const SOUNDCLOUD = 3;
+const FILE = 4;
+const LINK = 5;
+
 export default class PostContent extends React.Component{
     constructor(props) {
         super(props);
@@ -28,21 +35,21 @@ export default class PostContent extends React.Component{
         let media = null;
         //console.log(this.state.post);
         switch(this.state.post.type) {
-        case "text":
+        case TEXT:
             media = (<p>{this.state.post.content}</p>);
             break;
-        case "image":
+        case IMAGE:
             media = (<img src={this.state.post.content} alt={this.state.post.content} />);
             break;
-        case "audio":
+        case SOUNDCLOUD:
             media = (<iframe width="100%" height="200" scrolling="no" frameBorder="no" src={this.state.post.content}></iframe>);
             break;
-        case "video":
+        case YOUTUBE:
             media = (<iframe width="100%" allowFullScreen frameBorder="no"
                      src={this.state.post.content}>
                      </iframe> );
             break;
-        case "file":
+        case LINK:
             media = (<p>FILE: {this.state.post.content}</p>);
             break;
         default: break;
