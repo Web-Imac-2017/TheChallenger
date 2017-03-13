@@ -72,6 +72,17 @@ $squareWidth : 20px;
             display: inline;
         }
     }
+
+    .post-content {
+        position: relative;
+        .veil {
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height: 100%;
+        }
+    }
 }
 
 
