@@ -53,15 +53,16 @@ export default class Login extends React.Component{
 		}
 		
 		var scrolldelay=2;
+		var scrolldelay=2;
 		window.onload = function (){ 
 		
 			elem=document.getElementById('arrow');
 			elem2=document.getElementById('what-is-it');
 			
 			elem.onclick = function pageScroll() {	
-								window.scrollBy(0,50);
+								window.scrollBy(0,80);
 								scrolldelay = setTimeout(pageScroll,20);
-								if(window.pageYOffset > elem2.offsetHeight )
+								if(window.pageYOffset > elem2.offsetHeight-1 )
 								{
 									clearTimeout(scrolldelay);
 								}	
