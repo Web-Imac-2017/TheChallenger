@@ -1,5 +1,5 @@
 <?php 
-class Challenge
+class Challenge extends Post
 {
 
 	private $id;
