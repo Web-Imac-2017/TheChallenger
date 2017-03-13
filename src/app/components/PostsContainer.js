@@ -24,11 +24,11 @@ export default class PostsContainer extends React.Component{
         }else if(this.props.query !== undefined){
             Utility.query(this.props.query, this.callBackData.bind(this));
             // remplissage par défaut
-            this.state = {
+            /*this.state = {
                 posts: this.state.postsIds.map(()=>{    
                     return(<PostMin postId={1} callbackParent={this.callBackPostType.bind(this)}/>);
                 })
-            };
+            };*/
         }
         console.log(this.state.posts);
         this.filterBar = <FilterBar updateParent={this.updatePostsFiltered.bind(this)} filters={{
@@ -84,11 +84,13 @@ export default class PostsContainer extends React.Component{
     }
 
 	  render(){
-		    return(
-                <div className="posts-container">
-                    {this.filterBar}
-                    {this.state.postsFiltered}
-                </div>
-		    );
+        if(this.state.posts === null)
+            return null;
+	    return(
+            <div className="posts-container">
+                {this.filterBar}
+                {this.state.postsFiltered}
+            </div>
+	    );
 	  }
 }
