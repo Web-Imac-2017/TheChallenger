@@ -82,7 +82,7 @@ class userController{
    		$user->registeremail();
         
 	    echo(json_encode(["code" => 1,"message" => "Success"]));
-		Utility::nextPage("root");	
+		Utility::nextPage("");	
 	}
 
 	//si l'utilisateur clique sur le lien envoyé par email on confirme l'inscription

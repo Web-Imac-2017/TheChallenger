@@ -90,7 +90,7 @@ class postController
 			$testimage=$post->test_image($image);
 			if($testimage==1 || $testimage==2){ //pas d'erreur sur l'image
 				//on déplace l'image dans le bon dossier
-				$linkcontent=$post->move_image($image,'../data/post');
+				$linkcontent=$post->move_image($image,'../data/post/');
 
 				//on ajoute les donnees dans la bdd
 				if($testimage==1){ //si image pas hd
