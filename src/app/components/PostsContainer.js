@@ -9,7 +9,7 @@ export default class PostsContainer extends React.Component{
         this.state = {
             postsIds: [1,2],
             postsTypes: {},
-            posts : this.props.posts,
+            posts : null,
             postsFiltered: null
         };
 
@@ -20,7 +20,9 @@ export default class PostsContainer extends React.Component{
             "all": "All",
             "audio":"Audio",
             "video": "Video",
-            "text": "Text"
+            "image": "Image",
+            "text": "Text",
+            "file": "Fichier"
         }} />;
 
         // remplissage par défaut
@@ -29,7 +31,9 @@ export default class PostsContainer extends React.Component{
                 return(<PostMin postId={1} />);
             })
         };
-        // this.updatePostsFiltered("all");
+        this.state = {
+            postsFiltered: this.state.posts
+        };
 	  }
 
     callBackPostType(postId, type) {
@@ -52,20 +56,20 @@ export default class PostsContainer extends React.Component{
     }
 
     updatePostsFiltered(filter) {
-        console.log("Filtre: "+filter);
-        let tmpPosts = [];
-        for(let postId in this.state.postsIds) {
-            let type = this.state.postsTypes[postId];
-            if(type == filter || filter == "all") {
-                tmpPosts.push(this.state.posts[postId]);
-            }
-        }
-        this.setState({
-            // postsFiltered: this.state.posts
-            postsFiltered: tmpPosts
-        });
+        // console.log("Filtre: "+filter);
+        // let tmpPosts = [];
+        // for(let postId in this.state.postsIds) {
+        //     let type = this.state.postsTypes[postId];
+        //     if(type == filter || filter == "all") {
+        //         tmpPosts.push(this.state.posts[postId]);
+        //     }
+        // }
+        // this.setState({
+        //     postsFiltered: this.state.posts
+            // postsFiltered: tmpPosts
+        // });
         // console.log(tmpPosts);
-        console.log(this.state.postsFiltered);
+        // console.log(this.state.postsFiltered);
         // console.log(this.state.posts);
     }
 

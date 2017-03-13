@@ -7,8 +7,8 @@ export default class PostContent extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            post: this.props.post,
-            renderContent: this.preRender(this.props.post)
+            post: this.props.post.post,
+            renderContent: this.preRender(this.props.post.post)
         };
     }
 
@@ -17,7 +17,6 @@ export default class PostContent extends React.Component{
             return null;
         // media sera inséré dans return(), comme ça ça dépend du type du post.
         let media = null;
-        console.log(post);
         switch(post.type) {
         case "text":
             media = (<p>{post.content}</p>);
@@ -43,7 +42,7 @@ export default class PostContent extends React.Component{
 
     render(){
         return (
-                <div className="post-content">
+                <div className="post-content" >
                 {this.state.renderContent}
             </div>
         );
