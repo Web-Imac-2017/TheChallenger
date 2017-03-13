@@ -245,7 +245,7 @@ class postController
 			"state" => $datas['state'],
 			"type" => $datas['type'],
 			"hd" => $datas['hd'],
-			"linkcontent" => $datas['linkcontent'],
+			"linkcontent" => 'post/'.$datas['linkcontent'],
 			"description" => $datas['description'],
 			"winner" => $datas['winner'],
 			"score" => $datas['score'],
