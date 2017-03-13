@@ -255,7 +255,7 @@ class userController{
 	//fonction suppression follower
 	public static function checkfollow($id){
 		global $user;
-		if ($id = $_COOKIE['id']) { 
+		if ($id == $_COOKIE['id']) { 
 			echo(json_encode(["code" => 3,"message" => "Yourself"]));
 			exit();
 		}
