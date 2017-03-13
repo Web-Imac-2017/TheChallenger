@@ -14,7 +14,7 @@ export default class Home extends React.Component{
 			<div id="home" className="page"> 
 		        <Header/>
 		        <div className="challenge-carrousel">
-			        <h1 className="title">Pick up your Challenge</h1>
+			        <h1>Pick up your Challenge</h1>
 			        <ChallengeContainer/>
 		        </div>
 	            <h1>Last Winners</h1>

@@ -1,0 +1,55 @@
+@import 'mixins';
+.challenge-carrousel{
+	background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+	h1{
+	   	margin-bottom: 17px;
+    	margin-top: 0;
+    	font-size: 21px;
+    	color: white;
+    	font-weight: 300;
+	}
+}
+.challenge-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;   
+}
+.challenge-min{	
+	
+	position: relative;
+	background-color: rgb(0, 0, 0);
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  	margin-bottom: 10px;
+	.img-profil{
+		opacity: 0.5;
+		height: 150px;
+		width: 150px;
+		margin: 0;
+		border: 0;
+	}
+	h4{
+ 	    top: -109px;
+    	position: relative;
+    	z-index: 2;
+	}
+	@include mobile{
+		
+	}
+}
+
+.challenge-min:hover{
+	.img-profil{
+		opacity: 1;
+	}
+	h4{
+		display: none;
+	}
+}
