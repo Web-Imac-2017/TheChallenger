@@ -38,7 +38,7 @@ export default class PostMin extends React.Component{
         this.setState ({
             post : data
         });
-        this.props.callbackParent(this.state.post.id, this.state.post.type);
+        this.props.callbackParent(this.state.post.postid, this.state.post.type);
     }
 
     render(){

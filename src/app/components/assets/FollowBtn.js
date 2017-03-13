@@ -56,7 +56,7 @@ export default class ProfilBox extends React.Component{
 	}
 
 	render(){
-		if(!display)
+		if(!this.state.display)
 			return null;
 		var strFollow = "Follow";
 		if(this.state.follow){
