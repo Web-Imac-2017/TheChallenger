@@ -20,24 +20,38 @@ export default class UserProfil extends React.Component {
 			"registerdate": "06 03 2017",
 			"nbfollower": "46",
 			"nbpost": "140",
-			"posts": [1, 2, 3, 4, 5]
+			"idpost": [1, 2, 9, 4, 5]
 		};
 
 	    this.state = {
-	        user : defaultUser
+	        user : null
 	    };
     	this.loadData();
     }	
 
     callback(data){
-    	this.setState({user:data})
+    	this.setState({
+    		user : {
+    			"id" : data.id,
+    			"photo" : Utility.getPublicPath()+data.photo,
+    			"name" : data.name,
+    			"nbpost" : data.nbpost,
+    			"nbFollower" : data.nbFollower,
+    			"email" : data.email,
+    			"description" : data.description,
+    			"idpost" : data.idpost
+    		}
+
+    	});
     }
 
     loadData(){
-        Utility.query("api/user/"+this.state.user.id+"/infos/", this.callback.bind(this));
+        Utility.query("api/user/"+this.props.params.userId+"/infos/", this.callback.bind(this));
     }
 
     render() {
+    	if(this.state.user === null)
+    		return null;
         return(
             <div className="page">
         		<Header/>
@@ -51,7 +65,7 @@ export default class UserProfil extends React.Component {
 	                	email = {this.state.user.email}
 	                	desc = {this.state.user.description}
 	                />
-	                <PostsContainer posts={this.state.user.posts}/>
+	                <PostsContainer posts={this.state.user.idpost}/>
                 </div>
             	<Footer/>
             </div>

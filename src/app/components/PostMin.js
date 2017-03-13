@@ -10,16 +10,16 @@ export default class PostMin extends React.Component{
         const defaultPost ={
             post : {
                 "id" : 1,
-	              "user" : 1,
+                "iduser" : 1,
                 "type" : "audio",
-	              "content" : "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/34019569&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true",
-	              "description" : "Je suis une courte description",
+                "content" : "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/34019569&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true",
+                "description" : "Je suis une courte description",
                 "likes": 5
             }
         };
 
         this.state = {
-            post : defaultPost
+            post : null
         };
         
         this.loadData();	
@@ -38,15 +38,18 @@ export default class PostMin extends React.Component{
         this.setState ({
             post : data
         });
-        this.props.callbackParent(this.state.post.id, this.state.post.type);
+        this.props.callbackParent(this.state.post.postid, this.state.post.type);
     }
 
     render(){
+  /*      console.log("IDUSER");
+        console.log(this.state.post.iduser)
+        console.log(this.state.post)*/
         if(this.state.post === null)
             return null;
         return(
             <div className="post-min">
-                <PostProfilBar userId = {this.state.post.user} />
+                <PostProfilBar userId = {this.state.post.iduser} />
                 <PostContent post = {this.state.post}  preview={1} />
                 <PostLikesBar postId = {this.state.post.id} />
             </div>

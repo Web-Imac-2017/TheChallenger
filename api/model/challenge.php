@@ -1,5 +1,5 @@
 <?php 
-class Challenge
+class Challenge extends Post
 {
 
 	private $id;
@@ -133,7 +133,7 @@ class Challenge
 		$query->execute();
 		$stop=$query->fetch();
 		$query->closeCursor();
-		$date=strtotime($stop['datestop']);
+		$date=$stop['datestop'];
 		$today = date("Y-m-d");
 		return ($date > $today);
 	}

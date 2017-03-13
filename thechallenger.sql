@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.5
--- http://www.phpmyadmin.net
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
 --
--- Client :  localhost:8889
--- Généré le :  Ven 10 Mars 2017 à 18:26
--- Version du serveur :  5.5.38
--- Version de PHP :  5.5.14
+-- Client :  127.0.0.1
+-- Généré le :  Lun 13 Mars 2017 à 08:49
+-- Version du serveur :  5.7.14
+-- Version de PHP :  5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de données :  `thechallenger`
@@ -27,12 +27,22 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `challenge` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `title` text NOT NULL,
   `description` text NOT NULL,
+  `photo` text,
   `datestart` date NOT NULL,
   `datestop` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `challenge`
+--
+
+INSERT INTO `challenge` (`id`, `title`, `description`, `photo`, `datestart`, `datestop`) VALUES
+(11, 'Light', 'Find a dark place and light it up.', 'light.jpg', '2017-03-11', '2017-03-12'),
+(12, 'Little life', 'Show us the unseen.', 'little-life.jpg', '2017-03-11', '2017-03-19'),
+(13, 'Future', 'How do you imagine it ?', 'future.jpg', '2017-03-11', '2017-03-19');
 
 -- --------------------------------------------------------
 
@@ -41,10 +51,35 @@ CREATE TABLE `challenge` (
 --
 
 CREATE TABLE `follow` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `idfollower` int(11) NOT NULL,
   `idfollowed` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `follow`
+--
+
+INSERT INTO `follow` (`id`, `idfollower`, `idfollowed`) VALUES
+(1, 10, 12),
+(2, 10, 11),
+(3, 11, 12),
+(4, 9, 12),
+(5, 7, 12),
+(6, 8, 9),
+(7, 8, 10),
+(8, 8, 11),
+(9, 8, 12),
+(10, 8, 13),
+(11, 8, 14),
+(12, 9, 10),
+(13, 10, 8),
+(14, 10, 9),
+(15, 11, 13),
+(16, 12, 11),
+(17, 12, 1),
+(18, 12, 13),
+(19, 14, 12);
 
 -- --------------------------------------------------------
 
@@ -53,7 +88,7 @@ CREATE TABLE `follow` (
 --
 
 CREATE TABLE `post` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `title` varchar(250) NOT NULL,
   `state` int(2) NOT NULL,
   `type` int(3) NOT NULL,
@@ -65,7 +100,45 @@ CREATE TABLE `post` (
   `datepost` date NOT NULL,
   `iduser` int(11) NOT NULL,
   `idchallenge` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `post`
+--
+
+INSERT INTO `post` (`id`, `title`, `state`, `type`, `hd`, `linkcontent`, `description`, `winner`, `score`, `datepost`, `iduser`, `idchallenge`) VALUES
+(4, 'City ', 0, 1, 0, '1489231644.jpg', 'taken with my iphone :$\r\n', 1, 4, '2017-03-11', 14, 11),
+(5, 'p i z z a * * ', 0, 1, 1, '1489231788.jpg', 'omg i did it myself', 0, 3, '2017-03-11', 14, 12),
+(6, 'SKY', 0, 1, 1, '1489232276.jpg', 'WE ARE THE LITTLE ONES', 0, 3, '2017-03-11', 11, 11),
+(8, 'Copernic', 0, 1, 0, '1489256559.png', 'But it\'s not for today', 0, 1, '2017-03-11', 8, 13),
+(9, 'Future', 0, 1, 1, '1489259397.jpg', 'Nayvadius DeMun ', 0, 2, '2017-03-11', 9, 13),
+(10, 'Hand', 0, 1, 0, '1489259487.jpg', 'Human and Technology', 0, 1, '2017-03-11', 10, 13),
+(11, 'Futureman', 0, 1, 0, '1489259728.jpg', 'What will look like Man in 1000 years ?', 0, 3, '2017-03-11', 11, 13),
+(12, 'Evolution', 0, 1, 0, '1489259785.jpg', 'Like a robot', 0, 2, '2017-03-11', 12, 13),
+(13, 'Mars', 0, 1, 0, '1489259928.png', 'The conquest of Mars', 0, 3, '2017-03-11', 13, 13),
+(14, 'Ikea\'s table', 0, 1, 1, '1489260060.jpg', '"Give me the salt please"', 0, 3, '2017-03-11', 14, 13),
+(15, 'Technology', 0, 1, 0, '1489260102.jpg', 'All is about technolgy', 0, 1, '2017-03-11', 4, 13),
+(16, 'Eiffel Tower', 0, 1, 1, '1489260184.jpg', 'Let\'s be pessimistic', 0, 2, '2017-03-11', 5, 13),
+(17, 'Green city', 0, 1, 1, '1489260389.jpg', '"Paris est magique"', 0, 2, '2017-03-11', 9, 13),
+(18, 'Acarien', 0, 1, 0, '1489260704.jpg', 'It itches', 0, 2, '2017-03-11', 8, 12),
+(19, 'Atomes', 0, 1, 0, '1489260858.png', 'Atom looks like candy', 0, 3, '2017-03-11', 9, 12),
+(20, 'Criquet', 0, 1, 0, '1489261051.jpg', 'Hello world', 0, 2, '2017-03-11', 10, 12),
+(21, 'A drop', 0, 1, 0, '1489261125.jpg', '"Drop it like it\'s hot"', 0, 4, '2017-03-11', 11, 12),
+(22, 'What is that ?', 0, 1, 0, '1489261257.jpg', 'The carapace of the Cetonia aurata', 0, 4, '2017-03-11', 12, 12),
+(23, 'Beautiful fish', 0, 1, 0, '1489261387.jpg', '"Fukushima my love"', 0, 4, '2017-03-11', 13, 12),
+(25, 'Little Life', 0, 1, 0, '1489261603.jpg', '', 0, 4, '2017-03-11', 14, 12),
+(26, 'Inside plastic', 0, 1, 0, '1489261652.jpg', '', 0, 2, '2017-03-11', 4, 12),
+(27, ' ', 0, 1, 1, '1489261698.jpg', '', 0, 2, '2017-03-11', 5, 12),
+(28, ' Vinyl', 0, 1, 0, '1489261754.jpg', 'Microscopic', 0, 2, '2017-03-11', 9, 11),
+(29, 'Amsterdam', 0, 1, 1, '1489261803.jpeg', '', 0, 2, '2017-03-11', 9, 11),
+(30, 'Amsterdam', 0, 1, 1, '1489261833.jpeg', '', 0, 1, '2017-03-11', 9, 11),
+(31, 'Jellyfish', 0, 1, 0, '1489261926.jpg', '', 0, 0, '2017-03-11', 9, 11),
+(32, 'Candles', 0, 1, 1, '1489261994.jpg', '', 0, 0, '2017-03-11', 9, 11),
+(33, ' ', 0, 1, 0, '1489262017.jpg', '', 0, 0, '2017-03-11', 9, 11),
+(34, ' ', 0, 1, 0, '1489262029.jpeg', '', 0, 0, '2017-03-11', 9, 11),
+(35, 'Spotlight', 0, 1, 0, '1489262103.jpg', '', 0, 0, '2017-03-11', 9, 11),
+(36, 'Timelapse', 0, 1, 1, '1489262463.jpg', '', 0, 0, '2017-03-11', 9, 11),
+(37, 'Bike', 0, 1, 1, '1489262568.jpeg', '', 0, 0, '2017-03-11', 9, 11);
 
 -- --------------------------------------------------------
 
@@ -74,10 +147,82 @@ CREATE TABLE `post` (
 --
 
 CREATE TABLE `score` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `iduser` int(11) NOT NULL,
   `idpost` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `score`
+--
+
+INSERT INTO `score` (`id`, `iduser`, `idpost`) VALUES
+(1, 11, 6),
+(3, 8, 4),
+(4, 8, 5),
+(5, 8, 6),
+(6, 8, 7),
+(7, 8, 8),
+(8, 8, 9),
+(9, 8, 10),
+(10, 8, 11),
+(11, 8, 1),
+(12, 8, 12),
+(13, 8, 13),
+(14, 8, 14),
+(15, 8, 15),
+(16, 8, 16),
+(17, 8, 17),
+(18, 8, 18),
+(19, 8, 19),
+(20, 8, 20),
+(21, 8, 21),
+(22, 8, 22),
+(23, 8, 23),
+(24, 8, 24),
+(25, 8, 25),
+(26, 8, 26),
+(27, 8, 27),
+(28, 8, 28),
+(29, 8, 29),
+(30, 8, 30),
+(31, 9, 18),
+(32, 9, 19),
+(33, 9, 20),
+(34, 9, 21),
+(35, 9, 22),
+(36, 9, 23),
+(37, 9, 24),
+(38, 9, 25),
+(39, 9, 26),
+(40, 9, 27),
+(41, 10, 29),
+(42, 10, 28),
+(43, 10, 19),
+(44, 10, 9),
+(45, 11, 22),
+(46, 11, 23),
+(47, 11, 12),
+(48, 11, 13),
+(49, 11, 11),
+(50, 11, 4),
+(51, 12, 23),
+(52, 12, 25),
+(53, 12, 21),
+(54, 12, 14),
+(55, 12, 13),
+(56, 12, 11),
+(57, 12, 6),
+(58, 12, 5),
+(59, 12, 4),
+(60, 13, 21),
+(61, 13, 22),
+(62, 13, 16),
+(63, 13, 17),
+(64, 14, 4),
+(65, 14, 5),
+(66, 14, 14),
+(67, 14, 25);
 
 -- --------------------------------------------------------
 
@@ -86,25 +231,35 @@ CREATE TABLE `score` (
 --
 
 CREATE TABLE `user` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `rank` int(10) NOT NULL,
   `name` varchar(40) NOT NULL,
   `pwd` varchar(100) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `photo` varchar(255) NOT NULL,
-  `description` text NOT NULL,
   `keyactive` varchar(255) NOT NULL,
+  `isActive` int(2) DEFAULT NULL,
   `registerdate` varchar(200) NOT NULL,
-  `birthdate` date NOT NULL,
-  `cptwarnings` int(3) DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+  `birthdate` date DEFAULT NULL,
+  `cptwarnings` int(3) DEFAULT NULL,
+  `photo` text,
+  `description` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `user`
 --
 
-INSERT INTO `user` (`id`, `rank`, `name`, `pwd`, `email`, `photo`, `description`, `keyactive`, `registerdate`, `birthdate`, `cptwarnings`) VALUES
-(7, 3, 'test', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'test@test.com', '', '', '3f9f4218a7f49be692b4328edeefbadfc29f1da4', '08 03 2017', '0000-00-00', 0);
+INSERT INTO `user` (`id`, `rank`, `name`, `pwd`, `email`, `keyactive`, `isActive`, `registerdate`, `birthdate`, `cptwarnings`, `photo`, `description`) VALUES
+(4, 1, 'yorka', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'test@test.com', 'e0c70ab1fa346e1a16493915ede279e7748bce27', 0, '06 03 2017', '0000-00-00', 0, 'pp.jpg', 'trop high'),
+(5, 2, 'laure', '530226d0f0a4ce262450ab17e0ed44a90a529e6d', 'laureisssa@gmail.com', 'c4ebba6a50d3a6ab020b700e18e407772e1500bb', 0, '08 03 2017', NULL, 0, 'pp.jpg', ''),
+(8, 2, 'Michel', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'user1@test.com', 'd6acb1367a5b2266aecf7675439f9f21e9e75061', NULL, '10 03 2017', NULL, 0, 'pp.jpg', 'photographe professionnel'),
+(9, 2, 'Mickey', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'user2@test.com', '9f3c81854848cf3b39664a7dfa56b76fe707f2ba', NULL, '10 03 2017', NULL, 0, 'pp.jpg', 'already taken sorry'),
+(10, 2, 'Lorie', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'user3@test.com', '707e24e7e1d87705735ecde61e1c39748aa7e525', NULL, '10 03 2017', NULL, 0, 'pp.jpg', 'ARTIST'),
+(11, 2, 'Flavie', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'user4@test.com', 'f39bc6b61b1a16f5fcefa67e5fd4a5168726bbcf', NULL, '10 03 2017', NULL, 0, 'pp.jpg', 'I\'m judging you'),
+(12, 2, 'Marie-Lou', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'user5@test.com', 'e62462149e6939900c9ddeb101aeedce4f14cb14', NULL, '10 03 2017', NULL, 0, 'pp.jpg', 's p a c e * '),
+(13, 2, 'Matthieu', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'user6@test.com', '5fe84fc5740e748c9199d58fa191201ecb4c2ea9', NULL, '10 03 2017', NULL, 0, 'pp.jpg', 'Frontend developper'),
+(14, 2, 'd4rk girl', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'dark@test.com', 'a5c407278ab0fd2740741899799fbf3ab4b6f283', NULL, '11 03 2017', NULL, 0, 'pp.jpg', 'Too dark for you'),
+(15, 1, 'test', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'test1@test.com', '1233797d812783bd3e4bfe48dc2ff9fac306a665', NULL, '12 03 2017', NULL, 0, 'pp.jpg', NULL);
 
 --
 -- Index pour les tables exportées
@@ -114,31 +269,31 @@ INSERT INTO `user` (`id`, `rank`, `name`, `pwd`, `email`, `photo`, `description`
 -- Index pour la table `challenge`
 --
 ALTER TABLE `challenge`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `follow`
 --
 ALTER TABLE `follow`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `post`
 --
 ALTER TABLE `post`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `score`
 --
 ALTER TABLE `score`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `user`
 --
 ALTER TABLE `user`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT pour les tables exportées
@@ -148,27 +303,27 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `challenge`
 --
 ALTER TABLE `challenge`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT pour la table `follow`
 --
 ALTER TABLE `follow`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT pour la table `post`
 --
 ALTER TABLE `post`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT pour la table `score`
 --
 ALTER TABLE `score`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

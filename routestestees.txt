@@ -1,0 +1,42 @@
+ROUTES TESTEES : 
+
+USER :
+
+sign up : user/register/
+sign in : user/login/
+log out : user/logout/
+afficher les infos d'un user : user/show/{id}
+afficher les infos +++ d'un user : user/{id}/infos
+modifier les infos d'un user : user/update/{id}
+afficher l'id du user connecté : user/id/
+
+FOLLOW : 
+
+vérifier si le user connectée follow déjà l'autre user : user/follow/check/{id}
+user connecté suit un autre user : user/follow/add/{id}
+user connecté unfollow un autre user : user/follow/delete/{id}
+
+POST : 
+
+afficher les infos d'un post : post/show/{id}
+ajouter un post : post/add/{id}
+modifier un post : post/update/{id}
+valider un post : post/validate/{id}
+supprimer un post : post/delete/{id}
+vérifier si le user connecté à déjà liké un post : post/like/check/{id}
+liker un post : post/like/add/{id}
+unliker un post : post/like/delete/{id}
+post aléatoire : post/getRandomBackground
+
+CHALLENGE  : 
+
+infos d'un challenge : challenge/show/{id}
+ajouter un challenge : challenge/add/
+modifier un challenge : challenge/update/{id}
+supprimer un challenge : challenge/delete/{id}
+afficher tous les posts d'un challenge : challenge/posts/{id}
+afficher le temps restant d'un challenge : challenge/timeleft/{id}
+afficher les challenge en cours : challenge/current/
+
+WINNERS  : winners/
+RECHERCHE  : search/

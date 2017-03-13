@@ -12,10 +12,24 @@ export default class PostsContainer extends React.Component{
             posts : null,
             postsFiltered: null
         };
-
-        if(this.props.query !== null){
+        console.log(this.props.posts);
+        if(this.props.posts !== undefined){
+            this.state = {
+                posts: this.props.posts.map((id) => {
+                    return(<PostMin postId={id} 
+                                    callbackParent={this.callBackPostType.bind(this)}/>);
+                })
+            };
+        }else if(this.props.query !== undefined){
             Utility.query(this.props.query, this.callBackData.bind(this));
+            // remplissage par défaut
+            this.state = {
+                posts: this.state.postsIds.map(()=>{    
+                    return(<PostMin postId={1} callbackParent={this.callBackPostType.bind(this)}/>);
+                })
+            };
         }
+        console.log(this.state.posts);
         this.filterBar = <FilterBar updateParent={this.updatePostsFiltered.bind(this)} filters={{
             "all": "All",
             "audio":"Audio",
@@ -25,12 +39,7 @@ export default class PostsContainer extends React.Component{
             "file": "Fichier"
         }} />;
 
-        // remplissage par défaut
-        this.state = {
-            posts: this.state.postsIds.map(()=>{    
-                return(<PostMin postId={1} />);
-            })
-        };
+        
         this.state = {
             postsFiltered: this.state.posts
         };
@@ -41,8 +50,8 @@ export default class PostsContainer extends React.Component{
     }
 
     callBackData(data) {
-        console.log("CALLBACK POST CONTAINER");
-        console.log(data);
+       /* console.log("CALLBACK POST CONTAINER")
+        console.log(data);*/
         this.setState({
             postsIds: data,
             posts: data == null ? null : data.map(
@@ -76,9 +85,9 @@ export default class PostsContainer extends React.Component{
 	  render(){
 		    return(
                 <div className="posts-container">
-                {this.filterBar}
-            {this.state.postsFiltered}
-            </div>
+                    {this.filterBar}
+                    {this.state.postsFiltered}
+                </div>
 		    );
 	  }
 }
