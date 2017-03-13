@@ -8,8 +8,6 @@ export default class PostsContainer extends React.Component{
 		super(props);
 
         this.state = {
-            postsIds: [1,2],
-            postsTypes: {},
             posts : null,
             postsFiltered: null
         };
@@ -53,14 +51,13 @@ export default class PostsContainer extends React.Component{
     callBackData(data) {
        /* console.log("CALLBACK POST CONTAINER")
         console.log(data);*/
+        let tmp = data == null ? null : data.map((id) => {
+                    return(<PostMin postId={id} 
+                                    callbackParent={this.callBackPostType.bind(this)} />);
+                });
         this.setState({
-            postsIds: data,
-            posts: data == null ? null : data.map(
-                function(id) {
-                    return(
-                            <PostMin postId={id} callbackParent={this.callBackPostType.bind(this)} />
-                    );
-                })
+            posts: tmp,
+            postsFiltered : tmp
         });
         this.updatePostsFiltered("all");
     }
@@ -86,9 +83,9 @@ export default class PostsContainer extends React.Component{
 	  render(){
         if(this.state.posts === null)
             return null;
+        //{this.filterBar}
 	    return(
             <div className="posts-container">
-                {this.filterBar}
                 {this.state.postsFiltered}
             </div>
 	    );
