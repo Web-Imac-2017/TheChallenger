@@ -222,7 +222,11 @@ class userController{
 	    	echo(json_encode(["code" => 0,"message" => "already follower"]));
 			exit();
 		}
-
+		
+		elseif ($id = $_COOKIE['id']) {
+			echo(json_encode(["code" => 3,"message" => "You can't follow yourself dude"]));
+			exit();
+		}
 		global $db;
 		$query=$db->prepare('INSERT INTO thechallenger.follow (idfollower,idfollowed) VALUES (:idfollower,:idfollowed)');
 		$query->bindParam(':idfollower', $_COOKIE['id'], PDO::PARAM_INT);
@@ -257,11 +261,14 @@ class userController{
 	//fonction suppression follower
 	public static function checkfollow($id){
 		global $user;
-		if($user->checkfollow($id)){
+		if ($id = $_COOKIE['id']) { 
+			echo(json_encode(["code" => 3,"message" => "Yourself"]));
+			exit();
+		}
+		elseif($user->checkfollow($id)){
 	    	echo(json_encode(["code" => 1,"message" => "Success"]));
 			exit();
 		}
-		
 		echo(json_encode(["code" => 0,"message" => "not follower"]));
 	}
 
@@ -336,7 +343,7 @@ class userController{
 	}
 
 	public static function show($id){
-		echo(self::toArray($id));
+		echo (self::toArray($id));
 	}
 
 	public static function getinfos($id) {
