@@ -36,7 +36,7 @@ export default class UserProfil extends React.Component {
     			"photo" : Utility.getPublicPath()+data.photo,
     			"name" : data.name,
     			"nbpost" : data.nbpost,
-    			"nbFollower" : data.nbFollower,
+    			"nbfollower" : data.nbfollower,
     			"email" : data.email,
     			"description" : data.description,
     			"idpost" : data.idpost
@@ -51,6 +51,8 @@ export default class UserProfil extends React.Component {
     render() {
     	if(this.state.user === null)
     		return null;
+        
+    	console.log("Nb followrr " + this.state.user.nbfollower)
         return(
             <div className="page">
         		<Header/>
