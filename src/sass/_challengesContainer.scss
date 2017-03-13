@@ -1,6 +1,6 @@
 @import 'mixins';
 .challenge-carrousel{
-	background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+	background: radial-gradient(ellipse at right bottom, #003c20, #3d8457, #2c8f8a, #264285, #681378);
     display: flex;
     flex-direction: column;
     align-items: center;
