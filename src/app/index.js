@@ -13,6 +13,12 @@ import Challenge from "./vues/Challenge.js";
 const app = document.getElementById('app');
 
 class Layout extends React.Component{
+	componentWillReceiveProps(nextProps) {
+	    this.setState({
+	        children: nextProps.children
+	    });
+	}
+
 	render(){
 		return(
 			<Router history={hashHistory}>

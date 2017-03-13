@@ -25,7 +25,7 @@ export default class PostMin extends React.Component{
 
     loadData(){
         var postId = this.props.postId;
-         console.log("POSTID POST MIN : "+postId);
+//         console.log("POSTID POST MIN : "+postId);
         // console.log(postId);
         Utility.query("api/post/show/"+postId, this.callback.bind(this));
     }

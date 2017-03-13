@@ -30,7 +30,7 @@ export default class ProfilBox extends React.Component{
 	changeFollow(data, follow){
 		if(data.code == '1'){
 			this.setState({follow : follow});
-			console.log("CHANGER FOLLOW : "+this.state.follow);
+			//console.log("CHANGER FOLLOW : "+this.state.follow);
 		}
 		else if(data.code == '3'){
 			this.setState({display : false});

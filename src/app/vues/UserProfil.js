@@ -51,8 +51,6 @@ export default class UserProfil extends React.Component {
     render() {
     	if(this.state.user === null)
     		return null;
-        
-    	console.log("Nb followrr " + this.state.user.nbfollower)
         return(
             <div className="page">
         		<Header/>

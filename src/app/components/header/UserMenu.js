@@ -14,40 +14,38 @@ export default class UserMenu extends React.Component {
 	
 	constructor (props){		
 		super(props);
+		const defaultUser={
+			"id" : 2,
+			"photo" : noImg
+		};
 		
 		this.state = {
 			hover:false,
-			user:{
-				"id" : 2,
-				"photo" : noImg
-			}
+			user: null
 		};	
 		//console.log("FETCH ID !!!!");
-		Utility.query("api/user/id/", this.callbackIsConnected.bind(this))
+		//Utility.query("api/user/id/", this.callbackIsConnected.bind(this))
+		Utility.isConnected(this.callbackIsConnected.bind(this));
 
 		this.mouseOver = this.mouseOver.bind(this);
         this.mouseOut = this.mouseOut.bind(this);
 		
 		this.openMenu = this.openMenu.bind(this);
 		this.closeMenu = this.closeMenu.bind(this);
-	}
-		
-	callbackUser(data){
-		if(data === undefined )
-			return;
-		/*console.log("CALLBACK USER");
-		console.log(data)*/
-		this.setState({user:data});
+	}		
+
+	callbackIsConnected(id){
+		console.log("CALLVACK")
+		console.log(id)
+		/*if(!id)
+			browserHistory.push('./#/');*/
+		Utility.query("api/user/show/"+id, this.callbackUser.bind(this));
 	}
 
-	callbackIsConnected(data){
-		if(data === undefined )
-			return;
-		/*console.log("CALLBACK USER");
-		console.log(data.id);*/
-		/*if(!id)
-			browserHistory.push('./Challenger/');*/
-		Utility.query("api/user/show/"+data.id, this.callbackUser.bind(this));
+	callbackUser(data){
+		console.log("CALLBACK USER");
+		console.log(data)
+		this.setState({user:data});
 	}
 
 	mouseOver() {
@@ -72,6 +70,8 @@ export default class UserMenu extends React.Component {
 	};
 	
    	render() {
+   		if(this.state.user === null)
+   			return null;
         return(
             <div id="user-menu" className="user-menu" >
 				<div 	className="vignette" onClick={this.openMenu} 
@@ -79,7 +79,7 @@ export default class UserMenu extends React.Component {
 						onMouseOut={this.mouseOut.bind(this)}>
 						
 					<Link to={"/profil/"+this.state.user.id}>
-						<Vignette image ={this.state.user.photo}/> 
+						<Vignette image ={Utility.getPublicPath()+this.state.user.photo}/> 
 					</Link>
 					<TabUser userId ={this.state.user.id} ref="tabUser" />  			
 				</div>		

@@ -11,7 +11,7 @@ export default class PostsContainer extends React.Component{
             posts : null,
             postsFiltered: null
         };
-        console.log(this.props.posts);
+//        console.log(this.props.posts);
         if(this.props.posts !== undefined){
             this.state = {
                 posts: this.props.posts.map((id) => {
@@ -28,7 +28,7 @@ export default class PostsContainer extends React.Component{
                 })
             };*/
         }
-        console.log(this.state.posts);
+        //console.log(this.state.posts);
         this.filterBar = <FilterBar updateParent={this.updatePostsFiltered.bind(this)} filters={{
             "all": "All",
             "audio":"Audio",

@@ -12,7 +12,7 @@ export default class ChallengeContainer extends React.Component{
 
         if(this.props.query !== null){
             Utility.query(this.props.query, this.callBackData.bind(this));
-            console.log("challenges REQUETES ENVOYEE");
+            //console.log("challenges REQUETES ENVOYEE");
             // remplissage par défaut
             this.state = {
                 challenges: this.state.challengesIds.map(()=>{    
@@ -23,8 +23,8 @@ export default class ChallengeContainer extends React.Component{
     }
 
     callBackData(data) {
-        console.log("CALLBACK CHALLENGE CONTAINER")
-        console.log(data);
+        /*console.log("CALLBACK CHALLENGE CONTAINER")
+        console.log(data);*/
         this.setState({
             challengesIds: data,
             challenges: data == null ? null : data.map((id) => {return(<ChallengeMin challengeId={1} />);})
