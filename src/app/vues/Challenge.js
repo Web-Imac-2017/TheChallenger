@@ -6,6 +6,7 @@ import PostsContainer from './../components/PostsContainer.js';
 import ChallengeBox from './../components/ChallengeBox.js';
 import UploadPost from "./../components/UploadPost.js";
 
+
 export default class Challenge extends React.Component {
     constructor(props){
     	super(props);
@@ -50,9 +51,12 @@ export default class Challenge extends React.Component {
 	                	title = {this.state.challenge.title}
 	                	time = {this.timeLeft()}/> 
 
-                        <button id="btn" className="tag-btn" onClick={this.handleUploadBtnClick.bind(this)}>UPLOAD YOUR CONTENT</button>
+                    <div className="posts-container">
+                        <button id="btn post-min" className="tag-btn" onClick={this.handleUploadBtnClick.bind(this)}>UPLOAD YOUR CONTENT</button>
                         <UploadPost ref="upload"/>
-                        
+                        <PostsContainer/>
+                   
+                     </div> 
                 </div>
             	<Footer/>
             </div>
