@@ -19,20 +19,21 @@ export default class Challenge extends React.Component {
 		};
 
 	    this.state = {
-	        challenge : defaultChallenge
+	        challenge : null
 	    };
     	this.loadData();
     }	
 
-    callback(data){
+    callbackData(data){
+        /*console.log("CHALLENGE")
+        console.log(data)
+        console.log(data.timeleft)
+        console.log(Date(data.timeleft))*/
     	this.setState({challenge:data})
     }
 
     loadData(){
-        Utility.query("api/challenge/show/"+this.state.challenge.id, this.callback.bind(this));
-    }
-	timeLeft(){
-        Utility.query("api/challenge/timeleft/"+this.state.id, this.callback.bind(this));
+        Utility.query("api/challenge/show/"+this.props.params.challengeId, this.callbackData.bind(this));
     }
     handleUploadBtnClick(){
         this.refs.upload.open();
@@ -46,10 +47,10 @@ export default class Challenge extends React.Component {
         		<Header/>
         		<div id="challenge_page">
 	                <ChallengeBox 
-	                	id = {this.state.challenge.id}
-	                	photo = {this.state.challenge.photo}
-	                	title = {this.state.challenge.title}
-	                	time = {this.timeLeft()}/> 
+    	                	id = {this.state.challenge.id}
+    	                	photo = {this.state.challenge.photo}
+    	                	title = {this.state.challenge.title}
+    	                	time = {this.state.challenge.timeleft}/> 
 
                   <button id="btn post-min" className="tag-btn" onClick={this.handleUploadBtnClick.bind(this)}>UPLOAD YOUR CONTENT</button>
                   <UploadPost ref="upload" challengeId={this.state.challenge.id}/>

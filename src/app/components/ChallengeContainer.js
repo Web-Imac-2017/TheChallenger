@@ -5,29 +5,25 @@ import Utility from './../utilities/utility.js';
 export default class ChallengeContainer extends React.Component{
     constructor(props){
         super(props);
-        this.state = {
+        const defaultState={
             challengesIds: [1,2,3,4],
-            challenges : this.props.challenges, 
+            challenges : this.props.challenges
         };
 
-        if(this.props.query !== null){
-            Utility.query(this.props.query, this.callBackData.bind(this));
-            //console.log("challenges REQUETES ENVOYEE");
-            // remplissage par défaut
-            this.state = {
-                challenges: this.state.challengesIds.map(()=>{    
-                    return(<ChallengeMin challengeId={1} />);
-                })
-            };
-        }
+        this.state = {
+            challengesIds: null,
+            challenges : null
+        };
+        
+        Utility.query("api/challenge/current/", this.callBackData.bind(this));
     }
 
     callBackData(data) {
-        /*console.log("CALLBACK CHALLENGE CONTAINER")
-        console.log(data);*/
+        console.log("CALLBACK CHALLENGE CONTAINER")
+        console.log(data);
         this.setState({
             challengesIds: data,
-            challenges: data == null ? null : data.map((id) => {return(<ChallengeMin challengeId={1} />);})
+            challenges: data == null ? null : data.map((id) => {return(<ChallengeMin id={id} />);})
         });
     }
     render(){
