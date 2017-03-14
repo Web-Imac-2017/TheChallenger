@@ -221,10 +221,14 @@ class userController{
 	    	echo(json_encode(["code" => 0,"message" => "already follower"]));
 			exit();
 		}
-		if ($id = $_COOKIE['id']) {
+		if ($id == $_COOKIE['id']) {
 			echo(json_encode(["code" => 3,"message" => "You can't follow yourself dude"]));
 			exit();
 		}
+		global $db;
+		$query=$db->prepare('INSERT INTO thechallenger.follow (idfollower,idfollowed) VALUES (:idfollower,:idfollowed)');
+		$query->bindParam(':idfollower', $_COOKIE['id'], PDO::PARAM_INT);
+		$query->bindParam(':idfollowed', $id, PDO::PARAM_INT);
 		$query->execute();
 		$query->CloseCursor();
 		echo(json_encode(["code" => 1,"message" => "success"]));
@@ -255,16 +259,19 @@ class userController{
 	//fonction suppression follower
 	public static function checkfollow($id){
 		global $user;
-		if ($id == $_COOKIE['id']) { 
-			echo(json_encode(["code" => 3,"message" => "Yourself"]));
-			exit();
-		}
-		elseif($user->checkfollow($id)){
+		if($user->checkfollow($id)){
 	    	echo(json_encode(["code" => 1,"message" => "Success"]));
 			exit();
 		}
-		echo(json_encode(["code" => 0,"message" => "not follower"]));
-	}
+		else if (!$user->checkfollow($id) && $id == $_COOKIE['id']){
+			echo(json_encode(["code" => 3,"message" => "Yourself"]));
+			exit();
+		}
+		else if (!$user->checkfollow($id)) { 
+			echo(json_encode(["code" => 0,"message" => "Not following"]));
+			exit();
+		}	
+		}
 
 	//fonction modification utilisateur, ajout avertissement et modif de rang
 	public static function changeuser($id){
