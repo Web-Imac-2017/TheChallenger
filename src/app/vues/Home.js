@@ -10,11 +10,8 @@ import ChallengeContainer from "../components/ChallengeContainer.js";
 export default class Home extends React.Component{
 	constructor(props){
 		super(props);
-		
-		//this.props.history.replaceState(null, "/");j
 	}
-
-	render(){		
+	render(){	
 		return(
 			<div id="home" className="page"> 
 		        <Header/>

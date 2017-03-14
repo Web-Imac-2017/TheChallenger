@@ -30,7 +30,7 @@ export default class Button extends React.Component {
 
     render() {
         return(
-                <button onClick={this.click.bind(this)}>
+                <button onClick={this.click.bind(this)} className="tag-btn">
             {this.props.label}
             </button>
         );

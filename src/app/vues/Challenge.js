@@ -4,8 +4,9 @@ import Header 	from "../components/Header.js";
 import Footer 	from "../components/Footer.js";
 import PostsContainer from './../components/PostsContainer.js';
 import ChallengeBox from './../components/ChallengeBox.js';
+import UploadPost from "./../components/UploadPost.js";
 
-export default class UserProfil extends React.Component {
+export default class Challenge extends React.Component {
     constructor(props){
     	super(props);
 
@@ -32,18 +33,26 @@ export default class UserProfil extends React.Component {
 	timeLeft(){
         Utility.query("api/challenge/timeleft/"+this.state.id, this.callback.bind(this));
     }
+    handleUploadBtnClick(){
+        this.refs.upload.open();
+    }
+    
     render() {
     	if(this.state.challenge === null)
             return null;
         return(
             <div className="page">
         		<Header/>
-        		<div id="challenge">
+        		<div id="challenge_page">
 	                <ChallengeBox 
 	                	id = {this.state.challenge.id}
 	                	photo = {this.state.challenge.photo}
 	                	title = {this.state.challenge.title}
 	                	time = {this.timeLeft()}/> 
+
+                        <button id="btn" className="tag-btn" onClick={this.handleUploadBtnClick.bind(this)}>UPLOAD YOUR CONTENT</button>
+                        <UploadPost ref="upload"/>
+                        
                 </div>
             	<Footer/>
             </div>

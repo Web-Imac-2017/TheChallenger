@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router,
          Link } from "react-router";
 import Utility from './../../utilities/utility.js';
+import Post from './../Post.js';
 
 //definition des types de fichiers
 const IMAGE = "1";
@@ -9,6 +10,7 @@ const YOUTUBE = "2";
 const SOUNDCLOUD = "3";
 const TEXT = "4";
 const LINK = "5"; 
+
 
 export default class PostContent extends React.Component{
     constructor(props) {
@@ -31,9 +33,20 @@ export default class PostContent extends React.Component{
         const renderCnt=this.preRender();
 
         this.state = {
-            renderContent: renderCnt
+            renderContent: renderCnt,
+            post: this.props.post
         };
-        this.overlay =  this.props.preview ? (<div className="veil"></div>) : null;
+        this.overlay =  this.props.preview ? (
+                <div className="veil" onClick={this.handlePostPopupClick.bind(this)}></div>
+        ) : null;
+        this.postPopup = this.props.preview ? (<Post post={this.state.post} ref="postPopup"/>) : null;
+        //console.log("bonjour"+this.state.post);
+        // this.postPopup = (<Post post={this.state.post} ref="postPopup"/>);
+    }
+
+    handlePostPopupClick() {
+        if(this.props.preview)
+            this.refs.postPopup.open();
     }
 
     preRender() {
@@ -72,9 +85,10 @@ export default class PostContent extends React.Component{
 
     render(){
         return (
-                <div className="post-content" >
+            <div className="post-content" >
+                {this.overlay}
                 {this.state.renderContent}
-            {this.overlay}
+                {this.postPopup}
             </div>
         );
     }

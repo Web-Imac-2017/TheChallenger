@@ -18,7 +18,7 @@ export default class ChallengeBox extends React.Component{
 					</div>
 					<div className="challenge_box__time">{this.props.time}</div>
 					<button id="btn" onClick={this.handleReadMoreBtnClick.bind(this)}>Read More</button>
-					<ReadMore ref="readmore" title={this.state.challenge.title} desc={this.state.challenge.desc}/>
+					<ReadMore ref="readmore" title={this.props.title} desc={this.props.desc}/>
 				</div>				
 			</div>	
 		);
