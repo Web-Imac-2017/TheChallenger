@@ -6,6 +6,7 @@ import PostsContainer from './../components/PostsContainer.js';
 import ChallengeBox from './../components/ChallengeBox.js';
 import UploadPost from "./../components/UploadPost.js";
 
+
 export default class Challenge extends React.Component {
     constructor(props){
     	super(props);
@@ -13,7 +14,7 @@ export default class Challenge extends React.Component {
     	const defaultChallenge = {
 			"id" : 1,
             "photo" : "./../../../img/challenges/panda.jpg",
-            "title" : "panda",
+            "title" : "Panda",
             "description" : "Les pandas sont de super animaux, mais connaissez-vous les pandas roux? Vous avez 4h.LOL"
 		};
 
@@ -50,9 +51,12 @@ export default class Challenge extends React.Component {
 	                	title = {this.state.challenge.title}
 	                	time = {this.timeLeft()}/> 
 
-                        <button id="btn" className="tag-btn" onClick={this.handleUploadBtnClick.bind(this)}>UPLOAD YOUR CONTENT</button>
+                    <div className="posts-container">
+                        <button id="btn post-min" className="tag-btn" onClick={this.handleUploadBtnClick.bind(this)}>UPLOAD YOUR CONTENT</button>
                         <UploadPost ref="upload"/>
-                        
+                        <PostsContainer/>
+                   
+                     </div> 
                 </div>
             	<Footer/>
             </div>

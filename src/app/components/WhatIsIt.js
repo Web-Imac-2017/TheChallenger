@@ -45,6 +45,7 @@ export default class Login extends React.Component{
 						anyone and anywhere in the world
 					</div>
 					
+					
 				</div>
 				
 				<span className="artist"><p>by Cheval123 </p></span>

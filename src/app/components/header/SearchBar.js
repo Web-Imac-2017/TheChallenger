@@ -30,7 +30,7 @@ export default class SearchBar extends React.Component {
         return(
             <div className="search-bar">
                 <form className="search-form" >
-		     	    <input type="search" name="Your search" className="search-field" onMouseOver={this.mouseOver.bind(this)} onMouseOut={this.mouseOut.bind(this)}/>
+		     	    <input type="search" name="Your search" className="search-field" onClick={this.mouseOver.bind(this)} onMouseOut={this.mouseOut.bind(this)}/>
                 </form>
             </div>
         );
