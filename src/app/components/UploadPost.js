@@ -8,12 +8,17 @@ export default class UploadPost extends React.Component {
 
         this.state = { active: false };
         this.open = this.open.bind(this);
+        this.apiURL = "api/post/add/"+this.props.challengeId+"/";
     }
     close () {
         this.setState({ active: false });
     }
     open () {
         this.setState({ active: true });
+    }
+
+    send() {
+        
     }
     
     render() {
@@ -39,9 +44,11 @@ export default class UploadPost extends React.Component {
                             <Tag name ="Fichier"/>
                         </div>
                     </div>
+                    <form className="form" method="POST" action={this.apiURL}>
                         <input type="Title" name="title" className="field-contact" placeholder="Your Title"/>
                         <textarea type = "Description" className="field-contact" placeholder="Your Description"></textarea>
                         <button className="field-contact form-btn" href="#">Share</button>
+                    </form>
                       
                 </div>            
             </div>

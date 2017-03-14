@@ -75,10 +75,10 @@ export default class PostsContainer extends React.Component{
 
 	  render(){
 		    return(
-                <div className="posts-container">
-                    {this.filterBar}
-                    {this.state.postsFiltered}
-                </div>
+            <div className="posts-container">
+                {this.filterBar}
+                {this.state.postsFiltered}
+            </div>
 		    );
 	  }
 }
