@@ -5,7 +5,7 @@
   
     align-items: center; 
 	text-align:middle;
-	background-color: $banniereColor;
+ background-color: $banniereColor;
 	
 }
 
@@ -105,9 +105,10 @@ input {
     background: transparent  url(https://fcpp.org/sites/default/files/images/search-icon.png) no-repeat 9px center;
 	background-size:30px 30px;
     width: 15px;
-    padding: 3px 7px 7px 20px;
-    padding-left: 15px;
-    color: transparent;
+    padding: 3px 7px 7px 25px;
+   
+   
+ 
     cursor: pointer;
 	
 	color:white;
@@ -131,19 +132,21 @@ input {
 
     &:focus {
 		width: 20%;
-        padding-left: 32px;
-        color:white;
+        padding-left: 40px;
+       
         background-color: transparent;
         cursor: auto;
 		border-left:10%;
-	
+		
         -webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
         -moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
         box-shadow: 0 0 5px rgba(109,207,246,.5);
+		
+		border:0px solid white;
     }
 
     &:hover{
-        background-color: transparent;
+        background-color: #C41A15;
 		z-index:1;
 		color:white;
     }
