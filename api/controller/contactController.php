@@ -8,7 +8,7 @@ class Message{
 			echo(json_encode(["code" => 0,"message" => "empty field(s)"]));
 			exit();
 		}
-		$user=new User();
+		global $user;
 		if(!$user->is_connected(MEMBRE)){
 			echo(json_encode(["code" => 0,"message" => "not conected"]));
 			exit();

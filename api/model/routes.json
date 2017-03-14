@@ -135,6 +135,10 @@
 		"request" : "postController@getWinners"
 	},
 	
+    "message/send/": {
+        "request" : "contactController@sendMessage"
+    },
+
 	"user/id/": {
 		"request" : "userController@id_connected"
 	}

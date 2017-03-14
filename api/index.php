@@ -9,6 +9,7 @@
 	require_once("controller/postController.php");
 	require_once("model/challenge.php");
 	require_once("controller/challengeController.php");
+	require_once("controller/contactController.php");
 	
 	//Permet d'include les classes depuis le controller directement sans avoir à cité le controller
 	function __autoload($class_name){
