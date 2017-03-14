@@ -110,14 +110,50 @@ button.follow_btn {
 	    color: $blockBackgroundColor;
     }
 }
+.content_popup{
+    .overlay{
+        z-index: 2;
+        background-color: rgba(0,0,0,0.8);
+    }
+    .post-popup {
+        display: flex;
+        flex-direction: column;
+        z-index: 3;
+        position: fixed;
+        width: 70%;
+        height: 80%;
+        max-width: 95%;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        background-color: #fff;
+        border-radius: 4px;
+        padding: 14px;
+        .post-content{
+            height: 70%;
+            display: flex;
+            justify-content: center;
+            iframe{
+                height: 100%;
+            }
+        }
+            .close-button{
+                background:transparent;
+                border: none;
+                padding: 0;
+                position: absolute;
+                right: 15px;
+                img{
+                    border-radius: 16px;
+                }
+                .post_pic{
+                    width: 40px;
+                    height: 40px;
 
-.post-popup {
-    display: block;
-    position: fixed;
-    width: 600px;
-    max-width: 95%;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    background-color: rgba(255,255,255,1);
+                }
+        }
+        .post__profil_bar{
+            width: 90%;
+        }
+    }
 }

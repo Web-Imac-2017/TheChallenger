@@ -32,21 +32,21 @@ export default class PostContent extends React.Component{
         let media = null;
         switch(post.type) {
         case "text":
-            media = (<p>{post.content}</p>);
+            media = (<p>{post.linkcontent}</p>);
             break;
         case "image":
-            media = (<img src={post.content} alt={post.content} />);
+            media = (<img src={post.linkcontent} alt={post.linkcontent} />);
             break;
         case "audio":
-            media = (<iframe width="100%" height="200" scrolling="no" frameBorder="no" src={post.content}></iframe>);
+            media = (<iframe width="100%" height="200" scrolling="no" frameBorder="no" src={post.linkcontent}></iframe>);
             break;
         case "video":
             media = (<iframe width="100%" allowFullScreen frameBorder="no"
-                     src={this.state.post.content}>
+                     src={this.state.post.linkcontent}>
                      </iframe> );
             break;
         case "file":
-            media = (<p>FILE: {post.content}</p>);
+            media = (<p>FILE: {post.linkcontent}</p>);
             break;
         default: break;
         }
@@ -55,10 +55,10 @@ export default class PostContent extends React.Component{
 
     render(){
         return (
-                <div className="post-content" >
+            <div className="post-content" >
+                {this.overlay}
                 {this.state.renderContent}
-            {this.overlay}
-            {this.postPopup}
+                {this.postPopup}
             </div>
         );
     }
