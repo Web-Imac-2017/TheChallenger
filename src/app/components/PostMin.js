@@ -20,14 +20,12 @@ export default class PostMin extends React.Component{
             post : null
         };
         
-        console.log("POST ID CA MERE "+this.props.postId);
-        
-        this.loadData();	
+        this.loadData();    
     }
 
     loadData(){
         var postId = this.props.postId;
-         console.log("POSTID POST MIN : "+postId);
+//         console.log("POSTID POST MIN : "+postId);
         // console.log(postId);
         Utility.query("api/post/show/"+postId, this.callback.bind(this));
     }

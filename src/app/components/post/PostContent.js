@@ -37,7 +37,7 @@ export default class PostContent extends React.Component{
     }
 
     preRender() {
-        console.log("preRender")
+        //console.log("preRender")
         // media sera inséré dans return(), comme ça ça dépend du type du post.
         let media = null;
         let content = Utility.getPublicPath()+this.state.post.linkcontent;
@@ -66,7 +66,7 @@ export default class PostContent extends React.Component{
                 break;
             default: break;
         }
-        console.log(media)
+ //       console.log(media)
         return media;
     }
 

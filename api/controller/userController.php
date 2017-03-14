@@ -82,7 +82,7 @@ class userController{
    		$user->registeremail();
         
 	    echo(json_encode(["code" => 1,"message" => "Success"]));
-		Utility::nextPage("root");	
+		Utility::nextPage("");	
 	}
 
 	//si l'utilisateur clique sur le lien envoyé par email on confirme l'inscription
@@ -205,7 +205,7 @@ class userController{
 		session_destroy();
 
 		echo(json_encode(["code" => 1,"message" => "Success"]));
-		Utility::nextPage("root");	
+		Utility::nextPage("");	
 
 	}
 
@@ -255,7 +255,7 @@ class userController{
 	//fonction suppression follower
 	public static function checkfollow($id){
 		global $user;
-		if ($id = $_COOKIE['id']) { 
+		if ($id == $_COOKIE['id']) { 
 			echo(json_encode(["code" => 3,"message" => "Yourself"]));
 			exit();
 		}
