@@ -10,7 +10,7 @@ export default class ChallengeMin extends React.Component{
         const defaultChallenge ={
             "id" : 1,
             "photo" : "./../../../img/challenges/panda.jpg",
-            "title" : "panda"
+            "title" : "Panda"
         };
         this.state = {
             challenge : defaultChallenge
