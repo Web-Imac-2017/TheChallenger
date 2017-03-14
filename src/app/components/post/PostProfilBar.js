@@ -4,7 +4,7 @@ import { BrowserRouter as Router,
          Link } from "react-router";
          
 import Utility from './../../utilities/utility.js';
-import FollowBtn from './../assets/FollowBtn.js'
+import FollowBtn from './../assets/FollowBtn.js';
 
 export default class PostProfilBar extends React.Component{
 

@@ -3,14 +3,26 @@ import { BrowserRouter as Router,
          Link } from "react-router";
 import Utility from './../../utilities/utility.js';
 
+import Post from './../Post.js';
+
 export default class PostContent extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            post: this.props.post.post,
-            renderContent: this.preRender(this.props.post.post)
+            post: this.props.post,
+            renderContent: this.preRender(this.props.post)
         };
-        this.overlay =  this.props.preview ? (<div className="veil"></div>) : null;
+        this.overlay =  this.props.preview ? (
+                <div className="veil" onClick={this.handlePostPopupClick.bind(this)}></div>
+        ) : null;
+        this.postPopup = this.props.preview ? (<Post post={this.state.post} ref="postPopup"/>) : null;
+        console.log("bonjour"+this.state.post);
+        // this.postPopup = (<Post post={this.state.post} ref="postPopup"/>);
+    }
+
+    handlePostPopupClick() {
+        if(this.props.preview)
+            this.refs.postPopup.open();
     }
 
     preRender(post) {
@@ -46,6 +58,7 @@ export default class PostContent extends React.Component{
                 <div className="post-content" >
                 {this.state.renderContent}
             {this.overlay}
+            {this.postPopup}
             </div>
         );
     }

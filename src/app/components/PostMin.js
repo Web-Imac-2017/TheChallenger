@@ -19,7 +19,7 @@ export default class PostMin extends React.Component{
         };
 
         this.state = {
-            post : defaultPost
+            post : defaultPost.post
         };
         
         this.loadData();	
@@ -47,7 +47,7 @@ export default class PostMin extends React.Component{
         return(
             <div className="post-min">
                 <PostProfilBar userId = {this.state.post.user} />
-                <PostContent post = {this.state.post}  preview={1} />
+                <PostContent post = {this.state.post}  preview={true} />
                 <PostLikesBar postId = {this.state.post.id} />
             </div>
         );

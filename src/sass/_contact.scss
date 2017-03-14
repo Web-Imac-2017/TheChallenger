@@ -45,14 +45,14 @@
 	    	height: 100px;
 	    	resize: none;
 	    }
-	    button{
-	    	width: 25%;
-	    	background-color: $blockBackgroundColor;
-	    	color: $banniereColor;
-	    }
+	}
+	.form-btn{
+	width: 25%;
+	background-color: $blockBackgroundColor;
+	color: $banniereColor;
+    border: solid 2px gainsboro;
 	}
 }
-
 
 .field-contact{
 	border : 0;
