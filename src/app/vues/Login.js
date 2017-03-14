@@ -11,9 +11,14 @@ export default class Login extends React.Component{
 	constructor(props) {
 	  super(props);
 
-	  this.state = {
+	  const defaultState = {
 	  	url : './../../img/background3.jpg',
 	  	artist: "jeanMi"
+	  }
+
+	  this.state = {
+	  	url : null,
+	  	artist : null
 	  };
 
 	  this.getRandomImg();

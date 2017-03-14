@@ -14,17 +14,6 @@ export default class Home extends React.Component{
 		//this.props.history.replaceState(null, "/");j
 	}
 
-	componentWillReceiveProps(nextProps) {
-	    this.setState({
-	        children: nextProps.children
-	    });
-	}
-
-	handleClick(){
-		browserHistory.push("/");
-		//this.componentWillReceiveProps()
-	}
-
 	render(){		
 		return(
 			<div id="home" className="page"> 
@@ -33,7 +22,7 @@ export default class Home extends React.Component{
 			        <h1>Pick up your Challenge</h1>
 			        <ChallengeContainer/>
 		        </div>
-	            <h1 onClick={this.handleClick.bind(this)}>Last Winners</h1>
+	            <h1>Last Winners</h1>
 	            <PostsContainer query={"api/winners/"}/>
 		        <Footer/>
 			</div>
