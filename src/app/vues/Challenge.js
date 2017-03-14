@@ -52,12 +52,9 @@ export default class Challenge extends React.Component {
     	                	title = {this.state.challenge.title}
     	                	time = {this.state.challenge.timeleft}/> 
 
-                    <div className="posts-container">
-                        <button id="btn post-min" className="tag-btn" onClick={this.handleUploadBtnClick.bind(this)}>UPLOAD YOUR CONTENT</button>
-                        <UploadPost ref="upload" challengeId={this.state.challenge.id}/>
-                        <PostsContainer/>
-                   
-                     </div> 
+                  <button id="btn post-min" className="tag-btn" onClick={this.handleUploadBtnClick.bind(this)}>UPLOAD YOUR CONTENT</button>
+                  <UploadPost ref="upload" challengeId={this.state.challenge.id}/>
+                  <PostsContainer query={"api/challenge/posts/"}/>
                 </div>
             	<Footer/>
             </div>
