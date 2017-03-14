@@ -22,7 +22,7 @@ class challengeController {
 		$query->execute();
 		$datas=$query->fetch();
 		$query->CloseCursor();
-		$time = Challenge::timeLeft($idchallenge);
+		$time = self::getLeftTime($idchallenge);
 		$item = [
 			"id" => $idchallenge,
 			"title" => $datas['title'],
@@ -30,7 +30,7 @@ class challengeController {
 			"photo" => 'challenge/'.$datas['photo'],
 			"datestart" => $datas['datestart'],
 			"datestop" => $datas['datestop'],
-			"time" => $time
+			"timeleft" => $time
 		];
 		
 		
@@ -98,8 +98,7 @@ class challengeController {
 		}
 	}
 	
-	public static function time_left($idchallenge) {
-	
+	private static function getLeftTime($idchallenge){
 		$challenge = Challenge::challenge_exists($idchallenge);
 		if (!$challenge) {
 		
@@ -114,8 +113,15 @@ class challengeController {
 		$query->closeCursor();
 		$date=strtotime($stop['datestop']);
 		$diff=$date-time();
+		return $diff;
+	}
+
+	public static function time_left($idchallenge) {
+	
+		$diff = getLeftTime($idchallenge);
 		$days=round($diff/(60*60*24));
 		$hours=round(($diff-$days*60*60*24)/(60*60));
+
 		$time = [
 		
 			"days" => $days,

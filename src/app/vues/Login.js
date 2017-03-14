@@ -45,9 +45,7 @@ export default class Login extends React.Component{
 
 	render(){
 		//var imgUrl = this.state.nextImg ? this.state.nextImgSrc : this.state.song.imgSrc;
-        const divStyle = {
-            backgroundImage: 'url(' + this.state.url + ')'
-        }
+        
 		
 		var ypos,image,elem,elem2;
 
@@ -76,28 +74,25 @@ export default class Login extends React.Component{
 		};		
 		window.addEventListener('scroll',parallax);
 	 // <div className="overlay"></div>
+
+	 	const divStyle = {
+            backgroundImage: 'url(' + this.state.url + ')'
+        }
 		return(
-		<div id="page-login">
-			
-			<div id="login">
-			
-				<div className="background_img" id="background-x"style={divStyle}>	
-					<img src={bottomArrow} id="arrow" className="arrow" alt="Mountain View"/> 
+			<div id="page-login">
+				<div id="login">
+					<div className="background_img" id="background-x" style={divStyle}>	
+						<img src={bottomArrow} id="arrow" className="arrow" alt="Mountain View"/> 
+					</div>
+					<div className="overlay"></div>
+					<span className="artist"><p>by {this.state.artist}</p></span>
+					<LoginBox/>
 				</div>
-				<div className="overlay"></div>
-				<span className="artist"><p>by {this.state.artist}</p></span>
-				<LoginBox/>
-				
-			</div>
+				<div id="page-bottom">
+					<WhatIsIt/> 
+				</div>
 			
-			<div id="page-bottom">
-				
-				<WhatIsIt/> 
-			</div>
-		
-		</div>	
-		
-		
+			</div>	
 		);
 	}
 

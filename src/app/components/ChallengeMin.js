@@ -7,23 +7,26 @@ import { BrowserRouter as Router,
 export default class ChallengeMin extends React.Component{
     constructor(props){
         super(props);
-        const defaultChallenge ={
+
+        const defaultChallenge = {
             "id" : 1,
             "photo" : "./../../../img/challenges/panda.jpg",
             "title" : "Panda"
         };
+
         this.state = {
-            challenge : defaultChallenge
+            challenge : null
         };
         this.loadData();
     }
 
     loadData(){
-        var challengeId = this.props.challengeId;
-        Utility.query('api/challenge/current/'+challengeId, this.callback.bind(this));   
+        var id = this.props.id;
+        Utility.query('api/challenge/show/'+id, this.callback.bind(this));   
     }
 
     callback(data){
+        
         this.setState({ challenge : data });
     }
     render(){
@@ -32,7 +35,7 @@ export default class ChallengeMin extends React.Component{
 	    return(
             <div className="challenge-min">
                 <Link to={"/challenge/"+this.state.challenge.id}>
-                    <Vignette image={this.state.challenge.photo}/>
+                    <Vignette image={Utility.getPublicPath()+this.state.challenge.photo}/>
                     <h4>{this.state.challenge.title}</h4> 
                     <h4>Challenge</h4>
                 </Link>
