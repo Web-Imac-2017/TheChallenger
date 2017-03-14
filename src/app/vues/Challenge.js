@@ -13,7 +13,7 @@ export default class Challenge extends React.Component {
 
     	const defaultChallenge = {
 			"id" : 1,
-            "photo" : "./../../../img/challenges/panda.jpg",
+            "photo" : "./../../../img/challenges/pandaRoux.jpg",
             "title" : "Panda",
             "description" : "Les pandas sont de super animaux, mais connaissez-vous les pandas roux? Vous avez 4h.LOL"
 		};
