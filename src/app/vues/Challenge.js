@@ -13,7 +13,7 @@ export default class Challenge extends React.Component {
 
     	const defaultChallenge = {
 			"id" : 1,
-            "photo" : "./../../../img/challenges/panda.jpg",
+            "photo" : "./../../../img/challenges/pandaRoux.jpg",
             "title" : "Panda",
             "description" : "Les pandas sont de super animaux, mais connaissez-vous les pandas roux? Vous avez 4h.LOL"
 		};
@@ -53,7 +53,7 @@ export default class Challenge extends React.Component {
 
                     <div className="posts-container">
                         <button id="btn post-min" className="tag-btn" onClick={this.handleUploadBtnClick.bind(this)}>UPLOAD YOUR CONTENT</button>
-                        <UploadPost ref="upload"/>
+                        <UploadPost ref="upload" challengeId={this.state.challenge.id}/>
                         <PostsContainer/>
                    
                      </div> 

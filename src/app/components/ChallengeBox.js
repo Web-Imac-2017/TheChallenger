@@ -7,9 +7,12 @@ export default class ChallengeBox extends React.Component{
 		this.refs.readmore.open();
 	}
 	render(){
+		const divStyle = {
+            	backgroundImage: 'url(' + this.props.photo + ')'
+        	}
 		return(
 			<div id="challenge_box">
-				<div className ="challenge_box__photo">
+				<div className ="challenge_box__photo background_img" style={divStyle}>
 					<img src={this.props.photo}/>
 				</div>
 				<div className="challenge_box__text">

@@ -45,7 +45,7 @@ export default class Login extends React.Component{
 
 	render(){
 		//var imgUrl = this.state.nextImg ? this.state.nextImgSrc : this.state.song.imgSrc;
-        var divStyle = {
+        const divStyle = {
             backgroundImage: 'url(' + this.state.url + ')'
         }
 		
