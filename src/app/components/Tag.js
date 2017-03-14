@@ -1,13 +1,14 @@
 import React from "react";
 
 export default class Tag extends React.Component {
-    constructor() {
-        super(props);
+    click() {
+        if(this.props.callbackParent)
+            this.props.callbackParent(this.props.value);
     }
-       
+
     render() {
         return(
-                <button className="tag-btn">{this.props.name}</button>
+                <button className="tag-btn" onClick={this.click.bind(this)}>{this.props.name}</button>
         );
     }
 }
