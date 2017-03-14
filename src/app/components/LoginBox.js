@@ -8,7 +8,9 @@ export default class LoginBox extends React.Component{
 		return(
 			<div id="login_box" >
 				<h2 className="title">The Challenger</h2>
-				<p>Vote & Share</p>
+					<div className="text-subtitle">
+							<p> <i> Share, Vote, Win ! </i> </p>
+					</div>
 				<LoginForm/>
 				<p>OR</p> 
 				<SignUpForm/>

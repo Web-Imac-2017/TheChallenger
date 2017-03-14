@@ -75,16 +75,18 @@ export default class Login extends React.Component{
 		<div id="page-login">
 			
 			<div id="login">
-
+			
 				<div className="background_img" id="background-x"style={divStyle}>	
 					<img src={bottomArrow} id="arrow" className="arrow" alt="Mountain View"/> 
 				</div>
+				<div className="overlay"></div>
 				<span className="artist"><p>by {this.state.artist}</p></span>
 				<LoginBox/>
 				
 			</div>
 			
 			<div id="page-bottom">
+				
 				<WhatIsIt/> 
 			</div>
 		
