@@ -53,13 +53,14 @@ export default class PostContent extends React.Component{
         //console.log("preRender")
         // media sera inséré dans return(), comme ça ça dépend du type du post.
         let media = null;
-        let content = Utility.getPublicPath()+this.state.post.linkcontent;
+        let content = this.state.post.linkcontent;
         //console.log(this.state.post);
         switch(this.state.post.type) {
             case TEXT:
                 media = (<p>{content}</p>);
                 break;
             case IMAGE:
+                content = Utility.getPublicPath()+content;
                 const divStyle = {
                     backgroundImage: 'url(' + content + ')'
                 }

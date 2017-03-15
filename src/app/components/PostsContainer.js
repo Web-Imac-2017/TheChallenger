@@ -11,23 +11,24 @@ export default class PostsContainer extends React.Component{
             posts : null,
             postsFiltered: null
         };
+
 //        console.log(this.props.posts);
         if(this.props.posts !== undefined){
+            let tmp = this.props.posts.map((id) => {
+                return(<PostMin postId={id} 
+                                callbackParent={this.callBackPostType.bind(this)}
+                                affFollow={this.props.affFollow}
+                                affLikes={this.props.affLikes}/>);
+            });
             this.state = {
-                posts: this.props.posts.map((id) => {
-                    return(<PostMin postId={id} 
-                                    callbackParent={this.callBackPostType.bind(this)}/>);
-                })
+                posts: tmp,
+                data : this.props.posts
+            
             };
         }else if(this.props.query !== undefined){
             Utility.query(this.props.query, this.callBackData.bind(this));
-            // remplissage par défaut
-            /*this.state = {
-                posts: this.state.postsIds.map(()=>{    
-                    return(<PostMin postId={1} callbackParent={this.callBackPostType.bind(this)}/>);
-                })
-            };*/
         }
+
         //console.log(this.state.posts);
         this.filterBar = <FilterBar updateParent={this.updatePostsFiltered.bind(this)} filters={{
             "all": "All",
@@ -37,27 +38,43 @@ export default class PostsContainer extends React.Component{
             "text": "Text",
             "file": "Fichier"
         }} />;
-
         
         this.state = {
-            postsFiltered: this.state.posts
+            postsFiltered: this.state.posts,            
+            affFollow : this.props.affFollow,
+            affLikes : this.props.affLikes,
+            data : null
         };
       }
+
+    componentWillReceiveProps() {
+        this.setState({
+            affFollow : this.props.affFollow,
+            affLikes : this.props.affLikes
+        });
+        this.callBackData.bind(this, this.state.data);
+    }
 
     callBackPostType(postId, type) {
         this.state.postsTypes[postId] = type;
     }
 
     callBackData(data) {
-       /* console.log("CALLBACK POST CONTAINER")
-        console.log(data);*/
+        /*console.log("CALLBACK POST CONTAINER")
+        console.log(this.state.affFollow);
+        console.log(this.state.affLikes);*/
+       // console.log(data);
         let tmp = data == null ? null : data.map((id) => {
-                    return(<PostMin postId={id} 
-                                    callbackParent={this.callBackPostType.bind(this)} />);
-                });
+            return(<PostMin postId={id} 
+                            callbackParent={this.callBackPostType.bind(this)} 
+                            affFollow={this.state.affFollow}
+                            affLikes={this.state.affLikes}/>
+            );
+        });
         this.setState({
             posts: tmp,
-            postsFiltered : tmp
+            postsFiltered : tmp,
+            data : data
         });
         this.updatePostsFiltered("all");
     }
@@ -86,6 +103,7 @@ export default class PostsContainer extends React.Component{
         //{this.filterBar}
         return(
             <div className="posts-container">
+                {this.filterBar}
                 {this.state.postsFiltered}
             </div>
         );

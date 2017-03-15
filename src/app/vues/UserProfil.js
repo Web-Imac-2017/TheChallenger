@@ -64,7 +64,9 @@ export default class UserProfil extends React.Component {
 	                	email = {this.state.user.email}
 	                	desc = {this.state.user.description}
 	                />
-	                <PostsContainer posts={this.state.user.idpost}/>
+	                <PostsContainer posts={this.state.user.idpost}
+                                    affFollow={false}
+                                    affLikes={false}/>
                 </div>
             	<Footer/>
             </div>

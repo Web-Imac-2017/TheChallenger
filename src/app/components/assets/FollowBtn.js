@@ -4,15 +4,26 @@ import Utility from './../../utilities/utility.js';
 export default class ProfilBox extends React.Component{
 	constructor(props){
 		super(props);
+		
 		const user = this.props.userId;
 		this.state ={
-			user : user,
+			user : this.props.userId,
 			follow : false,
 			unfollow : false,
 			display : true
 		};
-		Utility.query('api/user/follow/check/'+user, this.isFollowingCallBack.bind(this));
+    	Utility.query('api/user/follow/check/'+user, this.isFollowingCallBack.bind(this));
 	}
+
+	componentWillReceiveProps() {
+        this.setState({user: this.props.userId});
+        this.loadData();
+    }
+
+    loadData(){
+    	const user = this.props.userId;
+    	Utility.query('api/user/follow/check/'+user, this.isFollowingCallBack.bind(this));
+    }
 
 	isFollowingCallBack(data){
 		this.changeFollow(data, true);
@@ -66,7 +77,7 @@ export default class ProfilBox extends React.Component{
 		}
 
 		return(
-			<button className="follow_btn button" 
+			<button id={this.state.user} className="follow_btn button" 
 					onClick={this.handleFollowClick.bind(this)}
 					onMouseEnter={this.handleMouseEnter.bind(this)}
 					onMouseLeave={this.handleMouseLeave.bind(this)}>
