@@ -1,3 +1,5 @@
+$squareWidth : 25px;
+
 .page{
 	text-align:center;
 	background-color: $pageBackgroundColor;
@@ -12,10 +14,12 @@
     @include laptop{
     	width: 100%;
     }
-    padding:2em 0 4em;
+    padding:1em 0 4em;
+    
+    .filter-bar {
+	    margin: 1.5em 0;
+	}
 }
-
-$squareWidth : 25px;
 
 .post-min{
 	box-shadow : 0.5px 0.5px 5px #555;

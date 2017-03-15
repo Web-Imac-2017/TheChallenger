@@ -15,7 +15,8 @@ export default class PostsContainer extends React.Component{
 //        console.log(this.props.posts);
         if(this.props.posts !== undefined){
             let tmp = this.props.posts.map((id) => {
-                return(<PostMin postId={id} 
+                return(<PostMin key={id}
+                                postId={id} 
                                 callbackParent={this.callBackPostType.bind(this)}
                                 affFollow={this.props.affFollow}
                                 affLikes={this.props.affLikes}/>);
@@ -30,14 +31,14 @@ export default class PostsContainer extends React.Component{
         }
 
         //console.log(this.state.posts);
-        this.filterBar = <FilterBar updateParent={this.updatePostsFiltered.bind(this)} filters={{
+        /*this.filterBar = <FilterBar updateParent={this.updatePostsFiltered.bind(this)} filters={{
             "all": "All",
             "audio":"Audio",
             "video": "Video",
             "image": "Image",
             "text": "Text",
             "file": "Fichier"
-        }} />;
+        }} />;*/
         
         this.state = {
             postsFiltered: this.state.posts,            
@@ -65,7 +66,8 @@ export default class PostsContainer extends React.Component{
         console.log(this.state.affLikes);*/
        // console.log(data);
         let tmp = data == null ? null : data.map((id) => {
-            return(<PostMin postId={id} 
+            return(<PostMin key = {id}
+                            postId={id} 
                             callbackParent={this.callBackPostType.bind(this)} 
                             affFollow={this.state.affFollow}
                             affLikes={this.state.affLikes}/>
