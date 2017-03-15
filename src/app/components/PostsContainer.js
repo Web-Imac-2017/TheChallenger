@@ -12,7 +12,8 @@ export default class PostsContainer extends React.Component{
             postsFiltered: null
         };
 
-//        console.log(this.props.posts);
+        console.log("POST QUERY")
+        console.log(this.props.query);
         if(this.props.posts !== undefined){
             let tmp = this.props.posts.map((id) => {
                 return(<PostMin key={id}
