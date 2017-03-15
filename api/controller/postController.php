@@ -17,7 +17,7 @@ class postController
 	//gestion des like de post
 	public static function addlike($idpost){
 		if(Post::checklike($idpost)){
-			echo(json_encode(["code" => 0,"message" => "error : already liked "]));
+			echo(json_encode(["code" => 0,"message" => "error : post already liked "]));
 			exit();
 		}
 		//si l'utilisateur n'a pas encore like le post
@@ -37,7 +37,7 @@ class postController
 	public static function deletelike($idpost){
 		//si l'utilisateur a like
 		if(!Post::checklike($idpost)){
-			echo(json_encode(["code" => 0,"message" => "error : not liked"]));
+			echo(json_encode(["code" => 0,"message" => "error post not liked"]));
 			exit();
 		}
 		global $db;
