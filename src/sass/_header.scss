@@ -1,105 +1,40 @@
+@import 'mixins';
 .header {
 	display: flex; 
 	flex-direction: row;
+	flex-wrap: wrap;
 	height:70px;
 	text-align: center;
     align-items: center; 
  	background-color: $banniereColor;
  	justify-content: space-around;
 }
-
 .search-bar {
-}
-
-.search-field {
-    max-width: 200px;
-}
-
-.logo-area {
-    h1 {
-		font-family: 'Montserrat';
-		font-weight: 300;
-        text-align: center;
-        font-size: 2em;
-        color: white;
-        white-space:nowrap;
-    }
-}
-
-.user-menu {
-    .vignette {
+	width: 40px;
+	form{
+		margin: 0;
 	}
-    .user-menu-drop-down {
-        background-color: white;
-    }
-}
-
-
-input {
-    outline: none;
-}
-
-.img-profil{
-	display:block;
-	border-radius: 50%;
-	margin-top:2px;
-	transition: transform 0.5s ease;
-
-}
-
-.img-profil:hover{
-     transform:scale(1.05);
-}
-
-
-
-.circle-back {
-	/*margin-left:100%;*/
-	margin-left: 50%;;
-	position : relative;	
-	/*left:800%;*/
-    display: block;
-    width:100%;
-    height: 110%;
-	border-radius:50%;
-    background-color:transparent;  
-    text-align:center;
-	border:2px solid white;
-	z-index:1;
-}
-
-.search-form input[type=search]{
-	border : solid 1px white;
-	border-radius:15px;
-	margin-left:-35%;
-	margin-top:1px;
-    background: transparent  url(https://fcpp.org/sites/default/files/images/search-icon.png) no-repeat 9px center;
-	background-size:30px 30px;
-    width: 15px;
-    padding: 3px 7px 7px 25px;
-   
-   
- 
+	input[type=text] {
+	background-image: url('./../img/icons/search-icon.png');
+    background-size: 40px 40px; 
+    background-repeat: no-repeat;
     cursor: pointer;
-	
 	color:white;
-	
-    -webkit-appearance: textfield;
-    -webkit-box-sizing: content-box;
-    font-family: inherit;
-    font-size: 100%;
-
+    font-size: 16px;
     border: none;
+    border-radius: 3px;
     border-color: white;
+    height: 38px;
+    background-color: transparent;
+
     -webkit-transition: all .5s;
     -moz-transition: all .5s;
     transition: all .5s;
-
-    &:focus {
-		width: 20%;
+    
+	}
+    input[type=text]:focus {
         padding-left: 40px;
-       
-        background-color: transparent;
+        background-color: rgba(0,0,0,0.1);
         cursor: auto;
 		border-left:10%;
 		
@@ -109,102 +44,90 @@ input {
 		
 		border:0px solid white;
     }
-
-    &:hover{
-        background-color: #8EEED1;
+    input[type=text]:hover{
+        background-color: rgba(0,0,0,0.1);
 		z-index:1;
 		color:white;
     }
-	
 }
-
-
-.tab-user-menu{
-	border-radius:5px;
-	background-color:#E6E6E6;
-	position:absolute;
-	left:24%;
-	width:125px;
-	height:110px;
-	top:-5px;
-	text-align:center;
-}
-
-
-
-.disconnect{
-	width:90%;
-	position: absolute;
-    bottom: 10%;
-	left:5%;
-	height:35px;	
-	border-radius: 6px;
-	color: white;
-	font-size: 15px;
-	background: $banniereColor;
-	padding: 5px 10px 5px 10px;
-	text-decoration: none;
-	text-align: center; 
-}
-
-.access-profil{
-	position: absolute;
-    bottom:55%;
-	left:30%;
-	border-radius: 6px;
-	font-family: Arial;
-	color: #170b17;
-	font-size: 13px;
-	background: #ffffff;
-	padding: 5px 10px 5px 32px;
-	text-decoration: none;
-}
-
-@media screen and (max-width: 1400px) {
-
-   .tab-user-menu{ 
-		
-		top:-60px;
-		width:120px;
-		height:125px;
-		margin-left:-30%;
-		position:relative;
-    }
-	
-	.access-profil{
-		display:none;
+.tab-user-menu-box{
+	position: relative;
+    right: 35px;
+    top: -56px;
+	.tab-user-menu{
+		border-radius: 5px;
+	    background-color: #E6E6E6;
+	    position: absolute;
+	    width: 117px;
+	    height: 115px;
+	    
+	    text-align: center;
+	    display: flex;
+	    align-items: flex-end;
+	    justify-content: center;
+	    padding: 6px;
 	}
-	
 	.disconnect{
-		width:90%;
-		font-size:12px;
-		height:35px;
-		
-		
+		height:35px;	
+		border-radius: 6px;
+		color: white;
+		font-size: 15px;
+		background: #690808;
+		padding: 5px 10px 5px 10px;
+		text-align: center; 
 	}
-	
-	.search-form {
-	
+}
+.logo-area {
+    h1 {
+		font-family: 'Montserrat';
+		font-weight: 300;
+        text-align: center;
+        font-size: 2em;
+        color: white;
+        white-space:nowrap;
+        margin: 0;
+    }
+}
 
-	
-	}
-	
-	.logo-area{
-	
-	margin-left:90;}
-
+.img-profil{
+	border-radius: 50%;
+	transition: transform 0.5s ease;
 
 }
 
-@media screen and (max-width: 740px) {
+.img-profil:hover{
+     transform:scale(1.05);
+}
+.circle-back {
+	position : relative;	
+    width:50px;
+    height: 50px;
+	border-radius:50%;
+    background-color:transparent;  
+    text-align:center;
+	border:2px solid white;
+	z-index:1;
+}
+
+@include mobile {
+	.header{
+	    flex-direction: column-reverse;
+	    
+	}
+	.search-bar{
+		input[type=text] {
+			background-size: 20px; 
+			height: 28%;
+		}
+		input[type=text]:focus{
+			transform: translate(-100px);
+		}
+	}
 	.logo-area{
-	margin-left:-22%;
 		font-size:10px;
+		width: 80%;
 	}
 	.user-menu{
-	
-	width:5%;
-	margin-left:-20%;
-	
+		width: 100%;
 	}
 }
