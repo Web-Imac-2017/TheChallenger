@@ -8,44 +8,49 @@ export default class Timer extends React.Component{
         // This is called before our render function. The object that is 
         // returned is assigned to this.state, so we can use it later.
 
-        this.state ={ elapsed: 0 };
+        this.state = { timer: null };
+        console.log("TIMER")
+        console.log("end " + this.props.end)
+
+        
+        
     }
 
     componentDidMount(){
-
-        // componentDidMount is called by react when the component 
-        // has been rendered on the page. We can set the interval here:
-
-        this.timer = setInterval(this.tick.bind(this), 50);
+        this.timer = setInterval(this.tick.bind(this), 1000);
     }
 
     componentWillUnmount(){
-
-        // This method is called immediately before the component is removed
-        // from the page and destroyed. We can clear the interval here:
-
         clearInterval(this.timer);
     }
 
+    startTimer(){
+        // Update the count down every 1 second
+               
+    }
+
     tick(){
+        // Get todays date and time
+        var now = new Date().getTime();
+        var count = new Date(this.props.end).getTime();
 
-        // This function is called every 50 ms. It updates the 
-        // elapsed counter. Calling setState causes the component to be re-rendered
+        // Find the distance between now an the count down date
+        var distance = count - now;
 
-        this.setState({elapsed: this.props.end - (new Date() - this.props.start)});
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display the result in the element with id="demo"
+        this.setState({
+            timer: days + "d " + hours + "h "+ minutes + "m " + seconds + "s " 
+        });
     }
 
     render() {
-        
-        var elapsed = Math.round(this.state.elapsed / 100);
-
-        // This will give a number with one digit after the decimal dot (xx.x):
-        var seconds = (elapsed / 10).toFixed(1);    
-
-        // Although we return an entire <p> element, react will smartly update
-        // only the changed parts, which contain the seconds variable.
-
-        return <p>This example was started <b>{seconds} seconds</b> ago.</p>;
+        return <h1>{this.state.timer}</h1>;
     }
 
 
