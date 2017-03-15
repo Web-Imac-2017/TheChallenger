@@ -105,7 +105,7 @@ class postController
 		if(empty($image) && !empty($link)){
 		
 			$linkcontent=$link;
-			$query=$db->prepare('INSERT INTO thechallenger.post (title,state,linkcontent,type,hd,description,tag,datepost,iduser,idchallenge) VALUES (:title,0,:linkcontent,2,0,:description,:tag,DATE(NOW()),:iduser,:idchallenge)');			
+			$query=$db->prepare('INSERT INTO thechallenger.post (title,state,linkcontent,type,hd,description,tag,datepost,iduser,idchallenge,winner,score) VALUES (:title,0,:linkcontent,2,0,:description,:tag,DATE(NOW()),:iduser,:idchallenge,0,0)');			
 			
 		}
 		$query->bindParam(':title',$title,PDO::PARAM_STR);
