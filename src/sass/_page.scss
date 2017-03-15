@@ -1,7 +1,10 @@
+$squareWidth : 25px;
+
 .page{
 	text-align:center;
 	background-color: $pageBackgroundColor;
 	overflow : hidden;
+	min-height : 100vh;
 }
 
 .posts-container {
@@ -11,10 +14,12 @@
     @include laptop{
     	width: 100%;
     }
-    padding:2em 0 4em;
+    padding:1em 0 4em;
+    
+    .filter-bar {
+	    margin: 1.5em 0;
+	}
 }
-
-$squareWidth : 20px;
 
 .post-min{
 	box-shadow : 0.5px 0.5px 5px #555;
@@ -62,6 +67,7 @@ $squareWidth : 20px;
 
     .post-likes-bar {
         text-align: left;
+        margin-top: 10px;
         img {
             display: inline;
             height: 14px;

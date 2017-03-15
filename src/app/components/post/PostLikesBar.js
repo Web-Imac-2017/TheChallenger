@@ -9,53 +9,75 @@ const noLikeImg = require("./../../../img/icons/no-like.png");
 export default class PostLikesBar extends React.Component{
     constructor(props) {
         super(props);
+
         this.state = {
-            post: {
-                id: null,
-                likes: 0
-            },
-            userLike: 0
-        };
-        this.loadData();
-        this.img = noLikeImg; // par défaut
+            post: this.props.post,
+            userLike : false
+        };  
+        //this.loadData();
     }
 
-    loadData() {
-        const postId = this.props.postId;
-        Utility.query("api/post/show/"+postId, this.callbackNbLikes.bind(this));
-        Utility.query("api/post/like/check/"+postId, this.callbackUserLike.bind(this));
-    }
-
-    callbackNbLikes(data) {
-        //console.log(data);
-        this.setState({
-            post: {
-                id: data.id,
-                likes: data.likes
-            }
-        });
-    }
-
-    callbackUserLike(data) {
-        //console.log(data);
-        this.setState({
-            userLike: data.code
-        });
-        this.img = this.state.userLike ? likeImg : noLikeImg;
-    }
-
-    callbackLike() {
-        const postId = this.props.postId;
-        Utility.query("api/post/like/add/"+postId, ()=>{});
+    componentDidMount(){
         this.loadData();
     }
 
-	  render(){
-		    return(
-                <div className="post-likes-bar" id={this.props.postId}>
-                <img src={this.img} alt="likes" onClick={this.callbackLike.bind(this)} />
-                <p>{this.state.post.likes}</p>
-                </div>
-		    );
-	  }
+    componentWillReceiveProps() {
+        this.setState({post: this.props});
+        this.loadData();
+    }
+
+    loadData(){
+        if(this.props.post === undefined)
+            return;
+        Utility.query("api/post/like/check/"+this.props.post.id, this.callbackIsLiking.bind(this));
+    }
+
+    callbackIsLiking(data) {
+        //console.log(data);
+        this.setState({
+            userLike: (data.code=="1")?true:false
+        });
+    }
+
+    callBackLike(data){
+        if(data.code == '1'){
+            this.setState({userLike : true});
+        }else{
+            console.log("ERROR LIKE "+data.message)
+        }
+        console.log("LIKE ", this.state.userLike)
+    }
+
+     callBackUnlike(data){
+        if(data.code == '1'){
+            this.setState({userLike : false});
+        }else{
+            console.log("ERROR UNLIKE "+data.message)
+        }
+        console.log("UNLIKE ", this.state.userLike)
+    }
+
+    handleClick(){
+        const postId = this.state.post.id;
+        if(this.state.userLike)
+            Utility.query("api/post/like/delete/"+postId, this.callBackUnlike.bind(this));
+        else
+            Utility.query("api/post/like/add/"+postId, this.callBackLike.bind(this));
+        
+    }
+    render(){
+        if(this.state.post == null) return null;
+
+        let likes = <p>{this.state.post.likes}</p>;
+        
+        if(this.props.affLikes)
+            likes = null;
+        
+        return(
+            <div className="post-likes-bar" id={this.props.postId}>                
+                <img src={(this.state.userLike) ? likeImg : noLikeImg} alt="likes" onClick={this.handleClick.bind(this)} />
+                {likes}
+            </div>
+        );
+    }
 }

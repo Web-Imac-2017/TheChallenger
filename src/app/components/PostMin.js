@@ -18,10 +18,19 @@ export default class PostMin extends React.Component{
         };
 
         this.state = {
-            post : null
+            post : null,
+            affFollow : this.props.affFollow,
+            affLikes : this.props.affLikes
         };
         
         this.loadData();    
+    }
+
+    componentWillReceiveProps() {
+        this.setState({
+            affFollow : this.props.affFollow,
+            affLikes : this.props.affLikes
+        });
     }
 
     loadData(){
@@ -32,8 +41,8 @@ export default class PostMin extends React.Component{
     }
 
     callback(data){
-        // console.log("POST SHOW CALLBACK");
-        // console.log(data);
+        /*console.log("POST SHOW CALLBACK");
+        console.log(data);*/
         this.setState ({
             post : data
         });
@@ -41,16 +50,16 @@ export default class PostMin extends React.Component{
     }
 
     render(){
-  /*      console.log("IDUSER");
-        console.log(this.state.post.iduser)
-        console.log(this.state.post)*/
         if(this.state.post === null)
             return null;
+        /*console.log("IDUSER");
+        console.log(this.state.affFollow);
+        console.log(this.state.affLikes);*/
         return(
             <div className="post-min">
-                <PostProfilBar userId = {this.state.post.iduser} />
+                <PostProfilBar userId = {this.state.post.iduser} affFollow={this.state.affFollow}/>
                 <PostContent post = {this.state.post}  preview={true} />
-                <PostLikesBar postId = {this.state.post.id} />
+                <PostLikesBar post = {this.state.post} affLikes={this.state.affLikes}/>
             </div>
         );
     }

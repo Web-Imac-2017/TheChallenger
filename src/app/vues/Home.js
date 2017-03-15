@@ -20,7 +20,9 @@ export default class Home extends React.Component{
 			        <ChallengeContainer/>
 		        </div>
 	            <h1>Last Winners</h1>
-	            <PostsContainer query={"api/winners/"}/>
+	            <PostsContainer query={"api/winners/"}
+	            				affFollow={true}
+                                affLikes={true}/>
 		        <Footer/>
 			</div>
 		);
