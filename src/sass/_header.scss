@@ -59,20 +59,23 @@
 	    background-color: #E6E6E6;
 	    position: absolute;
 	    width: 117px;
-	    height: 115px;
+	    height: 105px;
 	    
 	    text-align: center;
 	    display: flex;
 	    align-items: flex-end;
 	    justify-content: center;
 	    padding: 6px;
+		
+		font-family: 'Montserrat';
+		font-weight: 300;
 	}
 	.disconnect{
 		height:35px;	
 		border-radius: 6px;
 		color: white;
 		font-size: 15px;
-		background: #690808;
+		background: $orange;
 		padding: 5px 10px 5px 10px;
 		text-align: center; 
 	}
