@@ -1,7 +1,7 @@
 import React from "react";
 import Utility from './../../utilities/utility.js';
 
-export default class ProfilBox extends React.Component{
+export default class FollowBtn extends React.Component{
 	constructor(props){
 		super(props);
 		const user = this.props.userId;

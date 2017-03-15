@@ -82,3 +82,13 @@
 		}
 	}
 }
+
+.hidden {
+    display: hidden;    
+}
+
+.profile-editor {
+    & > .visible {
+        display: "block";
+    }
+}
