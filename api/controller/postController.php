@@ -239,13 +239,19 @@ class postController
 		$query->execute();
 		$datas=$query->fetch();
 		$query->CloseCursor();
+		
+		if ($datas['type'] == 1) {
+		
+			$link = 'post/'.$datas['linkcontent'];
+		}
+		else $link = $datas['linkcontent'];
 		$item = [
 			"id" => $idpost,
 			"title" => $datas['title'],
 			"state" => $datas['state'],
 			"type" => $datas['type'],
 			"hd" => $datas['hd'],
-			"linkcontent" => 'post/'.$datas['linkcontent'],
+			"linkcontent" => $link,
 			"description" => $datas['description'],
 			"tag" => $datas['tag'],
 			"winner" => $datas['winner'],
