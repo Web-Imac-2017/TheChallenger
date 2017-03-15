@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 14 Mars 2017 à 22:51
+-- Généré le :  Mer 15 Mars 2017 à 00:05
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -146,7 +146,18 @@ INSERT INTO `post` (`id`, `title`, `state`, `type`, `hd`, `linkcontent`, `descri
 (35, 'Spotlight', 0, 1, 0, '1489262103.jpg', '', NULL, 0, 0, '2017-03-11', 9, 11),
 (36, 'Timelapse', 0, 1, 1, '1489262463.jpg', '', NULL, 0, 0, '2017-03-11', 9, 11),
 (37, 'Bike', 0, 1, 1, '1489262568.jpeg', '', NULL, 0, 0, '2017-03-11', 9, 11),
-(41, 'UNTITLED', 0, 1, 0, '1489529854.jpg', 'i just wanna burn in hell...', 'image', 0, 0, '2017-03-14', 14, 11);
+(41, 'UNTITLED', 0, 1, 0, '1489529854.jpg', 'i just wanna burn in hell...', 'image', 0, 0, '2017-03-14', 14, 11),
+(42, 'Started from the bottom now we\'re here', 0, 1, 0, '1489535320.jpg', 'just like drake', 'image', 0, 0, '2017-03-15', 9, 15),
+(43, 'OOTD', 0, 1, 0, '1489535360.jpg', 'JALOUSE', 'image', 0, 0, '2017-03-15', 10, 15),
+(44, 'tqt mamene', 0, 1, 0, '1489535402.jpg', '', 'image', 0, 0, '2017-03-15', 13, 15),
+(45, 'Ladder', 0, 1, 0, '1489535480.jpg', 'If only it was that easy...', 'image', 0, 0, '2017-03-15', 12, 16),
+(46, 'Why bother travelling', 0, 1, 0, '1489535518.jpg', '', 'image', 0, 0, '2017-03-15', 15, 16),
+(47, 'The only pink I think of', 0, 1, 1, '1489535652.jpg', 'Yeah\r\n\r\n', 'image', 0, 0, '2017-03-15', 18, 14),
+(48, 'Healthy', 0, 1, 0, '1489535746.jpg', 'Or bloody', 'image', 0, 0, '2017-03-15', 14, 14),
+(49, 'Wilson', 0, 1, 0, '1489535767.jpg', 'JUNIOR', 'image', 0, 0, '2017-03-15', 13, 14),
+(50, 'That smile tho', 0, 1, 0, '1489535794.jpg', 'Full of stars', 'image', 0, 0, '2017-03-15', 11, 17),
+(51, 'Mine has better smiles tho', 0, 1, 0, '1489535819.jpg', 'Milkyway\r\n', 'image', 0, 0, '2017-03-15', 12, 17),
+(52, 'Basic elephant trip', 0, 1, 0, '1489535853.jpg', 'mdr\r\n', 'image', 0, 0, '2017-03-15', 13, 17);
 
 -- --------------------------------------------------------
 
@@ -321,7 +332,7 @@ ALTER TABLE `follow`
 -- AUTO_INCREMENT pour la table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 --
 -- AUTO_INCREMENT pour la table `score`
 --
