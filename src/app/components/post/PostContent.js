@@ -60,7 +60,12 @@ export default class PostContent extends React.Component{
                 media = (<p>{content}</p>);
                 break;
             case IMAGE:
-                media = (<img src={content} />);
+                const divStyle = {
+                    backgroundImage: 'url(' + content + ')'
+                }
+                media = (
+                    <div className="background_img" style={divStyle}></div>
+                );
                 break;
             case SOUNDCLOUD:
                 media = (<iframe    width="100%" 
