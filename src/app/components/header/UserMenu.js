@@ -23,7 +23,6 @@ export default class UserMenu extends React.Component {
 			hover:false,
 			user: null
 		};	
-		//console.log("FETCH ID !!!!");
 		//Utility.query("api/user/id/", this.callbackIsConnected.bind(this))
 		Utility.isConnected(this.callbackIsConnected.bind(this));
 

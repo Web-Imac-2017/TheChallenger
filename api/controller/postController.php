@@ -17,7 +17,7 @@ class postController
 	//gestion des like de post
 	public static function addlike($idpost){
 		if(Post::checklike($idpost)){
-			echo(json_encode(["code" => 0,"message" => "error"]));
+			echo(json_encode(["code" => 0,"message" => "error : already liked "]));
 			exit();
 		}
 		//si l'utilisateur n'a pas encore like le post
@@ -37,7 +37,7 @@ class postController
 	public static function deletelike($idpost){
 		//si l'utilisateur a like
 		if(!Post::checklike($idpost)){
-			echo(json_encode(["code" => 0,"message" => "error"]));
+			echo(json_encode(["code" => 0,"message" => "error : not liked"]));
 			exit();
 		}
 		global $db;
@@ -239,13 +239,19 @@ class postController
 		$query->execute();
 		$datas=$query->fetch();
 		$query->CloseCursor();
+		
+		if ($datas['type'] == 1) {
+		
+			$link = 'post/'.$datas['linkcontent'];
+		}
+		else $link = $datas['linkcontent'];
 		$item = [
 			"id" => $idpost,
 			"title" => $datas['title'],
 			"state" => $datas['state'],
 			"type" => $datas['type'],
 			"hd" => $datas['hd'],
-			"linkcontent" => 'post/'.$datas['linkcontent'],
+			"linkcontent" => $link,
 			"description" => $datas['description'],
 			"tag" => $datas['tag'],
 			"winner" => $datas['winner'],
