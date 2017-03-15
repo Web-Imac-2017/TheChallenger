@@ -5,6 +5,7 @@ import ProfilBox from './../components/ProfilBox.js'
 import Header 	from "../components/Header.js";
 import Footer 	from "../components/Footer.js";
 import PostsContainer from './../components/PostsContainer.js'
+import ProfileEditor from './../components/ProfileEditor.js';
 
 export default class UserProfil extends React.Component {
     constructor(props){
@@ -25,8 +26,11 @@ export default class UserProfil extends React.Component {
 
 	    this.state = {
 	        user : null
+          openningButtonProfileEditorClass: "submit btn-default",
+          editorDiv: null
 	    };
-    	this.loadData();
+    	  this.loadData();
+        Utility.query("api/user/id/", this.callbackEditor.bind(this));
     }	
 
     callback(data){
@@ -48,6 +52,36 @@ export default class UserProfil extends React.Component {
         Utility.query("api/user/"+this.props.params.userId+"/infos/", this.callback.bind(this));
     }
 
+    callbackProfileEditorOpen() {
+        this.setState({
+            openningButtonProfileEditorClass: "submit btn-default hidden"
+        });
+    }
+
+    callbackProfileEditorClose() {
+        this.setState({
+            openningButtonProfileEditorClass: "submit btn-default"
+        });
+    }
+
+    openProfileEditor() {
+        this.refs.ref_profile_editor.open();
+    }
+
+    callbackEditor(data) {
+        if(data.id == this.state.user.id) {
+            this.setState({
+                editorDiv: (<div className="wrapper-profile-editor">
+                  <buttton className={this.state.openningButtonProfileEditorClass} onClick={this.openProfileEditor.bind(this)}>Edit profile</buttton>
+                  <ProfileEditor ref="ref_profile_editor"
+                                 userId={this.state.user.id}
+                                 callbackParentClose={this.callbackProfileEditorClose.bind(this)}
+                                 callbackParentOpen={this.callbackProfileEditorOpen.bind(this)}/>
+                </div>)
+            });
+        }
+    }
+
     render() {
     	if(this.state.user === null)
     		return null;
@@ -55,6 +89,7 @@ export default class UserProfil extends React.Component {
             <div className="page">
         		<Header/>
         		<div id="profil">
+                {this.state.editorDiv}
 	                <ProfilBox 
 	                	id = {this.state.user.id}
 	                	photo = {this.state.user.photo}
