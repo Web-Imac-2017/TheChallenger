@@ -16,7 +16,7 @@ export default class PostProfilBar extends React.Component{
 			"name" : "michel"
 		};
 		this.state = {
-			user : defaultUser
+			user : null
 		};
 		this.loadData();
 	}
@@ -35,9 +35,14 @@ export default class PostProfilBar extends React.Component{
 	render(){
 		if(this.state.user === null)
 			return null;
-		var divStyle = {
+
+		const  divStyle = {
             backgroundImage: 'url(' + Utility.getPublicPath() +this.state.user.photo + ')'
     	};
+    	let followBtn = <FollowBtn userId={this.state.user.id}/>;
+    	if(!this.props.affFollow){
+    		followBtn = null;
+    	}
 		return(
 			<div className="post__profil_bar" id={this.props.userId}>
 				<Link to={"/profil/"+this.state.user.id}>
@@ -45,7 +50,7 @@ export default class PostProfilBar extends React.Component{
 							className="profil_pic background_img"/>
 					<h4 className="post__profil__pseudo">{this.state.user.name}</h4>
 				</Link>
-				<FollowBtn userId={this.state.user.id}/>
+				{followBtn}
 			</div>
 		);
 	}
