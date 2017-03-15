@@ -19,13 +19,18 @@
       height: 30px;
       width: 30px;
     }
+	
+	img:hover{
+		opacity:0.4;
+	}
   }
 }
 a:link {
   color: white;
 }
 #btn {
-	font-family : Montserrat Light;
+	font-family: 'Montserrat';
+  font-weight: 300;
 	background-color: Transparent;
   background-repeat:no-repeat;
   border: none;

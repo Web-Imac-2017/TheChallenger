@@ -33,7 +33,7 @@ export default class ChallengeMin extends React.Component{
         if(this.state.challenge === null)
             return null;
 	    return(
-            <div className="challenge-min">
+            <div className="challenge-min" id={this.state.challenge.id}>
                 <Link to={"/challenge/"+this.state.challenge.id}>
                     <Vignette image={Utility.getPublicPath()+this.state.challenge.photo}/>
                     <h4>{this.state.challenge.title}</h4> 

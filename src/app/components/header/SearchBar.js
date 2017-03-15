@@ -1,17 +1,12 @@
 import React from "react";
 import ReactDom from "react-dom";
 
+
 export default class SearchBar extends React.Component {
     constructor (props){		
 		super(props);
-		
-		
-			
-
 		this.mouseOver = this.mouseOver.bind(this);
         this.mouseOut = this.mouseOut.bind(this);
-		
-		
 	}
 	
 	mouseOver() {
@@ -29,9 +24,9 @@ export default class SearchBar extends React.Component {
 	render() {
         return(
             <div className="search-bar">
-                <form className="search-form" >
-		     	    <input type="search" name="Your search" className="search-field" onClick={this.mouseOver.bind(this)} onMouseOut={this.mouseOut.bind(this)}/>
-                </form>
+	            <form>
+					<input type="text" name="search" className="search-field" onClick={this.mouseOver.bind(this)} onMouseOut={this.mouseOut.bind(this)}/>
+	            </form>
             </div>
         );
     }

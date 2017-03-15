@@ -1,3 +1,5 @@
+$squareWidth : 25px;
+
 .page{
 	text-align:center;
 	background-color: $pageBackgroundColor;
@@ -12,10 +14,12 @@
     @include laptop{
     	width: 100%;
     }
-    padding:2em 0 4em;
+    padding:1em 0 4em;
+    
+    .filter-bar {
+	    margin: 1.5em 0;
+	}
 }
-
-$squareWidth : 25px;
 
 .post-min{
 	box-shadow : 0.5px 0.5px 5px #555;
@@ -96,8 +100,8 @@ button.follow_btn {
     flex-flow: row wrap;
     border-radius: 5px;
     border : 1px solid;
-    border-color: $banniereColor;
-    color: $banniereColor;
+    border-color: $orange;
+    color: $orange;
     font-size: 0.9em;
     background-color: transparent;
     text-decoration: none;
@@ -108,7 +112,7 @@ button.follow_btn {
     transition: all ease 300ms;
 
     &:hover{
-	    background-color : $banniereColor;
+	    background-color : $orange;
 	    color: $blockBackgroundColor;
     }
 }

@@ -72,7 +72,7 @@ export default class UserMenu extends React.Component {
    		if(this.state.user === null)
    			return null;
         return(
-            <div id="user-menu" className="user-menu" >
+            <div className="user-menu" >
 				<div 	className="vignette" onClick={this.openMenu} 
 						onMouseOver={this.mouseOver.bind(this)} 
 						onMouseOut={this.mouseOut.bind(this)}>

@@ -26,7 +26,7 @@ export default class AboutUs extends React.Component {
     }
     
     render() {
-        var myStyle =   {
+        const myStyle =   {
             display : (this.state.active)?"block":"none"
         };
         return(
