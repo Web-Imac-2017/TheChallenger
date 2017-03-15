@@ -25,7 +25,7 @@ export default class UserProfil extends React.Component {
 		};
 
 	    this.state = {
-	        user : null
+	        user : null,
           openningButtonProfileEditorClass: "submit btn-default",
           editorDiv: null
 	    };
