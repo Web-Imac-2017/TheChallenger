@@ -52,7 +52,7 @@ export default class PostLikesBar extends React.Component{
 
 	  render(){
 		    return(
-                <div className="post-likes-bar">
+                <div className="post-likes-bar" id={this.props.postId}>
                 <img src={this.img} alt="likes" onClick={this.callbackLike.bind(this)} />
                 <p>{this.state.post.likes}</p>
                 </div>

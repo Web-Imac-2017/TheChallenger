@@ -32,7 +32,7 @@ export default class Post extends React.Component {
                         <button onClick={this.close.bind(this)} className="close-button">
                             <img src= {logoCross} width="30" height="30"/>
                         </button>
-                        <PostProfilBar userId={this.state.post.userId} />
+                        <PostProfilBar userId={this.state.post.iduser} />
                         <PostContent post={this.state.post} preview={false} />
                         <PostLikesbar postId={this.state.post.id}/>
                         <h4>{this.state.post.title}</h4>
