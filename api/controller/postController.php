@@ -265,6 +265,43 @@ class postController
 		return $item;
 	}
 	
+		public static function returnArray($idpost){
+		if(!self::checkpost($idpost)){
+	    	echo(json_encode(["code" => 0,"message" => "post does not exists"]));
+			exit();
+		}
+		global $db;
+		$query=$db->prepare('SELECT * FROM thechallenger.post WHERE id=:idpost');
+		$query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
+		$query->execute();
+		$datas=$query->fetch();
+		$query->CloseCursor();
+		
+		if ($datas['type'] == 1) {
+		
+			$link = 'post/'.$datas['linkcontent'];
+		}
+		else $link = $datas['linkcontent'];
+		$item = [
+			"id" => $idpost,
+			"title" => $datas['title'],
+			"state" => $datas['state'],
+			"type" => $datas['type'],
+			"hd" => $datas['hd'],
+			"linkcontent" => $link,
+			"description" => $datas['description'],
+			"tag" => $datas['tag'],
+			"winner" => $datas['winner'],
+			"score" => $datas['score'],
+			"datepost" => $datas['datepost'],
+			"iduser" => $datas['iduser'],
+			"idchallenge" => $datas['idchallenge']
+		];
+		// echo(json_encode($item));
+
+		return $item;
+	}
+	
 	public static function getWinners() {
 	
 		global $db;

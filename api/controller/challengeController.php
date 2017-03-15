@@ -202,7 +202,7 @@ class challengeController {
 		$tab = Challenge::getPosts($idchallenge);
 		$result_tab = array();
 		for ($i=0; $i<count($tab); $i++) {
-			$item = postController::toArray($tab[$i]);
+			$item = postController::returnArray($tab[$i]);
 			array_push($result_tab, $item);
 		}
 		echo (json_encode($result_tab));

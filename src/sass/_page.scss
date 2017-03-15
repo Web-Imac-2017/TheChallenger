@@ -100,8 +100,8 @@ button.follow_btn {
     flex-flow: row wrap;
     border-radius: 5px;
     border : 1px solid;
-    border-color: $banniereColor;
-    color: $banniereColor;
+    border-color: $orange;
+    color: $orange;
     font-size: 0.9em;
     background-color: transparent;
     text-decoration: none;
@@ -112,7 +112,7 @@ button.follow_btn {
     transition: all ease 300ms;
 
     &:hover{
-	    background-color : $banniereColor;
+	    background-color : $orange;
 	    color: $blockBackgroundColor;
     }
 }
