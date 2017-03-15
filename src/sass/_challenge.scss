@@ -1,5 +1,38 @@
-#challenge_page{
+#challenge_box{
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+background-color: rgba(0, 0, 0, 0.2);
+    .background_img{
+    	height: 60vh;    	
+    }
+    .challenge_box__text{
+    	position: absolute;
+    	color: white;
+	    text-shadow: 4px 1px 10px #000000;
+
+    }
+    .tag-btn{
+    	width: 90px;
+    	position: absolute;
+    	right: 13px;
+    	top: 64%;	
+    }
+
+}
+.read_more{
+	.overlay{
+		background: rgba(0,0,0,0.8);
+	}
+	.aboutus{
+		position: fixed;
+		padding: 20px;
+		top: 11%;
+		width: 70%;
+		height: 50%;
+		.close-button{
+			margin: -10px 10px 0 0;
+		}
+	}
 }

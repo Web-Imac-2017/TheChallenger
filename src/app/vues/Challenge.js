@@ -50,6 +50,7 @@ export default class Challenge extends React.Component {
     	                	id = {this.state.challenge.id}
     	                	photo = {this.state.challenge.photo}
     	                	title = {this.state.challenge.title}
+                            desc={this.state.challenge.description}
     	                	time = {this.state.challenge.timeleft}/> 
 
                   <button id="btn post-min" className="tag-btn" onClick={this.handleUploadBtnClick.bind(this)}>UPLOAD YOUR CONTENT</button>
