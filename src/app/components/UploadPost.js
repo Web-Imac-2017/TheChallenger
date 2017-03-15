@@ -85,7 +85,7 @@ export default class UploadPost extends React.Component {
                             <Tag value="file" callbackParent={this.callBackTags.bind(this)} name ="File"/>
                         </div>
                     </div>
-                    <form className="form" method="POST" action={this.apiURL} enctype="multipart/form-data">
+                    <form className="form" method="POST" action={this.apiURL} encType="multipart/form-data">
                         <input type="text" name="tag" id="up-tag" hidden value="image" />
                         <input type="text" name="type" id="up-type" hidden value="image" />
                         <p>Type: {this.labelType}</p>

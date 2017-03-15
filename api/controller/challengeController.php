@@ -112,8 +112,8 @@ class challengeController {
 		$stop=$query->fetch();
 		$query->closeCursor();
 		$date=strtotime($stop['datestop']);
-		$diff=$date-time();
-		return $diff;
+		//$diff=$date-time();
+		return $date;
 	}
 
 	public static function time_left($idchallenge) {

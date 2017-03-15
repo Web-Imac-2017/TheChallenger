@@ -39,7 +39,7 @@ export default class PostProfilBar extends React.Component{
             backgroundImage: 'url(' + Utility.getPublicPath() +this.state.user.photo + ')'
     	};
 		return(
-			<div className="post__profil_bar">
+			<div className="post__profil_bar" id={this.props.userId}>
 				<Link to={"/profil/"+this.state.user.id}>
 					<div	style={divStyle} 
 							className="profil_pic background_img"/>

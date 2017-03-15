@@ -26,9 +26,9 @@ export default class ChallengeMin extends React.Component{
     }
 
     callback(data){
-        
         this.setState({ challenge : data });
     }
+    
     render(){
         if(this.state.challenge === null)
             return null;
