@@ -48,7 +48,7 @@ export default class Challenge extends React.Component {
         		<div id="challenge_page">
 	                <ChallengeBox 
     	                	id = {this.state.challenge.id}
-    	                	photo = {this.state.challenge.photo}
+    	                	photo = {Utility.getPublicPath()+this.state.challenge.photo}
     	                	title = {this.state.challenge.title}
                             desc={this.state.challenge.description}
     	                	time = {this.state.challenge.timeleft}/> 

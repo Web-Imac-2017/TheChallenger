@@ -9,7 +9,7 @@ export default class ChallengeBox extends React.Component{
 	}
 	render(){
 		const divStyle = {
-            	backgroundImage: 'url(' + this.props.photo + ')'
+            	backgroundImage: 'url('+this.props.photo + ')'
         };
 			console.log("TIMMMMMEE "+this.props.time);
 		return(
