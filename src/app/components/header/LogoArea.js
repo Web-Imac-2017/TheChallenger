@@ -7,7 +7,7 @@ export default class LogoArea extends React.Component {
         return(
             <div id="logo-area" className="logo-area">
             	<Link to={"/home"}>
-            		<h1> The Challenger </h1>
+            		<h1>The Challenger</h1>
             	</Link>
             </div>
         );
