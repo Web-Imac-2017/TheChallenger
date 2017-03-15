@@ -31,6 +31,7 @@
      flex-basis: 33%; 
 
     h1 {
+		font-family:Montserrat Light;
          margin: auto; 
         text-align: center;
         font-size: 2em;
@@ -100,6 +101,8 @@ input {
 }
 
 .search-form input[type=search]{
+	border : solid 1px white;
+	border-radius:15px;
 	margin-left:-35%;
 	margin-top:1px;
     background: transparent  url(https://fcpp.org/sites/default/files/images/search-icon.png) no-repeat 9px center;
@@ -146,7 +149,7 @@ input {
     }
 
     &:hover{
-        background-color: #C41A15;
+        background-color: #8EEED1;
 		z-index:1;
 		color:white;
     }
