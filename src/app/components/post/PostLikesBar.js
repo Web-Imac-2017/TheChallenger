@@ -14,6 +14,11 @@ export default class PostLikesBar extends React.Component{
             post: this.props.post,
             userLike : false
         };  
+        //this.loadData();
+    }
+
+    componentDidMount(){
+        this.loadData();
     }
 
     componentWillReceiveProps() {
@@ -22,13 +27,15 @@ export default class PostLikesBar extends React.Component{
     }
 
     loadData(){
-        Utility.query("api/post/like/check/"+this.state.post.id, this.callbackisLiking.bind(this));
+        if(this.props.post === undefined)
+            return;
+        Utility.query("api/post/like/check/"+this.props.post.id, this.callbackIsLiking.bind(this));
     }
 
-    callbackisLiking(data) {
+    callbackIsLiking(data) {
         //console.log(data);
         this.setState({
-            userLike: data.code
+            userLike: (data.code=="1")?true:false
         });
     }
 
@@ -38,6 +45,7 @@ export default class PostLikesBar extends React.Component{
         }else{
             console.log("ERROR LIKE "+data.message)
         }
+        console.log("LIKE ", this.state.userLike)
     }
 
      callBackUnlike(data){
@@ -46,28 +54,29 @@ export default class PostLikesBar extends React.Component{
         }else{
             console.log("ERROR UNLIKE "+data.message)
         }
+        console.log("UNLIKE ", this.state.userLike)
     }
 
     handleClick(){
         const postId = this.state.post.id;
         if(this.state.userLike)
-            Utility.query("api/post/like/delete/"+postId, this.callBackLike.bind(this));
+            Utility.query("api/post/like/delete/"+postId, this.callBackUnlike.bind(this));
         else
             Utility.query("api/post/like/add/"+postId, this.callBackLike.bind(this));
         
     }
     render(){
         if(this.state.post == null) return null;
+
         let likes = <p>{this.state.post.likes}</p>;
+        
         if(this.props.affLikes)
             likes = null;
-        const coeur = this.state.userLike ? likeImg : noLikeImg;
+        
         return(
-            <div className="post-likes-bar" id={this.props.postId}>
-                
-                <img src={coeur} alt="likes" onClick={this.handleClick.bind(this)} />
+            <div className="post-likes-bar" id={this.props.postId}>                
+                <img src={(this.state.userLike) ? likeImg : noLikeImg} alt="likes" onClick={this.handleClick.bind(this)} />
                 {likes}
-
             </div>
         );
     }
