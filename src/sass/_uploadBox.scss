@@ -94,8 +94,10 @@
 }
 
 @include mobile{
-	.upload{
-        width: 90%;
+	.upload_post{
+		.upload{
+	        width: 90%;
+	    }
     }
 }
 
@@ -115,10 +117,6 @@
 				}
 			}
 		}
-		.form{
-			.field-contact{
-				width: 100%;
-			}
-		}
+		
 	}
 }
