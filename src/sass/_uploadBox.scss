@@ -36,18 +36,45 @@
 			.field-contact{
 				margin: 5px;
 			}
+			
 			.form-btn{
 				width: 80px;
 			}
 		}
-	}	
+	}
 }
 
 .tagList{
     width: 100%;
     margin: 10px 0;
 }
+.up-content-file{
+	margin-bottom: 10px;
+	input{
+	   	width: 0.1;
+	   	height: 0.1;
+		opacity: 0;
+		overflow: hidden;
+		position: absolute;
+		z-index: -1;
+	}
+	label {
+	    font-size: 15px;
+	    font-weight: 500;
+	    font-family: inherit;
+	    color: $blockBackgroundColor;
+	    background-color: $blueNight;
+	    border-radius: 4px;
+	    padding: 3px;
+	    cursor: pointer;
+	    display: inline-block;
+	}
 
+	label:hover {
+	    background-color: $blockBackgroundColor;
+	    color: $blueNight;
+	}
+}
 @include tablet{
 	.upload{
 		width: 80%;
@@ -59,9 +86,15 @@
 			}
 	}
 }
-@include mobile-por{
+
+@include mobile{
 	.upload{
         width: 90%;
+    }
+}
+
+@include mobile-por{
+	.upload{
 		top: 0;
 		bottom: 0;
 		position: relative;

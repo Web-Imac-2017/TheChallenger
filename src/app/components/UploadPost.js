@@ -22,9 +22,14 @@ export default class UploadPost extends React.Component {
     getContentInput(type) {
         switch(type) {
             case "image":
-                return(<input type="link" name="image" id="up-content"/>)
+                return(<div className="up-content-file">
+                            <label>
+                                Choose a file
+                                <input type="file" name="file" id="up-content" className="up-content"/>
+                            </label>
+                        </div>);
             case "text":
-                return(<textarea type = "text" name="link" id="up-content" className="field-contact" placeholder="Post content"></textarea>);
+                return(<textarea type = "text" name="link" id="up-content" className="field-contact" placeholder="Write your text"></textarea>);
             case "video":
             case "audio":
             case "link":
