@@ -20,7 +20,7 @@ function requete(url, callback) {
 
 function requetePostSubmit(url, data, callback) {
     var form = new FormData();
-    for(key in data) {
+    for(let key in data) {
         if(data.hasOwnProperty(key)) {
             let obj = data[key];
             form.append(key, obj);

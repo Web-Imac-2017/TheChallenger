@@ -181,6 +181,17 @@ button.follow_btn {
     }
 }
 
+.search-vue {
+     text-align: center;
+     & > div {
+         text-align: center;
+         & > p {
+             font-size: 1.3em;
+             font-style: italic; 
+         }
+     }
+ }
+
 @include mobile{
     .content_popup{
         .post-popup {
