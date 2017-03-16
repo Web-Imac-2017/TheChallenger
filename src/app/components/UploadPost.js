@@ -28,9 +28,14 @@ console.log(Utility.IMAGE);
     getContentInput(type) {
         switch(type) {
             case Utility.IMAGE:
-                return(<input type="file" name="image" id="up-content"/>)
+                return(<div className="up-content-file">
+                            <label>
+                                Choose a file
+                                <input type="file" name="file" id="up-content" className="up-content"/>
+                            </label>
+                        </div>);
             case Utility.TEXT:
-                return(<textarea type = "text" name="link" id="up-content" className="field-contact" placeholder="Post content"></textarea>);
+                return(<textarea type = "text" name="link" id="up-content" className="field-contact" placeholder="Write your text"></textarea>);
             case Utility.YOUTUBE:
             case Utility.SOUNDCLOUD:
             case Utility.LINK:

@@ -1,3 +1,4 @@
+@import 'mixins';
 $squareWidth : 25px;
 
 .page{
@@ -171,6 +172,14 @@ button.follow_btn {
         }
         .post__profil_bar{
             width: 90%;
+        }
+    }
+}
+
+@include mobile{
+    .content_popup{
+        .post-popup {
+            width: 100%;
         }
     }
 }

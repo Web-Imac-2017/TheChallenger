@@ -298,6 +298,7 @@ class userController{
 
 		if(!$user->is_connected(MEMBRE)){
 	    	echo(json_encode(["code" => 0,"message" => "Not connected"]));
+			Utility::nextPage("");	
 			exit();
 		}
 		//si c'est un moderateur ou l'utilisateur en question, il peut modifier le profil
@@ -328,6 +329,7 @@ class userController{
 		}
 
 		echo(json_encode(["code" => 1,"message" => "Success"]));
+		Utility::nextPage("profil/$id");	
 	}
 	
 	public static function toArray($id){
