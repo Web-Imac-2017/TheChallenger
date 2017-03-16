@@ -3,7 +3,6 @@
 include_once("model/utility.php");
 
 class postController
-{
 
 	//on vérifie si la personne a deja like
 	public static function checkLike($idpost){
@@ -57,13 +56,14 @@ class postController
 
 	//insérer nouveau post
 	public static function addpost($idchallenge){
+		
 		$title=(!empty($_POST['title']))? $_POST['title']:"";
 		$image=(!empty($_FILES['image']))? $_FILES['image']:"";
 		$tag=(!empty($_POST['tag']))? $_POST['tag']:"";
 		$link=(!empty($_POST['link']))? $_POST['link']:"";
 		$type=(!empty($_POST['type']))? $_POST['type']:"";
 		$desc=(!empty($_POST['desc']))? $_POST['desc']:"";
-
+		
 		global $user;
 
 		if(!$user->is_connected(MEMBRE)){
@@ -98,10 +98,10 @@ class postController
 
 				//on ajoute les donnees dans la bdd
 				if($testimage==1){ //si image pas hd
-					$query=$db->prepare('INSERT INTO post (title,state,linkcontent,type,hd,description,tag,datepost,iduser,idchallenge,winner,score) VALUES (:title,0,:linkcontent,1,0,:description,:tag,DATE(NOW()),:iduser,:idchallenge,0,0)');
+					$query=$db->prepare('INSERT INTO post (title,state,linkcontent,type,hd,description,tag,datepost,iduser,idchallenge,winner,score) VALUES (:title,0,:linkcontent,:type,0,:description,:tag,DATE(NOW()),:iduser,:idchallenge,0,0)');
 				}
 				elseif($testimage==2){ //si image hd
-					$query=$db->prepare('INSERT INTO post (title,state,linkcontent,type,hd,description,tag,datepost,iduser,idchallenge,winner,score) VALUES (:title,0,:linkcontent,1,1,:description,:tag,DATE(NOW()),:iduser,:idchallenge,0,0)');
+					$query=$db->prepare('INSERT INTO post (title,state,linkcontent,type,hd,description,tag,datepost,iduser,idchallenge,winner,score) VALUES (:title,0,:linkcontent,:type,1,:description,:tag,DATE(NOW()),:iduser,:idchallenge,0,0)');
 				}
 			}
 		}
@@ -109,12 +109,12 @@ class postController
 		if(empty($image) && !empty($link)){
 		
 			$linkcontent=$link;
-			$query=$db->prepare('INSERT INTO post (title,state,linkcontent,type,hd,description,tag,datepost,iduser,idchallenge,winner,score) VALUES (:title,0,:linkcontent,2,0,:description,:tag,DATE(NOW()),:iduser,:idchallenge,0,0)');			
+			$query=$db->prepare('INSERT INTO post (title,state,linkcontent,type,hd,description,tag,datepost,iduser,idchallenge,winner,score) VALUES (:title,0,:linkcontent,:type,0,:description,:tag,DATE(NOW()),:iduser,:idchallenge,0,0)');			
 			
 		}
 		$query->bindParam(':title',$title,PDO::PARAM_STR);
 		$query->bindParam(':linkcontent',$linkcontent,PDO::PARAM_STR);
-		// $query->bindParam(':type',$type,PDO::PARAM_INT);
+		$query->bindParam(':type',$type,PDO::PARAM_INT);
 		$query->bindParam(':tag',$tag,PDO::PARAM_INT);
 		$query->bindParam(':description',$desc,PDO::PARAM_STR);
 		$query->bindParam(':iduser',$_COOKIE['id'],PDO::PARAM_INT);
