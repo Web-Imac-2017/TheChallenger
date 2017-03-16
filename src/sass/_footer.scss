@@ -7,8 +7,9 @@
 	flex-direction: row;
 	justify-content: space-around;
 	flex-wrap: wrap;
-	bottom:0;
-	position:absolute;
+	bottom:0%;
+	top:100%;
+	/*transform: translateY(-0%);*/
   
   .social-links{
     display: flex;
@@ -32,13 +33,14 @@ a:link {
 }
 #btn {
 	font-family: 'Montserrat';
-  font-weight: 300;
+	font-weight: 300;
 	background-color: Transparent;
-  background-repeat:no-repeat;
-  border: none;
+	background-repeat:no-repeat;
+	border: none;
 	font-size: 14px;
 	padding: 0;
-  position: relative;
+	position: relative;
+	z-index:1;
 }
 
 #btn:focus{

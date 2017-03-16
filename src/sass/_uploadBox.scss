@@ -12,13 +12,16 @@
 	    flex-direction: column;
 	    align-items: center;
 	    justify-content: flex-start;
-		width: 70%;
+		width: 45%;
 		
 		bottom: 8%;
 		z-index: 5;
 		h1{
 			width: 80%;
-			margin: 4px 0;
+			margin: 10px 15p;
+			margin-top: 15px;
+			margin-bottom: 22px;
+			
 		}
 		.content--tag{
 			h4{
@@ -29,7 +32,7 @@
 		}
 		.form{
 			margin: 0;
-			width: 90%;
+			width: 120%;
 			p{
 				margin: 8px;
 			}
@@ -45,8 +48,11 @@
 }
 
 .tagList{
-    width: 100%;
+    width: 110%;
+    margin-left: -5%;
     margin: 10px 0;
+	margin-bottom: 5px;
+    margin-top: 8px;
 }
 .up-content-file{
 	margin-bottom: 10px;

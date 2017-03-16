@@ -45,7 +45,7 @@
         -moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
         box-shadow: 0 0 5px rgba(109,207,246,.5);
 		
-		width:210px
+		width:225px
 		
     }
     input[type=text]:hover{
@@ -54,11 +54,13 @@
 		color:white;
     }
 }
+
 .tab-user-menu-box{
 	position: relative;
     right: 35px;
     top: -56px;
     z-index: 2	;
+	
 	.tab-user-menu{
 		border-radius: 4px;
 	    background-color: #E6E6E6;
@@ -70,7 +72,6 @@
 	    align-items: flex-end;
 	    justify-content: center;
 	    padding: 12px;
-		
 		font-family: 'Montserrat';
 		font-weight: 300;
 	}
@@ -84,6 +85,7 @@
 		text-align: center; 
 	}
 }
+
 .logo-area {
     h1 {
 		font-family: 'Montserrat';
