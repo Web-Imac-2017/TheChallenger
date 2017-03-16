@@ -190,6 +190,10 @@ button.follow_btn {
              font-style: italic; 
          }
      }
+    .search_wrapper{
+    	min-height: 85vh;
+    	
+    }
  }
 
 @include mobile{

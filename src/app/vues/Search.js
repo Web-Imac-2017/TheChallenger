@@ -38,7 +38,7 @@ export default class SearchVue extends React.Component {
         return(
             <div className="search-vue">
                 <Header />
-                <div>
+                <div className="search_wrapper">
                     <h3 id="search-title">Search results for: {this.searchString}</h3>
                     <PostsContainer posts={this.state.posts}
                                     affFollow={true}
