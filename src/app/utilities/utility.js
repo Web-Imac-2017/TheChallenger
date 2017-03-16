@@ -17,6 +17,7 @@ function requete(url, callback) {
         });
 }
 
+
 function requetePostSubmit(url, data, callback) {
     var form = new FormData();
     for(key in data) {
@@ -74,7 +75,13 @@ const utility = {
             }
             callback(data.id);
         });
-    }
+    },
+    //definition des types de fichiers
+    IMAGE      : "1",
+    YOUTUBE    : "2",
+    SOUNDCLOUD : "3",
+    TEXT       : "4",
+    LINK       : "5"
 }
 
 module.exports = utility;
