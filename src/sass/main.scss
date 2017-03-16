@@ -31,10 +31,15 @@ li{
 .tag-btn{
     width: 70px;
     background-color: #fff;
-    color: #9a1511;
+    color: #1e388d;
     border: none;
     margin: 3px;
     text-align: center;
     border-radius: 3px;
     padding: 4px;
+}
+
+.tag-btn:hover{
+	background-color: #1e388d;
+    color: #fff ;
 }
