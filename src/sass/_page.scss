@@ -10,6 +10,7 @@ $squareWidth : 25px;
 
 .posts-container {
     width: 85%;
+    
     margin: auto;
     text-align: center;
     @include laptop{
@@ -61,11 +62,11 @@ $squareWidth : 25px;
 	    }
 	  }
 
-	  .profil_pic{
-		    width: $squareWidth;
-		    height: $squareWidth;
-		    border-radius: 50%;
-	  }
+	.profil_pic{
+	    width: $squareWidth;
+	    height: $squareWidth;
+	    border-radius: 50%;
+	}
 
     .post-likes-bar {
         text-align: left;

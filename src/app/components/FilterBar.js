@@ -23,7 +23,7 @@ export default class FilterBar extends React.Component{
     updateButtons(_key) {
         this.buttons = Object.entries(this.props.filters).map(function(entry) {
             return(
-                    <Button label={entry[1]} property={entry[0]} callback={this.updateFilter.bind(this)} />
+                    <Button key={entry} label={entry[1]} property={entry[0]} callback={this.updateFilter.bind(this)} />
             );
         }.bind(this));
     }

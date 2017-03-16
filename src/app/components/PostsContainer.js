@@ -32,14 +32,14 @@ export default class PostsContainer extends React.Component{
         }
 
         //console.log(this.state.posts);
-        /*this.filterBar = <FilterBar updateParent={this.updatePostsFiltered.bind(this)} filters={{
+        this.filterBar = <FilterBar updateParent={this.updatePostsFiltered.bind(this)} filters={{
             "all": "All",
             "audio":"Audio",
             "video": "Video",
             "image": "Image",
             "text": "Text",
             "file": "Fichier"
-        }} />;*/
+        }} />;
         
         this.state = {
             postsFiltered: this.state.posts,            
