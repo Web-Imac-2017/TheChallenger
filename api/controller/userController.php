@@ -1,5 +1,6 @@
 <?php
 
+include_once("model/Image.php");
 //include_once("model/User.php");
 include_once("model/utility.php");
 $user=new User();
@@ -29,7 +30,7 @@ class userController{
 	    $passwordconfirm=sha1($passwordconfirm);
 
 	    //on vérifie si le name est déjà utilisé 
-	    $query=$db->prepare('SELECT COUNT(*) FROM thechallenger.user WHERE name=:name');
+	    $query=$db->prepare('SELECT COUNT(*) FROM user WHERE name=:name');
 	    $query->bindParam(':name',$name,PDO::PARAM_STR);
 	    $query->execute();
 	    $name_dispo=($query->fetchColumn()==0)?1:0;
@@ -60,7 +61,7 @@ class userController{
     	}
 
 	    //test si l'adresse mail existe déjà
-	    $query=$db->prepare('SELECT COUNT(*) FROM thechallenger.user WHERE email =:email');
+	    $query=$db->prepare('SELECT COUNT(*) FROM user WHERE email =:email');
 	    $query->bindParam(':email',$email,PDO::PARAM_STR);
 	    $query->execute();
 	    $mail_dispo=($query->fetchColumn()==0)?1:0;
@@ -93,7 +94,7 @@ class userController{
 		}
 
 		global $db;
-		$query = $db->prepare("SELECT name,rank FROM thechallenger.user WHERE keyactive=:key ");
+		$query = $db->prepare("SELECT name,rank FROM user WHERE keyactive=:key ");
 		$query->bindParam(':key',$key,PDO::PARAM_STR);
 		if($query->execute(array(':key' => $key)) && $datas = $query->fetch())
 		{
@@ -109,7 +110,7 @@ class userController{
 	    	echo(json_encode(["code" => 0,"message" => "account already activated"]));
 			exit(); 
 		}
-		$query = $db->prepare("UPDATE thechallenger.user SET rank=2 WHERE name=:name");
+		$query = $db->prepare("UPDATE user SET rank=2 WHERE name=:name");
 		$query->bindParam(':name',$name,PDO::PARAM_STR);
 		$query->execute();
 		$query->CloseCursor();
@@ -135,7 +136,7 @@ class userController{
 		}
 		
 		global $db;
-		$query=$db->prepare('SELECT id, rank, name, pwd, email FROM thechallenger.user WHERE email = :email');		
+		$query=$db->prepare('SELECT id, rank, name, pwd, email FROM user WHERE email = :email');		
 		$query->bindParam(':email', $email,PDO::PARAM_STR);
 		$query->execute();
 		$datas=$query->fetch();
@@ -226,7 +227,7 @@ class userController{
 			exit();
 		}
 		global $db;
-		$query=$db->prepare('INSERT INTO thechallenger.follow (idfollower,idfollowed) VALUES (:idfollower,:idfollowed)');
+		$query=$db->prepare('INSERT INTO follow (idfollower,idfollowed) VALUES (:idfollower,:idfollowed)');
 		$query->bindParam(':idfollower', $_COOKIE['id'], PDO::PARAM_INT);
 		$query->bindParam(':idfollowed', $id, PDO::PARAM_INT);
 		$query->execute();
@@ -248,7 +249,7 @@ class userController{
 			exit();
 		}
 		global $db;
-		$query=$db->prepare('DELETE FROM thechallenger.follow WHERE idfollower=:idfollower AND idfollowed=:idfollowed');
+		$query=$db->prepare('DELETE FROM follow WHERE idfollower=:idfollower AND idfollowed=:idfollowed');
 		$query->bindParam(':idfollower', $_COOKIE['id'], PDO::PARAM_INT);
 		$query->bindParam(':idfollowed', $id, PDO::PARAM_INT);
 		$query->execute();
@@ -275,23 +276,35 @@ class userController{
 
 	//fonction modification utilisateur, ajout avertissement et modif de rang
 	public static function changeuser($id){
-		$description=(!empty($_POST['description']))? $_POST['description']:"";
-		$birthdate=(!empty($_POST['birthdate']))? $_POST['birthdate']:"";
-		$photo=(!empty($_FILES['photo']))? $_FILES['photo']:"";
-		$cptwarnings=(!empty($_POST['cptwarnings']))? $_POST['cptwarnings']:"";
-		$rank=(!empty($_POST['rank']))? $_POST['rank']:"";
-
+		
+		
 		global $db;
 		global $user;
 
+		$query = $db->prepare("SELECT description,birthdate,photo,cptwarnings,rank FROM user WHERE id=:id");
+		$query->bindParam(':id',$id,PDO::PARAM_INT);
+		$query->execute();
+		$datas=$query->fetch();
+		$query->CloseCursor();
+		
+		$description=(!empty($_POST['description']))? $_POST['description']:$datas['description'];
+		$birthdate=(!empty($_POST['birthdate']))? $_POST['birthdate']:$datas['birthdate'];
+		$photo=(!empty($_FILES['photo']))? $_FILES['photo']:$datas['photo'];
+		$cptwarnings=(!empty($_POST['cptwarnings']))? $_POST['cptwarnings']:$datas['cptwarnings'];
+		$rank=(!empty($_POST['rank']))? $_POST['rank']:$datas['rank'];
+		
+		$image = new Image();
+		$linkcontent=$image->move_image($photo,'../data/profilepics/');
+
 		if(!$user->is_connected(MEMBRE)){
 	    	echo(json_encode(["code" => 0,"message" => "Not connected"]));
+			Utility::nextPage("");	
 			exit();
 		}
 		//si c'est un moderateur ou l'utilisateur en question, il peut modifier le profil
 		if($user->is_connected(MODERATEUR)|| ($_COOKIE['id']==$id && $user->is_connected(MEMBRE))){
-			$query = $db->prepare("UPDATE thechallenger.user SET photo=:photo,description=:description,birthdate=:birthdate WHERE id=:id");
-			$query->bindParam(':photo',$photo,PDO::PARAM_STR);
+			$query = $db->prepare("UPDATE user SET photo=:linkcontent,description=:description,birthdate=:birthdate WHERE id=:id");
+			$query->bindParam(':linkcontent',$linkcontent,PDO::PARAM_STR);
 			$query->bindParam(':description',$desciption,PDO::PARAM_STR);
 			$query->bindParam(':birthdate',$birthdate,PDO::PARAM_STR);
 			$query->bindParam(':id',$id,PDO::PARAM_INT);
@@ -300,7 +313,7 @@ class userController{
 		}
 		//si moderateur il peut modifier le nombre d'avertissements
 		if($user->is_connected(MODERATEUR)){
-			$query = $db->prepare("UPDATE thechallenger.user SET cptwarnings=:cptwarnings WHERE id=:id");
+			$query = $db->prepare("UPDATE user SET cptwarnings=:cptwarnings WHERE id=:id");
 			$query->bindParam(':cptwarnings',$cptwarnings,PDO::PARAM_INT);
 			$query->bindParam(':id',$id,PDO::PARAM_INT);
 			$query->execute();
@@ -308,7 +321,7 @@ class userController{
 		}
 		//si administrateur il peut modifier le rang
 		if($user->is_connected(ADMIN)){
-			$query = $db->prepare("UPDATE thechallenger.user SET rank=:rank WHERE id=:id");
+			$query = $db->prepare("UPDATE user SET rank=:rank WHERE id=:id");
 			$query->bindParam(':rank',$rank,PDO::PARAM_INT);
 			$query->bindParam(':id',$id,PDO::PARAM_INT);
 			$query->execute();
@@ -316,11 +329,12 @@ class userController{
 		}
 
 		echo(json_encode(["code" => 1,"message" => "Success"]));
+		Utility::nextPage("profil/$id");	
 	}
 	
 	public static function toArray($id){
 		global $db;
-		$query=$db->prepare('SELECT * FROM thechallenger.user WHERE id=:id');
+		$query=$db->prepare('SELECT * FROM user WHERE id=:id');
 		$query->bindParam(':id',$id,PDO::PARAM_INT);
 		$query->execute();
 		$datas=$query->fetch();
@@ -351,7 +365,7 @@ class userController{
 		
 		global $db;
 		//nombre de personne que le user suit
-		$query=$db->prepare('SELECT COUNT(*) AS nbfollow FROM thechallenger.follow WHERE idfollower=:id');
+		$query=$db->prepare('SELECT COUNT(*) AS nbfollow FROM follow WHERE idfollower=:id');
 		$query->bindParam(':id', $id, PDO::PARAM_INT);
 		$query->execute();
 		$datas=$query->fetch();
@@ -359,7 +373,7 @@ class userController{
 		$nbfollow=$datas['nbfollow'];
 
 		//nombre de followers du user
-		$query=$db->prepare('SELECT COUNT(*) AS nbfollower FROM thechallenger.follow WHERE idfollowed=:id');
+		$query=$db->prepare('SELECT COUNT(*) AS nbfollower FROM follow WHERE idfollowed=:id');
 		$query->bindParam(':id', $id, PDO::PARAM_INT);
 		$query->execute();
 		$followers=$query->fetch();
@@ -367,7 +381,7 @@ class userController{
 		$nbfollower = $followers['nbfollower'];
 		
 		//nombre de posts
-		$query=$db->prepare('SELECT COUNT(*) AS nbpost FROM thechallenger.post WHERE iduser=:id');
+		$query=$db->prepare('SELECT COUNT(*) AS nbpost FROM post WHERE iduser=:id');
 		$query->bindParam(':id', $id, PDO::PARAM_INT);
 		$query->execute();
 		$posts=$query->fetch();
@@ -375,7 +389,7 @@ class userController{
 		$nbp = $posts['nbpost'];
 		
 		//id de posts
-		$query=$db->prepare('SELECT id FROM thechallenger.post WHERE iduser=:id');
+		$query=$db->prepare('SELECT id FROM post WHERE iduser=:id');
 		$query->bindParam(':id', $id, PDO::PARAM_INT);
 		$query->execute();
 		$idspost=array();

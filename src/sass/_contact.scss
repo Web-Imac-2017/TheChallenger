@@ -4,7 +4,6 @@
 	justify-content: space-between; 
     align-items: center;
     .overlay{
-		z-index: 2;
 		background-color: rgba(0, 0, 0, 0.8);
 	}	
 }
@@ -17,7 +16,7 @@
 	color: black;
 	border-radius: 1%;
 	background-color: $pageBackgroundColor;
-	z-index:2;
+	z-index:5;
 	position: fixed;
   	bottom: 20%;
   	left: 0;

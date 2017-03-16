@@ -78,10 +78,13 @@
 }
 
 #login{
-position:relative;
+	position:relative;
 	.title{
 		position:relative;
 		height:15px;
+	}
+	.overlay{
+		z-index: 0;
 	}
 }
 

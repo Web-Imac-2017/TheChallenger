@@ -22,12 +22,17 @@ export default class UploadPost extends React.Component {
     getContentInput(type) {
         switch(type) {
             case "image":
-                return(<input type="file" name="image" id="up-content"/>)
+                return(<div className="up-content-file">
+                            <label>
+                                Choose a file
+                                <input type="file" name="file" id="up-content" className="up-content"/>
+                            </label>
+                        </div>);
             case "text":
-                return(<textarea type = "text" name="link" id="up-content" className="field-contact" placeholder="Post content"></textarea>);
+                return(<textarea type = "text" name="link" id="up-content" className="field-contact" placeholder="Write your text"></textarea>);
             case "video":
             case "audio":
-            case "file":
+            case "link":
                 return (<input type="text" id="up-content" name="link" className="field-contact" placeholder="Link (Youtube, Soundcloud, URL)" />);
             default: return null;
         }
@@ -44,7 +49,7 @@ export default class UploadPost extends React.Component {
             case "image" : return "Image";
             case "audio" : return "Audio";
             case "video" : return "Video";
-            case "file" : return "Link";
+            case "link" : return "Link";
             default: return "Unknwown type";
         }
     }
@@ -82,7 +87,7 @@ export default class UploadPost extends React.Component {
                             <Tag value="video" callbackParent={this.callBackTags.bind(this)} name ="Video"/>
                             <Tag value="image" callbackParent={this.callBackTags.bind(this)} name ="Image"/>
                             <Tag value="text" callbackParent={this.callBackTags.bind(this)} name ="Text"/>
-                            <Tag value="file" callbackParent={this.callBackTags.bind(this)} name ="File"/>
+                            <Tag value="link" callbackParent={this.callBackTags.bind(this)} name ="Link"/>
                         </div>
                     </div>
                     <form className="form" method="POST" action={this.apiURL} encType="multipart/form-data">

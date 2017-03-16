@@ -1,3 +1,4 @@
+@import 'mixins';
 $squareWidth : 25px;
 
 .page{
@@ -72,6 +73,7 @@ $squareWidth : 25px;
             display: inline;
             height: 14px;
             margin-right: 8px;
+            -webkit-transition: all 0.3s;
             transition: all 0.3s;
             &:hover {
                 transform: scale(1.3);
@@ -120,7 +122,6 @@ button.follow_btn {
 
 .content_popup{
     .overlay{
-        z-index: 2;
         background-color: rgba(0,0,0,0.8);
     }
     .post-popup {
@@ -171,6 +172,14 @@ button.follow_btn {
         }
         .post__profil_bar{
             width: 90%;
+        }
+    }
+}
+
+@include mobile{
+    .content_popup{
+        .post-popup {
+            width: 100%;
         }
     }
 }
