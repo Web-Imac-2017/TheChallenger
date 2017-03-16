@@ -60,11 +60,11 @@ $squareWidth : 25px;
 	    }
 	  }
 
-	  .profil_pic{
-		    width: $squareWidth;
-		    height: $squareWidth;
-		    border-radius: 50%;
-	  }
+	.profil_pic{
+	    width: $squareWidth;
+	    height: $squareWidth;
+	    border-radius: 50%;
+	}
 
     .post-likes-bar {
         text-align: left;
