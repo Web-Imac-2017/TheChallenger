@@ -7,12 +7,6 @@ const logoCross = require("./../../img/icons/cross.png");
 export default class UploadPost extends React.Component {
     constructor (props) {
         super(props);
-
-        console.log("ôifhzeofihzefoihfoihfsdoifhsdfùoihsdfoihsfoqfusfiugqsfmiugsfiugsmiusfmiug");
-console.log(Utility.IMAGE);
-        console.log("ôifhzeofihzefoihfoihfsdoifhsdfùoihsdfoihsfoqfusfiugqsfmiugsfiugsmiusfmiug");
-
-
         this.state = { active: false };
         this.open = this.open.bind(this);
         this.apiURL = "api/post/add/"+this.props.challengeId+"/";
@@ -50,8 +44,6 @@ console.log(Utility.IMAGE);
     }
 
     send() {
-        /* console.log(document.getElementById("up-title").value);
-         * console.log(document.getElementById("up-description").value);*/
     }
 
     convertTypeToText(type) {
@@ -83,7 +75,6 @@ console.log(Utility.IMAGE);
         var myStyle =   {
             display : (this.state.active)?"block":"none"
         };
-        /* let readOnlyAttribute = { readOnly: "readOnly" };*/
         return(
             <div className ="page_about upload_post" style={myStyle}>
                 <div className= "overlay"></div>

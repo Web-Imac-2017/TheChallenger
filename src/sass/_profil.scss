@@ -1,3 +1,4 @@
+@import 'mixins';
 #profil{
 	display: flex;
     align-items: center;
@@ -15,15 +16,51 @@
 			border-radius: 0px 0px 20px 20px;
 			display: block;
 			margin-left: -20%;
+			@include mobile-por{
+				margin-bottom: 11px;
+			}
 		}
 		
 		.submit:hover{
 			background-color:$blueNight;
 			color:white;
 			cursor:pointer;
-			
-			font-family: 'Montserrat';
 			font-weight: 300;
+		}
+	}
+	#profile-editor{
+		@include mobile-por{
+				margin-bottom: 18px;
+			}
+		.buttons-editor{
+			.tag-btn{
+
+				background-color: $blueNight;
+				color: $blockBackgroundColor;
+			}
+			.tag-btn:hover{
+				background-color: $blockBackgroundColor;
+				color: $blueNight;
+			}
+		}
+		form{	
+			.description{
+				background-color: #f0f8ff;
+			}
+			.up-content-file{
+				margin: 0;
+				label {
+					color: #a3a3a3;
+				    font-weight: 300;
+				    font-size: 14px;
+				    background-color: #f0f8ff;
+				}
+				label:hover {
+					font-weight: 400;
+					background-color: #f0f8ff;
+					color: #a3a3a3;
+				}
+			}
 		}
 	}
 	
