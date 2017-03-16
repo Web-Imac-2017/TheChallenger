@@ -3,6 +3,33 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+	
+	.wrapper-profile-editor{
+		.submit{
+		
+			color: #333;
+			background-color: white;
+			border-color: #ccc;
+			height: 25px;
+			width: 125%;
+			border-radius: 0px 0px 20px 20px;
+			display: block;
+			margin-left: -20%;
+		}
+		
+		.submit:hover{
+			background-color:$blueNight;
+			color:white;
+			cursor:pointer;
+			
+			font-family: 'Montserrat';
+			font-weight: 300;
+		}
+	}
+	
+    .overlay{
+		z-index: 0;
+	}
 
 	#profil_box{
 		width : 50%;
@@ -43,6 +70,8 @@
 			flex-direction: column;
 			align-self: flex-start;
 			width: 65%;
+			padding-top: 20px;
+
 			@include mobile-por{
 				margin-left: 1em;
 			}
@@ -61,6 +90,7 @@
 				align-items: center;
 				display: flex;
 				flex-direction: row;
+				margin-top: 0.3em;
 			}
 
 			.profil_box__desc{
@@ -72,7 +102,7 @@
 			}
 
 			.profil_box__email{
-				margin: 1em 0;
+				margin: 0.5em 0;
 			}
 
 		}
@@ -88,6 +118,3 @@
     display: hidden;    
 }
 
-.visible {
-    display: block;
-}
