@@ -23,7 +23,7 @@ export default class ChallengeContainer extends React.Component{
         console.log(data);
         this.setState({
             challengesIds: data,
-            challenges: data == null ? null : data.map((id) => {return(<ChallengeMin id={id} />);})
+            challenges: data == null ? null : data.map((id) => {return(<ChallengeMin key={id} id={id} />);})
         });
     }
     render(){

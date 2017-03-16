@@ -12,10 +12,12 @@ export default class PostsContainer extends React.Component{
             postsFiltered: null
         };
 
-//        console.log(this.props.posts);
+        console.log("POST QUERY")
+        console.log(this.props.query);
         if(this.props.posts !== undefined){
             let tmp = this.props.posts.map((id) => {
-                return(<PostMin postId={id} 
+                return(<PostMin key={this.props.query + id}
+                                postId={id} 
                                 callbackParent={this.callBackPostType.bind(this)}
                                 affFollow={this.props.affFollow}
                                 affLikes={this.props.affLikes}/>);
@@ -23,21 +25,21 @@ export default class PostsContainer extends React.Component{
             this.state = {
                 posts: tmp,
                 data : this.props.posts
-            
             };
+
         }else if(this.props.query !== undefined){
             Utility.query(this.props.query, this.callBackData.bind(this));
         }
 
         //console.log(this.state.posts);
-        this.filterBar = <FilterBar updateParent={this.updatePostsFiltered.bind(this)} filters={{
+        /*this.filterBar = <FilterBar updateParent={this.updatePostsFiltered.bind(this)} filters={{
             "all": "All",
             "audio":"Audio",
             "video": "Video",
             "image": "Image",
             "text": "Text",
             "file": "Fichier"
-        }} />;
+        }} />;*/
         
         this.state = {
             postsFiltered: this.state.posts,            
@@ -60,17 +62,18 @@ export default class PostsContainer extends React.Component{
     }
 
     callBackData(data) {
-        /*console.log("CALLBACK POST CONTAINER")
-        console.log(this.state.affFollow);
-        console.log(this.state.affLikes);*/
+        console.log("CALLBACK POST CONTAINER")
+        console.log(data)
        // console.log(data);
-        let tmp = data == null ? null : data.map((id) => {
-            return(<PostMin postId={id} 
+        let tmp = data.map((id) => {
+            return(<PostMin key = {"data" +id}
+                            postId={id} 
                             callbackParent={this.callBackPostType.bind(this)} 
                             affFollow={this.state.affFollow}
                             affLikes={this.state.affLikes}/>
             );
         });
+        console.log(tmp)
         this.setState({
             posts: tmp,
             postsFiltered : tmp,
