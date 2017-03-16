@@ -290,12 +290,14 @@ class userController{
 		$cptwarnings=(!empty($_POST['cptwarnings']))? $_POST['cptwarnings']:$datas['cptwarnings'];
 		$rank=(!empty($_POST['rank']))? $_POST['rank']:$datas['rank'];
 		
-		$testimage=Image::test_image($photo);
-		if($testimage!=1 && $testimage!=2){ 
-			echo(json_encode(["code" => 0,"message" => "photo error"]));
-			exit();
+		if(!empty($_FILES['photo'])){
+			$testimage=Image::test_image($photo);
+			if($testimage!=1 && $testimage!=2){ 
+				echo(json_encode(["code" => 0,"message" => "photo error"]));
+				exit();
+			}
+			$linkcontent=Image::move_image($photo,'../data/profilepics/');
 		}
-		$linkcontent=Image::move_image($photo,'../data/profilepics/');
 
 		if(!$user->is_connected(MEMBRE)){
 	    	echo(json_encode(["code" => 0,"message" => "Not connected"]));
