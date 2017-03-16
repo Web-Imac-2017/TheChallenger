@@ -286,17 +286,20 @@ class userController{
 		
 		$description=(!empty($_POST['description']))? $_POST['description']:$datas['description'];
 		$birthdate=(!empty($_POST['birthdate']))? $_POST['birthdate']:$datas['birthdate'];
-		$photo=(!empty($_FILES['photo']))? $_FILES['photo']:$datas['photo'];
+		$photo=(!empty($_FILES['photo']['size']))? $_FILES['photo']:$datas['photo'];
 		$cptwarnings=(!empty($_POST['cptwarnings']))? $_POST['cptwarnings']:$datas['cptwarnings'];
 		$rank=(!empty($_POST['rank']))? $_POST['rank']:$datas['rank'];
 		
-		if(!empty($_FILES['photo'])){
+		if($photo!=$datas['photo']){
 			$testimage=Image::test_image($photo);
 			if($testimage!=1 && $testimage!=2){ 
 				echo(json_encode(["code" => 0,"message" => "photo error"]));
 				exit();
 			}
 			$linkcontent=Image::move_image($photo,'../data/profilepics/');
+		}
+		else{
+			$linkcontent=$photo;
 		}
 
 		if(!$user->is_connected(MEMBRE)){
