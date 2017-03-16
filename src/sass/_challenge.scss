@@ -1,12 +1,13 @@
 @import 'mixins';
 #challenge_page{
-
+    min-height: 84vh;
     .upload-btn{
         width: 120px;
         margin: 20px;
         box-shadow: 0.5px 0.5px 5px #555;
         border-radius: 50%;
         height: 120px;
+       
     }
     .posts-container{
         padding: 0 0 4em 0;
