@@ -78,7 +78,7 @@ class challengeController {
 				if($testimage){ 
 				
 					$linkcontent=$challenge->move_image($image,'../data/challenge');
-					$query=$db->prepare('INSERT INTO thechallenger.challenge (title, description, photo, datestart, datestop) VALUES(:title,:desc, :linkcontent, NOW(),:date_stop)');
+					$query=$db->prepare('INSERT INTO challenge (title, description, photo, datestart, datestop) VALUES(:title,:desc, :linkcontent, NOW(),:date_stop)');
 
 				}
 				
@@ -147,7 +147,7 @@ class challengeController {
 			$desc=(!empty($_FILES['desc']))? $_FILES['desc']:"";
 			$date_stop=(!empty($_POST['date_stop']))? $_POST['date_stop']:"";
 			$db = database::getPDO();
-			$query=$db->prepare('UPDATE thechallenger.challenge SET title=:title,description=:desc,datestop=:date_stop WHERE id=:idchallenge');
+			$query=$db->prepare('UPDATE challenge SET title=:title,description=:desc,datestop=:date_stop WHERE id=:idchallenge');
 			$query->bindParam(':idchallenge',$idchallenge,PDO::PARAM_INT);
 			$query->bindParam(':title',$title,PDO::PARAM_STR);
 			$query->bindParam(':desc',$desc,PDO::PARAM_STR);
@@ -176,7 +176,7 @@ class challengeController {
 		if ($user->is_connected(MODERATEUR)) {
 		
 			global $db;
-			$query=$db->prepare('DELETE FROM thechallenger.challenge WHERE id=:idchallenge');
+			$query=$db->prepare('DELETE FROM challenge WHERE id=:idchallenge');
 			$query->bindParam(':idchallenge',$idchallenge,PDO::PARAM_INT);
 			$query->execute();
 			$query->CloseCursor();

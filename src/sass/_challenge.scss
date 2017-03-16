@@ -1,3 +1,16 @@
+@import 'mixins';
+#challenge_page{
+    .upload-btn{
+        width: 15%;
+        margin: 20px;
+        box-shadow: 0.5px 0.5px 5px #555;
+    }
+    .posts-container{
+        padding: 0 0 4em 0;
+    }
+}
+
+
 #challenge_box{
     display: flex;
     flex-direction: column;
@@ -33,7 +46,7 @@
             border: 2px solid white;
             border-radius: 2px;
             padding: 2% 2% 2% 2%;
-            width: 331px;
+            width: 330px;
             background: rgba(0,0,0,0.6);
             h4{
                 margin: 0;
@@ -51,3 +64,10 @@
     }
 
 }
+@include mobile-por{
+    #challenge_page{
+        .upload-btn{
+            width: 30%;
+        }
+    }
+}  

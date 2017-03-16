@@ -54,7 +54,7 @@ class Post
 			exit();
 		}
 		else{
-			$query=$db->prepare('SELECT id FROM thechallenger.score WHERE iduser=:iduser AND idpost=:idpost');
+			$query=$db->prepare('SELECT id FROM score WHERE iduser=:iduser AND idpost=:idpost');
 	        $query->bindParam(':iduser',$_COOKIE['id'],PDO::PARAM_INT);
 	        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
 	        $query->execute();
@@ -65,7 +65,7 @@ class Post
 	}
 
 	public static function getIdChallenge($idpost){
-		$query=$db->prepare('SELECT idchallenge FROM thechallenger.post WHERE id=:idpost');
+		$query=$db->prepare('SELECT idchallenge FROM post WHERE id=:idpost');
         $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
         $query->execute();
         $datas=$query->fetch;

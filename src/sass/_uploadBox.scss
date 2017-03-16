@@ -21,6 +21,7 @@
 		z-index: 4;
 		h1{
 			width: 80%;
+			margin: 4px 0;
 		}
 		.content--tag{
 			h4{
@@ -31,11 +32,15 @@
 		}
 		.form{
 			margin: 0;
+			width: 90%;
 			p{
-				margin: 0;
+				margin: 8px;
 			}
 			.field-contact{
-				margin: 0;
+				margin: 5px;
+			}
+			.form-btn{
+				width: 80px;
 			}
 		}
 	}	
@@ -43,6 +48,7 @@
 
 .tagList{
     width: 100%;
+    margin: 10px 0;
 }
 
 @include tablet{
@@ -58,6 +64,7 @@
 }
 @include mobile-por{
 	.upload{
+        width: 90%;
 		top: 0;
 		bottom: 0;
 		position: relative;
@@ -70,6 +77,11 @@
 				.tag-btn{
 				    width: 100%;
 				}
+			}
+		}
+		.form{
+			.field-contact{
+				width: 100%;
 			}
 		}
 	}
