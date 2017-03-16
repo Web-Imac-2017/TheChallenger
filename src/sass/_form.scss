@@ -11,7 +11,82 @@
 	font-family: 'Montserrat';
 	font-weight: 300;
   }
+  
+  
 }
+
+
+#profile-editor {
+	background-color:white;
+	text-align: center; 
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom : 1px;
+	
+	border-radius : 0px 0px 50px 50px;
+	
+	padding-left:15px;
+	padding-right:15px;
+	padding-top:15px;
+	padding-bottom:10px;
+	
+	width:150%;
+	margin-left:-25%;
+  
+.form.visible {
+    display: block;
+	background-color:green;
+}
+	.buttons-editor{
+	
+		
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		margin-top: 15px;
+	
+		.field-contact{
+			
+			background-color: #f1f2f1;
+			border: 1px solid #848484;
+			color: black;
+			display: block;
+			width: 65px;
+			padding: 3px 3px 3px 3px;
+			text-align: center;
+		}
+		
+		.field-contact:hover{
+			background-color:white;
+		}
+	
+	}
+  .field-in{
+    color: black;
+	font-family: 'Montserrat';
+	font-weight: 300;
+  }
+  
+  .description{
+		height:100px;
+		max-width:315px;
+		width:315px;
+		max-height:300px;
+	}
+	
+	.birthdate{
+		width:315px;
+		margin-top:15px;
+	}
+	
+	.photo{
+	width:315px;
+	margin-top:15px;
+	}
+}
+
 
 .field-in {
  

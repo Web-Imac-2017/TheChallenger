@@ -31,12 +31,15 @@ export default class ProfileEditor extends React.Component {
         return(
             <div id="profile-editor" className={this.state.classForm}>
                 <form className="form" id="profile-editor-form" method="POST" action={this.apiURL} encType="multipart/form-data">
-                    <textarea type="text" name="description" placeholder="Your description"/>
-                    <input type="text" name="birthdate" placeholder="eg 1985-07-25"/>
-                    <input type="file" name="photo" />
-                </form>
-                <button className="field-contact form-btn" onClick={this.close.bind(this)} href="#">Cancel</button>
-                <button type="submit" className="field-contact form-btn" form="profile-editor-form" href="#">Save</button>
+                    <textarea type="text" className="description" name="description" placeholder="Your description"/>
+                    <input type="text" className="birthdate" name="birthdate" placeholder="eg 1985-07-25"/>
+					<input  type="file"  className="photo" name="photo"/>
+				 </form>
+				 
+				<div className="buttons-editor">
+					 <button className="field-contact form-btn" onClick={this.close.bind(this)} href="#">Cancel</button>
+					<button  type="submit" className="field-contact form-btn" form="profile-editor-form" href="#">Save</button> 
+				</div>
             </div>
         );
     }
