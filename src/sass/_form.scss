@@ -10,11 +10,8 @@
     color: black;
 	font-family: 'Montserrat';
 	font-weight: 300;
-  }
-  
-  
+  }  
 }
-
 
 #profile-editor {
 	background-color:white;
@@ -23,15 +20,12 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin-bottom : 1px;
-	
-	border-radius : 0px 0px 50px 50px;
-	
+	margin-bottom : 1px;	
+	border-radius : 0px 0px 10px 10px;	
 	padding-left:15px;
 	padding-right:15px;
 	padding-top:15px;
 	padding-bottom:10px;
-	
 	width:150%;
 	margin-left:-25%;
   
@@ -39,16 +33,13 @@
     display: block;
 	background-color:green;
 }
-	.buttons-editor{
-	
-		
+	.buttons-editor{	
 		display: flex;
 		flex-direction: row;
 		justify-content: space-around;
 		margin-top: 15px;
 	
 		.field-contact{
-			
 			background-color: #f1f2f1;
 			border: 1px solid #848484;
 			color: black;
@@ -63,13 +54,14 @@
 		}
 	
 	}
-  .field-in{
-    color: black;
-	font-family: 'Montserrat';
-	font-weight: 300;
-  }
+	
+	.field-in{
+		color: black;
+		font-family: 'Montserrat';
+		font-weight: 300;
+	}
   
-  .description{
+	.description{
 		height:100px;
 		max-width:315px;
 		width:315px;
@@ -82,8 +74,8 @@
 	}
 	
 	.photo{
-	width:315px;
-	margin-top:15px;
+		width:315px;
+		margin-top:15px;
 	}
 }
 
@@ -93,13 +85,14 @@
   padding: 6px 12px;
   border: 0px;
   margin: 3px;
-  :focus{
-    outline: none;
-    padding: 15px;
-  }
-  &.error, &.error:focus{
-    border: 1px solid #ff0000;
-  }
+	  :focus{
+		outline: none;
+		padding: 15px;
+	  }
+	  
+	  &.error, &.error:focus{
+		border: 1px solid #ff0000;
+	  }
 }
 
 .submit{
