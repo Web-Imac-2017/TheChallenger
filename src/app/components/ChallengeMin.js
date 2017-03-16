@@ -25,7 +25,6 @@ export default class ChallengeMin extends React.Component{
 
     loadData(){
         var id = this.props.id;
-        console.log('api/challenge/show/'+id)
         Utility.query('api/challenge/show/'+id, this.callback.bind(this));   
     }
 

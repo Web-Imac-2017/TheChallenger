@@ -8,11 +8,7 @@ export default class Timer extends React.Component{
         // This is called before our render function. The object that is 
         // returned is assigned to this.state, so we can use it later.
 
-        this.state = { timer: null };
-        /* console.log("TIMER")
-         * console.log("end " + this.props.end)
-         */
-        
+        this.state = { timer: null };       
         
     }
 

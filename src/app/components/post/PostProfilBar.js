@@ -25,7 +25,6 @@ export default class PostProfilBar extends React.Component{
 
 	loadData(){
 		var userId = this.props.userId;
-//		console.log("BAR USER id :"+userId);
 		Utility.query('api/user/show/'+userId, this.callback.bind(this));	
 	}
 

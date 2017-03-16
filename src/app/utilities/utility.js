@@ -7,8 +7,6 @@ function requete(url, callback) {
                 return;
             }
             response.json().then(function(data) {
-                console.log(url);
-                console.log(data);
                 callback(data);
             });
         })
@@ -50,7 +48,6 @@ function changePage(page){
     let url = window.location.href;
     let path =  url.split("#")[0];
     const newPath = path + "#"+page;
-    console.log("REDIRECTION PATH "+newPath);
     window.history.pushState("", "", newPath);
     location.reload();
 }

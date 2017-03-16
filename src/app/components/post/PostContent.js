@@ -38,8 +38,6 @@ export default class PostContent extends React.Component{
                             affFollow={this.props.affFollow}
                             affLikes={this.props.affLikes}/>;
         this.postPopup = this.props.preview ? (post) : null;
-        //console.log("bonjour"+this.state.post);
-        // this.postPopup = (<Post post={this.state.post} ref="postPopup"/>);
     }
 
     handlePostPopupClick() {
@@ -48,11 +46,9 @@ export default class PostContent extends React.Component{
     }
 
     preRender() {
-        //console.log("preRender")
         // media sera inséré dans return(), comme ça ça dépend du type du post.
         let media = null;
         let content = this.state.post.linkcontent;
-        //console.log(this.state.post);
         switch(this.state.post.type) {
             case Utility.TEXT:
                 media = (<p>{content}</p>);

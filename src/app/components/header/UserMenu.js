@@ -34,16 +34,10 @@ export default class UserMenu extends React.Component {
 	}		
 
 	callbackIsConnected(id){
-		  /* console.log("CALLVACK")
-		     console.log(id)*/
-		/*if(!id)
-			browserHistory.push('./#/');*/
 		Utility.query("api/user/show/"+id, this.callbackUser.bind(this));
 	}
 
 	callbackUser(data){
-		  /* console.log("CALLBACK USER");
-		     console.log(data)*/
 		this.setState({user:data});
 	}
 

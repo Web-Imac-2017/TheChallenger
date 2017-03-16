@@ -31,7 +31,6 @@ export default class PostsContainer extends React.Component{
             Utility.query(this.props.query, this.callBackData.bind(this));
         }
 
-        //console.log(this.state.posts);
         this.filterBar = <FilterBar updateParent={this.updatePostsFiltered.bind(this)} filters={{
             "all": "All",
             "audio":"Audio",
@@ -62,9 +61,6 @@ export default class PostsContainer extends React.Component{
     }
 
     callBackData(data) {
-        /* console.log("CALLBACK POST CONTAINER")
-         * console.log(data)*/
-       // console.log(data);
         let tmp = data.map((id) => {
             return(<PostMin key = {"data" +id}
                             postId={id} 
@@ -73,7 +69,6 @@ export default class PostsContainer extends React.Component{
                             affLikes={this.state.affLikes}/>
             );
         });
-        /* console.log(tmp)*/
         this.setState({
             posts: tmp,
             postsFiltered : tmp,
