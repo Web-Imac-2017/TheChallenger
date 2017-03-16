@@ -25,20 +25,26 @@ export default class Post extends React.Component {
 
     render() {
         let myStyle = { display: (this.state.active) ? "block" : "none" };
+        /*<PostProfilBar userId = {this.state.post.iduser} affFollow={this.state.affFollow}/>
+                    <PostContent    post = {this.state.post}  
+                                    preview={false}
+                                    affFollow={this.state.affFollow}
+                                    affLikes={this.state.affLikes}/>
+                    <PostLikesBar post = {this.state.post} affLikes={this.state.affLikes}/>*/
         return(
-                <div className="content_popup" style={myStyle}>
-                    <div className="overlay"></div>
-                    <div className="post-popup">
-                        <button onClick={this.close.bind(this)} className="close-button">
-                            <img src= {logoCross} width="30" height="30"/>
-                        </button>
-                        <PostProfilBar userId={this.state.post.iduser} />
-                        <PostContent post={this.state.post} preview={false} />
-                        <PostLikesbar postId={this.state.post.id}/>
-                        <h4>{this.state.post.title}</h4>
-                        <p>{this.state.post.description}</p>
-               	    </div>		
-                </div>
+            <div className="content_popup" style={myStyle}>
+                <div className="overlay"></div>
+                <div className="post-popup">
+                    <button onClick={this.close.bind(this)} className="close-button">
+                        <img src= {logoCross} width="30" height="30"/>
+                    </button>
+                    <PostProfilBar userId={this.state.post.iduser} />
+                    <PostContent post={this.state.post} preview={false} />
+                    <PostLikesbar postId={this.state.post.id}/>
+                    <h4>{this.state.post.title}</h4>
+                    <p>{this.state.post.description}</p>
+           	    </div>		
+            </div>
         );
     }
 }

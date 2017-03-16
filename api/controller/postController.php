@@ -1,5 +1,6 @@
 <?php 
 //include_once("model/Post.php");
+include_once("model/utility.php");
 
 class postController
 {
@@ -67,11 +68,13 @@ class postController
 
 		if(!$user->is_connected(MEMBRE)){
 	    	echo(json_encode(["code" => 0,"message" => "Not connected"]));
+	    	Utility::nextPage("");	
 			exit();
 		}
 		//test si l'utilisateur n'a pas plus de 3 avertissements
 		if(!$user->checkwarnings()){
 	    	echo(json_encode(["code" => 0,"message" => "too many warnings, can't post anymore"]));
+	    	Utility::nextPage("challenge/$idchallenge");	
 			exit();
 		}
 	
@@ -82,6 +85,7 @@ class postController
 		}
 		if(empty($image) && empty($link)){
 	    	echo(json_encode(["code" => 0,"message" => "empty field"]));
+			Utility::nextPage("challenge/$idchallenge");	
 			exit();
 		}
 		
@@ -119,6 +123,7 @@ class postController
 		$query->CloseCursor();
 		
 		echo(json_encode(["code" => 1,"message" => "success"]));
+		Utility::nextPage("challenge/$idchallenge");	
 	}
 
 	public static function checkpost($idpost){
