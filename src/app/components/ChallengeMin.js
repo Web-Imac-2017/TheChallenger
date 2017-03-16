@@ -35,9 +35,11 @@ export default class ChallengeMin extends React.Component{
 	    return(
             <div className="challenge-min" id={this.state.challenge.id}>
                 <Link to={"/challenge/"+this.state.challenge.id}>
-                    <Vignette image={Utility.getPublicPath()+this.state.challenge.photo}/>
-                    <h4>{this.state.challenge.title}</h4> 
-                    <h4>Challenge</h4>
+                    <Vignette image={Utility.getPublicPath()+this.state.challenge.photo} overlay={true}/>
+                    <div className="challenge_min__title">
+                        <h4>{this.state.challenge.title}</h4> 
+                        <h4>Challenge</h4>
+                    </div>
                 </Link>
             </div>
 	    );
