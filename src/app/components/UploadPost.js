@@ -1,6 +1,6 @@
 import React from "react";
 import Tag from './Tag.js';
-import Utility from './Utility.js'
+import Utility from './../utilities/utility.js';
 const logoCross = require("./../../img/icons/cross.png");
 
 
@@ -8,13 +8,19 @@ export default class UploadPost extends React.Component {
     constructor (props) {
         super(props);
 
+        console.log("ôifhzeofihzefoihfoihfsdoifhsdfùoihsdfoihsfoqfusfiugqsfmiugsfiugsmiusfmiug");
+console.log(Utility.IMAGE);
+        console.log("ôifhzeofihzefoihfoihfsdoifhsdfùoihsdfoihsfoqfusfiugqsfmiugsfiugsmiusfmiug");
+
+
         this.state = { active: false };
         this.open = this.open.bind(this);
         this.apiURL = "api/post/add/"+this.props.challengeId+"/";
         this.state = {
-            contentInput: this.getContentInput("image"),
-            type : IMAGE
+            contentInput: this.getContentInput(Utility.IMAGE),
+            type : Utility.IMAGE
         };
+        this.state = {contentInput: this.getContentInput(Utility.IMAGE) };
         this.labelType = "Image";
     }
     close () {
@@ -26,30 +32,35 @@ export default class UploadPost extends React.Component {
 
     getContentInput(type) {
         switch(type) {
-            case IMAGE:
-                return(<input type="link" name="image" id="up-content"/>)
-            case TEXT:
-                return(<textarea type = "text" name="link" id="up-content" className="field-contact" placeholder="Post content"></textarea>);
-            case VIDEO:
-            case AUDIO:
-            case LINK:
+            case Utility.IMAGE:
+                return(<div className="up-content-file">
+                            <label>
+                                Choose a file
+                                <input type="file" name="file" id="up-content" className="up-content"/>
+                            </label>
+                        </div>);
+            case Utility.TEXT:
+                return(<textarea type = "text" name="link" id="up-content" className="field-contact" placeholder="Write your text"></textarea>);
+            case Utility.YOUTUBE:
+            case Utility.SOUNDCLOUD:
+            case Utility.LINK:
                 return (<input type="text" id="up-content" name="link" className="field-contact" placeholder="Link (Youtube, Soundcloud, URL)" />);
             default: return null;
         }
     }
 
     send() {
-        console.log(document.getElementById("up-title").value);
-        console.log(document.getElementById("up-description").value);
+        /* console.log(document.getElementById("up-title").value);
+         * console.log(document.getElementById("up-description").value);*/
     }
 
     convertTypeToText(type) {
         switch(type) {
-            case TEXT : return "Text";
-            case IMAGE: return "Image";
-            case AUDIO : return "Audio";
-            case VIDEO : return "Video";
-            case LINK : return "Link";
+            case Utility.TEXT:    return "Text";
+            case Utility.IMAGE:   return "Image";
+            case Utility.SOUNDCLOUD :  return "Audio";
+            case Utility.YOUTUBE: return "Video";
+            case Utility.LINK :   return "Link";
             default: return "Unknwown type";
         }
     }
@@ -63,7 +74,8 @@ export default class UploadPost extends React.Component {
     callBackTags(value) {
         this.updateTagAndType(value);
         this.setState({
-            contentInput: this.getContentInput(value)
+            contentInput: this.getContentInput(value),
+            type : value
         });
     }
     
@@ -83,16 +95,16 @@ export default class UploadPost extends React.Component {
                     <div className="content--tag">
                         <h4>Pick one tag</h4>
                         <div className="tagList">
-                            <Tag value="audio" callbackParent={this.callBackTags.bind(this)} name ="Audio"/>
-                            <Tag value="video" callbackParent={this.callBackTags.bind(this)} name ="Video"/>
-                            <Tag value="image" callbackParent={this.callBackTags.bind(this)} name ="Image"/>
-                            <Tag value="text" callbackParent={this.callBackTags.bind(this)} name ="Text"/>
-                            <Tag value="link" callbackParent={this.callBackTags.bind(this)} name ="Link"/>
+                            <Tag value={Utility.SOUNDCLOUD} callbackParent={this.callBackTags.bind(this)} name ="Audio"/>
+                            <Tag value={Utility.YOUTUBE} callbackParent={this.callBackTags.bind(this)} name ="Video"/>
+                            <Tag value={Utility.IMAGE} callbackParent={this.callBackTags.bind(this)} name ="Image"/>
+                            <Tag value={Utility.TEXT} callbackParent={this.callBackTags.bind(this)} name ="Text"/>
+                            <Tag value={Utility.LINK} callbackParent={this.callBackTags.bind(this)} name ="Link"/>
                         </div>
                     </div>
                     <form className="form" method="POST" action={this.apiURL} encType="multipart/form-data">
-                        <input type="text" name="tag" id="up-tag" hidden value="image" />
-                        <input type="text" name="type" id="up-type" hidden value="image" />
+                        <input type="text" name="tag" id="up-tag" hidden value={this.state.type}/>
+                        <input type="text" name="type" id="up-type" hidden value={this.state.type} />
                         <p>Type: {this.labelType}</p>
                         {this.state.contentInput}
                         <input type="text" name="title" id="up-title" className="field-contact" placeholder="Your Title"/>

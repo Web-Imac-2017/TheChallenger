@@ -11,12 +11,10 @@ export default class SearchBar extends React.Component {
 
     mouseOver() {
         ReactDom.findDOMNode(document.getElementById("logo-area")).style="opacity : 0.05; " ;
-        ReactDom.findDOMNode(document.getElementById("user-menu")).style="opacity : 0.05; " ;
     }
 
     mouseOut() {
         ReactDom.findDOMNode(document.getElementById("logo-area")).style="opacity : 1; " ;
-        ReactDom.findDOMNode(document.getElementById("user-menu")).style="opacity : 1; " ;
     }
 
     handleSearch(e) {

@@ -12,8 +12,8 @@ export default class PostsContainer extends React.Component{
             postsFiltered: null
         };
 
-        console.log("POST QUERY")
-        console.log(this.props.query);
+        /* console.log("POST QUERY")
+         * console.log(this.props.query);*/
         if(this.props.posts !== undefined){
             let tmp = this.props.posts.map((id) => {
                 return(<PostMin key={this.props.query + id}
@@ -62,8 +62,8 @@ export default class PostsContainer extends React.Component{
     }
 
     callBackData(data) {
-        console.log("CALLBACK POST CONTAINER")
-        console.log(data)
+        /* console.log("CALLBACK POST CONTAINER")
+         * console.log(data)*/
        // console.log(data);
         let tmp = data.map((id) => {
             return(<PostMin key = {"data" +id}
@@ -73,7 +73,7 @@ export default class PostsContainer extends React.Component{
                             affLikes={this.state.affLikes}/>
             );
         });
-        console.log(tmp)
+        /* console.log(tmp)*/
         this.setState({
             posts: tmp,
             postsFiltered : tmp,

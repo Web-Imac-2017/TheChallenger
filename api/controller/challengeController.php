@@ -227,5 +227,7 @@ class challengeController {
 		}
 		echo (json_encode($current));
 	}
+	
+	
 }
 ?>

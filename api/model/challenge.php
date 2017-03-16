@@ -1,6 +1,6 @@
 <?php 
-
-class Challenge extends Image {
+class Challenge extends Image
+{
 
 	private $id;
 	private $title;
@@ -63,7 +63,7 @@ class Challenge extends Image {
 		return $this->datestop; 
 	}
 	
-	// VÃ©rifier si un challenge existe Ã  partir de son id, retourner le challenge correspondant dans ce cas
+	// Vérifier si un challenge existe à partir de son id, retourner le challenge correspondant dans ce cas
 	// false s'il n'existe pas
 	public static function challenge_exists($id){
 		
@@ -91,7 +91,7 @@ class Challenge extends Image {
 		return $tab;
 	}
 	
-	// RÃ©cupÃ©rer le gagnant du challenge
+	// Récupérer le gagnant du challenge
 	public function getWinner($idchallenge) {
 		
 		global $db;
@@ -124,7 +124,9 @@ class Challenge extends Image {
 		];
 		return $time;
 	}
-	// Date limite passÃ©e ou non
+	// Date limite passée ou non
+	//retourne 1 si c'est le challenge est en cours
+	// 0 sinon
 	public static function deadLine($idchallenge) {
 		
 		global $db;
@@ -140,7 +142,7 @@ class Challenge extends Image {
 	
 	public static function setWinner($idchallenge) {
 		
-		if (deadLine($idchallenge)) {
+		if (!self::deadLine($idchallenge)) {
 		
 			global $db;
 			// on cherche le nombre maximal de likes sur les pots du challenge
@@ -148,7 +150,7 @@ class Challenge extends Image {
 			$query_max->bindParam(':idchallenge',$idchallenge,PDO::PARAM_INT);
 			$query_max->execute();
 			$result = $query_max->fetch(); 
-			$query_max->closeCursor();
+			$query_max->CloseCursor();
 			$max = $result['max(score)'];
 			
 			// on cherche le post ayant le plus de like du challenge
@@ -157,14 +159,35 @@ class Challenge extends Image {
 			$query->bindParam(':max',$max,PDO::PARAM_INT);
 			$query->execute();
 			$data = $query->fetch();
-			$query->closeCursor();
+			$query->CloseCursor();
 			$id = $data['id'];
 			
 			// le post est winner
 			$query_win = $db->prepare('UPDATE post SET winner = 1 WHERE id=:id');
 			$query_win->bindParam(':id',$id,PDO::PARAM_INT);
 			$query_win->execute();
-			$query_win->closeCursor();
+			$query_win->CloseCursor();
+		}
+	}
+	
+	public static function winners() {
+		
+		global $db;
+		$query = $db->prepare('SELECT COUNT(*) as nb FROM challenge');
+		$query->execute();
+		$data = $query->fetch();
+		$query->CloseCursor();
+		$nb = $data['nb'];
+		$query = $db->prepare('SELECT * FROM challenge');
+		$query->execute();
+		$id_challenge = array();
+		while ($datas = $query->fetch()) {
+			array_push($id_challenge,$datas['id']);
+		}
+		$query->CloseCursor();
+
+		for ($i = 0; $i<$nb; $i++) {
+			self::setWinner($id_challenge[$i]);
 		}
 	}
 	

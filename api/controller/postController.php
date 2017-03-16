@@ -309,6 +309,7 @@ class postController {
 	
 	public static function getWinners() {
 	
+		Challenge::winners();
 		global $db;
 		$query=$db->prepare('SELECT * FROM post WHERE winner = 1');
 		$query->execute();
@@ -319,7 +320,6 @@ class postController {
 		$query->CloseCursor();
 		echo(json_encode($win));
 	}
-
 }
 
 ?>

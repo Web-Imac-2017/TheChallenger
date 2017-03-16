@@ -19,8 +19,8 @@ export default class ChallengeContainer extends React.Component{
     }
 
     callBackData(data) {
-        console.log("CALLBACK CHALLENGE CONTAINER")
-        console.log(data);
+        /* console.log("CALLBACK CHALLENGE CONTAINER")
+         * console.log(data);*/
         this.setState({
             challengesIds: data,
             challenges: data == null ? null : data.map((id) => {return(<ChallengeMin key={id} id={id} />);})

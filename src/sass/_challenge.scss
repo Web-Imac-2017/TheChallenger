@@ -1,9 +1,11 @@
 @import 'mixins';
 #challenge_page{
     .upload-btn{
-        width: 15%;
+        width: 120px;
         margin: 20px;
         box-shadow: 0.5px 0.5px 5px #555;
+        border-radius: 50%;
+        height: 120px;
     }
     .posts-container{
         padding: 0 0 4em 0;
@@ -67,7 +69,7 @@
 @include mobile-por{
     #challenge_page{
         .upload-btn{
-            width: 30%;
+            
         }
     }
 }  

@@ -4,12 +4,6 @@ import { BrowserRouter as Router,
 import Utility from './../../utilities/utility.js';
 import Post from './../Post.js';
 
-//definition des types de fichiers
-const IMAGE = "1";
-const YOUTUBE = "2";
-const SOUNDCLOUD = "3";
-const TEXT = "4";
-const LINK = "5"; 
 
 
 export default class PostContent extends React.Component{
@@ -60,10 +54,10 @@ export default class PostContent extends React.Component{
         let content = this.state.post.linkcontent;
         //console.log(this.state.post);
         switch(this.state.post.type) {
-            case TEXT:
+            case Utility.TEXT:
                 media = (<p>{content}</p>);
                 break;
-            case IMAGE:
+            case Utility.IMAGE:
                 content = Utility.getPublicPath()+content;
                 const divStyle = {
                     backgroundImage: 'url(' + content + ')'
@@ -72,19 +66,19 @@ export default class PostContent extends React.Component{
                     <div className="background_img" style={divStyle}></div>
                 );
                 break;
-            case SOUNDCLOUD:
+            case Utility.SOUNDCLOUD:
                 media = (<iframe    width="100%" 
                                     height="200" 
                                     scrolling="no" 
                                     frameBorder="no" 
                                     src={content}></iframe>);
                 break;
-            case YOUTUBE:
+            case Utility.YOUTUBE:
                 media = (<iframe width="100%" allowFullScreen frameBorder="no"
                          src={content}>
                          </iframe> );
                 break;
-            case LINK:
+            case Utility.LINK:
                 media = (<p>FILE: {content}</p>);
                 break;
             default: break;

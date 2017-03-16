@@ -280,7 +280,6 @@ class userController{
 		
 		global $db;
 		global $user;
-
 		$query = $db->prepare("SELECT description,birthdate,photo,cptwarnings,rank FROM user WHERE id=:id");
 		$query->bindParam(':id',$id,PDO::PARAM_INT);
 		$query->execute();
@@ -298,18 +297,20 @@ class userController{
 
 		if(!$user->is_connected(MEMBRE)){
 	    	echo(json_encode(["code" => 0,"message" => "Not connected"]));
+			Utility::nextPage("");	
 			exit();
 		}
 		//si c'est un moderateur ou l'utilisateur en question, il peut modifier le profil
 		if($user->is_connected(MODERATEUR)|| ($_COOKIE['id']==$id && $user->is_connected(MEMBRE))){
 			$query = $db->prepare("UPDATE user SET photo=:linkcontent,description=:description,birthdate=:birthdate WHERE id=:id");
 			$query->bindParam(':linkcontent',$linkcontent,PDO::PARAM_STR);
-			$query->bindParam(':description',$desciption,PDO::PARAM_STR);
+			$query->bindParam(':description',$description,PDO::PARAM_STR);
 			$query->bindParam(':birthdate',$birthdate,PDO::PARAM_STR);
 			$query->bindParam(':id',$id,PDO::PARAM_INT);
 			$query->execute();
 			$query->CloseCursor();
 		}
+		
 		//si moderateur il peut modifier le nombre d'avertissements
 		if($user->is_connected(MODERATEUR)){
 			$query = $db->prepare("UPDATE user SET cptwarnings=:cptwarnings WHERE id=:id");
@@ -328,6 +329,7 @@ class userController{
 		}
 
 		echo(json_encode(["code" => 1,"message" => "Success"]));
+		Utility::nextPage("profil/$id");	
 	}
 	
 	public static function toArray($id){
