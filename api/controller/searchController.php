@@ -2,7 +2,7 @@
 
 class searchController {
 	public static function search(){
-		$search=(!empty($_POST['search']))? $_POST['search']:"";
+		$search=(!empty($_GET['search']))? $_GET['search']:"";
 		//challenge ou post
 		$searchtype=(!empty($_POST['searchtype']))? $_POST['searchtype']:"";
 		if(empty($search) || empty($searchtype)){
