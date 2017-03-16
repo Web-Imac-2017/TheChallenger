@@ -23,12 +23,12 @@ class postController
 		}
 		//si l'utilisateur n'a pas encore like le post
 		global $db;
-		$query=$db->prepare('INSERT INTO thechallenger.score (iduser,idpost) VALUES (:iduser,:idpost)');
+		$query=$db->prepare('INSERT INTO score (iduser,idpost) VALUES (:iduser,:idpost)');
         $query->bindParam(':iduser',$_COOKIE['id'],PDO::PARAM_INT);
         $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
         $query->execute();
         $query->CloseCursor();
-        $query=$db->prepare('UPDATE thechallenger.post SET score=score+1 WHERE id=:idpost');
+        $query=$db->prepare('UPDATE post SET score=score+1 WHERE id=:idpost');
         $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
         $query->execute();
         $query->CloseCursor();
@@ -42,12 +42,12 @@ class postController
 			exit();
 		}
 		global $db;
-		$query=$db->prepare('DELETE FROM thechallenger.score WHERE iduser=:iduser AND idpost=:idpost');
+		$query=$db->prepare('DELETE FROM score WHERE iduser=:iduser AND idpost=:idpost');
         $query->bindParam(':iduser',$_COOKIE['id'],PDO::PARAM_INT);
         $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
         $query->execute();
         $query->CloseCursor();
-        $query=$db->prepare('UPDATE thechallenger.post SET score=score-1 WHERE id=:idpost');
+        $query=$db->prepare('UPDATE post SET score=score-1 WHERE id=:idpost');
         $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
         $query->execute();
         $query->CloseCursor();
@@ -98,10 +98,10 @@ class postController
 
 				//on ajoute les donnees dans la bdd
 				if($testimage==1){ //si image pas hd
-					$query=$db->prepare('INSERT INTO thechallenger.post (title,state,linkcontent,type,hd,description,tag,datepost,iduser,idchallenge,winner,score) VALUES (:title,0,:linkcontent,1,0,:description,:tag,DATE(NOW()),:iduser,:idchallenge,0,0)');
+					$query=$db->prepare('INSERT INTO post (title,state,linkcontent,type,hd,description,tag,datepost,iduser,idchallenge,winner,score) VALUES (:title,0,:linkcontent,1,0,:description,:tag,DATE(NOW()),:iduser,:idchallenge,0,0)');
 				}
 				elseif($testimage==2){ //si image hd
-					$query=$db->prepare('INSERT INTO thechallenger.post (title,state,linkcontent,type,hd,description,tag,datepost,iduser,idchallenge,winner,score) VALUES (:title,0,:linkcontent,1,1,:description,:tag,DATE(NOW()),:iduser,:idchallenge,0,0)');
+					$query=$db->prepare('INSERT INTO post (title,state,linkcontent,type,hd,description,tag,datepost,iduser,idchallenge,winner,score) VALUES (:title,0,:linkcontent,1,1,:description,:tag,DATE(NOW()),:iduser,:idchallenge,0,0)');
 				}
 			}
 		}
@@ -109,7 +109,7 @@ class postController
 		if(empty($image) && !empty($link)){
 		
 			$linkcontent=$link;
-			$query=$db->prepare('INSERT INTO thechallenger.post (title,state,linkcontent,type,hd,description,tag,datepost,iduser,idchallenge,winner,score) VALUES (:title,0,:linkcontent,2,0,:description,:tag,DATE(NOW()),:iduser,:idchallenge,0,0)');			
+			$query=$db->prepare('INSERT INTO post (title,state,linkcontent,type,hd,description,tag,datepost,iduser,idchallenge,winner,score) VALUES (:title,0,:linkcontent,2,0,:description,:tag,DATE(NOW()),:iduser,:idchallenge,0,0)');			
 			
 		}
 		$query->bindParam(':title',$title,PDO::PARAM_STR);
@@ -129,7 +129,7 @@ class postController
 	public static function checkpost($idpost){
 		global $db;
 		//on vérifie si le name est déjà utilisé 
-		$query=$db->prepare('SELECT iduser FROM thechallenger.post WHERE id=:idpost');
+		$query=$db->prepare('SELECT iduser FROM post WHERE id=:idpost');
 		$query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
 		$query->execute();
 		$datas=$query->fetch();
@@ -156,7 +156,7 @@ class postController
 			$desc=(!empty($_POST['desc']))? $_POST['desc']:"";
 
 			global $db;
-			$query=$db->prepare('UPDATE thechallenger.post SET title=:title,description=:description WHERE id=:idpost');
+			$query=$db->prepare('UPDATE post SET title=:title,description=:description WHERE id=:idpost');
 	        $query->bindParam(':title',$title,PDO::PARAM_STR);
 	        $query->bindParam(':description',$desc,PDO::PARAM_STR);
 	        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
@@ -173,7 +173,7 @@ class postController
 			exit();
 		}
 		global $db;
-		$query=$db->prepare('UPDATE thechallenger.post SET state=1 WHERE id=:idpost');
+		$query=$db->prepare('UPDATE post SET state=1 WHERE id=:idpost');
 		$query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
 		$query->execute();
 		$query->CloseCursor();
@@ -191,7 +191,7 @@ class postController
 		global $user; 
 		if($user->is_connected(MODERATEUR) || ($user->is_connected(MEMBRE) && $iduser==$_COOKIE['id'])){
 			global $db;
-			$query=$db->prepare("SELECT linkcontent FROM thechallenger.post WHERE id=:idpost AND type=".IMAGE);
+			$query=$db->prepare("SELECT linkcontent FROM post WHERE id=:idpost AND type=".IMAGE);
 	        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
 	        $query->execute();
 	        $datas=$query->fetch();
@@ -199,7 +199,7 @@ class postController
 	        if(!empty($datas['linkcontent'])){
 	        	unlink('../data/post/'.$datas['linkcontent']);
 	        }
-			$query=$db->prepare('DELETE FROM thechallenger.post WHERE id=:idpost');
+			$query=$db->prepare('DELETE FROM post WHERE id=:idpost');
 	        $query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
 	        $query->execute();
 	        $query->CloseCursor();
@@ -210,13 +210,13 @@ class postController
 	public static function getRandomBackground(){
 		
 		global $db;
-		$query=$db->prepare('SELECT COUNT(*) AS nbhd FROM thechallenger.post WHERE hd=1');
+		$query=$db->prepare('SELECT COUNT(*) AS nbhd FROM post WHERE hd=1');
 		$query->execute();
 		$datas=$query->fetch();
 		$nbhd=$datas['nbhd'];
 		$query->CloseCursor();
 		$random=rand(1,$nbhd);
-		$query=$db->prepare('SELECT * FROM thechallenger.post WHERE hd=1');
+		$query=$db->prepare('SELECT * FROM post WHERE hd=1');
 		$query->execute();
 		$i=1;
 		$datas=$query->fetch();
@@ -239,7 +239,7 @@ class postController
 			exit();
 		}
 		global $db;
-		$query=$db->prepare('SELECT * FROM thechallenger.post WHERE id=:idpost');
+		$query=$db->prepare('SELECT * FROM post WHERE id=:idpost');
 		$query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
 		$query->execute();
 		$datas=$query->fetch();
@@ -276,7 +276,7 @@ class postController
 			exit();
 		}
 		global $db;
-		$query=$db->prepare('SELECT * FROM thechallenger.post WHERE id=:idpost');
+		$query=$db->prepare('SELECT * FROM post WHERE id=:idpost');
 		$query->bindParam(':idpost',$idpost,PDO::PARAM_INT);
 		$query->execute();
 		$datas=$query->fetch();

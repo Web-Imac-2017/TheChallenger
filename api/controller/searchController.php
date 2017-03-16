@@ -2,7 +2,7 @@
 
 class searchController {
 	public static function search(){
-		$search=(!empty($_POST['search']))? $_POST['search']:"";
+		$search=(!empty($_GET['search']))? $_GET['search']:"";
 		//challenge ou post
 		$searchtype=(!empty($_POST['searchtype']))? $_POST['searchtype']:"";
 		if(empty($search) || empty($searchtype)){
@@ -11,7 +11,7 @@ class searchController {
 		}
 		$search='%'.$search.'%';
 		global $db;
-		$query=$db->prepare('SELECT id FROM thechallenger.'.$searchtype.' WHERE title LIKE :search');
+		$query=$db->prepare('SELECT id FROM '.$searchtype.' WHERE title LIKE :search');
 		$query->bindParam(':search',$search,PDO::PARAM_STR);
 		$query->execute();
 		$results=array();
