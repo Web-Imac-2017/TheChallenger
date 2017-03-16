@@ -1,5 +1,6 @@
 <?php
 
+include_once("model/Image.php");
 //include_once("model/User.php");
 include_once("model/utility.php");
 $user=new User();
@@ -82,7 +83,7 @@ class userController{
    		$user->registeremail();
         
 	    echo(json_encode(["code" => 1,"message" => "Success"]));
-		// Utility::nextPage("");	
+		Utility::nextPage("");	
 	}
 
 	//si l'utilisateur clique sur le lien envoyé par email on confirme l'inscription
@@ -275,19 +276,25 @@ class userController{
 
 	//fonction modification utilisateur, ajout avertissement et modif de rang
 	public static function changeuser($id){
+		
+		
+		global $db;
+		global $user;
+
 		$query = $db->prepare("SELECT description,birthdate,photo,cptwarnings,rank FROM user WHERE id=:id");
 		$query->bindParam(':id',$id,PDO::PARAM_INT);
 		$query->execute();
 		$datas=$query->fetch();
 		$query->CloseCursor();
+		
 		$description=(!empty($_POST['description']))? $_POST['description']:$datas['description'];
 		$birthdate=(!empty($_POST['birthdate']))? $_POST['birthdate']:$datas['birthdate'];
 		$photo=(!empty($_FILES['photo']))? $_FILES['photo']:$datas['photo'];
 		$cptwarnings=(!empty($_POST['cptwarnings']))? $_POST['cptwarnings']:$datas['cptwarnings'];
 		$rank=(!empty($_POST['rank']))? $_POST['rank']:$datas['rank'];
-
-		global $db;
-		global $user;
+		
+		$image = new Image();
+		$linkcontent=$image->move_image($photo,'../data/profilepics/');
 
 		if(!$user->is_connected(MEMBRE)){
 	    	echo(json_encode(["code" => 0,"message" => "Not connected"]));
@@ -295,8 +302,8 @@ class userController{
 		}
 		//si c'est un moderateur ou l'utilisateur en question, il peut modifier le profil
 		if($user->is_connected(MODERATEUR)|| ($_COOKIE['id']==$id && $user->is_connected(MEMBRE))){
-			$query = $db->prepare("UPDATE user SET photo=:photo,description=:description,birthdate=:birthdate WHERE id=:id");
-			$query->bindParam(':photo',$photo,PDO::PARAM_STR);
+			$query = $db->prepare("UPDATE user SET photo=:linkcontent,description=:description,birthdate=:birthdate WHERE id=:id");
+			$query->bindParam(':linkcontent',$linkcontent,PDO::PARAM_STR);
 			$query->bindParam(':description',$desciption,PDO::PARAM_STR);
 			$query->bindParam(':birthdate',$birthdate,PDO::PARAM_STR);
 			$query->bindParam(':id',$id,PDO::PARAM_INT);

@@ -1,7 +1,6 @@
 <?php 
 
-class User
-{
+class User {
 	private $_id;
 	private $_name;
 	private $_rank;

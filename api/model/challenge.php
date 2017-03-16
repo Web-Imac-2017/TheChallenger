@@ -1,6 +1,6 @@
 <?php 
-class Challenge extends Post
-{
+
+class Challenge extends Image {
 
 	private $id;
 	private $title;

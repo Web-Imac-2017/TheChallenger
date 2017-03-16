@@ -3,6 +3,9 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    .overlay{
+		z-index: 0;
+	}
 
 	#profil_box{
 		width : 50%;

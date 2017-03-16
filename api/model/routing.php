@@ -1,9 +1,5 @@
 <?php
 
-    /**
-     * ROUTING CLASS
-     */
-
     class ROUTING {
 
         private $root;
@@ -32,8 +28,6 @@
 
             $indexOfApi = array_search("api",$request);
 
-            //var_dump($indexOfApi);
-
             $new_request = "";
             for($i = ($indexOfApi + 1); $i < count($request); $i ++){
                 if($request[$i] != ''){ 
@@ -46,7 +40,6 @@
 
             foreach ($this->routes as $name => $route) {
                 $correspondance = true;
-                //On ne s'intèsse qu'aux routes possédant un paramètre
                 if(strpos($name,'{') !== false){
                     $name_expl = explode("/",$name);
                     $indexOfParam = -1;
@@ -55,7 +48,6 @@
                             $indexOfParam = $key;
                         }
                     }
-                    //On regarde si on peut trouver une correspondance avec notre route demandé
                     $request_in_part = explode("/",$new_request);
 
                     if($request_in_part[count($request_in_part) - 1] == ""){
