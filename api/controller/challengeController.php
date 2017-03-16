@@ -77,7 +77,7 @@ class challengeController {
 				$testimage=$challenge->test_image($photo);
 				if($testimage){ 
 				
-					$linkcontent=$challenge->move_image($image,'../data/challenge');
+					$linkcontent=$challenge->move_image($photo,'../data/challenge');
 					$query=$db->prepare('INSERT INTO challenge (title, description, photo, datestart, datestop) VALUES(:title,:desc, :linkcontent, NOW(),:date_stop)');
 
 				}
