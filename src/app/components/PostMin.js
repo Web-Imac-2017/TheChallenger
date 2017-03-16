@@ -58,7 +58,10 @@ export default class PostMin extends React.Component{
         return(
             <div className="post-min">
                 <PostProfilBar userId = {this.state.post.iduser} affFollow={this.state.affFollow}/>
-                <PostContent post = {this.state.post}  preview={true} />
+                <PostContent    post = {this.state.post}  
+                                preview={true}
+                                affFollow={this.state.affFollow}
+                                affLikes={this.state.affLikes}/>
                 <PostLikesBar post = {this.state.post} affLikes={this.state.affLikes}/>
             </div>
         );

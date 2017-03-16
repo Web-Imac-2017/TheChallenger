@@ -39,7 +39,11 @@ export default class PostContent extends React.Component{
         this.overlay =  this.props.preview ? (
                 <div className="veil" onClick={this.handlePostPopupClick.bind(this)}></div>
         ) : null;
-        this.postPopup = this.props.preview ? (<Post post={this.state.post} ref="postPopup"/>) : null;
+        const post = <Post  post={this.state.post}
+                            ref="postPopup"
+                            affFollow={this.props.affFollow}
+                            affLikes={this.props.affLikes}/>;
+        this.postPopup = this.props.preview ? (post) : null;
         //console.log("bonjour"+this.state.post);
         // this.postPopup = (<Post post={this.state.post} ref="postPopup"/>);
     }
