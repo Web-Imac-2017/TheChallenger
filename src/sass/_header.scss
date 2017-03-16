@@ -26,7 +26,10 @@
     border-color: white;
     height: 38px;
     background-color: transparent;
+	padding-left: 37px;
+	
 
+	
     -webkit-transition: all .5s;
     -moz-transition: all .5s;
     transition: all .5s;
@@ -54,12 +57,13 @@
 	position: relative;
     right: 35px;
     top: -56px;
+	
 	.tab-user-menu{
-		border-radius: 5px;
+		border-radius: 4px;
 	    background-color: #E6E6E6;
 	    position: absolute;
 	    width: 117px;
-	    height: 105px;
+	    height: 92px;
 	    
 	    text-align: center;
 	    display: flex;
@@ -71,10 +75,10 @@
 		font-weight: 300;
 	}
 	.disconnect{
-		height:35px;	
+		height:24px;	
 		border-radius: 6px;
 		color: white;
-		font-size: 15px;
+		font-size: 12px;
 		background: $orange;
 		padding: 5px 10px 5px 10px;
 		text-align: center; 
@@ -90,6 +94,13 @@
         white-space:nowrap;
         margin: 0;
     }
+	
+	@media screen and (max-width: 480px) {
+    h1 {
+		
+       font-size: 20px;
+    }
+}
 }
 
 .img-profil{
@@ -112,25 +123,3 @@
 	z-index:1;
 }
 
-@include mobile {
-	.header{
-	    flex-direction: column-reverse;
-	    
-	}
-	.search-bar{
-		input[type=text] {
-			background-size: 20px; 
-			height: 28%;
-		}
-		input[type=text]:focus{
-			transform: translate(-100px);
-		}
-	}
-	.logo-area{
-		font-size:10px;
-		width: 80%;
-	}
-	.user-menu{
-		width: 100%;
-	}
-}
