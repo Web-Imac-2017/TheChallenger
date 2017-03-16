@@ -40,6 +40,15 @@ li{
     padding: 4px;
 }
 
+.delete_button{
+		cursor: pointer;
+		.logo{
+			width: 20px;
+			height: 20px;
+			margin: 10px;
+		}
+	}
+
 .tag-btn:hover{
 	background-color: $blueNight;
     color: $blockBackgroundColor;
