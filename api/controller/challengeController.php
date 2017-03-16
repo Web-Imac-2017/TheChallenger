@@ -72,17 +72,17 @@ class challengeController {
 				echo(json_encode(["code" => 0,"message" => "photo challenge field empty"]));
 				exit();
 			}
-			else {
-				
-				$testimage=$challenge->test_image($photo);
-				if($testimage){ 
-				
-					$linkcontent=$challenge->move_image($photo,'../data/challenge');
-					$query=$db->prepare('INSERT INTO challenge (title, description, photo, datestart, datestop) VALUES(:title,:desc, :linkcontent, NOW(),:date_stop)');
 
-				}
-				
+			$testimage=Image::test_image($photo);
+			if($testimage!=1 && $testimage!=2){ 
+				echo(json_encode(["code" => 0,"message" => "photo error"]));
+				exit();
 			}
+
+			$linkcontent=Image::move_image($photo,'../data/challenge');
+			$query=$db->prepare('INSERT INTO challenge (title, description, photo, datestart, datestop) VALUES(:title,:desc, :linkcontent, NOW(),:date_stop)');
+				
+			
 			$query->bindParam(':title',$title,PDO::PARAM_STR);
 			$query->bindParam(':desc',$desc,PDO::PARAM_STR);
 			$query->bindParam(':linkcontent',$linkcontent,PDO::PARAM_STR);
