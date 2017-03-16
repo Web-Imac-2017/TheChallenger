@@ -28,7 +28,6 @@ class searchController {
 		//on renvoi le tableau d'id
 		echo(json_encode($results));
 
-
 	}
 }
 

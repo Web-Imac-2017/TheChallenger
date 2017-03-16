@@ -2,7 +2,7 @@
 //include_once("model/Post.php");
 include_once("model/utility.php");
 
-class postController
+class postController {
 
 	//on vérifie si la personne a deja like
 	public static function checkLike($idpost){

@@ -1,6 +1,6 @@
 <?php
 
-require_once("model/Image.php");
+include_once("model/Image.php");
 //include_once("model/User.php");
 include_once("model/utility.php");
 $user=new User();
