@@ -25,10 +25,6 @@ export default class Challenge extends React.Component {
     }	
 
     callbackData(data){
-        /*console.log("CHALLENGE")
-        console.log(data)
-        console.log(data.timeleft)
-        console.log(Date(data.timeleft))*/
     	this.setState({challenge:data})
     }
 
@@ -53,7 +49,7 @@ export default class Challenge extends React.Component {
                             desc={this.state.challenge.description}
     	                	time = {this.state.challenge.datestop}/> 
 
-                    <button id="btn post-min" className="tag-btn" onClick={this.handleUploadBtnClick.bind(this)}>UPLOAD YOUR CONTENT</button>
+                    <button id="btn post-min" className="upload-btn tag-btn" onClick={this.handleUploadBtnClick.bind(this)}>UPLOAD YOUR CONTENT</button>
                     <UploadPost ref="upload" challengeId={this.state.challenge.id}/>
                     <PostsContainer query={"api/challenge/posts/"+this.state.challenge.id}
                                     affFollow={true} 
