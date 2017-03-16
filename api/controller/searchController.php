@@ -15,7 +15,7 @@ class searchController {
 		$query->bindParam(':search',$search,PDO::PARAM_STR);
 		$query->execute();
 		$results=array();
-		$results[0]=$searchtype;
+		// $results[0]=$searchtype;
 		while($datas=$query->fetch()){
 			array_push($results, $datas['id']);
 		}

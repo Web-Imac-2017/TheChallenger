@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDom from "react-dom";
 import { Router, Route, hashHistory } from 'react-router';
+import Utility from "./../../utilities/utility.js";
 
 export default class SearchBar extends React.Component {
     constructor (props){
@@ -22,6 +23,7 @@ export default class SearchBar extends React.Component {
         const path = "search/" + e.target.elements[0].value;
         hashHistory.push(path);
     }
+
     render() {
         return(
             <div className="search-bar">
