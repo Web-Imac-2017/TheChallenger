@@ -6,29 +6,43 @@
 	background: powderblue;
 }
 
-.content--tag{
-	width: 90%;
-	margin-bottom: 10px;
-}
-
 .upload_post{
+	.overlay{
+		z-index: 3;
+	}
 	.upload{
+	    display: flex;
+	    flex-direction: column;
+	    align-items: center;
+	    justify-content: space-between;
 		width: 70%;
 		top: 8%;
 		bottom: 8%;
+		z-index: 4;
 		h1{
-			margin: 0 0 20px 0;
 			width: 80%;
+		}
+		.content--tag{
+			h4{
+				margin: 0;
+			}
+			width: 90%;
+			margin:0;
+		}
+		.form{
+			margin: 0;
+			p{
+				margin: 0;
+			}
+			.field-contact{
+				margin: 0;
+			}
 		}
 	}	
 }
 
 .tagList{
     width: 100%;
-    h4{
-    	margin-top: 0;
-    	width: 100;
-    }
 }
 
 @include tablet{
@@ -50,7 +64,6 @@
 		.content--tag{
 			.content-box{
 				width: 100%;
-				margin-bottom: 10px;
 			}
 			.tagList{
 				width: 100%;				
