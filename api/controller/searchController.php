@@ -9,13 +9,9 @@ class searchController {
 			echo(json_encode(["code" => 0,"message" => "empty field"]));
 			exit();
 		}
-		if($searchtype!='challenge' && $searchtype!='post'){
-			echo(json_encode(["code" => 0,"message" => "you won't get any further you smartass"]));
-			exit();
-		}
 		$search='%'.$search.'%';
 		global $db;
-		$query=$db->prepare('SELECT id FROM thechallenger.'.$searchtype.' WHERE title LIKE :search');
+		$query=$db->prepare('SELECT id FROM '.$searchtype.' WHERE title LIKE :search');
 		$query->bindParam(':search',$search,PDO::PARAM_STR);
 		$query->execute();
 		$results=array();
