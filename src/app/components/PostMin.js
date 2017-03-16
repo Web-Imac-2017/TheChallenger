@@ -4,6 +4,7 @@ import PostProfilBar    from './post/PostProfilBar.js';
 import PostContent      from './post/PostContent.js';
 import PostLikesBar     from './post/PostLikesBar.js';
 
+
 export default class PostMin extends React.Component{
     constructor(props){
         super(props);
@@ -20,7 +21,8 @@ export default class PostMin extends React.Component{
         this.state = {
             post : null,
             affFollow : this.props.affFollow,
-            affLikes : this.props.affLikes
+            affLikes : this.props.affLikes,
+            suppBtn : this.props.affSuppBtn
         };
         
         this.loadData();    
@@ -55,9 +57,13 @@ export default class PostMin extends React.Component{
         /*console.log("IDUSER");
         console.log(this.state.affFollow);
         console.log(this.state.affLikes);*/
+        
         return(
             <div className="post-min">
-                <PostProfilBar userId = {this.state.post.iduser} affFollow={this.state.affFollow}/>
+                <PostProfilBar  userId = {this.state.post.iduser} 
+                                affFollow={this.state.affFollow}
+                                postId= {this.state.post.id}/>
+
                 <PostContent    post = {this.state.post}  
                                 preview={true}
                                 affFollow={this.state.affFollow}

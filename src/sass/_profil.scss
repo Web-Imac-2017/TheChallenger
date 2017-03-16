@@ -15,6 +15,7 @@
 			border-radius: 0px 0px 20px 20px;
 			display: block;
 			margin-left: -20%;
+			margin-bottom:15px;
 		}
 		
 		.submit:hover{
@@ -112,9 +113,16 @@
 			margin: 1.5em;
 		}
 	}
+
+	.delete_button{
+		cursor: pointer;
+		.logo{
+			width: 20px;
+			height: 20px;
+			margin: 10px;
+		}
+	}
 }
 
-.hidden {
-    display: hidden;    
-}
+
 
