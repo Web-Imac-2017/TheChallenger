@@ -3,6 +3,7 @@
 	require_once('model/routing.php');
 	require_once('model/database.php');
 	$db=database::getPdo();
+	require_once('model/image.php');
 	require_once("model/User.php");
 	require_once("controller/userController.php");
 	require_once("model/Post.php");

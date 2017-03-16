@@ -2,7 +2,7 @@
 
 class Image {
 	
-	public function test_image($image){
+	public static function test_image($image){
 
 		if(empty($image['size'])){
 	    	echo(json_encode(["code" => 0,"message" => "image error"]));
@@ -45,7 +45,7 @@ class Image {
 
 	}
 
-	public function move_image($image,$destination) {
+	public static function move_image($image,$destination) {
 	    $extension_upload = strtolower(substr(strrchr($image['name'], '.')  ,1));
 	    $name = time();
 	    $imagename = str_replace(' ','',$name).".".$extension_upload;

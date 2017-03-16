@@ -68,7 +68,7 @@ class Challenge extends Image
 	public static function challenge_exists($id){
 		
 		$db = database::getPDO();
-		$query=$db->prepare('SELECT * FROM thechallenger.challenge WHERE id =:id');
+		$query=$db->prepare('SELECT * FROM challenge WHERE id =:id');
         $query->bindParam(':id',$id,PDO::PARAM_INT);
         $query->execute();
 		$datas=($query->fetchColumn()==0)?0:1;
@@ -80,7 +80,7 @@ class Challenge extends Image
 	public static function getPosts($idchallenge) {
 
 		global $db;
-		$query = $db->prepare('SELECT * FROM thechallenger.post WHERE idchallenge=:idchallenge');
+		$query = $db->prepare('SELECT * FROM post WHERE idchallenge=:idchallenge');
 		$query->bindParam(':idchallenge',$idchallenge,PDO::PARAM_INT);
 		$query->execute();
 		$tab = array();

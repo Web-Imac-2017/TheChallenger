@@ -3,6 +3,7 @@ import Tag from './Tag.js';
 import Utility from './../utilities/utility.js';
 const logoCross = require("./../../img/icons/cross.png");
 
+
 export default class UploadPost extends React.Component {
     constructor (props) {
         super(props);
@@ -15,6 +16,10 @@ console.log(Utility.IMAGE);
         this.state = { active: false };
         this.open = this.open.bind(this);
         this.apiURL = "api/post/add/"+this.props.challengeId+"/";
+        this.state = {
+            contentInput: this.getContentInput(Utility.IMAGE),
+            type : Utility.IMAGE
+        };
         this.state = {contentInput: this.getContentInput(Utility.IMAGE) };
         this.labelType = "Image";
     }
@@ -53,10 +58,10 @@ console.log(Utility.IMAGE);
         switch(type) {
             case Utility.TEXT:    return "Text";
             case Utility.IMAGE:   return "Image";
-            case Utility.AUDIO :  return "Audio";
+            case Utility.SOUNDCLOUD :  return "Audio";
             case Utility.YOUTUBE: return "Video";
             case Utility.LINK :   return "Link";
-            default:      return "Unknwown type";
+            default: return "Unknwown type";
         }
     }
 
@@ -69,7 +74,8 @@ console.log(Utility.IMAGE);
     callBackTags(value) {
         this.updateTagAndType(value);
         this.setState({
-            contentInput: this.getContentInput(value)
+            contentInput: this.getContentInput(value),
+            type : value
         });
     }
     
@@ -97,8 +103,8 @@ console.log(Utility.IMAGE);
                         </div>
                     </div>
                     <form className="form" method="POST" action={this.apiURL} encType="multipart/form-data">
-                        <input type="text" name="tag" id="up-tag" hidden value={Utility.IMAGE}/>
-                        <input type="text" name="type" id="up-type" hidden value={Utility.IMAGE} />
+                        <input type="text" name="tag" id="up-tag" hidden value={this.state.type}/>
+                        <input type="text" name="type" id="up-type" hidden value={this.state.type} />
                         <p>Type: {this.labelType}</p>
                         {this.state.contentInput}
                         <input type="text" name="title" id="up-title" className="field-contact" placeholder="Your Title"/>
