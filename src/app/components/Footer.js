@@ -10,9 +10,11 @@ import AboutUs from "./footer/AboutUs.js";
 
 export default class Footer extends React.Component {
 	  
-	handleAboutBtnClick(){
+	handleAboutBtnClick(){	
+		window.scrollTo(0, document.getElementById("app").scrollTop);
 		this.refs.about.open();
 	}
+	
 	handleContactBtnClick(){
 		this.refs.contact.open();
 	}
