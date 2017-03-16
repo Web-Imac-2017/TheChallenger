@@ -1,5 +1,5 @@
 <?php 
-//include_once("model/Post.php");
+
 include_once("model/utility.php");
 
 class postController {
