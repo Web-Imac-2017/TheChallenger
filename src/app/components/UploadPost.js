@@ -1,6 +1,8 @@
 import React from "react";
 import Tag from './Tag.js';
+import Utility from './Utility.js'
 const logoCross = require("./../../img/icons/cross.png");
+
 
 export default class UploadPost extends React.Component {
     constructor (props) {
@@ -9,7 +11,10 @@ export default class UploadPost extends React.Component {
         this.state = { active: false };
         this.open = this.open.bind(this);
         this.apiURL = "api/post/add/"+this.props.challengeId+"/";
-        this.state = {contentInput: this.getContentInput("image") };
+        this.state = {
+            contentInput: this.getContentInput("image"),
+            type : IMAGE
+        };
         this.labelType = "Image";
     }
     close () {
@@ -21,13 +26,13 @@ export default class UploadPost extends React.Component {
 
     getContentInput(type) {
         switch(type) {
-            case "image":
+            case IMAGE:
                 return(<input type="link" name="image" id="up-content"/>)
-            case "text":
+            case TEXT:
                 return(<textarea type = "text" name="link" id="up-content" className="field-contact" placeholder="Post content"></textarea>);
-            case "video":
-            case "audio":
-            case "link":
+            case VIDEO:
+            case AUDIO:
+            case LINK:
                 return (<input type="text" id="up-content" name="link" className="field-contact" placeholder="Link (Youtube, Soundcloud, URL)" />);
             default: return null;
         }
@@ -40,11 +45,11 @@ export default class UploadPost extends React.Component {
 
     convertTypeToText(type) {
         switch(type) {
-            case "text" : return "Text";
-            case "image" : return "Image";
-            case "audio" : return "Audio";
-            case "video" : return "Video";
-            case "link" : return "Link";
+            case TEXT : return "Text";
+            case IMAGE: return "Image";
+            case AUDIO : return "Audio";
+            case VIDEO : return "Video";
+            case LINK : return "Link";
             default: return "Unknwown type";
         }
     }
