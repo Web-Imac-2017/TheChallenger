@@ -9,9 +9,9 @@ export default class Timer extends React.Component{
         // returned is assigned to this.state, so we can use it later.
 
         this.state = { timer: null };
-        console.log("TIMER")
-        console.log("end " + this.props.end)
-
+        /* console.log("TIMER")
+         * console.log("end " + this.props.end)
+         */
         
         
     }

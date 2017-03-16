@@ -43,18 +43,18 @@ export default class PostLikesBar extends React.Component{
         if(data.code == '1'){
             this.setState({userLike : true});
         }else{
-            console.log("ERROR LIKE "+data.message)
+            /* console.log("ERROR LIKE "+data.message)*/
         }
-        console.log("LIKE ", this.state.userLike)
+        /* console.log("LIKE ", this.state.userLike)*/
     }
 
      callBackUnlike(data){
         if(data.code == '1'){
             this.setState({userLike : false});
         }else{
-            console.log("ERROR UNLIKE "+data.message)
+            /* console.log("ERROR UNLIKE "+data.message)*/
         }
-        console.log("UNLIKE ", this.state.userLike)
+         /* console.log("UNLIKE ", this.state.userLike)*/
     }
 
     handleClick(){

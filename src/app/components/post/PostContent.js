@@ -4,12 +4,6 @@ import { BrowserRouter as Router,
 import Utility from './../../utilities/utility.js';
 import Post from './../Post.js';
 
-//definition des types de fichiers
-const IMAGE = "1";
-const YOUTUBE = "2";
-const SOUNDCLOUD = "3";
-const TEXT = "4";
-const LINK = "5"; 
 
 
 export default class PostContent extends React.Component{
