@@ -277,7 +277,7 @@ class userController{
 	public static function changeuser($id){
 		$description=(!empty($_POST['description']))? $_POST['description']:"";
 		$birthdate=(!empty($_POST['birthdate']))? $_POST['birthdate']:"";
-		$photo=(!empty($_POST['photo']))? $_POST['photo']:"";
+		$photo=(!empty($_FILES['photo']))? $_FILES['photo']:"";
 		$cptwarnings=(!empty($_POST['cptwarnings']))? $_POST['cptwarnings']:"";
 		$rank=(!empty($_POST['rank']))? $_POST['rank']:"";
 
