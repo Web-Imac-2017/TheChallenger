@@ -275,11 +275,16 @@ class userController{
 
 	//fonction modification utilisateur, ajout avertissement et modif de rang
 	public static function changeuser($id){
-		$description=(!empty($_POST['description']))? $_POST['description']:"";
-		$birthdate=(!empty($_POST['birthdate']))? $_POST['birthdate']:"";
-		$photo=(!empty($_FILES['photo']))? $_FILES['photo']:"";
-		$cptwarnings=(!empty($_POST['cptwarnings']))? $_POST['cptwarnings']:"";
-		$rank=(!empty($_POST['rank']))? $_POST['rank']:"";
+		$query = $db->prepare("SELECT description,birthdate,photo,cptwarnings,rank FROM thechallenger.user WHERE id=:id");
+		$query->bindParam(':id',$id,PDO::PARAM_INT);
+		$query->execute();
+		$datas=$query->fetch();
+		$query->CloseCursor();
+		$description=(!empty($_POST['description']))? $_POST['description']:$datas['description'];
+		$birthdate=(!empty($_POST['birthdate']))? $_POST['birthdate']:$datas['birthdate'];
+		$photo=(!empty($_FILES['photo']))? $_FILES['photo']:$datas['photo'];
+		$cptwarnings=(!empty($_POST['cptwarnings']))? $_POST['cptwarnings']:$datas['cptwarnings'];
+		$rank=(!empty($_POST['rank']))? $_POST['rank']:$datas['rank'];
 
 		global $db;
 		global $user;

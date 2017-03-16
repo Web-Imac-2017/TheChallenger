@@ -68,12 +68,13 @@ class User
 		//on ajoute les infos à la bdd
 		//on insère les infos dans la bdd
 
-		$query=$db->prepare('INSERT INTO thechallenger.user (rank,name,pwd,email,keyactive,registerdate,cptwarnings) VALUES (1,:name, :pwd, :email, :keyactive, :registerdate,0)');
+		$query=$db->prepare('INSERT INTO thechallenger.user (rank,name,pwd,email,keyactive,registerdate,cptwarnings,photo) VALUES (1,:name, :pwd, :email, :keyactive, :registerdate,0,:photo)');
 		$query->bindParam(':name', $this->_name, PDO::PARAM_STR);
 		$query->bindParam(':pwd', $this->_password, PDO::PARAM_STR);
 		$query->bindParam(':email', $this->_email, PDO::PARAM_STR);
 		$query->bindParam(':keyactive',$key,PDO::PARAM_STR);
 		$query->bindParam(':registerdate', $registerdate, PDO::PARAM_STR);
+		$query->bindParam(':photo', "pp.jpg", PDO::PARAM_STR);
 		$query->execute();
 		$query->CloseCursor();
 
