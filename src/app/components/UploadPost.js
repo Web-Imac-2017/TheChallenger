@@ -30,7 +30,7 @@ export default class UploadPost extends React.Component {
                 return(<div className="up-content-file">
                             <label>
                                 Choose a file
-                                <input type="file" name="file" id="up-content" className="up-content"/>
+                                <input type="file" name="image" id="up-content" className="up-content"/>
                             </label>
                         </div>);
             case Utility.TEXT:
