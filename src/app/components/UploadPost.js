@@ -14,7 +14,6 @@ export default class UploadPost extends React.Component {
             contentInput: this.getContentInput(Utility.IMAGE),
             type : Utility.IMAGE
         };
-        this.state = {contentInput: this.getContentInput(Utility.IMAGE) };
         this.labelType = "Image";
     }
     close () {
