@@ -1,10 +1,7 @@
 node_modules/*
-package.json
 *.log
 npm-debug.log
 dist/app/bundle.js
 challenger.sublime-project
 *.sublime-workspace
 src/app/components/vignette.js
-webpack.config.js
-webpack.config.js
